@@ -7,7 +7,7 @@ import simulationManager.simulation.ItemType;
 public class DivineSunderer extends Item {
     public static final String name = "Divine Sunderer";
     public static final ItemType type = ItemType.mythic;
-    public static final int cost = 0;
+    public static final int cost = 3300;
 
     public DivineSunderer() {
         super(name, type, cost);

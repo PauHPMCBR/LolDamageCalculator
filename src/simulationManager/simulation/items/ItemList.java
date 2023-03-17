@@ -45,7 +45,6 @@ public class ItemList {
     public static DuskbladeOfDraktharr duskbladeOfDraktharr = new DuskbladeOfDraktharr();
     public static Eclipse eclipse = new Eclipse();
     public static EdgeOfNight edgeOfNight = new EdgeOfNight();
-    public static Empty empty = new Empty();
     public static EssenceReaver essenceReaver = new EssenceReaver();
     public static Evenshroud evenshroud = new Evenshroud();
     public static Everfrost everfrost = new Everfrost();
@@ -212,7 +211,6 @@ public class ItemList {
         add(duskbladeOfDraktharr);
         add(eclipse);
         add(edgeOfNight);
-        add(empty);
         add(essenceReaver);
         add(evenshroud);
         add(everfrost);

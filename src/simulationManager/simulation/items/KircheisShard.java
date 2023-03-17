@@ -7,7 +7,7 @@ import simulationManager.simulation.ItemType;
 public class KircheisShard extends Item {
     public static final String name = "Kircheis Shard";
     public static final ItemType type = ItemType.epic;
-    public static final int cost = 0;
+    public static final int cost = 700;
 
     int energize;
 

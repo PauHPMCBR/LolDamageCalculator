@@ -7,7 +7,7 @@ import simulationManager.simulation.ItemType;
 public class ProwlersClaw extends Item {
     public static final String name = "Prowler's Claw";
     public static final ItemType type = ItemType.mythic;
-    public static final int cost = 0;
+    public static final int cost = 3100;
 
     boolean useProwlersActive;
     float activeStart;
