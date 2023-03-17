@@ -34,6 +34,8 @@ UNTESTED:
     galeforce and other executes early, should be late
     prowlers active
 
+    DUMMY STATS
+
 IMPERFECTIONS:
     not taken into account several instance of damage from one ability (affects black cleaver and ludens)
     sudden impact doesn't chack for a dash (everything will count as a dash)
@@ -46,5 +48,26 @@ IMPERFECTIONS:
 strange variables:
     instaStackBlackCleaver
     autoBetweenAbilities
+
+
+MISSING ITEMS:
+    //archangels -> seraphs
+    //ardent
+    //putrifier
+    //dead mans
+    //force of nature
+    //gargoyle
+    //knights vow
+    //manamune -> muramana
+    //mikaels
+    //redemption
+    //spirit visage
+    //staff
+    //thornmail
+    //chemtank
+    //winter's -> fimbulwinter
+    //zekes
+
+    //stopwatch
 
  */

@@ -1,6 +1,8 @@
 package simulationManager.simulation;
 
+import java.sql.Array;
 import java.util.*;
+import static simulationManager.simulation.items.ItemList.*;
 
 /**
  * This class makes sure that an inventory fulfills all rules, which are:
@@ -12,30 +14,30 @@ import java.util.*;
  * (Currently, runaans for melee champions is not checked)
  */
 public class Inventory {
-    private final int maxSize = 6;
+    public static final int maxSize = 6;
 
     private final List<Item> inventory;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            new Item[] {MythicItems.immortalShieldbow, LegendaryItems.steraksCage, LegendaryItems.mawOfMalmortius, LegendaryItems.seraphsEmbrace, ComponentItems.hexdrinker}, //lifeline
-            new Item[] {LegendaryItems.infinityEdge, LegendaryItems.navoriQuickblades, LegendaryItems.guinsoosRageblade, ComponentItems.rageknife}, //crit mod
-            new Item[] {LegendaryItems.navoriQuickblades, LegendaryItems.spearOfShojin}, //cd mod
-            new Item[] {MythicItems.trinityForce, MythicItems.divineSunderer, MythicItems.icebornGauntlet, LegendaryItems.essenceReaver, LegendaryItems.lichBane, ComponentItems.sheen}, //spellblade
-            new Item[] {MythicItems.rodOfAges, LegendaryItems.abyssalMask, ComponentItems.catalystOfAeons}, //eternity
-            new Item[] {LegendaryItems.fimbulwinter, LegendaryItems.muramana, LegendaryItems.seraphsEmbrace, ComponentItems.tearOfTheGoddess}, //mana charge
-            new Item[] {LegendaryItems.lordDominiksRegards, LegendaryItems.seryldasGrudge, ComponentItems.lastWhisper}, //last whisper
-            new Item[] {LegendaryItems.titanicHydra, LegendaryItems.ravenousHydra, ComponentItems.tiamat}, //hydra
-            new Item[] {LegendaryItems.mercurialScimitar, LegendaryItems.silvermereDawn, ComponentItems.quicksilverSash}, //qicksilver
-            new Item[] {Items.berserkers, Items.sorcerers, Items.lucidities}, //boots
-            new Item[] {LegendaryItems.mejaisSoulstealer, ComponentItems.darkSeal}, //glory
-            new Item[] {ComponentItems.guardiansOrb, ComponentItems.guardiansHorn, ComponentItems.guardiansBlade, ComponentItems.guardiansHammer}, //guardian
-            new Item[] {LegendaryItems.sunfireAegis, ComponentItems.bamisCinder}, //immolate
-            new Item[] {LegendaryItems.shardOfTrueIce, LegendaryItems.pauldronsOfWhiterock, LegendaryItems.blackMistScythe, LegendaryItems.bulwackOfTheMountain,
-                        ComponentItems.frostfang, ComponentItems.runesteelSpaulders, ComponentItems.harrowingCrescent, ComponentItems.targonsBuckler,
-                        ComponentItems.spellthiefsEdge, ComponentItems.steelShoulderguards, ComponentItems.spectralSickle, ComponentItems.relicShield}, //support
-            new Item[] {ComponentItems.bandleglassMirror, ComponentItems.ironspkieWhip, ComponentItems.leechingLeer, ComponentItems.lostChapter, ComponentItems.noonquiver}, //mythic component
-            new Item[] {LegendaryItems.vigilantWardstone, ComponentItems.watchfulWardstone}, //sightstone
-            new Item[] {LegendaryItems.voidStaff, ComponentItems.blightingJewel} //void pen
+            new Item[] {immortalShieldbow, steraksCage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
+            new Item[] {infinityEdge, navoriQuickblades, guinsoosRageblade, rageknife}, //crit mod
+            new Item[] {navoriQuickblades, spearOfShojin}, //cd mod
+            new Item[] {trinityForce, divineSunderer, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
+            new Item[] {rodOfAges, abyssalMask, catalystOfAeons}, //eternity
+            new Item[] {fimbulwinter, muramana, seraphsEmbrace, tearOfTheGoddess}, //mana charge
+            new Item[] {lordDominiksRegards, seryldasGrudge, lastWhisper}, //last whisper
+            new Item[] {titanicHydra, ravenousHydra, tiamat}, //hydra
+            new Item[] {mercurialScimitar, silvermereDawn, quicksilverSash}, //qicksilver
+            new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity}, //boots
+            new Item[] {mejaisSoulstealer, darkSeal}, //glory
+            new Item[] {guardiansOrb, guardiansHorn, guardiansBlade, guardiansHammer}, //guardian
+            new Item[] {sunfireAegis, bamisCinder}, //immolate
+            new Item[] {shardOfTrueIce, pauldronsOfWhiterock, blackMistScythe, bulwackOfTheMountain,
+                        frostfang, runesteelSpaulders, harrowingCrescent, targonsBuckler,
+                        spellthiefsEdge, steelShoulderguards, spectralSickle, relicShield}, //support
+            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, noonquiver}, //mythic component
+            new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
+            new Item[] {voidStaff, blightingJewel} //void pen
     };
 
     /**
@@ -53,12 +55,10 @@ public class Inventory {
     }
     private boolean[] exclusiveItemsUsed;
     private boolean hasMythic;
-
-    private boolean canAdd(Item item) {
-        if (item.is_rune) return false;
+    public boolean canAdd(Item item) {
         if (inventory.size() == maxSize) return false;
-        if (item.is_legendary && inventory.contains(item)) return false;
-        if (item.is_mythic && hasMythic) return false;
+        if (item.type == ItemType.legendary && inventory.contains(item)) return false;
+        if (item.type == ItemType.mythic && hasMythic) return false;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item) && exclusiveItemsUsed[i]) return false;
         return true;
@@ -73,7 +73,7 @@ public class Inventory {
         inventory.add(item);
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = true;
-        if (item.is_mythic) hasMythic = true;
+        if (item.type == ItemType.mythic) hasMythic = true;
         return true;
     }
 
@@ -85,6 +85,7 @@ public class Inventory {
         for (int i = 0; i < items.size(); ++i) {
             if (!add(items.get(i))) {
                 for (int j = 0; j < i; ++j) remove(items.get(j));
+                //System.out.println("Invalid build!");
                 return false;
             }
         }
@@ -103,7 +104,7 @@ public class Inventory {
         inventory.remove(item);
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = false;
-        if (item.is_mythic) hasMythic = false;
+        if (item.type == ItemType.mythic) hasMythic = false;
         return true;
     }
 
@@ -117,10 +118,25 @@ public class Inventory {
     public ArrayList<Item> getItems() {
         return new ArrayList<>(inventory);
     }
+    public int getSize() {
+        return inventory.size();
+    }
+
+
+    @Override
+    public int hashCode() {
+        int res = 0;
+        for (Item i : inventory) res += i.name.hashCode();
+        return res;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Inventory)) return false;
+        return o.hashCode() == this.hashCode();
+    }
 
 
     public Inventory() {
-        Items.initializeItems();
         inventory = new ArrayList<>();
         if (exclusiveItems == null) fillExclusiveItems();
         exclusiveItemsUsed = new boolean[exclusiveItems.length];

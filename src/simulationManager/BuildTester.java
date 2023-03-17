@@ -7,30 +7,6 @@ import simulationManager.simulation.*;
  * Class designed to test item combinations and compare them
  */
 public class BuildTester {
-    private List<Item> runes;
-
-    private int maxItems;
-    private List<Item> permanentItems; //items that will be present in every test
-    private List<Item> variableItems; //items that can be part of a combination for a build complementing the permanentItems
-
-    private List<List<Item>> combinations;
-    private void generateCombinations(List<Item> combination, int start, int size) {
-        if (combination.size() == size) {
-            combinations.add(new ArrayList<>(combination));
-            return;
-        }
-        for (int i = start; i < variableItems.size(); ++i) {
-            combination.add(variableItems.get(i));
-            generateCombinations(combination, i + 1, size);
-            combination.remove(combination.size() - 1);
-        }
-    }
-    private void generateCombinations(int size) {
-        combinations = new ArrayList<>();
-        if (size == 0) return;
-        generateCombinations(new ArrayList<>(), 0, size);
-    }
-
     /**
      * Class made to sort builds by performance
      */
@@ -53,6 +29,46 @@ public class BuildTester {
         }
     }
 
+
+    private RunePage runes;
+
+    private int maxItems;
+    private int maxCost;
+    private List<Item> permanentItems; //items that will be present in every test
+    private List<Item> variableItems; //items that can be part of a combination for a build complementing the permanentItems
+
+    private Set<Inventory> combinations;
+    private void generateCombinations(Inventory combination, int pos, int size, int cost) {
+        if (pos == variableItems.size()) return;
+        combinations.add(new Inventory(combination));
+
+        if (combination.add(variableItems.get(pos))) {
+            ++size;
+            cost += variableItems.get(pos).cost;
+            if (cost <= maxCost && size <= maxItems)
+                generateCombinations(combination, pos, size, cost);
+            combination.remove(variableItems.get(pos));
+            --size;
+            cost -= variableItems.get(pos).cost;
+        }
+        generateCombinations(combination, pos+1, size, cost);
+    }
+    private void generateCombinations() {
+        combinations = new HashSet<>();
+        Inventory starter = new Inventory();
+        int startingCost = 0;
+        int startingSize = 0;
+        for (Item i : permanentItems) {
+            if (starter.add(i)) {
+                startingCost += i.cost;
+                ++startingSize;
+            }
+        }
+        generateCombinations(starter, 0, startingSize, startingCost);
+    }
+
+
+
     public int displayedBuilds = 15;
 
     /**
@@ -72,16 +88,14 @@ public class BuildTester {
             return;
         }
         if (c.getRunes() != null && c.getRunes().size() != 0) System.out.println("Given champion already has runes, keeping those for the test");
-        else c.setRunes(runes);
+        else c.setRunePage(runes);
 
-        generateCombinations(maxItems - permanentItems.size());
+        generateCombinations();
 
         List<BuildScore> buildScores = new ArrayList<>();
 
-        for (List<Item> combination : combinations) {
-            Inventory inventory1 = new Inventory(inventory);
-            if (!inventory1.addAll(combination)) continue;
-            c.setInventory(inventory1);
+        for (Inventory combination : combinations) {
+            c.setInventory(combination);
 
             SimulationManager sm = new SimulationManager();
 
@@ -95,7 +109,7 @@ public class BuildTester {
                 score = sm.simulateDps(abilityTypes, false);
             }
 
-            BuildScore bs = new BuildScore(score, inventory1.getItems());
+            BuildScore bs = new BuildScore(score, combination.getItems());
             buildScores.add(bs);
         }
 
@@ -114,9 +128,8 @@ public class BuildTester {
     }
 
 
-    public void setRunes(List<Item> runes) {
-        this.runes = new ArrayList<>();
-        this.runes.addAll(runes);
+    public void setRunePage(RunePage runes) {
+        this.runes = new RunePage(runes);
     }
     public void setPermanentItems(List<Item> items) {
         permanentItems = new ArrayList<>();
@@ -129,4 +142,13 @@ public class BuildTester {
     public void setMaxItems(int x) {
         maxItems = x;
     }
+    public void setMaxCost(int x) {
+        maxCost = x;
+    }
+
+    public BuildTester(int maxItems, int maxCost) {
+        this.maxItems = maxItems;
+        this.maxCost = maxCost;
+    }
 }
+//change to adding items to inventory while calculating combinations. also add possibility for amount of gold

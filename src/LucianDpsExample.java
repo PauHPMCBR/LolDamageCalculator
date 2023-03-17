@@ -1,41 +1,41 @@
-import simulationManager.BuildTester;
-import simulationManager.SimulationManager;
+import simulationManager.*;
 import simulationManager.simulation.*;
-import simulationManager.simulation.AbilityType.*;
+import simulationManager.simulation.champions.*;
+import simulationManager.simulation.runes.EyeballCollection;
+import simulationManager.simulation.runes.PressTheAttack;
+import simulationManager.simulation.runes.Shards;
+
+import static simulationManager.simulation.AbilityType.*;
+import static simulationManager.simulation.items.ItemList.*;
 
 import java.util.List;
 
-import static simulationManager.simulation.AbilityType.*;
-import static simulationManager.simulation.AbilityType.w;
-
 public class LucianDpsExample {
     public static void calculateDps() {
-        Champion lucian = ChampionInstances.createLucian();
-        Champion dummy = ChampionInstances.createDummy(7000, 250, 250);
+        Champion lucian = new Lucian();
+        Champion dummy = new Dummy(7000, 250, 250);
 
         lucian.lvl = 13;
         lucian.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
-        Item[] runes = {
-                Runes.pressTheAttack,
-                Runes.eyeballCollection,
-                Runes.shards
+        Rune[] runes = {
+                new PressTheAttack(),
+                new EyeballCollection(5),
+                new Shards(1,0,1)
         };
-        Runes.eyeballStacks = 10;
-        Runes.shard1 = 1; //as
-        Runes.shard2 = 0; //ad
-        Runes.shard3 = 1; //armor
+        RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+        runePage.setRunes(runes);
 
         Item[] build = {
-                Items.berserkers,
-                MythicItems.krakenSlayer,
-                LegendaryItems.navoriQuickblades,
-                LegendaryItems.bloodthister
+                berserkersGreaves,
+                krakenSlayer,
+                navoriQuickblades,
+                bloodthister
         };
         Inventory inventory = new Inventory();
         inventory.addAll(build);
 
-        lucian.setRunes(List.of(runes));
+        lucian.setRunePage(runePage);
         lucian.setInventory(inventory);
 
         SimulationManager sm = new SimulationManager();
@@ -49,42 +49,39 @@ public class LucianDpsExample {
 
 
     public static void calculateBestBuild() {
-        Champion lucian = ChampionInstances.createLucian();
-        Champion dummy = ChampionInstances.createDummy(15000, 230, 200);
+        Champion lucian = new Lucian();
+        Champion dummy = new Dummy(15000, 230, 200);
 
         lucian.lvl = 13;
         lucian.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
-        Item[] runes = {
-                Runes.pressTheAttack,
-                Runes.eyeballCollection,
-                Runes.shards
+        Rune[] runes = {
+                new PressTheAttack(),
+                new EyeballCollection(5),
+                new Shards(1,0,1)
         };
-        Runes.eyeballStacks = 10;
-        Runes.shard1 = 1; //as
-        Runes.shard2 = 0; //ad
-        Runes.shard3 = 1; //armor
+        RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+        runePage.setRunes(runes);
 
         Item[] permanentItems = {
         };
         Item[] variableItems = {
-                MythicItems.krakenSlayer,
-                MythicItems.trinityForce,
-                LegendaryItems.muramana,
-                LegendaryItems.guinsoosRageblade,
-                LegendaryItems.bladeOfTheRuinedKing,
-                LegendaryItems.witsEnd,
-                LegendaryItems.essenceReaver,
-                LegendaryItems.navoriQuickblades,
-                LegendaryItems.infinityEdge,
-                LegendaryItems.lordDominiksRegards,
-                LegendaryItems.blackCleaver,
-                LegendaryItems.collector
+                krakenSlayer,
+                trinityForce,
+                muramana,
+                guinsoosRageblade,
+                bladeOfTheRuinedKing,
+                witsEnd,
+                essenceReaver,
+                navoriQuickblades,
+                infinityEdge,
+                lordDominiksRegards,
+                blackCleaver,
+                theCollector
         };
 
-        BuildTester bt = new BuildTester();
-        bt.setMaxItems(6);
-        bt.setRunes(List.of(runes));
+        BuildTester bt = new BuildTester(6, 10000);
+        bt.setRunePage(runePage);
         bt.setPermanentItems(List.of(permanentItems));
         bt.setVariableItems(List.of(variableItems));
 

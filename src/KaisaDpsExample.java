@@ -1,41 +1,43 @@
-import simulationManager.BuildTester;
-import simulationManager.SimulationManager;
+import simulationManager.*;
 import simulationManager.simulation.*;
+import simulationManager.simulation.champions.*;
+import simulationManager.simulation.items.*;
+import simulationManager.simulation.runes.*;
 
 import java.util.List;
 
 import static simulationManager.simulation.AbilityType.*;
+import static simulationManager.simulation.items.ItemList.*;
 
 public class KaisaDpsExample {
     public static void calculateDps() {
-        Champion kaisa = ChampionInstances.createKaisa();
-        Champion dummy = ChampionInstances.createDummy(7000, 250, 200);
+        Champion kaisa = new Kaisa();
+        Champion dummy = new Dummy(7000, 250, 200);
 
         kaisa.lvl = 13;
         kaisa.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
-        Item[] runes = {
-                Runes.lethalTempo,
-                Runes.legendAlacrity,
-                Runes.eyeballCollection,
-                Runes.shards
+        Rune[] runes = {
+                new PressTheAttack(),
+                new LegendAlacrity(10),
+                new CoupDeGrace(),
+                new EyeballCollection(10),
+                new UltimateHunter(5),
+                new Shards(1,0,1)
         };
-        Runes.eyeballStacks = 10;
-        Runes.shard1 = 1; //as
-        Runes.shard2 = 0; //ad
-        Runes.shard3 = 1; //armor
+        RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+        runePage.setRunes(runes);
 
         Item[] build = {
-                Items.berserkers,
-                MythicItems.krakenSlayer,
-                LegendaryItems.witsEnd,
-                LegendaryItems.bladeOfTheRuinedKing,
-                LegendaryItems.blackCleaver
+                new BerserkersGreaves(),
+                new Riftmaker(),
+                new GuinsoosRageblade(),
+                new BladeOfTheRuinedKing()
         };
         Inventory inventory = new Inventory();
         inventory.addAll(build);
 
-        kaisa.setRunes(List.of(runes));
+        kaisa.setRunePage(runePage);
         kaisa.setInventory(inventory);
 
         SimulationManager sm = new SimulationManager();
@@ -47,35 +49,33 @@ public class KaisaDpsExample {
 
 
     public static void calculateDps2() {
-        Champion kaisa = ChampionInstances.createKaisa();
-        Champion dummy = ChampionInstances.createDummy(7000, 250, 200);
+        Champion kaisa = new Kaisa();
+        Champion dummy = new Dummy(7000, 250, 200);
 
         kaisa.lvl = 13;
         kaisa.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
-        Item[] runes = {
-                Runes.lethalTempo,
-                Runes.cutDown,
-                Runes.legendAlacrity,
-                Runes.eyeballCollection,
-                Runes.shards
+        Rune[] runes = {
+                new LethalTempo(),
+                new CutDown(),
+                new LegendAlacrity(10),
+                new EyeballCollection(10),
+                new Shards(1,0,1)
         };
-        Runes.eyeballStacks = 10;
-        Runes.shard1 = 1; //as
-        Runes.shard2 = 0; //ad
-        Runes.shard3 = 1; //armor
+        RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+        runePage.setRunes(runes);
 
         Item[] build = {
-                Items.berserkers,
-                MythicItems.riftmaker,
-                LegendaryItems.lordDominiksRegards,
-                LegendaryItems.guinsoosRageblade,
-                LegendaryItems.bladeOfTheRuinedKing
+                new BerserkersGreaves(),
+                new Riftmaker(),
+                new LordDominiksRegards(),
+                new GuinsoosRageblade(),
+                new BladeOfTheRuinedKing()
         };
         Inventory inventory = new Inventory();
         inventory.addAll(build);
 
-        kaisa.setRunes(List.of(runes));
+        kaisa.setRunePage(runePage);
         kaisa.setInventory(inventory);
 
         SimulationManager sm = new SimulationManager();
@@ -87,38 +87,35 @@ public class KaisaDpsExample {
 
 
     public static void calculateBestBuild() {
-        Champion kaisa = ChampionInstances.createKaisa();
-        Champion dummy = ChampionInstances.createDummy(7500, 130, 100);
+        Champion kaisa = new Kaisa();
+        Champion dummy = new Dummy(7500, 130, 100);
 
         kaisa.lvl = 13;
         kaisa.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
-        Item[] runes = {
-                Runes.lethalTempo,
-                Runes.legendAlacrity,
-                Runes.eyeballCollection,
-                Runes.shards
+        Rune[] runes = {
+                new LethalTempo(),
+                new LegendAlacrity(10),
+                new EyeballCollection(10),
+                new Shards(1,0,1)
         };
-        Runes.eyeballStacks = 10;
-        Runes.shard1 = 1; //as
-        Runes.shard2 = 0; //ad
-        Runes.shard3 = 1; //armor
+        RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+        runePage.setRunes(runes);
 
         Item[] permanentItems = {
-                Items.berserkers
+                new BerserkersGreaves()
         };
         Item[] variableItems = {
-                MythicItems.krakenSlayer,
-                MythicItems.riftmaker,
-                LegendaryItems.guinsoosRageblade,
-                LegendaryItems.bladeOfTheRuinedKing,
-                LegendaryItems.witsEnd,
-                LegendaryItems.nashorsTooth
+                new KrakenSlayer(),
+                new Riftmaker(),
+                new GuinsoosRageblade(),
+                new BladeOfTheRuinedKing(),
+                new WitsEnd(),
+                new NashorsTooth()
         };
 
-        BuildTester bt = new BuildTester();
-        bt.setMaxItems(4);
-        bt.setRunes(List.of(runes));
+        BuildTester bt = new BuildTester(4, 100000);
+        bt.setRunePage(runePage);
         bt.setPermanentItems(List.of(permanentItems));
         bt.setVariableItems(List.of(variableItems));
 
@@ -127,8 +124,8 @@ public class KaisaDpsExample {
 
 
     public static void main(String[] args) {
-        //calculateDps();
+        calculateDps();
         //calculateDps2();
-        calculateBestBuild();
+        //calculateBestBuild();
     }
 }

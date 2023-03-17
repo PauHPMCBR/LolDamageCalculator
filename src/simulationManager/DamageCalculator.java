@@ -47,7 +47,7 @@ public class DamageCalculator {
     }
 
     private void useAbility(Ability a) {
-        increaseTime(a.getCastTime());
+        increaseTime(a.cast_time);
 
         cs.damageMultiplier *= cs.navoriPercent;
         cs.champion.useAbility(a);
@@ -141,13 +141,14 @@ public class DamageCalculator {
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new Vector<>();
         for (AbilityType abilityType : combo) {
-            switch (abilityType) {
-                case auto -> cs.champion.autoAttack();
-                case q -> useAbility(cs.champion.Q);
-                case w -> useAbility(cs.champion.W);
-                case e -> useAbility(cs.champion.E);
-                case r -> useAbility(cs.champion.R);
-                default -> {}
+            if (abilityType == AbilityType.auto) {
+                increaseTime(cs.champion.autoCd);
+                cs.champion.autoAttack();
+            }
+            else {
+                Ability a = cs.champion.getAbility(abilityType);
+                increaseTime(a.currentCooldown);
+                useAbility(a);
             }
         }
     }

@@ -4,32 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import static simulationManager.simulation.AbilityType.*;
 
-public class Champion {
+public abstract class Champion {
     CurrentState cs;
 
-    private final String name;
-
-    public boolean is_ranged;
+    public final String name;
 
     /**
      * Base champion stats and level scalings
      */
-    float base_hp;
-    float hp_growth;
-    float base_mana;
-    float mana_growth;
-    float base_armor;
-    float armor_growth;
-    float base_ad;
-    float ad_growth;
-    float base_mr;
-    float mr_growth;
-    float crit_damage;
-    float base_as;
-    float max_as;
+    public final float base_hp;
+    public final float hp_growth;
+    public final float base_mana;
+    public final float mana_growth;
+    public final float base_armor;
+    public final float armor_growth;
+    public final float base_ad;
+    public final float ad_growth;
+    public final float base_mr;
+    public final float mr_growth;
+    public float crit_damage;
+    public final float base_as;
+    public float max_as;
     public float attack_windup; //some abilities have to modify this
-    float as_ratio;
-    float bonus_as;
+    public final float as_ratio;
+    public final float bonus_as;
+    public final boolean is_ranged;
 
     /**
      * Stats that can get modified by external factors like abilities and items
@@ -40,11 +39,10 @@ public class Champion {
     public float ULTIMATE_HASTE;
 
     Inventory inventory = new Inventory();
-    List<Item> runes = new ArrayList<>();
-
+    RunePage runes = null;
     List<Item> uniqueItems = new ArrayList<>(); //champion specific items that make certain tasks easier
-    List<Item> allItems;
-    int legendary_items_carried;
+    public List<Item> allItems;
+    public int legendary_items_carried;
 
     public boolean alive = true;
     public int lvl;
@@ -52,25 +50,16 @@ public class Champion {
     /**
      * Variables to keep track of very specific item behaviours
      */
-    boolean can_use_sheen;
-    float lastSheenProc;
+    public boolean can_use_sheen;
+    public float lastSheenProc;
 
     public Ability Passive = new Ability(AbilityType.passive);
     public Ability Q = new Ability(q);
     public Ability W = new Ability(w);
     public Ability E = new Ability(e);
     public Ability R = new Ability(r);
-    public Ability[] allAbilities = {Passive, Q, W, E, R};
+    public Ability[] allAbilities;
     public AbilityType[] upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e}; //default upgrade order
-    public void setAbility(Ability a) {
-        switch (a.type) {
-            case passive -> Passive = a;
-            case q  -> Q = a;
-            case w -> W = a;
-            case e -> E = a;
-            case r -> R = a;
-        }
-    }
     public Ability getAbility(AbilityType a) {
         if (a == q) return Q;
         if (a == w) return W;
@@ -85,23 +74,24 @@ public class Champion {
     public int autosUsed;
     //private Random rng; <- was too inconsistent with comparisons. keep in mind comparing crit with no crit to have somewhat of a multiple of 5 auto amount
 
-
     public void increaseArmorPen(float amount) { //armor pen scales multiplicative
         if (amount > 1) amount /= 100;
         ARMOR_PEN = 1 - (1-ARMOR_PEN)*(1-amount);
+    }
+    public void increasePercentageMagicPen(float amount) {
+        if (amount > 1) amount /= 100;
+        PERCENTAGE_MAGIC_PEN = 1 - (1-PERCENTAGE_MAGIC_PEN)*(1-amount);
     }
 
     /**
      *  Comodity getters that do slight calculations
      */
-    public String getName() {
-        return name;
-    }
     public Inventory getInventory() {
         return inventory;
     }
-    public List<Item> getRunes() {
-        return runes;
+    public List<Rune> getRunes() {
+        if (runes == null) return null;
+        return runes.runeList;
     }
     public Champion getEnemy() {
         return this.equals(cs.champion) ? cs.enemy : cs.champion;
@@ -142,9 +132,8 @@ public class Champion {
     public void setInventory(Inventory i) {
         inventory = new Inventory(i);
     }
-    public void setRunes(List<Item> r) {
-        runes.clear();
-        runes.addAll(r);
+    public void setRunePage(RunePage r) {
+        runes = new RunePage(r);
     }
 
 
@@ -166,13 +155,20 @@ public class Champion {
             item.cs = cs;
 
             item.damageDealt = 0;
-            item.extraVariable = 0;
             item.applyStats();
-            if (item.is_legendary) ++legendaries;
+            if (item.type == ItemType.legendary) ++legendaries;
         }
         legendary_items_carried = legendaries;
         for (Item item : allItems)
-            if (item.is_mythic) item.applyMythicPassive();
+            if (item.type == ItemType.mythic) item.applyMythicPassive();
+    }
+
+    void initializeRunes() {
+        for (Rune rune : runes.runeList) {
+            rune.owner = this;
+            rune.cs = cs;
+            rune.damageDealt = 0;
+        }
     }
 
     void initializeValues(CurrentState currentState) {
@@ -201,7 +197,8 @@ public class Champion {
         allItems = new ArrayList<>();
         allItems.addAll(uniqueItems);
         allItems.addAll(inventory.getItems());
-        allItems.addAll(runes);
+
+        allAbilities = new Ability[]{Passive, Q, W, E, R};
 
         for (Ability a : allAbilities) {
             a.owner = this;
@@ -235,6 +232,7 @@ public class Champion {
         autoCd = 1/getAttackSpeed();
 
         for (Item i : allItems) i.onHit();
+        for (Rune r : runes.runeList) r.onHit();
     }
     public void autoReset() {
         autoCd = 0;
@@ -245,9 +243,10 @@ public class Champion {
      */
     public void useAbility(Ability a) {
         a.onUse();
-        if (a.getDamageType() != null) {
-            if (cs.time - lastSheenProc >= 1.5) can_use_sheen = true;
+        if (cs.time - lastSheenProc >= 1.5) can_use_sheen = true;
+        if (a.damageType != null) {
             for (Item i : allItems) i.extraDmg();
+            for (Rune r : runes.runeList) r.extraDmg();
         }
     }
 
@@ -267,7 +266,8 @@ public class Champion {
                     float max_as,
                     float attack_windup,
                     float as_ratio,
-                    float bonus_as) {
+                    float bonus_as,
+                    boolean is_ranged) {
         this.name = name;
         this.base_hp = base_hp;
         this.hp_growth = hp_growth;
@@ -285,52 +285,20 @@ public class Champion {
         this.attack_windup = attack_windup;
         this.as_ratio = as_ratio;
         this.bonus_as = bonus_as;
+        this.is_ranged = is_ranged;
     }
 
     /**
      *  Constructor to create a copy of the champion, so it can safely get modified during the simulationManager.simulation without hurting the original copy
      */
-    public Champion(Champion c) {
-        this.name = c.name;
-        this.is_ranged = c.is_ranged;
-        this.base_hp = c.base_hp;
-        this.hp_growth = c.hp_growth;
-        this.base_mana = c.base_mana;
-        this.mana_growth = c.mana_growth;
-        this.base_armor = c.base_armor;
-        this.armor_growth = c.armor_growth;
-        this.base_ad = c.base_ad;
-        this.ad_growth = c.ad_growth;
-        this.base_mr = c.base_mr;
-        this.mr_growth = c.mr_growth;
-        this.crit_damage = c.crit_damage;
-        this.base_as = c.base_as;
-        this.max_as = c.max_as;
-        this.attack_windup = c.attack_windup;
-        this.as_ratio = c.as_ratio;
-        this.bonus_as = c.bonus_as;
+    public abstract Champion makeCopy();
 
-        this.uniqueItems = new ArrayList<>();
-        this.uniqueItems.addAll(c.uniqueItems);
-        this.inventory = new Inventory(c.inventory);
-        this.runes = new ArrayList<>();
-        this.runes.addAll(c.runes);
-
-        this.alive = c.alive;
-        this.lvl = c.lvl;
-
-        this.can_use_sheen = c.can_use_sheen;
-        this.autoCd = c.autoCd;
-
-        this.Passive = c.Passive;
-        this.Q = c.Q;
-        this.W = c.W;
-        this.E = c.E;
-        this.R = c.R;
-        this.allAbilities = new Ability[] {this.Passive, this.Q, this.W, this.E, this.R};
-
-        this.upgradeOrder = c.upgradeOrder;
-
-        this.autoDmg = c.autoDmg;
+    public Champion makeCopyWithoutReset() {
+        Champion c = makeCopy();
+        c.inventory = new Inventory(this.inventory);
+        c.runes = new RunePage(this.runes);
+        c.lvl = this.lvl;
+        c.upgradeOrder = this.upgradeOrder;
+        return c;
     }
 }

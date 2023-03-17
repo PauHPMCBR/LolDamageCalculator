@@ -10,10 +10,10 @@ public class SimulationManager {
      * Set both of these before starting a simulation. Keep in mind a COPY is created, so any modifications on the original will make no effect
      */
     public void setChampion(Champion c) {
-        cs.champion = new Champion(c);
+        cs.champion = c.makeCopyWithoutReset();
     }
     public void setEnemy(Champion c) {
-        cs.enemy = new Champion(c);
+        cs.enemy = c.makeCopyWithoutReset();
     }
 
     int startingHP, startingArmor, startingMR; //used for dummy stats printing, as some effects may alter its stats (like abyssal mask or black cleaver)
@@ -35,7 +35,7 @@ public class SimulationManager {
 
         if (print) {
             Printer.printChampionStats(cs.champion, true, false);
-            Printer.printDummyStats(cs.enemy.getName(), startingHP, startingArmor, startingMR);
+            Printer.printDummyStats(cs.enemy.name, startingHP, startingArmor, startingMR);
             Printer.printSeparator();
             Printer.printDamages(cs.champion, cs.damage);
 
@@ -61,7 +61,7 @@ public class SimulationManager {
 
         if (print) {
             Printer.printChampionStats(cs.champion, true, false);
-            Printer.printDummyStats(cs.enemy.getName(), startingHP, startingArmor, startingMR);
+            Printer.printDummyStats(cs.enemy.name, startingHP, startingArmor, startingMR);
             Printer.printSeparator();
             Printer.printTimeTaken(time);
             AbilityType[] combo = dmgCalc.comboDone.toArray(new AbilityType[0]);
@@ -81,6 +81,5 @@ public class SimulationManager {
 
     public SimulationManager() {
         cs = new CurrentState();
-        Items.initializeItems();
     }
 }

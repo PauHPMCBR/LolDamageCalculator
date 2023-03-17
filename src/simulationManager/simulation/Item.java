@@ -1,60 +1,53 @@
 package simulationManager.simulation;
 
+import simulationManager.simulation.items.ItemList;
+import simulationManager.simulation.items.NullMagicMantle;
+
 /**
- * Constructor class for any item and rune
+ * Constructor class for any item
  */
-public class Item {
-    protected Champion owner;
-    CurrentState cs;
+public abstract class Item {
+    public Champion owner;
+    public CurrentState cs;
     
-    private final String name;
+    public final String name;
+    public final ItemType type;
+    public final int cost;
 
     /**
      * Item stats
      */
-    int ad, ap, as, ah;
-    int hp, armor, mr;
-    int mana = 0, crit = 0;
-    int lethality = 0, armor_pen = 0, magic_pen = 0, percent_magic_pen = 0;
+    public int ad, ap, as, ah;
+    public int hp, armor, mr;
+    public int mana = 0, crit = 0;
+    public int lethality = 0, armor_pen = 0, magic_pen = 0, percent_magic_pen = 0;
+    public float lifesteal, omnivamp, manaRegen, hpRegen, healShieldPower, ms; //currently unused
 
     public boolean is_hidden = false; //if the item is hidden, it won't be displayed in results messages
 
-    float item_cooldown;
-    float extraVariable; //every item may use this variable for something specific
+    public float item_cooldown;
 
-    float lastUsed;
-    float damageDealt;
+    public float lastUsed;
+    public float damageDealt;
 
-    boolean is_mythic = false;
-    public boolean is_legendary = false;
-    boolean is_rune = false;
-
-    public boolean isHidden() {
-        return is_hidden;
+    public final void putOnCooldown() {
+        lastUsed = cs.time - item_cooldown * (1 - owner.getItemCooldownModification());
     }
-    public String getName() {
-        return name;
-    }
-    public float getDamageDealt() {
-        return damageDealt;
+    public final boolean canUse() {
+        return cs.time > lastUsed + item_cooldown;
     }
 
 
-    /**
-     * Functions that get overridden with item instances
-     */
-    void specialStats() {} //will get called at the start of the simulationManager.simulation
-    void applyMythicPassive() {}
-    void onHit() {} //will get called by autos
-    void extraDmg() {} //will get called by abilities
+    public void specialStats() {}
+    public void applyMythicPassive() {}
+    public void onHit() {} //will get called by autos
+    public void extraDmg() {} //will get called by abilities
 
 
     /**
      * Applies basic stats the item has to the item's owner
      */
     final void applyStats() {
-        damageDealt = 0;
-        lastUsed = -500;
         owner.BONUS_AD += ad;
         owner.AP += ap;
         owner.BONUS_AS += as;
@@ -65,23 +58,26 @@ public class Item {
         owner.MANA += mana;
         owner.CRIT_CHANCE += crit;
         owner.LETHALITY += lethality;
-        owner.increaseArmorPen(armor_pen); //!!
+        owner.increaseArmorPen(armor_pen);
         owner.MAGIC_PEN += magic_pen;
-        owner.PERCENTAGE_MAGIC_PEN += percent_magic_pen / 100f; //can do this cause only one item has this (aka ignoring sunderer+void)
+        owner.increasePercentageMagicPen(percent_magic_pen);
     }
 
+    public Item(String name, ItemType type, int cost) {
+        damageDealt = 0;
+        lastUsed = -500;
 
-    public Item(String name, int ad, int ap, int as, int ah, int hp, int armor, int mr) {
-        this.extraVariable = 0;
         this.name = name;
-        this.ad = ad;
-        this.ap = ap;
-        this.as = as;
-        this.ah = ah;
-        this.hp = hp;
-        this.armor = armor;
-        this.mr = mr;
+        this.type = type;
+        this.cost = cost;
     }
 
+    @Override
+    public boolean equals(Object i) {
+        if (!(i instanceof Item)) return false;
+        return ((Item) i).name.equals(this.name);
+    }
+
+    public abstract Item makeCopy();
 }
 

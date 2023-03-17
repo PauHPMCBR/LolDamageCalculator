@@ -84,12 +84,12 @@ public class Damage {
         }
         float dmg = applyDamage(type, amount, true);
         if (cs.hasFirstStrike) {
-            dmg += applyDamage(DamageType.trueDmg, dmg * 0.09f, true);
+            cs.firstStrikeRune.damageDealt += applyDamage(DamageType.trueDmg, dmg * 0.09f, true);
         }
 
         if (damageInstanceType == 0) {
-            if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.specialStats();
-            if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.specialStats();
+            if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
+            if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.echo();
         }
 
         return dmg;

@@ -27,13 +27,12 @@ public class Printer {
         if (champion.R.getDamageDealt() != 0) System.out.println(champion.R.getDamageDealt() + " from R");
 
         for (Item i : champion.getInventory().getItems()) {
-            if (i.isHidden() || i.getDamageDealt() == 0) continue;
-            System.out.println(i.getDamageDealt() + " from " + i.getName());
+            if (i.is_hidden || i.damageDealt== 0) continue;
+            System.out.println(i.damageDealt + " from " + i.name);
         }
-
-        for (Item i : champion.getRunes()) {
-            if (i.isHidden() || i.getDamageDealt() == 0) continue;
-            System.out.println(i.getDamageDealt() + " from " + i.getName());
+        for (Rune i : champion.getRunes()) {
+            if (i.is_hidden || i.damageDealt == 0) continue;
+            System.out.println(i.damageDealt + " from " + i.name);
         }
     }
 
@@ -69,7 +68,7 @@ public class Printer {
      * Prints all champion's basic stats and its build and runes, if specified
      */
     public static void printChampionStats(Champion champion, boolean printBuild, boolean printRunes) {
-        System.out.println("Champion (" + champion.getName() + ") stats: Level " + champion.lvl + ", "
+        System.out.println("Champion (" + champion.name + ") stats: Level " + champion.lvl + ", "
                 + (int)champion.getAD() + " tAD, " + (int)champion.AP + " AP, "
                 + (int)champion.getMaxHP() + " HP, " + (int)champion.ARMOR + " armor, "
                 + (int)champion.MAGIC_RESIST + " MR, " + (int)champion.BONUS_AS + " bAS, " +
@@ -81,7 +80,7 @@ public class Printer {
             for (Item i : champion.getInventory().getItems()) {
                 if (first1) first1 = false;
                 else System.out.print(", ");
-                System.out.print(i.getName());
+                System.out.print(i.name);
             }
             System.out.println();
         }
@@ -89,10 +88,10 @@ public class Printer {
         if (printRunes) {
             System.out.print("  Runes:");
             boolean first1 = true;
-            for (Item i : champion.getRunes()) {
+            for (Rune i : champion.getRunes()) {
                 if (first1) first1 = false;
                 else System.out.print(", ");
-                System.out.print(i.getName());
+                System.out.print(i.name);
             }
         }
     }
@@ -108,12 +107,14 @@ public class Printer {
         for (int i = 0; i < Math.min(amount, buildScores.size()); ++i) {
             System.out.format("%4s%12s%1s", i+1 + ".", " (" + buildScores.get(i).score + ")", " ");
             boolean first = true;
+            int totalCost = 0;
             for (Item item : buildScores.get(i).build) {
                 if (first) first = false;
                 else System.out.print(",");
-                System.out.print(" " + item.getName());
+                System.out.print(" " + item.name);
+                totalCost += item.cost;
             }
-            System.out.println();
+            System.out.println("  (" + totalCost + "g)");
         }
         System.out.println();
     }

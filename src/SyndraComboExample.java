@@ -1,42 +1,46 @@
-import simulationManager.BuildTester;
-import simulationManager.SimulationManager;
+import simulationManager.*;
 import simulationManager.simulation.*;
-
-import java.util.List;
+import simulationManager.simulation.champions.*;
+import simulationManager.simulation.items.*;
+import simulationManager.simulation.runes.*;
 
 import static simulationManager.simulation.AbilityType.*;
+import static simulationManager.simulation.items.ItemList.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class SyndraComboExample {
 
     public static void calculateComboDamage() {
-        Champion syndra = ChampionInstances.createSyndra(120);
-        Champion dummy = ChampionInstances.createDummy(2100, 100, 100);
+        Champion syndra = new Syndra(120);
+        Champion dummy = new Dummy(2100, 100, 100);
 
         syndra.lvl = 13;
         syndra.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e};
 
-        Item[] runes = {
-                Runes.electrocute,
-                Runes.eyeballCollection,
-                Runes.absoluteFocus,
-                Runes.gatheringStorm
+        Rune[] runes = {
+                new FirstStrike(),
+                new BiscuitDelivery(3),
+                new EyeballCollection(6),
+                new UltimateHunter(5)
         };
-        Runes.gatheringStacks = 2;
-        Runes.eyeballStacks = 10;
-
+        RunePage runePage = new RunePage(RunePath.inspiration, RunePath.domination);
+        runePage.setRunes(runes);
 
 
         Item[] build = {
-                Items.sorcerers,
-                MythicItems.ludensTempest,
-                ComponentItems.needlesslyLargeRod,
-                ComponentItems.hextechAlternator
+                sorcerersShoes,
+                ludensTempest,
+                needlesslyLargeRod,
+                hextechAlternator
         };
         Inventory inventory = new Inventory();
         inventory.addAll(build);
 
-        syndra.setRunes(List.of(runes));
         syndra.setInventory(inventory);
+        syndra.setRunePage(runePage);
 
         SimulationManager sm = new SimulationManager();
         sm.setChampion(syndra);
@@ -48,36 +52,37 @@ public class SyndraComboExample {
 
 
     public static void calculateBestBuild() {
-        Champion syndra = ChampionInstances.createSyndra(120);
-        Champion dummy = ChampionInstances.createDummy(2500, 130, 60);
+        Champion syndra = new Syndra(120);
+        Champion dummy = new Dummy(2500, 130, 60);
 
         syndra.lvl = 13;
         syndra.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e};
 
-        Item[] runes = {
-                Runes.electrocute,
-                Runes.eyeballCollection,
-                Runes.absoluteFocus,
-                Runes.gatheringStorm
+        Rune[] runes = {
+                new Electrocute(),
+                new EyeballCollection(10),
+                new AbsoluteFocus(),
+                new GatheringStorm(2)
         };
-        Runes.gatheringStacks = 2;
-        Runes.eyeballStacks = 10;
+        RunePage runePage = new RunePage(RunePath.domination, RunePath.sorcery);
+        runePage.setRunes(runes);
 
         Item[] permanentItems = {
-                Items.sorcerers,
-                MythicItems.ludensTempest
+                new SorcerersShoes(),
+                new LudensTempest()
         };
         Item[] variableItems = {
-                LegendaryItems.shadowflame,
-                LegendaryItems.voidStaff,
-                LegendaryItems.rabbadonsDeathcap
+                new Shadowflame(),
+                new VoidStaff(),
+                new RabbadonsDeathcap()
         };
 
-        BuildTester bt = new BuildTester();
-        bt.setMaxItems(3);
-        bt.setRunes(List.of(runes));
-        bt.setPermanentItems(List.of(permanentItems));
-        bt.setVariableItems(List.of(variableItems));
+        BuildTester bt = new BuildTester(6, 4000);
+        bt.setRunePage(runePage);
+        //bt.setPermanentItems(List.of(permanentItems));
+        //bt.setVariableItems(List.of(variableItems));
+        bt.setPermanentItems(new ArrayList<>());
+        bt.setVariableItems(allMagicDmg); //check for ALL possible builds (that give ap / magic pen)
 
         AbilityType[] combo = {q,e,w,q,r};
         bt.sortBuilds(syndra, dummy, combo, true);
@@ -85,7 +90,7 @@ public class SyndraComboExample {
 
 
     public static void main(String[] args) {
-        calculateComboDamage();
-        //calculateBestBuild();
+        //calculateComboDamage();
+        calculateBestBuild();
     }
 }

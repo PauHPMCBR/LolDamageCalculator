@@ -1,0 +1,37 @@
+package simulationManager.simulation.runes;
+
+import simulationManager.simulation.DamageType;
+import simulationManager.simulation.Rune;
+import simulationManager.simulation.RunePath;
+
+public class GraspOfTheUndying extends Rune {
+    public static final String name = "Grasp of the Undying";
+    public static final RunePath path = RunePath.resolve;
+    public static final int column = 0;
+    public static final int row = 0;
+
+    float lastHit;
+
+    public GraspOfTheUndying() {
+        super(name, path, column, row);
+
+        lastHit = 0;
+    }
+
+    public void onHit() {
+        if (cs.time >= lastHit + 3) {
+            lastUsed = cs.time;
+            float mult = 0.035f;
+            if (owner.is_ranged) mult = 0.021f;
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, owner.getMaxHP() * mult);
+            //ignoring heal part
+            owner.BONUS_HP += 4;
+            if (!owner.is_ranged) owner.BONUS_HP += 3;
+        }
+    }
+
+    @Override
+    public Rune makeCopy() {
+        return new GraspOfTheUndying();
+    }
+}

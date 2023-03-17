@@ -1,5 +1,10 @@
 package simulationManager.simulation;
 
+import simulationManager.simulation.items.BlackCleaver;
+import simulationManager.simulation.items.LudensTempest;
+import simulationManager.simulation.items.Riftmaker;
+import simulationManager.simulation.runes.FirstStrike;
+
 /**
  * Holds important variables that are globally important.
  * It is also the class used to communicate from outside to inside the simulationManager.simulation.
@@ -17,9 +22,10 @@ public class CurrentState {
     public float navoriPercent = 1;
     public float liandryPercent = 1;
 
-    public Item riftmakerItem; //pointer to the riftmaker item, so the extra damage can be given to the item
-    public Item cleaverItem;
-    public Item ludensItem;
+    public Riftmaker riftmakerItem; //pointer to the riftmaker item, so the extra damage can be given to the item
+    public BlackCleaver cleaverItem;
+    public LudensTempest ludensItem;
+    public FirstStrike firstStrikeRune;
     public boolean hasFirstStrike = false;
     public boolean hasCoupDeGrace = false;
     public boolean hasCutDown = false;
@@ -45,13 +51,15 @@ public class CurrentState {
         champion.initializeValues(this);
         enemy.initializeValues(this);
 
-        //initialize items
+        //initialize items and runes
         champion.initializeItems();
+        champion.initializeRunes();
         enemy.initializeItems();
-        for (Item item : champion.allItems)
-            item.specialStats();
-        for (Item item : enemy.allItems)
-            item.specialStats();
+        enemy.initializeRunes();
+        for (Item item : champion.allItems) item.specialStats();
+        for (Rune rune : champion.runes.runeList) rune.specialStats();
+        for (Item item : enemy.allItems) item.specialStats();
+        for (Rune rune : enemy.runes.runeList) rune.specialStats();
 
         //initialize abilities
         for (Ability a : champion.allAbilities)

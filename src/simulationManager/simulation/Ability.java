@@ -8,11 +8,11 @@ public class Ability {
     protected CurrentState cs;
 
     public final AbilityType type;
+
+    public int lvl = -1;
     public boolean isUnlocked() {
         return lvl >= 0;
     }
-
-    public int lvl = -1;
 
     public float[] duration;
     public float[] cooldown;
@@ -39,13 +39,6 @@ public class Ability {
         if (duration == null) return -1;
         return duration[lvl];
     }
-    public float getCastTime() {
-        return cast_time;
-    }
-    public DamageType getDamageType() {
-        return damageType;
-    }
-
     public float getDamageDealt() {
         return damageDealt;
     }

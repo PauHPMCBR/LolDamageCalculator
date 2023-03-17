@@ -76,8 +76,8 @@ I recommend watching the files "KaisaDpsExample", "SyndraComboExample", etc. The
 These are the things that must be defined to create a running program (with examples):
 - Define the 2 champions (the damage dealer and the "dummy").
 ```Java
-Champion kaisa = ChampionInstances.createKaisa();
-Champion dummy = ChampionInstances.createDummy(7500, 130, 100);
+Champion kaisa = new Kaisa();
+Champion dummy = new Dummy(7500, 130, 100);
 ```
 The dummy creation asks for its stats (HP, armor, MR).
 Some champion creations also asks for some kind of stacking variable (like Syndra splinters).
@@ -90,23 +90,20 @@ kaisa.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
 
 - Create a list with the runes, and another one with the items:
 ```Java
-Item[] runes = {
-        Runes.lethalTempo,
-        Runes.cutDown,
-        Runes.legendAlacrity,
-        Runes.eyeballCollection,
-        Runes.shards
+Rune[] runes = {
+        new PressTheAttack(),
+        new LegendAlacrity(10),
+        new CoupDeGrace(),
+        new EyeballCollection(10),
+        new UltimateHunter(5),
+        new Shards(1,0,1) //this means AS, AD, Armor
 };
-Runes.eyeballStacks = 10;
-Runes.shard1 = 1; //as
-Runes.shard2 = 0; //ad
-Runes.shard3 = 1; //armor
 
 Item[] build = {
-        Items.berserkers,
-        MythicItems.riftmaker,
-        LegendaryItems.guinsoosRageblade,
-        LegendaryItems.bladeOfTheRuinedKing
+        new BerserkersGreaves(),
+        new Riftmaker(),
+        new GuinsoosRageblade(),
+        new BladeOfTheRuinedKing()
 };
 ```
 As you can see, in the example above some variables have also been specified. That will be used for items/runes that have some stacking mechanic (Eyeball Collection, Gathering Storm, Legend: Alactrity, Mejai's Soulstealer...).
@@ -118,9 +115,16 @@ inventory.addAll(build);
 ```
 This is to make sure the build is valid, that is, no items conflict inside the build and it's a set of items you could buy inside the game (no double mythic, no duplicate legendary, no double exclusive items like Hexdrinker+Shieldbow...)
 
+- Do the same for the runes creating a rune page:
+```Java
+RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
+runePage.setRunes(runes);
+```
+Again, this is to make sure the rune page is valid.
+
 - Add the runes and inventory to the champion:
 ```Java
-kaisa.setRunes(List.of(runes));
+kaisa.setRunePage(runePage);
 kaisa.setInventory(inventory);
 ```
 
@@ -132,6 +136,7 @@ sm.setEnemy(dummy);
 ```
 
 - Run the simulation to get results printed:
+
 For time taken to kill enemy / DPS, you need to send the list of abilities sorted by priority when executing the combo (here, it will first try to Q, then auto, then E, then W (it will never R, in this case). What exactly this means will be explained below):
 ```Java
 AbilityType[] abilityPriorities = {q, auto, e, w};
@@ -162,18 +167,19 @@ Item[] variableItems = {
 The first one is for the items that will be present in every build, the second one is for the items that will get chosen in some builds (making a combination of items from this list until filling the maximum item limit).
 
 - Instead of SimulationManager, use BuildTester:
+
 There's no need to create inventory nor to set runes or inventory to the champion (in fact, it may cause some problems doing so).
-Instead, just after making the lists of items and runes, create a new build tester and set its parameters:
+Instead, just after making the lists of items, create a new build tester and set its parameters. It asks for the max amount of items (in this case, 4) and the max cost the build can have (in this case, 11.000g):
 ```Java
-BuildTester bt = new BuildTester();
-bt.setMaxItems(4);
-bt.setRunes(List.of(runes));
+BuildTester bt = new BuildTester(4, 11000);
+bt.setRunePage(runePage); //the rune page will have to be created as well
 bt.setPermanentItems(List.of(permanentItems));
 bt.setVariableItems(List.of(variableItems));
 ``` 
 The "setMaxItems" function controls the amount of items a build will have. So, taking the lists declared above as an example, since Berserker's and Kraken are already set in the build (because they are in permanentItems), only combinations of 2 items within the list of "variableItems" will be tested.
 
 - Call the funcion that generates all combinations and tests them:
+
 To test time taken to kill an enemy / DPS:
 ```Java
 AbilityType[] abilityPriorities = {q, auto, e, w};
@@ -196,19 +202,25 @@ Inside the "simulationManager" package, there are 4 essential files:
 
 ### Simulation
 Inside the package "simulationManager", there's also another package called "simulation", where items, abilities and champions are declared/defined.
-These 3 classes: "Ability", "Champion", "Item" define the structure of an ability, champion or item. To create any of those, an instance of these classes is required.
-All of them share the fact that they have stats that have to be filled. On top of that, the classes "Ability" and "Item" have functions that can be overriten to implement the effects every unique ability/item does. They also have an "extraVariable", which is used when an ability/item needs to store some values for a specific purpose (like Black Cleaver stacks, Shadowflame current magic penetration...).
 
-The classes "ComponentItems", "LegendaryItems", "MythicItems", "OtherItems" and "Items" all have a list of implemented items and a function that initializes them. Boots are implemented in "Items". The "OtherItems" class has unique/exclusive effects that are easier to program as an item (like Kai'sa on-hit passive and E cooldown reduction).
-Runes are implemented as if they were items.
+
+These 4 classes: "Ability", "Champion", "Item", and "Rune" define the structure of an ability, champion or item. To create any of those, a new class that implements any of these classes is required.
+
+
+All of them share the fact that they have stats that have to be filled. On top of that, the classes "Ability", "Item" and "Rune" have functions that can be overriten to implement the effects every unique ability/item does. 
+Some classes can have additional variables, used to store some values for a specific purpose (like Black Cleaver stacks, Shadowflame current magic penetration...).
+
+Almost all items are implemented inside the "items" folder, same for runes (although not the ones that don't intervene in combat, like triumph or approeach velocity).
 
 "CurrentState" keeps track of some variables for the simulation, like the current time, and things that are not easily programmable on their own (for example, pointers to items that behave different than the rest like Riftmaker, Black Cleaver and Luden's. See "Damage" class to see how they are implemented). "CurrentState" also initialises variables inside the "simulation" package.
 
 "Inventory" will make sure the items inside the class are legal to have in the game. It checks for discrepancies and it has a list of exclusive effects (lifeline, spellblade, crit modifier...)
 
+Same for "RunePage", it will create an "organized" list of runes, setting keystone, both primary and secondary paths, shards...
+
 "Damage" is the class responsible for applying damage to the enemy. It checks for modifiers, calculates the final damage taken armor and MR into account...
 
-And finally, "AbilityType" and "DamageType" are just enums.
+And finally, "AbilityType", "DamageType" and "RunePath" are just enums.
 
 ## How to create new Champions
 (to do)
@@ -218,18 +230,18 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Mana cost is not taken into account.
 - All healing and movement speed is ignored (irrelevant for damage calculations. Well, except for Hecarim...)
 - Lucian needs to have the variable "useAutosBetweenAbilities" (located in SimulationManager and BuildTester) set to true for max DPS, because of the passive. More champion exclusive exceptions may appear in the future and may need more variables like this one.
-- some item passives (like hextech alternator) may not stack (having 2 hextech alternator will not apply the passive 2 times)
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
+- Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
 
 ## Things planned to do
 In parallel to adding new champions, these are the things planned to implement, in order of priority:
-- Add non stacked tear legendaries (manamune, archangel's...) and Rod of Ages stacks (right now it's always fully stacked, just like the tear items)
+- Add non stacked tear legendaries (manamune, archangel's...)
 - Add the buffing effect of supporting items (like Zeke's, Staff...)
-- Add item costs, to be able to add a maximum gold in build testing instead of amout of items
 - Add CC flag to abilities (and everfrost) to fix the imperfection listed above
 - Add mana costs for abilities (and deplete mana as the simulation goes on)
 - Be able to add defensive items to the enemy (like frozen heart)
 - Add potions (the ones that cost 500 and give AD, AP or HP)
+
 And lastly, implement the feature of being able to simulate 1v1s
 
