@@ -69,129 +69,21 @@ Because of that, things like healing are not considered. For the same reason, a 
 The feature of getting a 1v1 is possible to implement, just not a priority right now (because there are a lot of champions to implement, which is more important), and it would be a bit pointless given the fact this program assumes you are hitting all the abilities and are trying to deal maximum DPS.
 
 ## How to use the program
-Right now, there is no graphical interface or an interactive I/O system. To run tests, you must write a Java file that executes a simulation.
-I recommend watching the files "KaisaDpsExample", "SyndraComboExample", etc. They have sample codes with a definite structure for every purpose this program is designed for.
+The GUI has the following features:
 
-### Program that outputs the results of a build
-These are the things that must be defined to create a running program (with examples):
-- Define the 2 champions (the damage dealer and the "dummy").
-```Java
-Champion kaisa = new Kaisa();
-Champion dummy = new Dummy(7500, 130, 100);
-```
-The dummy creation asks for its stats (HP, armor, MR).
-Some champion creations also asks for some kind of stacking variable (like Syndra splinters).
+![GUIde](images/GUIde.png)
 
-- Set the champion's level and ability upgrade order:
-```Java
-kaisa.lvl = 13;
-kaisa.upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
-```
-
-- Create a list with the runes, and another one with the items:
-```Java
-Rune[] runes = {
-        new PressTheAttack(),
-        new LegendAlacrity(10),
-        new CoupDeGrace(),
-        new EyeballCollection(10),
-        new UltimateHunter(5),
-        new Shards(1,0,1) //this means AS, AD, Armor
-};
-
-Item[] build = {
-        new BerserkersGreaves(),
-        new Riftmaker(),
-        new GuinsoosRageblade(),
-        new BladeOfTheRuinedKing()
-};
-```
-As you can see, in the example above some variables have also been specified. That will be used for items/runes that have some stacking mechanic (Eyeball Collection, Gathering Storm, Legend: Alactrity, Mejai's Soulstealer...).
-
-- Create an inventory and add the items to the inventory:
-```Java
-Inventory inventory = new Inventory();
-inventory.addAll(build);
-```
-This is to make sure the build is valid, that is, no items conflict inside the build and it's a set of items you could buy inside the game (no double mythic, no duplicate legendary, no double exclusive items like Hexdrinker+Shieldbow...)
-
-- Do the same for the runes creating a rune page:
-```Java
-RunePage runePage = new RunePage(RunePath.precision, RunePath.domination);
-runePage.setRunes(runes);
-```
-Again, this is to make sure the rune page is valid.
-
-- Add the runes and inventory to the champion:
-```Java
-kaisa.setRunePage(runePage);
-kaisa.setInventory(inventory);
-```
-
-- Start a new simulation and parse the champions that will participate in it:
-```Java
-SimulationManager sm = new SimulationManager();
-sm.setChampion(kaisa);
-sm.setEnemy(dummy);
-```
-
-- Run the simulation to get results printed:
-
-For time taken to kill enemy / DPS, you need to send the list of abilities sorted by priority when executing the combo (here, it will first try to Q, then auto, then E, then W (it will never R, in this case). What exactly this means will be explained below):
-```Java
-AbilityType[] abilityPriorities = {q, auto, e, w};
-sm.simulateDps(abilityPriorities);
-```
-For getting the damage dealt by a combo:
-```Java
-AbilityType[] combo = {q,e,w,q,r};
-sm.simulateCombo(combo);
-```
-These lines will run the entire simulation, and then call the functions that print the results.
-
-### Program that outputs the comparison of builds
-Only 2 things have to be changed from the previous code structure:
-- Create 2 lists of items instead of 1:
-```Java
-Item[] permanentItems = {
-        Items.berserkers,
-        MythicItems.krakenSlayer
-};
-Item[] variableItems = {
-        LegendaryItems.guinsoosRageblade,
-        LegendaryItems.bladeOfTheRuinedKing,
-        LegendaryItems.witsEnd,
-        LegendaryItems.nashorsTooth
-};
-```
-The first one is for the items that will be present in every build, the second one is for the items that will get chosen in some builds (making a combination of items from this list until filling the maximum item limit).
-
-- Instead of SimulationManager, use BuildTester:
-
-There's no need to create inventory nor to set runes or inventory to the champion (in fact, it may cause some problems doing so).
-Instead, just after making the lists of items, create a new build tester and set its parameters. It asks for the max amount of items (in this case, 4) and the max cost the build can have (in this case, 11.000g):
-```Java
-BuildTester bt = new BuildTester(4, 11000);
-bt.setRunePage(runePage); //the rune page will have to be created as well
-bt.setPermanentItems(List.of(permanentItems));
-bt.setVariableItems(List.of(variableItems));
-``` 
-The "setMaxItems" function controls the amount of items a build will have. So, taking the lists declared above as an example, since Berserker's and Kraken are already set in the build (because they are in permanentItems), only combinations of 2 items within the list of "variableItems" will be tested.
-
-- Call the funcion that generates all combinations and tests them:
-
-To test time taken to kill an enemy / DPS:
-```Java
-AbilityType[] abilityPriorities = {q, auto, e, w};
-bt.sortBuilds(kaisa, dummy, abilityPriorities, false);
-```
-To test damage dealt by a combo:
-```Java
-AbilityType[] combo = {q, e, w, q, r};
-bt.sortBuilds(kaisa, dummy, combo, true);
-```
-Notice the only difference is the boolean at the end, which is called "isCombo". When it's false, the array given as 3rd parameter is the ability priorities. When it's true, that array contains the combo to test.
-
+1. **Champion select:** a new window with all the available champions will open. Click the desired champion.
+2. **Inventory select:** if an item is clicked, it will get removed from the inventory. If an empty slot is clicked, a list of all items will appear (with the ones ineligible greyed out). Click any item to add it into the inventory.
+3. **Champion level:** write a number between 1 and 18
+4. **Champion specific variable:** some champions have some kind of stacking mechanic (Syndra, Sena, ASol...). Set their starting value here.
+5. **Ability upgrade order:** set a list of 18 abilities (the detection is pretty sparing, there can be capitals, spaces, etc.).
+6. **Combo / Ability priority:** when the button "Combo" is clicked, a simulation will start setting this list of abilities as the combo used. If "DPS" button is clicked, a simulation will start where it will try to use the first ability, if it can't, the second, if it can't, the third... Every champion has a specific ability priority order that maximises their DPS.
+7. **Build combination comparison:** when the checkbox is activated, instead of simulating a single build, the program will create all possible builds given the items already on the build and items added to the "Variable Items" set (add items by clicking them on the new item list that appears when clicking the button). The reset button resets the previous mentioned item list. To restrict the builds, there are the options of "Max items" and "Max build cost", and only builds that fit into these constraints will be tested.
+8. **Enemy stats:** Set the enemy defensive stats.
+9. **Rune page:** Interactive rune page
+10. **Items and runes extra variables:** Some items and runes have stacking mechanics (like Mejai's, ROA, Alacrity, Eyeball collection...). This space is to set their specific values before the start of the simulation.
+11. **Output console:** Here the output is generated (after starting a simulation with "Combo" or "DPS" button). If no output is generated, it is probably because too many combinations are being generated (in mode "Combinations"). If you don't know how much it can last, I recommend it to stop, since it could be from seconds to months, depending on the scale of the amount of possible combinations.
 ## How the simulation works
 ### Simulation Manager
 Inside the "simulationManager" package, there are 4 essential files:
