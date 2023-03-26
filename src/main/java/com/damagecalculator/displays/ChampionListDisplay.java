@@ -5,6 +5,7 @@ import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
 import com.damagecalculator.simulationManager.simulation.champions.Lucian;
 import com.damagecalculator.simulationManager.simulation.champions.Syndra;
+import com.damagecalculator.simulationManager.simulation.champions.Varus;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -72,5 +73,6 @@ public class ChampionListDisplay {
         championList.add(new Kaisa());
         championList.add(new Lucian());
         championList.add(new Syndra(0));
+        championList.add(new Varus());
     }
 }
