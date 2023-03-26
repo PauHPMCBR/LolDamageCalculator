@@ -21,6 +21,8 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         MainView controller = fxmlLoader.getController();
 
+        controller.LolPatch.setText("Lol Patch: 13.6");
+
         controller.setChampion(new Kaisa());
 
 

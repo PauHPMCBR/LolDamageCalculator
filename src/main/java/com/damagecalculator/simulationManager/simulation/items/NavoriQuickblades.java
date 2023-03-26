@@ -25,9 +25,9 @@ public class NavoriQuickblades extends Item {
     }
     public void onHit() {
         if (isActive) {
-            owner.Q.currentCooldown *= (1 - 0.15);
-            owner.W.currentCooldown *= (1 - 0.15);
-            owner.E.currentCooldown *= (1 - 0.15);
+            owner.Q.currentCooldown *= (1 - 0.12);
+            owner.W.currentCooldown *= (1 - 0.12);
+            owner.E.currentCooldown *= (1 - 0.12);
         }
     }
 

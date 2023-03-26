@@ -51,7 +51,7 @@ public class MainView {
     public TextField enemyMR;
 
     public TextArea output;
-
+    public Label LolPatch;
 
 
     Champion currentChampion;

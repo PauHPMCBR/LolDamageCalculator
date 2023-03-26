@@ -20,10 +20,10 @@ public class LethalTempo extends Rune {
     public void onHit() {
         if (autos == 6) return;
         ++autos;
-        int bonus_as = Math.min(15, cs.champion.lvl)/3;
-        if (!cs.champion.is_ranged) bonus_as *= 2;
-        else if (cs.champion.lvl >= 15) --bonus_as;
-        bonus_as += 5;
+        float bonus_as;
+        if (cs.champion.is_ranged) bonus_as = 3.7f + 0.3f*cs.champion.lvl;
+        else bonus_as = 10 + (int)(Math.min(15, cs.champion.lvl)/3);
+
         cs.champion.BONUS_AS += bonus_as;
         if (autos == 6) cs.champion.max_as = 10;
     }

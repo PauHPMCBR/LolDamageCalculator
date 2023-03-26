@@ -41,7 +41,7 @@
 
             <VBox spacing="10">
                 <HBox spacing="10">
-                    <CheckBox fx:id="buildCombinations" onMouseClicked="#onModeSwitch" prefHeight="18.0" prefWidth="33.0" />
+                    <CheckBox fx:id="buildCombinations" onMouseClicked="#onModeSwitch" prefHeight="18.0" prefWidth="20.0" />
                     <Label text="Mode:" />
                     <Label fx:id="modeSelected" />
                     <Button fx:id="variableItemsButton" onAction="#onVariableItemsClick" text="Variable Items" />
@@ -49,9 +49,9 @@
                 </HBox>
                 <HBox spacing="10">
                     <Label fx:id="maxItemsLabel" text="Max items:" />
-                    <TextField fx:id="maxItemsVal" prefWidth="30"/>
+                    <TextField fx:id="maxItemsVal" prefWidth="30" />
                     <Label fx:id="maxCostLabel" text="Max build cost:" />
-                    <TextField fx:id="maxCostVal" prefWidth="60"/>
+                    <TextField fx:id="maxCostVal" prefWidth="60" />
                 </HBox>
             </VBox>
 
@@ -73,7 +73,7 @@
                     <Label prefWidth="80" text="Magic resist:" />
                     <TextField fx:id="enemyMR" />
                 </HBox>
-                <Label/>
+                <Label />
             </VBox>
 
         </VBox>
@@ -83,7 +83,10 @@
         </VBox>
 
       </HBox>
+       <Label fx:id="LolPatch" alignment="BOTTOM_RIGHT" prefHeight="18.0" prefWidth="780.0" />
        <TextArea fx:id="output" prefHeight="300" />
+
+
       </VBox>
    </children>
 </AnchorPane>
