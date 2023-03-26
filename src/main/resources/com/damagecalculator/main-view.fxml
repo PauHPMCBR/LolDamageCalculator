@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damagecalculator.MainView">
+   <children>
+      <VBox>
+          <Label />
+      <HBox layoutX="6.0" prefHeight="360.0" spacing="10">
+          <Label />
+
+        <VBox layoutX="315.0" prefHeight="458.0" prefWidth="324.0" spacing="10">
+
+            <HBox prefHeight="62.0" prefWidth="324.0" spacing="20">
+                <HBox fx:id="champion" prefHeight="65.0" prefWidth="67.0" />
+                <HBox fx:id="inventory" prefHeight="83.0" prefWidth="246.0" />
+            </HBox>
+
+            <HBox prefWidth="324.0" spacing="10">
+                <Label prefWidth="18.0" text="Lvl:" />
+                <TextField fx:id="level" prefWidth="61.0" />
+                <Label fx:id="extraVariableLabel" text="Extra Variable:" />
+                <TextField fx:id="extraVariableValue" prefWidth="40.0" />
+            </HBox>
+
+            <HBox>
+                <Label prefWidth="100" text="Upgrade Order: " />
+                <TextField fx:id="upgradeOrder" prefWidth="240.0" />
+            </HBox>
+
+            <Separator />
+
+            <HBox spacing="10">
+                <TextField fx:id="comboOrPriority" prefHeight="26.0" prefWidth="202.0" />
+                <Button fx:id="comboButton" onAction="#onComboButtonClick" text="Combo" />
+                <Button fx:id="dpsButton" onAction="#onDpsButtonClick" text="DPS" />
+            </HBox>
+
+            <Separator />
+
+            <VBox spacing="10">
+                <HBox spacing="10">
+                    <CheckBox fx:id="buildCombinations" onMouseClicked="#onModeSwitch" prefHeight="18.0" prefWidth="33.0" />
+                    <Label text="Mode:" />
+                    <Label fx:id="modeSelected" />
+                    <Button fx:id="variableItemsButton" onAction="#onVariableItemsClick" text="Variable Items" />
+                    <Button fx:id="resetVariableItemsButton" onAction="#onResetClick" text="Reset" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label fx:id="maxItemsLabel" text="Max items:" />
+                    <TextField fx:id="maxItemsVal" prefWidth="30"/>
+                    <Label fx:id="maxCostLabel" text="Max build cost:" />
+                    <TextField fx:id="maxCostVal" prefWidth="60"/>
+                </HBox>
+            </VBox>
+
+            <Separator />
+
+            <VBox prefHeight="100.0" prefWidth="200.0" spacing="10">
+                <HBox>
+                    <Label text="Enemy stats:" />
+                </HBox>
+                <HBox>
+                    <Label prefWidth="80" text="HP:" />
+                    <TextField fx:id="enemyHP" />
+                </HBox>
+                <HBox>
+                    <Label prefWidth="80" text="Armor:" />
+                    <TextField fx:id="enemyArmor" />
+                </HBox>
+                <HBox>
+                    <Label prefWidth="80" text="Magic resist:" />
+                    <TextField fx:id="enemyMR" />
+                </HBox>
+                <Label/>
+            </VBox>
+
+        </VBox>
+        <VBox>
+            <HBox fx:id="runes" spacing="10" />
+            <HBox fx:id="extraVariables" />
+        </VBox>
+
+      </HBox>
+       <TextArea fx:id="output" prefHeight="300" />
+      </VBox>
+   </children>
+</AnchorPane>
