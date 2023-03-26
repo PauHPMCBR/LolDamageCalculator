@@ -64,11 +64,13 @@ public class Varus extends Champion {
                 extraVariable = 0;
             }
             public void onCall() { //= onhit
+                if (lvl < 0) return;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
                 damage[lvl] + ap_scale[lvl] * owner.AP);
                 if (extraVariable < 3) ++extraVariable;
             }
             public void onExpiring() {
+                if (lvl < 0) return;
                 float mult = 3 + 0.5f * lvl; //from 3 to 5
                 mult += 0.025 * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
