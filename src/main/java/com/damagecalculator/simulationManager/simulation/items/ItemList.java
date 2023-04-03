@@ -10,6 +10,8 @@ public class ItemList {
     public static AetherWisp aetherWisp = new AetherWisp();
     public static AmplifyingTome amplifyingTome = new AmplifyingTome();
     public static AnathemasChains anathemasChains = new AnathemasChains();
+    public static ArchangelsStaff archangelsStaff = new ArchangelsStaff(0);
+    public static ArdentCenser ardentCenser = new ArdentCenser();
     public static AxiomArc axiomArc = new AxiomArc();
     public static BamisCinder bamisCinder = new BamisCinder();
     public static BandleglassMirror bandleglassMirror = new BandleglassMirror();
@@ -28,6 +30,7 @@ public class ItemList {
     public static CaulfieldsWarhammer caulfieldsWarhammer = new CaulfieldsWarhammer();
     public static ChainVest chainVest = new ChainVest();
     public static ChempunkChainsword chempunkChainsword = new ChempunkChainsword();
+    public static ChemtechPutrifier chemtechPutrifier = new ChemtechPutrifier();
     public static CloakOfAgility cloakOfAgility = new CloakOfAgility();
     public static ClothArmor clothArmor = new ClothArmor();
     public static CosmicDrive cosmicDrive = new CosmicDrive();
@@ -53,9 +56,11 @@ public class ItemList {
     public static FiendishCodex fiendishCodex = new FiendishCodex();
     public static Fimbulwinter fimbulwinter = new Fimbulwinter();
     public static ForbiddenIdol forbiddenIdol = new ForbiddenIdol();
+    public static ForceOfNature forceOfNature = new ForceOfNature();
     public static Frostfang frostfang = new Frostfang();
     public static FrozenHeart frozenHeart = new FrozenHeart();
     public static Galeforce galeforce = new Galeforce();
+    public static GargoyleStoneplate gargoyleStoneplate = new GargoyleStoneplate();
     public static GiantsBelt giantsBelt = new GiantsBelt();
     public static GlacialBuckler glacialBuckler = new GlacialBuckler();
     public static Goredrinker goredrinker = new Goredrinker();
@@ -82,6 +87,7 @@ public class ItemList {
     public static JakSho jakSho = new JakSho();
     public static Kindlegem kindlegem = new Kindlegem();
     public static KircheisShard kircheisShard = new KircheisShard();
+    public static KnightsVow knightsVow = new KnightsVow();
     public static KrakenSlayer krakenSlayer = new KrakenSlayer();
     public static LastWhisper lastWhisper = new LastWhisper();
     public static LeechingLeer leechingLeer = new LeechingLeer();
@@ -92,9 +98,11 @@ public class ItemList {
     public static LordDominiksRegards lordDominiksRegards = new LordDominiksRegards();
     public static LostChapter lostChapter = new LostChapter();
     public static LudensTempest ludensTempest = new LudensTempest();
+    public static Manamune manamune = new Manamune(0);
     public static MawOfMalmortius mawOfMalmortius = new MawOfMalmortius();
     public static MejaisSoulstealer mejaisSoulstealer = new MejaisSoulstealer(0);
     public static MercurialScimitar mercurialScimitar = new MercurialScimitar();
+    public static MikaelsBlessing mikaelsBlessing = new MikaelsBlessing();
     public static MoonstoneRenewer moonstoneRenewer = new MoonstoneRenewer();
     public static Morellonomicon morellonomicon = new Morellonomicon();
     public static MortalReminder mortalReminder = new MortalReminder();
@@ -120,6 +128,7 @@ public class ItemList {
     public static RapidFirecannon rapidFirecannon = new RapidFirecannon();
     public static RavenousHydra ravenousHydra = new RavenousHydra(0);
     public static RecurveBow recurveBow = new RecurveBow();
+    public static Redemption redemption = new Redemption();
     public static RejuvenationBead rejuvenationBead = new RejuvenationBead();
     public static RelicShield relicShield = new RelicShield();
     public static Riftmaker riftmaker = new Riftmaker();
@@ -144,6 +153,8 @@ public class ItemList {
     public static SpectralSickle spectralSickle = new SpectralSickle();
     public static SpectresCowl spectresCowl = new SpectresCowl();
     public static SpellthiefsEdge spellthiefsEdge = new SpellthiefsEdge();
+    public static SpiritVisage spiritVisage = new SpiritVisage();
+    public static StaffOfFlowingWater staffOfFlowingWater = new StaffOfFlowingWater();
     public static SteelShoulderguards steelShoulderguards = new SteelShoulderguards();
     public static SteraksGage steraksGage = new SteraksGage();
     public static Stormrazor stormrazor = new Stormrazor();
@@ -152,6 +163,7 @@ public class ItemList {
     public static TargonsBuckler targonsBuckler = new TargonsBuckler();
     public static TearOfTheGoddess tearOfTheGoddess = new TearOfTheGoddess(0);
     public static TheCollector theCollector = new TheCollector();
+    public static Thornmail thornmail = new Thornmail();
     public static Tiamat tiamat = new Tiamat();
     public static TitanicHydra titanicHydra = new TitanicHydra();
     public static TrinityForce trinityForce = new TrinityForce();
@@ -164,9 +176,11 @@ public class ItemList {
     public static WarmogsArmor warmogsArmor = new WarmogsArmor();
     public static WatchfulWardstone watchfulWardstone = new WatchfulWardstone();
     public static WingedMoonplate wingedMoonplate = new WingedMoonplate();
+    public static WintersApproach wintersApproach = new WintersApproach(0);
     public static WitsEnd witsEnd = new WitsEnd();
     public static YoumuusGhostblade youmuusGhostblade = new YoumuusGhostblade();
     public static Zeal zeal = new Zeal();
+    public static ZekesConvergence zekesConvergence = new ZekesConvergence();
     public static ZhonyasHourglass zhonyasHourglass = new ZhonyasHourglass();
 
 
@@ -176,6 +190,8 @@ public class ItemList {
         add(aetherWisp);
         add(amplifyingTome);
         add(anathemasChains);
+        add(archangelsStaff);
+        add(ardentCenser);
         add(axiomArc);
         add(bamisCinder);
         add(bandleglassMirror);
@@ -194,6 +210,7 @@ public class ItemList {
         add(caulfieldsWarhammer);
         add(chainVest);
         add(chempunkChainsword);
+        add(chemtechPutrifier);
         add(cloakOfAgility);
         add(clothArmor);
         add(cosmicDrive);
@@ -219,9 +236,11 @@ public class ItemList {
         add(fiendishCodex);
         add(fimbulwinter);
         add(forbiddenIdol);
+        add(forceOfNature);
         add(frostfang);
         add(frozenHeart);
         add(galeforce);
+        add(gargoyleStoneplate);
         add(giantsBelt);
         add(glacialBuckler);
         add(goredrinker);
@@ -248,6 +267,7 @@ public class ItemList {
         add(jakSho);
         add(kindlegem);
         add(kircheisShard);
+        add(knightsVow);
         add(krakenSlayer);
         add(lastWhisper);
         add(leechingLeer);
@@ -258,9 +278,11 @@ public class ItemList {
         add(lordDominiksRegards);
         add(lostChapter);
         add(ludensTempest);
+        add(manamune);
         add(mawOfMalmortius);
         add(mejaisSoulstealer);
         add(mercurialScimitar);
+        add(mikaelsBlessing);
         add(moonstoneRenewer);
         add(morellonomicon);
         add(mortalReminder);
@@ -286,6 +308,7 @@ public class ItemList {
         add(rapidFirecannon);
         add(ravenousHydra);
         add(recurveBow);
+        add(redemption);
         add(rejuvenationBead);
         add(relicShield);
         add(riftmaker);
@@ -310,6 +333,8 @@ public class ItemList {
         add(spectralSickle);
         add(spectresCowl);
         add(spellthiefsEdge);
+        add(spiritVisage);
+        add(staffOfFlowingWater);
         add(steelShoulderguards);
         add(steraksGage);
         add(stormrazor);
@@ -318,6 +343,7 @@ public class ItemList {
         add(targonsBuckler);
         add(tearOfTheGoddess);
         add(theCollector);
+        add(thornmail);
         add(tiamat);
         add(titanicHydra);
         add(trinityForce);
@@ -330,9 +356,11 @@ public class ItemList {
         add(warmogsArmor);
         add(watchfulWardstone);
         add(wingedMoonplate);
+        add(wintersApproach);
         add(witsEnd);
         add(youmuusGhostblade);
         add(zeal);
+        add(zekesConvergence);
         add(zhonyasHourglass);
     }};
 

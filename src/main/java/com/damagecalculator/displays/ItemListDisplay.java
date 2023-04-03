@@ -24,6 +24,8 @@ import java.util.Objects;
 public class ItemListDisplay {
     static final int columns = 10;
 
+    public boolean displayAram = false;
+
     public List<Pair<Item, Boolean>> itemList;
 
     public VBox total;
@@ -43,11 +45,13 @@ public class ItemListDisplay {
             if (p.getValue() == false) {
                 DisplayUtils.desaturate(iv);
             }
-            iv.setOnMouseClicked((MouseEvent e) -> {
-                pickedItem(i, p.getValue());
-            });
+            iv.setOnMouseClicked((MouseEvent e) -> pickedItem(i, p.getValue()));
 
             int pos = itemTypes.indexOf(i.type);
+            if (i.name.startsWith("Guardian's")) {
+                if (!displayAram) continue;
+                pos = itemTypes.indexOf(ItemType.starter);
+            }
             tilePanes[pos].getChildren().add(DisplayUtils.addBorder(iv));
         }
 

@@ -15,8 +15,8 @@ public class ExtraVariablesDisplay {
     public VBox col1;
     public VBox col2;
 
-    private ArrayList<Item> items;
-    private ArrayList<Rune> runes;
+    private final ArrayList<Item> items;
+    private final ArrayList<Rune> runes;
 
     public HBox createSetter(Item i) {
         TextField tf = new TextField("0");

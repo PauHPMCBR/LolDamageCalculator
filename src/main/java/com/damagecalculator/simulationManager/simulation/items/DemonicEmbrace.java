@@ -24,7 +24,7 @@ public class DemonicEmbrace extends Item {
     }
 
     public void extraDmg() {
-        float ticks = cs.time - lastTick; //extra variable is time
+        float ticks = Math.min(cs.time - lastTick, 4); //extra variable is time
         float mult = 0.064f;
         if (owner.is_ranged) mult = 0.04f;
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
