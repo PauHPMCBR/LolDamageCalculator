@@ -115,8 +115,7 @@ public class DisplayUtils {
         return new Image(String.valueOf(u), 41, 41, false ,false);
     }
 
-    public static String getChampionFileName(Champion c) {
-        String s = c.name;
+    public static String getChampionFileName(String s) {
         s = s.replaceAll(" ", "_");
         s = s.replaceAll("'", "%27");
         s = s.replaceAll(",", "%2C");
@@ -124,7 +123,10 @@ public class DisplayUtils {
         return s;
     }
     public static Image getChampionIcon(Champion c) {
-        URL u = MainApplication.class.getResource(championsFolder + getChampionFileName(c));
+        URL u = MainApplication.class.getResource(championsFolder + getChampionFileName(c.name));
+        if (u == null) {
+            u = MainApplication.class.getResource(championsFolder + getChampionFileName(c.name + "_Original"));
+        }
         return new Image(String.valueOf(u));
     }
 

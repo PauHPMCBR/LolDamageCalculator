@@ -65,6 +65,7 @@ public class ChampionListDisplay {
 
     public ChampionListDisplay() {
         championList = new ArrayList<>();
+        championList.add(new Ahri());
         championList.add(new Kaisa());
         championList.add(new Lucian());
         championList.add(new Syndra(0));
