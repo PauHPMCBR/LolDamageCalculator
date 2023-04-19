@@ -57,10 +57,10 @@ public class CurrentState {
         champion.initializeRunes();
         enemy.initializeItems();
         enemy.initializeRunes();
-        for (Item item : champion.allItems) item.specialStats();
         for (Rune rune : champion.runes.runeList) rune.specialStats();
-        for (Item item : enemy.allItems) item.specialStats();
+        for (Item item : champion.allItems) item.specialStats();
         for (Rune rune : enemy.runes.runeList) rune.specialStats();
+        for (Item item : enemy.allItems) item.specialStats();
 
         //initialize abilities
         for (Ability a : champion.allAbilities)
