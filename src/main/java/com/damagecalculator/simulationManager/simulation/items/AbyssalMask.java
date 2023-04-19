@@ -11,7 +11,7 @@ public class AbyssalMask extends Item {
     public AbyssalMask() {
         super(name, type, cost);
         ah = 10;
-        hp = 500;
+        hp = 550;
         mana = 300;
         mr = 40;
     }

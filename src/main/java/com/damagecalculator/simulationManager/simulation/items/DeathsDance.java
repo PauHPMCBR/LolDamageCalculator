@@ -10,8 +10,9 @@ public class DeathsDance extends Item {
 
     public DeathsDance() {
         super(name, type, cost);
-        ad = 65;
-        armor = 50;
+        ad = 55;
+        armor = 45;
+        ah = 15;
     }
 
     @Override
