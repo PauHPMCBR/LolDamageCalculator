@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RubyCrystal extends Item {
     public static final String name = "Ruby Crystal";
-    public static final ItemType type = ItemType.basic;
+    public static final ItemType type = ItemType.BASIC;
     public static final int cost = 400;
 
     public RubyCrystal() {

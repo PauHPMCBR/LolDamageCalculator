@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class BansheesVeil extends Item {
     public static final String name = "Banshee's Veil";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2600;
 
     public BansheesVeil() {

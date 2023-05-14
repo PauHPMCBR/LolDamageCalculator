@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Pickaxe extends Item {
     public static final String name = "Pickaxe";
-    public static final ItemType type = ItemType.basic;
+    public static final ItemType type = ItemType.BASIC;
     public static final int cost = 875;
 
     public Pickaxe() {

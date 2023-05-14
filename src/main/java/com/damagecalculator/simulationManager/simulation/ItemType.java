@@ -1,13 +1,13 @@
 package com.damagecalculator.simulationManager.simulation;
 
 public enum ItemType {
-    starter,
-    potion,
-    boots,
-    basic,
-    epic,
-    legendary,
-    mythic,
-    unique,
-    rune
+    STARTER,
+    POTION,
+    BOOTS,
+    BASIC,
+    EPIC,
+    LEGENDARY,
+    MYTHIC,
+    UNIQUE,
+    RUNE
 }

@@ -6,14 +6,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RapidFirecannon extends Item {
     public static final String name = "Rapid Firecannon";
-    public static final ItemType type = ItemType.legendary;
-    public static final int cost = 2500;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 3000;
 
     int energyze;
 
     public RapidFirecannon() {
         super(name, type, cost);
-        as = 35;
+        ad = 30;
+        as = 15;
         crit = 20;
         ms = 7;
 
@@ -24,7 +25,7 @@ public class RapidFirecannon extends Item {
         ++energyze;
         if (energyze == 10) { //kinda arbitrary
             energyze = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 120, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60 + Math.max(0, owner.lvl - 10)*10, 1);
         }
     }
 

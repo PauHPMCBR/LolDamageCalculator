@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class GargoyleStoneplate extends Item {
     public static final String name = "Gargoyle Stoneplate";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3200;
 
     public GargoyleStoneplate() {

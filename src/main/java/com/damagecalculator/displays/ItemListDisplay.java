@@ -50,7 +50,7 @@ public class ItemListDisplay {
             int pos = itemTypes.indexOf(i.type);
             if (i.name.startsWith("Guardian's")) {
                 if (!displayAram) continue;
-                pos = itemTypes.indexOf(ItemType.starter);
+                pos = itemTypes.indexOf(ItemType.STARTER);
             }
             tilePanes[pos].getChildren().add(DisplayUtils.addBorder(iv));
         }

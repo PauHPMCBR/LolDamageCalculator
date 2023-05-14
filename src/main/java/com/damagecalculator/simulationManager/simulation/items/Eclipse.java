@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Eclipse extends Item {
     public static final String name = "Eclipse";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3100;
 
     public Eclipse() {

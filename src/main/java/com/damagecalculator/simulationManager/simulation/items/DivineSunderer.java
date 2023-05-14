@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class DivineSunderer extends Item {
     public static final String name = "Divine Sunderer";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3300;
 
     public DivineSunderer() {
@@ -22,10 +22,10 @@ public class DivineSunderer extends Item {
             if (owner.can_use_sheen) {
                 owner.can_use_sheen = false;
                 putOnCooldown();
-                float amount = (float) (1.25 * owner.BASE_AD);
-                amount += owner.getEnemy().getMaxHP() * 0.03;
-                if (!owner.is_ranged) amount += owner.getEnemy().getMaxHP() * 0.03;
-                amount = (float) Math.max(amount, 1.5 * owner.BASE_AD);
+                float amount = (float) (1.6 * owner.BASE_AD);
+                amount += owner.getEnemy().getMaxHP() * 0.02;
+                if (!owner.is_ranged) amount += owner.getEnemy().getMaxHP() * 0.02;
+                amount = (float) Math.max(amount, 1.6 * owner.BASE_AD);
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount, 1);
                 //ignoring healing part
             }

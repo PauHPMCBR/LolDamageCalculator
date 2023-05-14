@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class IonianBootsOfLucidity extends Item {
     public static final String name = "Ionian Boots of Lucidity";
-    public static final ItemType type = ItemType.boots;
+    public static final ItemType type = ItemType.BOOTS;
     public static final int cost = 950;
 
     public IonianBootsOfLucidity() {

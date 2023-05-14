@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class SpellthiefsEdge extends Item {
     public static final String name = "Spellthief's Edge";
-    public static final ItemType type = ItemType.starter;
+    public static final ItemType type = ItemType.STARTER;
     public static final int cost = 400;
 
     public SpellthiefsEdge() {

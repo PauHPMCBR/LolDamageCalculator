@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class NegatronCloak extends Item {
     public static final String name = "Negatron Cloak";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 900;
 
     public NegatronCloak() {

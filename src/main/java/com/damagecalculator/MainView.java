@@ -5,7 +5,9 @@ import com.damagecalculator.simulationManager.BuildTester;
 import com.damagecalculator.simulationManager.Printer;
 import com.damagecalculator.simulationManager.SimulationManager;
 import com.damagecalculator.simulationManager.simulation.*;
+import com.damagecalculator.simulationManager.simulation.champions.Ahri;
 import com.damagecalculator.simulationManager.simulation.champions.Dummy;
+import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -53,36 +55,32 @@ public class MainView {
     public TextArea output;
     public Label LolPatch;
 
-
-    Champion currentChampion;
     InventoryDisplay currentInventory;
     RunePageDisplay currentRunes;
     ExtraVariablesDisplay evd;
     ItemListDisplay variableItems;
+
+    Champion currentChampion;
     ArrayList<Item> variableItemList;
 
     public void setChampion(Champion c) {
-        AbilityType[] oldAbilityPrio  = null;
-        if (currentChampion != null) oldAbilityPrio = currentChampion.abilityPriorities;
-
-        currentChampion = c.makeCopy();
+        currentChampion = c; //had .makeCopy()
         champion.getChildren().clear();
         champion.getChildren().add(new ImageView(DisplayUtils.getChampionIcon(c)));
-        ChampionListDisplay championListDisplay = new ChampionListDisplay() {
-            public void pickedChampion(Champion c) {
-                setChampion(c);
-                closeWindow();
-            }
-        };
         champion.setOnMouseClicked((MouseEvent e) -> {
-            championListDisplay.openWindow();
+            new ChampionListDisplay() {
+                public void pickedChampion(Champion c) {
+                    setChampion(c);
+                    closeWindow();
+                }
+            }.openWindow();
         });
 
         if (c.extraVariableName != null) {
             extraVariableLabel.setVisible(true);
             extraVariableLabel.setText(c.extraVariableName);
             extraVariableValue.setVisible(true);
-            if (Objects.equals(extraVariableValue.getText(), "")) extraVariableValue.setText("0");
+            extraVariableValue.setText("0");
         }
         else {
             extraVariableValue.setVisible(false);
@@ -91,8 +89,7 @@ public class MainView {
 
         upgradeOrder.setText(DisplayUtils.getString(c.upgradeOrder));
 
-        if (oldAbilityPrio == null || comboOrPriority.getText().equals(DisplayUtils.getString(oldAbilityPrio)))
-            comboOrPriority.setText(DisplayUtils.getString(c.abilityPriorities));
+        comboOrPriority.setText(DisplayUtils.getString(c.abilityPriorities));
     }
 
     public RunePage setUpRunes() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {

@@ -5,15 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RadiantVirtue extends Item {
     public static final String name = "Radiant Virtue";
-    public static final ItemType type = ItemType.mythic;
-    public static final int cost = 3200;
+    public static final ItemType type = ItemType.MYTHIC;
+    public static final int cost = 2700;
 
     float bonusHPGained;
 
     public RadiantVirtue() {
         super(name, type, cost);
-        ah = 20;
-        hp = 400;
+        ah = 10;
+        hp = 350;
         armor = 30;
         mr = 30;
         item_cooldown = 90;
@@ -24,7 +24,7 @@ public class RadiantVirtue extends Item {
     public void extraDmg() { //supposing insta ult, ignoring healing part
         if (canUse()) {
             lastUsed = cs.time - item_cooldown*(1 - 100/(100+owner.ITEM_HASTE + owner.AH));
-            bonusHPGained = 0.15f * owner.getMaxHP();
+            bonusHPGained = 0.125f * owner.getMaxHP();
             owner.BONUS_HP += bonusHPGained;
         }
         if (lastUsed < cs.time + 9 && bonusHPGained != 0) { //9s duration, then remove extra hp

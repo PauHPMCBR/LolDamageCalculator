@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Riftmaker extends Item {
     public static final String name = "Riftmaker";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3200;
 
     public Riftmaker() {

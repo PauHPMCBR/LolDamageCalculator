@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ClothArmor extends Item {
     public static final String name = "Cloth Armor";
-    public static final ItemType type = ItemType.basic;
+    public static final ItemType type = ItemType.BASIC;
     public static final int cost = 300;
 
     public ClothArmor() {

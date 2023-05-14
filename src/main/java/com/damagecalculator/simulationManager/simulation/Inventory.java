@@ -19,12 +19,10 @@ public class Inventory {
     private int cost;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, noonquiver}, //mythic component
+            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, catalystOfAeons}, //mythic component
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
-            new Item[] {infinityEdge, navoriQuickblades, guinsoosRageblade, rageknife}, //crit mod
             new Item[] {navoriQuickblades, spearOfShojin}, //cd mod
             new Item[] {trinityForce, divineSunderer, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
-            new Item[] {rodOfAges, abyssalMask, catalystOfAeons}, //eternity
             new Item[] {fimbulwinter, muramana, seraphsEmbrace, tearOfTheGoddess}, //mana charge
             new Item[] {lordDominiksRegards, seryldasGrudge, lastWhisper, mortalReminder}, //last whisper
             new Item[] {titanicHydra, ravenousHydra, tiamat}, //hydra
@@ -39,6 +37,7 @@ public class Inventory {
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
             new Item[] {voidStaff, blightingJewel} //void pen
     };
+    //catalyst is mythic component now?
 
     /**
      * Constructor for the ArrayList, since it's more comfortable to declare it first as an array
@@ -57,8 +56,8 @@ public class Inventory {
     private boolean hasMythic;
     public boolean canAdd(Item item) {
         if (inventory.size() == maxSize) return false;
-        if (item.type == ItemType.legendary && inventory.contains(item)) return false;
-        if (item.type == ItemType.mythic && (hasMythic || exclusiveItemsUsed[0])) return false;
+        if (item.type == ItemType.LEGENDARY && inventory.contains(item)) return false;
+        if (item.type == ItemType.MYTHIC && (hasMythic || exclusiveItemsUsed[0])) return false;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item) && exclusiveItemsUsed[i]) return false;
         return true;
@@ -74,7 +73,7 @@ public class Inventory {
         cost += item.cost;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = true;
-        if (item.type == ItemType.mythic) {
+        if (item.type == ItemType.MYTHIC) {
             hasMythic = true;
             exclusiveItemsUsed[0] = true; //mythic component
         }
@@ -109,7 +108,7 @@ public class Inventory {
         cost -= item.cost;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = false;
-        if (item.type == ItemType.mythic) {
+        if (item.type == ItemType.MYTHIC) {
             hasMythic = false;
             exclusiveItemsUsed[0] = false; //mythic component
         }

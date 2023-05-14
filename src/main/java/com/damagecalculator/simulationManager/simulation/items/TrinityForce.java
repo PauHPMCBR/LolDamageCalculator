@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class TrinityForce extends Item {
     public static final String name = "Trinity Force";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3333;
 
     float originalBaseAd;
@@ -14,8 +14,8 @@ public class TrinityForce extends Item {
 
     public TrinityForce() {
         super(name, type, cost);
-        ad = 35;
-        as = 30;
+        ad = 40;
+        as = 35;
         ah = 20;
         hp = 300;
         item_cooldown = 1.5f;

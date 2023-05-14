@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class SapphireCrystal extends Item {
     public static final String name = "Sapphire Crystal";
-    public static final ItemType type = ItemType.basic;
+    public static final ItemType type = ItemType.BASIC;
     public static final int cost = 350;
 
     public SapphireCrystal() {

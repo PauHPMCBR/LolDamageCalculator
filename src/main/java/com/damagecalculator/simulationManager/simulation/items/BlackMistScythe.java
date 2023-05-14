@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class BlackMistScythe extends Item {
     public static final String name = "Black Mist Scythe";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 400; //but it's upgrade
 
     public BlackMistScythe() {

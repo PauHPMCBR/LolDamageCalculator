@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class DoransRing extends Item {
     public static final String name = "Doran's Ring";
-    public static final ItemType type = ItemType.starter;
+    public static final ItemType type = ItemType.STARTER;
     public static final int cost = 400;
 
     public DoransRing() {

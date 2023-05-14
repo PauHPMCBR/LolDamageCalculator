@@ -6,27 +6,29 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class KrakenSlayer extends Item {
     public static final String name = "Kraken Slayer";
-    public static final ItemType type = ItemType.mythic;
-    public static final int cost = 3400;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 3000;
 
     int autos;
+    float dmgMult;
 
     public KrakenSlayer() {
         super(name, type, cost);
-        ad = 65;
-        as = 25;
+        ad = 40;
+        as = 30;
         crit = 20;
 
         autos = 0;
+        dmgMult = 1;
     }
 
     public void onHit() {
         ++autos;
-        if (autos % 3 == 0)
-            damageDealt += cs.damage.applyDamage(DamageType.trueDmg, (float) (owner.getAD() * 0.4 + 50), 1);
-    }
-    public void applyMythicPassive() {
-        owner.BONUS_AS += 10 * owner.legendary_items_carried;
+        if (autos % 3 == 0) {
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
+                    (float) (20 + owner.getAD() * 0.6 + owner.AP * 0.45) * dmgMult, 1);
+            if (dmgMult < 2) dmgMult += 0.5;
+        }
     }
 
     @Override

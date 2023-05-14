@@ -6,12 +6,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Stridebreaker extends Item {
     public static final String name = "Stridebreaker";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3300;
 
     public Stridebreaker() {
         super(name, type, cost);
-        ad = 50;
+        ad = 60;
         as = 20;
         ah = 20;
         hp = 300;

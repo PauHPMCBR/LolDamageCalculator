@@ -18,8 +18,8 @@ public class CurrentState {
 
     public float time; //in secs
 
-    public float damageMultiplier = 1;
-    public float ldrPercent = 1;
+    public float damageMultiplier = 1;      //damage multipler that doesn't work with true dmg
+    public float damageTrueMultiplier = 1;  //damage multipler that works with true dmg
     public float navoriPercent = 1;
     public float liandryPercent = 1;
 
@@ -35,8 +35,8 @@ public class CurrentState {
     public void startSimulation() {
         time = 0;
         damageMultiplier = 1;
+        damageTrueMultiplier = 1;
 
-        ldrPercent = 1;
         navoriPercent = 1;
         liandryPercent = 1;
 

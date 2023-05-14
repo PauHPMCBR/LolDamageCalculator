@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class WintersApproach extends Item {
     public static final String name = "Winter's Approach";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2600;
 
     int stacks;

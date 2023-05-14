@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Tiamat extends Item {
     public static final String name = "Tiamat";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1200;
 
     public Tiamat() {

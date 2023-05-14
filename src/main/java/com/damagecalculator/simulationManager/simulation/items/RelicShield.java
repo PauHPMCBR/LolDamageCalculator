@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RelicShield extends Item {
     public static final String name = "Relic Shield";
-    public static final ItemType type = ItemType.starter;
+    public static final ItemType type = ItemType.STARTER;
     public static final int cost = 400;
 
     public RelicShield() {

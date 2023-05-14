@@ -1,7 +1,6 @@
 package com.damagecalculator.simulationManager.simulation.champions;
 
 import com.damagecalculator.simulationManager.simulation.*;
-
 import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
 
 public class Vayne extends Champion {
@@ -29,9 +28,9 @@ public class Vayne extends Champion {
                 true
         );
 
-        Passive = new Ability(AbilityType.passive);
+        passive = new Ability(PASSIVE);
 
-        Q = new Ability(AbilityType.q) {
+        q = new Ability(Q) {
             public void startingCalculations(){
                 extraVariable = 0;
             }
@@ -39,26 +38,28 @@ public class Vayne extends Champion {
                 extraVariable = 1;
                 owner.autoReset();
                 currentCooldown = getCooldown();
-                if (owner.R.isUnlocked() && owner.R.active) {
-                    if (owner.R.lvl == 0) currentCooldown *= 0.7f;
-                    else if (owner.R.lvl == 1) currentCooldown *= 0.6f;
+                if (owner.r.isUnlocked() && owner.r.active) {
+                    if (owner.r.lvl == 0) currentCooldown *= 0.7f;
+                    else if (owner.r.lvl == 1) currentCooldown *= 0.6f;
                     else currentCooldown *= 0.5;
                 }
             }
             public void onCall() {
                 if (!isUnlocked()) return;
                 if (extraVariable == 1) {
-                    damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD() * ad_scale[lvl], 1);
+                    damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
+                            owner.getAD() * ad_scale[lvl] + owner.AP * ap_scale[lvl], 3);
                     extraVariable = 0;
                 }
             }
         };
-        Q.damageType = DamageType.physicalDmg;
-        Q.cooldown = new float[]{4,3.5f,3,2.5f,2};
-        Q.ad_scale = new float[]{0.75f,0.85f,0.95f,1.05f,1.15f};
-        Q.cast_time = 0;
+        q.damageType = DamageType.physicalDmg;
+        q.cooldown = new float[]{4,3.5f,3,2.5f,2};
+        q.ad_scale = new float[]{0.75f,0.85f,0.95f,1.05f,1.15f};
+        q.ap_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
+        q.cast_time = 0;
 
-        W = new Ability(AbilityType.w) {
+        w = new Ability(W) {
             public void startingCalculations() {
                 extraVariable = 0;
             }
@@ -69,30 +70,30 @@ public class Vayne extends Champion {
                     extraVariable = 0;
                     float dmg = Math.max(damage[lvl],
                             owner.getEnemy().getMaxHP() * ad_scale[lvl]);
-                    damageDealt += cs.damage.applyDamage(DamageType.trueDmg, dmg);
+                    damageDealt += cs.damage.applyDamage(DamageType.trueDmg, dmg, 3);
                 }
             }
         };
-        W.damageType = DamageType.trueDmg;
-        W.damage = new float[]{50,65,80,95,110}; //minimum bonus damage
-        W.ad_scale = new float[]{0.06f,0.07f,0.08f,0.09f,0.1f}; //%true dmg
+        w.damageType = DamageType.trueDmg;
+        w.damage = new float[]{50,65,80,95,110}; //minimum bonus damage
+        w.ad_scale = new float[]{0.06f,0.07f,0.08f,0.09f,0.1f}; //%true dmg
 
-        E = new Ability(AbilityType.e) {
+        e = new Ability(E) {
             public void onUse() {
                 float dmg = damage[lvl] + ad_scale[lvl] * owner.BONUS_AD;
                 dmg *= 2.5; //supposing target always collides with terrain
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg);
-                owner.W.onCall();
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 6);
+                owner.w.onCall();
                 currentCooldown = getCooldown();
             }
         };
-        E.cooldown = new float[]{20,18,16,14,12};
-        E.damage = new float[]{50,85,120,155,190};
-        E.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
-        E.cast_time = 0.25f;
-        E.damageType = null;
+        e.cooldown = new float[]{20,18,16,14,12};
+        e.damage = new float[]{50,85,120,155,190};
+        e.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
+        e.cast_time = 0.25f;
+        e.damageType = null;
 
-        R = new Ability(AbilityType.r) {
+        r = new Ability(R) {
             public void onUse() {
                 owner.BONUS_AD += damage[lvl];
             }
@@ -100,18 +101,18 @@ public class Vayne extends Champion {
                 owner.BONUS_AD -= damage[lvl];
             }
         };
-        R.damage = new float[]{25,40,55}; //bonus ad
-        R.duration = new float[]{8,10,12};
-        R.cooldown = new float[]{100,85,70};
-        R.damageType = null;
+        r.damage = new float[]{25,40,55}; //bonus ad
+        r.duration = new float[]{8,10,12};
+        r.cooldown = new float[]{100,85,70};
+        r.damageType = null;
 
 
         //This special item will call the Q and W on-hit effects
         Item passiveOnHit = new VayneOnhit();
         addUniqueItem(passiveOnHit);
 
-        upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e};
-        abilityPriorities = new AbilityType[] {r,auto,q,e};
+        upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
+        abilityPriorities = new AbilityType[] {R, AUTO, Q, E};
     }
 
     @Override
@@ -123,7 +124,7 @@ public class Vayne extends Champion {
 
     public static class VayneOnhit extends Item {
         public static final String name = "_passive onhit";
-        public static final ItemType type = ItemType.unique;
+        public static final ItemType type = ItemType.UNIQUE;
         public static final int cost = 0;
 
         public VayneOnhit() {
@@ -132,8 +133,8 @@ public class Vayne extends Champion {
         }
 
         public void onHit() {
-            owner.Q.onCall();
-            owner.W.onCall();
+            owner.q.onCall();
+            owner.w.onCall();
         }
 
         @Override

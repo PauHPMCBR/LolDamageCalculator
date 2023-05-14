@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class SeekersArmguard extends Item {
     public static final String name = "Seeker's Armguard";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1000;
 
     int stacks;

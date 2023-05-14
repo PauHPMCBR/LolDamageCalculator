@@ -5,15 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ZekesConvergence extends Item {
     public static final String name = "Zeke's Convergence";
-    public static final ItemType type = ItemType.legendary;
-    public static final int cost = 2400;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2200;
 
     public ZekesConvergence() {
         super(name, type, cost);
-        ah = 20;
-        hp = 250;
+        ah = 15;
+        hp = 200;
         mana = 250;
-        armor = 35;
+        armor = 45;
     }
 
     @Override

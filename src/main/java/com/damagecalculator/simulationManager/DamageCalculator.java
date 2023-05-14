@@ -34,11 +34,11 @@ public class DamageCalculator {
 
     private void increaseTime(float amount) {
         cs.time += amount;
-        cs.champion.Q.currentCooldown -= amount;
-        cs.champion.W.currentCooldown -= amount;
-        cs.champion.E.currentCooldown -= amount;
-        cs.champion.R.currentCooldown -= amount;
-        cs.champion.Passive.currentCooldown -= amount;
+        cs.champion.q.currentCooldown -= amount;
+        cs.champion.w.currentCooldown -= amount;
+        cs.champion.e.currentCooldown -= amount;
+        cs.champion.r.currentCooldown -= amount;
+        cs.champion.passive.currentCooldown -= amount;
         cs.champion.autoCd -= amount;
     }
 
@@ -49,10 +49,8 @@ public class DamageCalculator {
     private void useAbility(Ability a) {
         increaseTime(a.cast_time);
 
-        cs.damageMultiplier *= cs.navoriPercent;
         cs.champion.useAbility(a);
         comboDone.add(a.type);
-        cs.damageMultiplier /= cs.navoriPercent;
 
         eventTimes.add(cs.time + a.currentCooldown);
         if (a.getDuration() != -1) {
@@ -69,10 +67,10 @@ public class DamageCalculator {
         eventTimes = new PriorityQueue<>();
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new ArrayList<>();
-        Ability q = cs.champion.Q;
-        Ability w = cs.champion.W;
-        Ability e = cs.champion.E;
-        Ability r = cs.champion.R;
+        Ability q = cs.champion.q;
+        Ability w = cs.champion.w;
+        Ability e = cs.champion.e;
+        Ability r = cs.champion.r;
         eventTimes.add(0f);
 
         while (cs.enemy.alive) { //simulationManager.simulation will stop when enemy dies
@@ -87,12 +85,12 @@ public class DamageCalculator {
             //then, check if any ability can be used and use it in order abilityPriorities, only one per "while" cycle
             boolean doneSomething = false;
             for (AbilityType a : abilityPriorities) {
-                if (a == AbilityType.auto) {
+                if (a == AbilityType.AUTO) {
                     if (cs.champion.autoCd <= 0.05) {
                         if (debug) System.out.println("Used a in time " + cs.time);
                         increaseTime(cs.champion.getAttackWindupTime());
                         cs.champion.autoAttack();
-                        comboDone.add(AbilityType.auto);
+                        comboDone.add(AbilityType.AUTO);
                         eventTimes.add(cs.time + cs.champion.autoCd);
 
                         doneSomething = true;
@@ -121,7 +119,7 @@ public class DamageCalculator {
             }
 
             if (useAutosBetweenAbilities) {
-                if (comboDone.get(comboDone.size() -1) != AbilityType.auto)
+                if (comboDone.get(comboDone.size() -1) != AbilityType.AUTO)
                     while (cs.champion.autoCd > 0.05) { //?
                         float newTime = eventTimes.remove();
                         increaseTime(newTime - cs.time);
@@ -141,7 +139,7 @@ public class DamageCalculator {
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new Vector<>();
         for (AbilityType abilityType : combo) {
-            if (abilityType == AbilityType.auto) {
+            if (abilityType == AbilityType.AUTO) {
                 increaseTime(cs.champion.autoCd);
                 cs.champion.autoAttack();
             }

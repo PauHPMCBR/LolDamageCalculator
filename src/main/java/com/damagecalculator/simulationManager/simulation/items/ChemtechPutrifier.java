@@ -5,15 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ChemtechPutrifier extends Item {
     public static final String name = "Chemtech Putrifier";
-    public static final ItemType type = ItemType.legendary;
-    public static final int cost = 2300;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2100;
 
     public ChemtechPutrifier() {
         super(name, type, cost);
-        ap = 40;
+        ap = 35;
         ah = 15;
-        manaRegen = 100;
-        healShieldPower = 8;
+        manaRegen = 75;
+        healShieldPower = 10;
     }
 
     @Override

@@ -29,6 +29,7 @@ public class ItemList {
     public static CatalystOfAeons catalystOfAeons = new CatalystOfAeons();
     public static CaulfieldsWarhammer caulfieldsWarhammer = new CaulfieldsWarhammer();
     public static ChainVest chainVest = new ChainVest();
+    public static ChaliceOfBlessing chaliceOfBlessing = new ChaliceOfBlessing();
     public static ChempunkChainsword chempunkChainsword = new ChempunkChainsword();
     public static ChemtechPutrifier chemtechPutrifier = new ChemtechPutrifier();
     public static CloakOfAgility cloakOfAgility = new CloakOfAgility();
@@ -46,6 +47,7 @@ public class ItemList {
     public static DoransRing doransRing = new DoransRing();
     public static DoransShield doransShield = new DoransShield();
     public static DuskbladeOfDraktharr duskbladeOfDraktharr = new DuskbladeOfDraktharr();
+    public static EchoesOfHelia echoesOfHelia = new EchoesOfHelia();
     public static Eclipse eclipse = new Eclipse();
     public static EdgeOfNight edgeOfNight = new EdgeOfNight();
     public static EssenceReaver essenceReaver = new EssenceReaver();
@@ -93,6 +95,7 @@ public class ItemList {
     public static LeechingLeer leechingLeer = new LeechingLeer();
     public static LiandrysAnguish liandrysAnguish = new LiandrysAnguish();
     public static LichBane lichBane = new LichBane();
+    public static LifewellPendant lifewellPendant = new LifewellPendant();
     public static LocketOfTheIronSolari locketOfTheIronSolari = new LocketOfTheIronSolari();
     public static LongSword longSword = new LongSword();
     public static LordDominiksRegards lordDominiksRegards = new LordDominiksRegards();
@@ -119,7 +122,7 @@ public class ItemList {
     public static Phage phage = new Phage();
     public static PhantomDancer phantomDancer = new PhantomDancer();
     public static Pickaxe pickaxe = new Pickaxe();
-    public static ProwlersClaw prowlersClaw = new ProwlersClaw(true);
+    public static ProwlersClaw prowlersClaw = new ProwlersClaw();
     public static QuicksilverSash quicksilverSash = new QuicksilverSash();
     public static RabadonsDeathcap rabadonsDeathcap = new RabadonsDeathcap();
     public static RadiantVirtue radiantVirtue = new RadiantVirtue();
@@ -209,6 +212,7 @@ public class ItemList {
         add(catalystOfAeons);
         add(caulfieldsWarhammer);
         add(chainVest);
+        add(chaliceOfBlessing);
         add(chempunkChainsword);
         add(chemtechPutrifier);
         add(cloakOfAgility);
@@ -226,6 +230,7 @@ public class ItemList {
         add(doransRing);
         add(doransShield);
         add(duskbladeOfDraktharr);
+        add(echoesOfHelia);
         add(eclipse);
         add(edgeOfNight);
         add(essenceReaver);
@@ -273,6 +278,7 @@ public class ItemList {
         add(leechingLeer);
         add(liandrysAnguish);
         add(lichBane);
+        add(lifewellPendant);
         add(locketOfTheIronSolari);
         add(longSword);
         add(lordDominiksRegards);
@@ -376,8 +382,10 @@ public class ItemList {
         add(darkSeal);
         add(demonicEmbrace);
         add(doransRing);
+        add(echoesOfHelia);
         add(everfrost);
         add(fiendishCodex);
+        add(guinsoosRageblade);
         add(hextechAlternator);
         add(hextechRocketbelt);
         add(horizonFocus);

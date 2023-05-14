@@ -5,14 +5,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class MercurialScimitar extends Item {
     public static final String name = "Mercurial Scimitar";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
     public MercurialScimitar() {
         super(name, type, cost);
         ad = 40;
         crit = 20;
-        mr = 40;
+        mr = 50;
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class BulwarkOfTheMountain extends Item {
     public static final String name = "Bulwark of the Mountain";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 400; //
 
     public BulwarkOfTheMountain() {

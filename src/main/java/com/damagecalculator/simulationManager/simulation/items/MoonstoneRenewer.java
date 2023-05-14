@@ -5,18 +5,20 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class MoonstoneRenewer extends Item {
     public static final String name = "Moonstone Renewer";
-    public static final ItemType type = ItemType.mythic;
-    public static final int cost = 2500;
+    public static final ItemType type = ItemType.MYTHIC;
+    public static final int cost = 2300;
 
     public MoonstoneRenewer() {
         super(name, type, cost);
-        ap = 40;
+        ap = 35;
         ah = 20;
         hp = 200;
         manaRegen = 100;
     }
 
-    //ignoring healing passive and mythic passive
+    public void applyMythicPassive() {
+        owner.AH += 5 * owner.legendary_items_carried;
+    }
 
     @Override
     public Item makeCopy() {

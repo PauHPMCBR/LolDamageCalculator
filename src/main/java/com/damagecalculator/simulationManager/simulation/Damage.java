@@ -27,7 +27,6 @@ public class Damage {
         armor -= cs.champion.LETHALITY;
         if (armor < 0) armor = 0;
         amount *= (100/(100 + armor));
-        amount *= cs.ldrPercent; //!
         cs.enemy.substractHP(amount);
         totalPhysical += amount;
         return amount;
@@ -59,16 +58,23 @@ public class Damage {
     /**
      * Main function to call from outside that will do all calculations prior to the damage appliance
      * Damage instance types:
-     *      0: "normal" damage
-     *      1: "proc" damage. will not count for black cleaver or ludens
+     *      odd (1,3...)            :   "proc" damage. will not count for black cleaver or ludens
+     *      multiple of 3 (3,6...)  :   "ability" damage. will count for navori amplifier
+     *
+     * Examples:
+     *      0 comes from auto
+     *      1 comes from item on-hit
+     *      3 comes from ability passive
+     *      6 comes from ability active
      */
     public float applyDamage(DamageType type, float amount, int damageInstanceType) {
-        amount *= cs.damageMultiplier;
+        amount *= cs.damageTrueMultiplier;
         if (cs.riftmakerItem != null) { //(riftmaker amplifies true damage as well)
             if (cs.time >= 3) cs.riftmakerItem.damageDealt += applyTrueDamage((float) (amount*0.09));
             else cs.riftmakerItem.damageDealt += applyDamage(type, (float) (amount * 0.03* cs.time), true); //in theory it's every second increase
         }
         if (type != DamageType.trueDmg) {
+            amount *= cs.damageMultiplier;
             if (cs.hasCutDown) {
                 if (cs.enemy.getMaxHP() > cs.champion.getMaxHP() * 1.1) {
                     float x = (float) Math.max(0.1, Math.min(1, cs.enemy.getMaxHP() / cs.champion.getMaxHP() - 1));
@@ -82,12 +88,17 @@ public class Damage {
             }
             //last stand can be controversial, since we don't know champion's relative hp. currently skipped
         }
+        if (damageInstanceType%3 == 0) { //damage from ability
+            amount *= cs.navoriPercent; //(navori amplifies tru damage as well)
+        }
+
         float dmg = applyDamage(type, amount, true);
+
         if (cs.hasFirstStrike) {
             cs.firstStrikeRune.damageDealt += applyDamage(DamageType.trueDmg, dmg * 0.09f, true);
         }
 
-        if (damageInstanceType == 0) {
+        if (damageInstanceType%2 == 0) { //not proc damage
             if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
             if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.echo();
         }

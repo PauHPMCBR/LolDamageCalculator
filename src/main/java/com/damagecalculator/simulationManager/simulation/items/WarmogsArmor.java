@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class WarmogsArmor extends Item {
     public static final String name = "Warmog's Armor";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
     public WarmogsArmor() {

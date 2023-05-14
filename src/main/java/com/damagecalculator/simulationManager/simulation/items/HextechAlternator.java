@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class HextechAlternator extends Item {
     public static final String name = "Hextech Alternator";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1050;
 
     public HextechAlternator() {

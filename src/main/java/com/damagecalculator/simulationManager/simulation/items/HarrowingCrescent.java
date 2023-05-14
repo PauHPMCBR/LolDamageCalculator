@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class HarrowingCrescent extends Item {
     public static final String name = "Harrowing Crescent";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 400;
 
     public HarrowingCrescent() {

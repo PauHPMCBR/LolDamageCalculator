@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class LordDominiksRegards extends Item {
     public static final String name = "Lord Dominik's Regards";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
     public LordDominiksRegards() {
@@ -18,7 +18,7 @@ public class LordDominiksRegards extends Item {
     public void specialStats() {
         float diff = owner.getEnemy().getMaxHP() - owner.getMaxHP();
         diff = Math.min(2500, Math.max(0, diff));
-        cs.ldrPercent = 1 + diff/10000; //should be correct
+        cs.damageMultiplier *= 1 + diff/10000; //should be correct, doesn't amplify true dmg
     }
 
     @Override

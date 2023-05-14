@@ -379,6 +379,4 @@ public class RunePageDisplay {
 
         updateShards(3,3);
     }
-
-
 }

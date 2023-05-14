@@ -5,15 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class PhantomDancer extends Item {
     public static final String name = "Phantom Dancer";
-    public static final ItemType type = ItemType.legendary;
-    public static final int cost = 2600;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2800;
 
     int autos;
 
     public PhantomDancer() {
         super(name, type, cost);
         ad = 20;
-        as = 25;
+        as = 30;
         crit = 20;
         ms = 7;
 

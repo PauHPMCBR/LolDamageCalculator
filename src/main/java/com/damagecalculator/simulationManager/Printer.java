@@ -31,11 +31,11 @@ public class Printer {
                 " physical, " + (int)damage.totalMagic + " magic, " + (int)damage.totalTrue + " true)");
         printSeparator();
         if (champion.getAutoDmg() != 0) println(champion.getAutoDmg() + " from autos");
-        if (champion.Passive.getDamageDealt() != 0) println(champion.Passive.getDamageDealt() + " from passive");
-        if (champion.Q.getDamageDealt() != 0) println(champion.Q.getDamageDealt() + " from Q");
-        if (champion.W.getDamageDealt() != 0) println(champion.W.getDamageDealt() + " from W");
-        if (champion.E.getDamageDealt() != 0) println(champion.E.getDamageDealt() + " from E");
-        if (champion.R.getDamageDealt() != 0) println(champion.R.getDamageDealt() + " from R");
+        if (champion.passive.getDamageDealt() != 0) println(champion.passive.getDamageDealt() + " from passive");
+        if (champion.q.getDamageDealt() != 0) println(champion.q.getDamageDealt() + " from Q");
+        if (champion.w.getDamageDealt() != 0) println(champion.w.getDamageDealt() + " from W");
+        if (champion.e.getDamageDealt() != 0) println(champion.e.getDamageDealt() + " from E");
+        if (champion.r.getDamageDealt() != 0) println(champion.r.getDamageDealt() + " from R");
 
         for (Item i : champion.getInventory().getItems()) {
             if (i.is_hidden || i.getDamageDealt()== 0) continue;
@@ -56,12 +56,12 @@ public class Printer {
         for (AbilityType i : combo) {
             print(" ");
             switch (i) {
-                case passive -> {print("P"); ++p;}
-                case q -> {print("Q"); ++q;}
-                case w -> {print("W"); ++w;}
-                case e -> {print("E"); ++e;}
-                case r -> {print("R"); ++r;}
-                case auto -> {print("A"); ++a;}
+                case PASSIVE -> {print("P"); ++p;}
+                case Q -> {print("Q"); ++q;}
+                case W -> {print("W"); ++w;}
+                case E -> {print("E"); ++e;}
+                case R -> {print("R"); ++r;}
+                case AUTO -> {print("A"); ++a;}
             }
         }
         println("  (" + a + "A " + q + "Q " + w + "W " + e + "E " + r + "R)");
@@ -120,14 +120,12 @@ public class Printer {
             String prov = String.format("%5f", buildScores.get(i).score);
             print(String.format("%4s%6s%1s", i+1 + ".", " (" + prov + ")", " "));
             boolean first = true;
-            int totalCost = 0;
             for (Item item : buildScores.get(i).build) {
                 if (first) first = false;
                 else print(",");
                 print(" " + item.name);
-                totalCost += item.cost;
             }
-            println("  (" + totalCost + "g)");
+            println("  (" + buildScores.get(i).cost + "g)");
         }
         println();
     }

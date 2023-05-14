@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class SpectresCowl extends Item {
     public static final String name = "Spectre's Cowl";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1250;
 
     public SpectresCowl() {

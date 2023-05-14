@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class DarkSeal extends Item {
     public static final String name = "Dark Seal";
-    public static final ItemType type = ItemType.starter;
+    public static final ItemType type = ItemType.STARTER;
     public static final int cost = 350;
 
     int stacks;

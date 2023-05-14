@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class IcebornGauntlet extends Item {
     public static final String name = "Iceborn Gauntlet";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3000;
 
     public IcebornGauntlet() {

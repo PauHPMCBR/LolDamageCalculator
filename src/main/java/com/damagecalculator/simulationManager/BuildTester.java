@@ -13,25 +13,34 @@ public class BuildTester {
     static class BuildScore {
         float score;
         List<Item> build;
+        int cost;
         public BuildScore(float score, List<Item> build) {
             this.score = score;
             this.build = build;
+            cost = 0;
+            for (Item i : build) {
+                cost += i.cost;
+            }
         }
     }
     private static class BuildScoreComparator implements Comparator<BuildScore> {
         boolean greater;
         public int compare(BuildScore a1, BuildScore a2) {
             if (a1.score != a2.score) {
-                if (greater) return (a1.score <= a2.score) ? 1 : -1;
-                else return (a1.score >= a2.score) ? 1 : -1;
+                if (greater) return (a1.score < a2.score) ? 1 : -1;
+                else return (a1.score > a2.score) ? 1 : -1;
             }
-            else return a1.hashCode() < a2.hashCode() ? 1 : -1; //?
+            if (a1.cost != a2.cost)
+                return (a1.cost > a2.cost) ? 1 : -1;
+            if (a1.build.size() != a2.build.size())
+                return (a1.build.size() > a2.build.size()) ? 1 : -1;
+
+            return 0;
         }
         public BuildScoreComparator(boolean greater) {
             this.greater = greater;
         }
     }
-
 
     private RunePage runes;
 
@@ -102,7 +111,13 @@ public class BuildTester {
 
         List<BuildScore> buildScores = new ArrayList<>();
 
+        int i = 1;
+        int percentAmount = combinations.size()/10;
+        if (combinations.size() < 1000) percentAmount = 1002;
         for (Inventory combination : combinations) {
+            if (i%percentAmount == 0) System.out.println(i/percentAmount*10 + "% done.");
+            ++i;
+
             combination.sort();
             c.setInventory(combination);
 

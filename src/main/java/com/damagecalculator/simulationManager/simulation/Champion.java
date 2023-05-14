@@ -33,10 +33,11 @@ public abstract class Champion {
     /**
      * Stats that can get modified by external factors like abilities and items
      */
-    public float HP, MANA, ARMOR, MAGIC_RESIST, AP, CRIT_CHANCE, BONUS_AS, AH, ITEM_HASTE;
-    public float BASE_AD, BONUS_AD, BASE_HP, BONUS_HP;
+    public float HP, BASE_HP, BONUS_HP, ARMOR, MAGIC_RESIST;
+    public float BASE_AD, BONUS_AD, AP, BONUS_AS, AH, CRIT_CHANCE;
     public float LETHALITY, ARMOR_PEN, MAGIC_PEN, PERCENTAGE_MAGIC_PEN;
-    public float ULTIMATE_HASTE;
+    public float MANA, MANA_REGEN, HP_REGEN;
+    public float ULTIMATE_HASTE, ITEM_HASTE;
 
     Inventory inventory = new Inventory();
     RunePage runes = null;
@@ -55,22 +56,22 @@ public abstract class Champion {
     public boolean can_use_sheen;
     public float lastSheenProc;
 
-    public Ability Passive = new Ability(passive);
-    public Ability Q = new Ability(q);
-    public Ability W = new Ability(w);
-    public Ability E = new Ability(e);
-    public Ability R = new Ability(r);
+    public Ability passive = new Ability(PASSIVE);
+    public Ability q = new Ability(AbilityType.Q);
+    public Ability w = new Ability(AbilityType.W);
+    public Ability e = new Ability(AbilityType.E);
+    public Ability r = new Ability(AbilityType.R);
     public Ability[] allAbilities;
 
-    public AbilityType[] upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e}; //default upgrade order
-    public AbilityType[] abilityPriorities = new AbilityType[] {auto,q,e,w,r}; //default order priority when calculating dps
+    public AbilityType[] upgradeOrder = new AbilityType[] {AbilityType.Q, AbilityType.W, AbilityType.E, AbilityType.Q, AbilityType.Q, AbilityType.R, AbilityType.Q, AbilityType.W, AbilityType.Q, AbilityType.W, AbilityType.R, AbilityType.W, AbilityType.W, AbilityType.E, AbilityType.E, AbilityType.R, AbilityType.E, AbilityType.E}; //default upgrade order
+    public AbilityType[] abilityPriorities = new AbilityType[] {AUTO, AbilityType.Q, AbilityType.E, AbilityType.W, AbilityType.R}; //default order priority when calculating dps
 
     public Ability getAbility(AbilityType a) {
-        if (a == q) return Q;
-        if (a == w) return W;
-        if (a == e) return E;
-        if (a == r) return R;
-        if (a == passive) return Passive;
+        if (a == AbilityType.Q) return q;
+        if (a == AbilityType.W) return w;
+        if (a == AbilityType.E) return e;
+        if (a == AbilityType.R) return r;
+        if (a == PASSIVE) return passive;
         return null;
     }
 
@@ -92,7 +93,7 @@ public abstract class Champion {
     }
 
     /**
-     *  Comodity getters that do slight calculations
+     *  Commodity getters that do slight calculations
      */
     public Inventory getInventory() {
         return inventory;
@@ -132,7 +133,7 @@ public abstract class Champion {
 
 
     /**
-     * Funtions to set champion's inventories and runes
+     * Functions to set champion's inventories and runes
      */
     public void addUniqueItem(Item i) {
         uniqueItems.add(i);
@@ -164,11 +165,11 @@ public abstract class Champion {
 
             item.damageDealt = 0;
             item.applyStats();
-            if (item.type == ItemType.legendary) ++legendaries;
+            if (item.type == ItemType.LEGENDARY) ++legendaries;
         }
         legendary_items_carried = legendaries;
         for (Item item : allItems)
-            if (item.type == ItemType.mythic) item.applyMythicPassive();
+            if (item.type == ItemType.MYTHIC) item.applyMythicPassive();
     }
 
     void initializeRunes() {
@@ -191,6 +192,8 @@ public abstract class Champion {
         CRIT_CHANCE = 0;
         BONUS_AS = bonus_as*(lvl-1);
         AH = 0;
+        MANA_REGEN = 0;
+        HP_REGEN = 0;
         ULTIMATE_HASTE = 0;
         BASE_AD = base_ad + ad_growth*(lvl-1);
         BONUS_AD = 0;
@@ -206,7 +209,7 @@ public abstract class Champion {
         allItems.addAll(uniqueItems);
         allItems.addAll(inventory.getItems());
 
-        allAbilities = new Ability[]{Passive, Q, W, E, R};
+        allAbilities = new Ability[]{passive, q, w, e, r};
 
         for (Ability a : allAbilities) {
             a.owner = this;
@@ -220,10 +223,10 @@ public abstract class Champion {
 
         for (int i = 0; i < lvl; ++i) {
             switch (upgradeOrder[i]) {
-                case q -> ++Q.lvl;
-                case w -> ++W.lvl;
-                case e -> ++E.lvl;
-                case r -> ++R.lvl;
+                case Q -> ++q.lvl;
+                case W -> ++w.lvl;
+                case E -> ++e.lvl;
+                case R -> ++r.lvl;
                 default -> {}
             }
         }

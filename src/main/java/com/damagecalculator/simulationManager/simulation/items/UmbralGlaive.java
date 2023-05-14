@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class UmbralGlaive extends Item {
     public static final String name = "Umbral Glaive";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2300;
 
     public UmbralGlaive() {

@@ -1,9 +1,8 @@
 package com.damagecalculator.simulationManager.simulation.champions;
 
 import com.damagecalculator.simulationManager.simulation.*;
-
 import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
-import static com.damagecalculator.simulationManager.simulation.AbilityType.w;
+
 
 public class Syndra extends Champion {
     public static final String name = "Syndra";
@@ -33,73 +32,73 @@ public class Syndra extends Champion {
         
         this.splinters = splinters;
 
-        Passive = new Ability(AbilityType.passive) { //extraVariable are splinters
+        passive = new Ability(PASSIVE) { //extraVariable are splinters
             public void startingCalculations() {
                 extraVariable = splinters;
                 if (extraVariable >= 120) owner.AP *= 1.15;
             }
         };
 
-        Q = new Ability(AbilityType.q) { //extraVariable = is q upgraded
+        q = new Ability(Q) { //extraVariable = is q upgraded
             public void startingCalculations() {
-                if (owner.Passive.extraVariable >= 40)
+                if (owner.passive.extraVariable >= 40)
                     extraVariable = 1;
             }
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (damage[lvl] +
-                        ap_scale[lvl] * owner.AP));
+                        ap_scale[lvl] * owner.AP), 6);
                 if (extraVariable == 1) extraVariable = 2; //first q no cooldown cause 2 stacked
                 else {
-                    int extraAH = owner.R.lvl * 10;
+                    int extraAH = owner.r.lvl * 10;
                     owner.AH += extraAH;
                     currentCooldown = getCooldown();
                     owner.AH -= extraAH;
                 }
             }
         };
-        Q.damageType = DamageType.magicDmg;
-        Q.cooldown = new float[]{7,7,7,7,7};
-        Q.damage = new float[]{70,105,140,175,210};
-        Q.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
-        Q.cast_time = 0;
+        q.damageType = DamageType.magicDmg;
+        q.cooldown = new float[]{7,7,7,7,7};
+        q.damage = new float[]{70,105,140,175,210};
+        q.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
+        q.cast_time = 0;
 
-        W = new Ability(AbilityType.w) {//extraVariable = is w upgraded
+        w = new Ability(W) {//extraVariable = is w upgraded
             public void startingCalculations() {
-                if (owner.Passive.extraVariable >= 60)
+                if (owner.passive.extraVariable >= 60)
                     extraVariable = 1;
             }
             public void onUse() {
                 float dmg = damage[lvl] + ap_scale[lvl] * owner.AP;
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg);
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 6);
                 if (extraVariable == 1) {
                     float mult = (float) (12 + 0.02 * owner.AP);
-                    damageDealt += cs.damage.applyDamage(DamageType.trueDmg, dmg * mult / 100);
+                    damageDealt += cs.damage.applyDamage(DamageType.trueDmg, dmg * mult / 100, 3);
                 }
                 currentCooldown = getCooldown();
             }
         };
-        W.damageType = DamageType.magicDmg;
-        W.cooldown = new float[]{12,11,10,9,8};
-        W.damage = new float[]{70,110,150,190,230};
-        W.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
-        W.cast_time = 0;
+        w.damageType = DamageType.magicDmg;
+        w.cooldown = new float[]{12,11,10,9,8};
+        w.damage = new float[]{70,110,150,190,230};
+        w.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
+        w.cast_time = 0;
 
-        E = new Ability(AbilityType.e) { //ignoring e upgrade
+        e = new Ability(E) { //ignoring e upgrade
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (damage[lvl] +
-                        ap_scale[lvl] * owner.AP));
+                        ap_scale[lvl] * owner.AP), 6);
                 currentCooldown = getCooldown();
             }
         };
-        E.damageType = DamageType.magicDmg;
-        E.cooldown = new float[]{17,17,17,17,17};
-        E.damage = new float[]{75,115,155,195,235};
-        E.ap_scale = new float[]{0.45f,0.45f,0.45f,0.45f,0.45f};
-        E.cast_time = 0.25f;
+        e.damageType = DamageType.magicDmg;
+        e.cooldown = new float[]{17,17,17,17,17};
+        e.damage = new float[]{75,115,155,195,235};
+        e.ap_scale = new float[]{0.45f,0.45f,0.45f,0.45f,0.45f};
+        e.cast_time = 0.25f;
 
-        R = new Ability(AbilityType.r) { //extraVariable = is r upgraded
+        r = new Ability(R) { //extraVariable = is r upgraded
             public void startingCalculations() {
-                if (owner.Passive.extraVariable >= 100)
+                if (owner.passive.extraVariable >= 100)
                     extraVariable = 1;
             }
             public void onUse() {
@@ -107,22 +106,22 @@ public class Syndra extends Champion {
                 int spheres = 5; //supposing 5 as average? min 3, max 7
 
                 for (int i = 0; i < spheres; ++i)
-                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg);
+                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 6);
 
                 if (extraVariable == 1 && owner.getEnemy().getRelativeMissingHP() > 0.85) cs.damage.execute();
 
                 currentCooldown = getCooldown();
             }
         };
-        R.damageType = DamageType.magicDmg;
-        R.cooldown = new float[]{120,100,80};
-        R.damage = new float[]{90,130,170};
-        R.ap_scale = new float[]{0.17f,0.17f,0.17f,0.17f,0.17f};
-        R.cast_time = 0.264f;
+        r.damageType = DamageType.magicDmg;
+        r.cooldown = new float[]{120,100,80};
+        r.damage = new float[]{90,130,170};
+        r.ap_scale = new float[]{0.17f,0.17f,0.17f,0.17f,0.17f};
+        r.cast_time = 0.264f;
 
         extraVariableName = "Splinters";
-        upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,w,q,w,r,w,w,e,e,r,e,e};
-        abilityPriorities = new AbilityType[] {q,e,w,r};
+        upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
+        abilityPriorities = new AbilityType[] {Q, E, W, R};
     }
 
     @Override

@@ -6,45 +6,29 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ProwlersClaw extends Item {
     public static final String name = "Prowler's Claw";
-    public static final ItemType type = ItemType.mythic;
-    public static final int cost = 3100;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 3000;
 
-    boolean useProwlersActive;
-    float activeStart;
-
-    public ProwlersClaw(boolean useProwlersActive) {
+    public ProwlersClaw() {
         super(name, type, cost);
-        ad = 60;
-        ah = 20;
-        lethality = 18;
-        item_cooldown = 90;
-
-        this.useProwlersActive = useProwlersActive;
-        activeStart = 0;
+        ad = 55;
+        ah = 15;
+        lethality = 15;
+        item_cooldown = 5;
     }
 
-    public void extraDmg() {
-        if (useProwlersActive) {
-            if (canUse()) {
-                putOnCooldown();
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (70 + 0.3 * owner.BONUS_AD));
-                activeStart = cs.time;
-                cs.damageMultiplier *= 1.15;
-            }
-            else if (activeStart + 3 >= cs.time) {
-                activeStart = 0;
-                cs.damageMultiplier /= 1.15;
-            }
+    public void extraDmg() { //supposing can always use after dash
+        if (canUse()) {
+            putOnCooldown();
+            if (owner.is_ranged)
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 65 + 25 * owner.BONUS_AD, 1);
+            else
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 85 + 35 * owner.BONUS_AD, 1);
         }
-    }
-
-    public void applyMythicPassive() {
-        owner.LETHALITY += 5 * owner.legendary_items_carried;
-        //ignoring +5 bonus ms
     }
 
     @Override
     public Item makeCopy() {
-        return new ProwlersClaw(useProwlersActive);
+        return new ProwlersClaw();
     }
 }

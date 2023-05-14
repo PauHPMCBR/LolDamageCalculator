@@ -1,9 +1,7 @@
 package com.damagecalculator.simulationManager.simulation.champions;
 
 import com.damagecalculator.simulationManager.simulation.*;
-
 import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
-import static com.damagecalculator.simulationManager.simulation.AbilityType.w;
 
 public class Lucian extends Champion {
     public static final String name = "Lucian";
@@ -30,7 +28,7 @@ public class Lucian extends Champion {
                 true
         );
 
-        Passive = new Ability(AbilityType.passive) { //onhit extra damage not implemented
+        passive = new Ability(PASSIVE) { //onhit extra damage not implemented
             public void startingCalculations() {
                 extraVariable = 0.5f;
                 if (owner.lvl >= 7) extraVariable += 0.05f;
@@ -46,74 +44,74 @@ public class Lucian extends Champion {
                 owner.BONUS_AD /= extraVariable;
                 owner.BASE_AD /= extraVariable;
 
-                owner.E.currentCooldown -= 4; //reduce e cd by 4 secs, need to test if before or after navori
+                owner.e.currentCooldown -= 4; //reduce e cd by 4 secs, need to test if before or after navori
             }
         };
 
-        Q = new Ability(AbilityType.q) {
+        q = new Ability(Q) {
             public void startingCalculations() {
                 cast_time = 0.4f - 0.15f / 17f * (owner.lvl -1);
             }
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (damage[lvl] +
-                        ad_scale[lvl] * owner.BONUS_AD));
+                        ad_scale[lvl] * owner.BONUS_AD), 6);
                 currentCooldown = getCooldown();
-                owner.Passive.onCall();
+                owner.passive.onCall();
             }
         };
-        Q.damageType = DamageType.physicalDmg;
-        Q.cooldown = new float[]{9,8,7,6,5};
-        Q.damage = new float[]{95,125,155,185,215};
-        Q.ad_scale = new float[]{0.6f,0.75f,0.9f,1.05f,1.2f};
+        q.damageType = DamageType.physicalDmg;
+        q.cooldown = new float[]{9,8,7,6,5};
+        q.damage = new float[]{95,125,155,185,215};
+        q.ad_scale = new float[]{0.6f,0.75f,0.9f,1.05f,1.2f};
         //cast time in starting calculations
 
-        W = new Ability(AbilityType.w) {
+        w = new Ability(W) {
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (damage[lvl] +
-                        ap_scale[lvl] * owner.AP));
+                        ap_scale[lvl] * owner.AP), 6);
                 currentCooldown = getCooldown();
-                owner.Passive.onCall();
+                owner.passive.onCall();
             }
         };
-        W.damageType = DamageType.magicDmg;
-        W.cooldown = new float[]{14,13,12,11,10};
-        W.damage = new float[]{75,110,145,180,215};
-        W.ap_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
-        W.cast_time = 0.25f;
+        w.damageType = DamageType.magicDmg;
+        w.cooldown = new float[]{14,13,12,11,10};
+        w.damage = new float[]{75,110,145,180,215};
+        w.ap_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
+        w.cast_time = 0.25f;
 
-        E = new Ability(AbilityType.e) {
+        e = new Ability(E) {
             public void onUse() {
 
                 owner.autoReset();
                 currentCooldown = getCooldown();
-                owner.Passive.onCall();
+                owner.passive.onCall();
             }
         };
-        E.cooldown = new float[]{22,20,18,16,14};
-        E.cast_time = 0;
+        e.cooldown = new float[]{22,20,18,16,14};
+        e.cast_time = 0;
 
-        R = new Ability(AbilityType.r) {
+        r = new Ability(R) {
             public void startingCalculations() {
                 extraVariable = 22 + (int)(owner.CRIT_CHANCE / 4); //amount of shots
             }
             public void onUse() {
                 float dmg = damage[lvl] + ad_scale[lvl]*owner.getAD() + ap_scale[lvl]*owner.AP;
                 for (int i = 0; i < extraVariable; ++i)
-                    damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg);
+                    damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 6);
 
                 currentCooldown = getCooldown();
-                owner.Passive.onCall();
+                owner.passive.onCall();
             }
         };
-        R.damageType = DamageType.physicalDmg;
-        R.cooldown = new float[]{110,100,90};
-        R.damage = new float[]{15,30,45};
-        R.ad_scale = new float[]{0.25f,0.25f,0.25f};
-        R.ap_scale = new float[]{0.15f,0.15f,0.15f};
-        R.cast_time = 3f;
+        r.damageType = DamageType.physicalDmg;
+        r.cooldown = new float[]{110,100,90};
+        r.damage = new float[]{15,30,45};
+        r.ad_scale = new float[]{0.25f,0.25f,0.25f};
+        r.ap_scale = new float[]{0.15f,0.15f,0.15f};
+        r.cast_time = 3f;
 
-        upgradeOrder = new AbilityType[] {q,w,e,q,q,r,q,e,q,e,r,e,e,w,w,r,w,w};
-        abilityPriorities = new AbilityType[] {auto,e,q,w};
+        upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, E, Q, E, R, E, E, W, W, R, W, W};
+        abilityPriorities = new AbilityType[] {AUTO, E, Q, W};
     }
     
     @Override

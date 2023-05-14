@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class BandleglassMirror extends Item {
     public static final String name = "Bandleglass Mirror";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 950;
 
     public BandleglassMirror() {

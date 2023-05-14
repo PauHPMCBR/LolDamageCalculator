@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RavenousHydra extends Item {
     public static final String name = "Ravenous Hydra";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3400;
 
     int ravenousStacks;

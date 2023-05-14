@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RylaisCrystalScepter extends Item {
     public static final String name = "Rylai's Crystal Scepter";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2600;
 
     public RylaisCrystalScepter() {

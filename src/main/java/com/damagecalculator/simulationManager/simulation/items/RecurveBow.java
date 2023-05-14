@@ -6,16 +6,16 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RecurveBow extends Item {
     public static final String name = "Recurve Bow";
-    public static final ItemType type = ItemType.epic;
-    public static final int cost = 1000;
+    public static final ItemType type = ItemType.EPIC;
+    public static final int cost = 700;
 
     public RecurveBow() {
         super(name, type, cost);
-        as = 25;
+        as = 15;
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 15, 1);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15, 1);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class Dummy extends Champion {
 
     public static class DummyStats extends Item {
         public static final String name = "_dummy stats";
-        public static final ItemType type = ItemType.unique;
+        public static final ItemType type = ItemType.UNIQUE;
         public static final int cost = 0;
 
         public DummyStats(int hp, int armor, int mr) {

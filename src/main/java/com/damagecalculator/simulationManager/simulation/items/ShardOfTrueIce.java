@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ShardOfTrueIce extends Item {
     public static final String name = "Shard of True Ice";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 400;
 
     public ShardOfTrueIce() {

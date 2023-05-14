@@ -6,8 +6,8 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Goredrinker extends Item {
     public static final String name = "Goredrinker";
-    public static final ItemType type = ItemType.mythic;
-    public static final int cost = 3300;
+    public static final ItemType type = ItemType.MYTHIC;
+    public static final int cost = 3200;
 
     public Goredrinker() {
         super(name, type, cost);
@@ -26,7 +26,7 @@ public class Goredrinker extends Item {
     }
 
     public void applyMythicPassive() {
-        owner.BONUS_HP += 50 * owner.legendary_items_carried;
+        owner.BONUS_HP += 75 * owner.legendary_items_carried;
         owner.AH += 3 * owner.legendary_items_carried;
     }
 

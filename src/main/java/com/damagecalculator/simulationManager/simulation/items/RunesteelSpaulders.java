@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RunesteelSpaulders extends Item {
     public static final String name = "Runesteel Spaulders";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 400;
 
     public RunesteelSpaulders() {

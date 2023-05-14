@@ -31,7 +31,7 @@ public class Ability {
 
     public float getCooldown() {
         if (cooldown == null) return -1;
-        if (type.equals(AbilityType.r))
+        if (type.equals(AbilityType.R))
             return cooldown[lvl] * 100/(100+(owner.AH + owner.ULTIMATE_HASTE));
         return cooldown[lvl] * owner.getCooldownModification();
     }

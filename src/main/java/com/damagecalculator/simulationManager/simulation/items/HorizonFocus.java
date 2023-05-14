@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class HorizonFocus extends Item {
     public static final String name = "Horizon Focus";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
     public HorizonFocus() {
@@ -16,7 +16,7 @@ public class HorizonFocus extends Item {
     }
 
     public void specialStats() { //supposing 700+ range?
-        cs.damageMultiplier *= 1.1;
+        cs.damageTrueMultiplier *= 1.1;
     }
 
     @Override

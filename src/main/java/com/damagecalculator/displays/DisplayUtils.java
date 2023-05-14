@@ -28,7 +28,7 @@ public class DisplayUtils {
     public static void distribute(HBox hBox) {
         List<Node> childrenLol = hBox.getChildren();
         List<Node> children = new ArrayList<>(childrenLol);
-        if (children.size() < 1) return;
+        if (children.size() < 2) return;
         hBox.getChildren().clear();
         hBox.getChildren().add(children.get(0));
         for (int i = 1; i < children.size(); ++i) {
@@ -37,18 +37,16 @@ public class DisplayUtils {
         }
     }
 
+    static ColorAdjust desaturate;
     public static void desaturate(ImageView iv) {
-        ColorAdjust desaturate = new ColorAdjust();
-        desaturate.setSaturation(-0.9);
-        desaturate.setBrightness(-0.5);
         iv.setEffect(desaturate);
     }
 
-    public static HBox addBorder(ImageView iv) {
-        String cssDefault = """
+    static final String cssDefault = """
                 -fx-border-color: black;
                 -fx-border-width: 2;
                 """;
+    public static HBox addBorder(ImageView iv) {
         HBox hBox = new HBox();
         hBox.setStyle(cssDefault);
         hBox.getChildren().add(iv);
@@ -59,11 +57,11 @@ public class DisplayUtils {
         char[] chars = s.toCharArray();
         ArrayList<AbilityType> ans = new ArrayList<>();
         for (char c : chars) {
-            if (c == 'q' || c == 'Q') ans.add(AbilityType.q);
-            else if (c == 'w' || c == 'W') ans.add(AbilityType.w);
-            else if (c == 'e' || c == 'E') ans.add(AbilityType.e);
-            else if (c == 'r' || c == 'R') ans.add(AbilityType.r);
-            else if (c == 'a' || c == 'A') ans.add(AbilityType.auto);
+            if (c == 'q' || c == 'Q') ans.add(AbilityType.Q);
+            else if (c == 'w' || c == 'W') ans.add(AbilityType.W);
+            else if (c == 'e' || c == 'E') ans.add(AbilityType.E);
+            else if (c == 'r' || c == 'R') ans.add(AbilityType.R);
+            else if (c == 'a' || c == 'A') ans.add(AbilityType.AUTO);
         }
         AbilityType[] ret = new AbilityType[ans.size()];
         for (int i = 0; i < ans.size(); ++i) ret[i] = ans.get(i);
@@ -75,7 +73,7 @@ public class DisplayUtils {
                 .replace(" ", "")
                 .replace("[", "")
                 .replace("]","")
-                .replace("auto","a");
+                .replace("AUTO","A");
     }
 
     public static String getItemFileName(Item i) {
@@ -131,4 +129,9 @@ public class DisplayUtils {
     }
 
 
+    public static void preCalc() {
+        desaturate = new ColorAdjust();
+        desaturate.setSaturation(-0.9);
+        desaturate.setBrightness(-0.5);
+    }
 }

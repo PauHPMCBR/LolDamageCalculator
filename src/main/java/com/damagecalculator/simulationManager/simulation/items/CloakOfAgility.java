@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class CloakOfAgility extends Item {
     public static final String name = "Cloak of Agility";
-    public static final ItemType type = ItemType.basic;
+    public static final ItemType type = ItemType.BASIC;
     public static final int cost = 600;
 
     public CloakOfAgility() {

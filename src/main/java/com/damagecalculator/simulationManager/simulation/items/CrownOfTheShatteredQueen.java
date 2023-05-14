@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class CrownOfTheShatteredQueen extends Item {
     public static final String name = "Crown of the Shattered Queen";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 2800;
 
     public CrownOfTheShatteredQueen() {

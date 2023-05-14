@@ -6,14 +6,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class KircheisShard extends Item {
     public static final String name = "Kircheis Shard";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 700;
 
     int energize;
 
     public KircheisShard() {
         super(name, type, cost);
-        as = 15;
+        ad = 15;
 
         energize = 9;
     }
@@ -22,7 +22,7 @@ public class KircheisShard extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 80);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60);
         }
     }
 

@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class NashorsTooth extends Item {
     public static final String name = "Nashor's Tooth";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3200;
 
     public NashorsTooth() {

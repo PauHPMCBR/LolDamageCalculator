@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class GuardiansOrb extends Item {
     public static final String name = "Guardian's Orb";
-    public static final ItemType type = ItemType.legendary;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 950;
 
     public GuardiansOrb() {

@@ -5,14 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class KnightsVow extends Item {
     public static final String name = "Knight's Vow";
-    public static final ItemType type = ItemType.legendary;
-    public static final int cost = 2300;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2200;
 
     public KnightsVow() {
         super(name, type, cost);
-        ah = 20;
-        hp = 400;
-        hpRegen = 200;
+        ah = 15;
+        armor = 25;
+        hp = 350;
+        hpRegen = 125;
     }
 
     @Override

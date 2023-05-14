@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class LiandrysAnguish extends Item {
     public static final String name = "Liandry's Anguish";
-    public static final ItemType type = ItemType.mythic;
+    public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3200;
 
     float lastTick;

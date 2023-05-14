@@ -18,9 +18,9 @@ public abstract class Item {
      */
     public int ad, ap, as, ah;
     public int hp, armor, mr;
-    public int mana = 0, crit = 0;
+    public int mana = 0, crit = 0, manaRegen, hpRegen;
     public int lethality = 0, armor_pen = 0, magic_pen = 0, percent_magic_pen = 0;
-    public float lifesteal, omnivamp, manaRegen, hpRegen, healShieldPower, ms; //currently unused
+    public float lifesteal, omnivamp, healShieldPower, ms; //currently unused
 
     public boolean is_hidden = false; //if the item is hidden, it won't be displayed in results messages
 
@@ -59,6 +59,8 @@ public abstract class Item {
         owner.MAGIC_RESIST += mr;
         owner.MANA += mana;
         owner.CRIT_CHANCE += crit;
+        owner.MANA_REGEN += manaRegen;
+        owner.HP_REGEN += hpRegen;
         owner.LETHALITY += lethality;
         owner.increaseArmorPen(armor_pen);
         owner.MAGIC_PEN += magic_pen;

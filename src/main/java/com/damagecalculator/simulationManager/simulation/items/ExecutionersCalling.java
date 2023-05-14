@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ExecutionersCalling extends Item {
     public static final String name = "Executioner's Calling";
-    public static final ItemType type = ItemType.epic;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 800;
 
     public ExecutionersCalling() {
