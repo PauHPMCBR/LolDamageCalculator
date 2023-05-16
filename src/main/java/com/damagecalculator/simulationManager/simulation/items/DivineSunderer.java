@@ -25,7 +25,6 @@ public class DivineSunderer extends Item {
                 float amount = (float) (1.6 * owner.BASE_AD);
                 amount += owner.getEnemy().getMaxHP() * 0.02;
                 if (!owner.is_ranged) amount += owner.getEnemy().getMaxHP() * 0.02;
-                amount = (float) Math.max(amount, 1.6 * owner.BASE_AD);
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount, 1);
                 //ignoring healing part
             }

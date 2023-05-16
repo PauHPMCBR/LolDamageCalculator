@@ -17,11 +17,12 @@ public class EchoesOfHelia extends Item {
         ah = 15;
         hp = 200;
         manaRegen = 125;
+
+        stacks = 0;
     }
 
     public void specialStats() {
         owner.AP += owner.MANA_REGEN/25 * 3; // Gain 3 ability power for every additional 25% base mana regeneration
-        stacks = 0;
     }
 
     public void extraDmg() { //supposing all abilities are heal/shield AND deal dmg (prob overtuned)

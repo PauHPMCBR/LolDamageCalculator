@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ChaliceOfBlessing extends Item {
     public static final String name = "Chalice of Blessing";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 950;
+    public static final int cost = 900;
 
     public ChaliceOfBlessing() {
         super(name, type, cost);

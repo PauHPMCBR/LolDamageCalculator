@@ -8,7 +8,7 @@ public class DuskbladeOfDraktharr extends Item {
     public static final ItemType type = ItemType.MYTHIC;
     public static final int cost = 3100;
 
-    float currentDmgMult = 1;
+    float currentDmgMult;
 
     public DuskbladeOfDraktharr() {
         super(name, type, cost);
@@ -16,11 +16,13 @@ public class DuskbladeOfDraktharr extends Item {
         lethality = 18;
         ah = 20;
         item_cooldown = 10;
+
+        currentDmgMult = 1;
     }
 
     public void extraDmg() {
         cs.damageMultiplier /= currentDmgMult;
-        currentDmgMult = 1 + owner.getEnemy().getRelativeMissingHP() * 0.15f;
+        currentDmgMult = 1 + Math.min(0.8f, owner.getEnemy().getRelativeMissingHP())/0.8f * 0.15f; //up to 15% increase, maxed at 20% missing
         cs.damageMultiplier *= currentDmgMult;
     }
 

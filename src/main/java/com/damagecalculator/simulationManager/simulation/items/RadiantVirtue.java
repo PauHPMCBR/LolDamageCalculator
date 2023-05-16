@@ -34,7 +34,7 @@ public class RadiantVirtue extends Item {
     }
 
     public void applyMythicPassive() {
-        owner.BONUS_HP += 100 * owner.legendary_items_carried;
+        owner.BONUS_HP += 75 * owner.legendary_items_carried;
     }
 
     @Override
