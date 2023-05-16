@@ -158,6 +158,7 @@ public class ItemList {
     public static SpellthiefsEdge spellthiefsEdge = new SpellthiefsEdge();
     public static SpiritVisage spiritVisage = new SpiritVisage();
     public static StaffOfFlowingWater staffOfFlowingWater = new StaffOfFlowingWater();
+    public static StatikkShiv statikkShiv = new StatikkShiv();
     public static SteelShoulderguards steelShoulderguards = new SteelShoulderguards();
     public static SteraksGage steraksGage = new SteraksGage();
     public static Stormrazor stormrazor = new Stormrazor();
@@ -341,6 +342,7 @@ public class ItemList {
         add(spellthiefsEdge);
         add(spiritVisage);
         add(staffOfFlowingWater);
+        add(statikkShiv);
         add(steelShoulderguards);
         add(steraksGage);
         add(stormrazor);
@@ -434,6 +436,7 @@ public class ItemList {
         add(phantomDancer);
         add(rapidFirecannon);
         add(runaansHurricane);
+        add(statikkShiv);
         add(stormrazor);
         add(theCollector);
         add(zeal);
@@ -456,6 +459,7 @@ public class ItemList {
         add(rapidFirecannon);
         add(recurveBow);
         add(runaansHurricane);
+        add(statikkShiv);
         add(stormrazor);
         add(stridebreaker);
         add(trinityForce);

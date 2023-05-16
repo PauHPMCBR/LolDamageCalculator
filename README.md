@@ -128,7 +128,6 @@ Although this program is a very faithful recreation on what happens exactly in g
 
 ## Things planned to do
 In parallel to adding new champions, these are the things planned to implement, in order of priority:
-- Add non stacked tear legendaries (manamune, archangel's...)
 - Add the buffing effect of supporting items (like Zeke's, Staff...)
 - Add CC flag to abilities (and everfrost) to fix the imperfection listed above
 - Add mana costs for abilities (and deplete mana as the simulation goes on)
