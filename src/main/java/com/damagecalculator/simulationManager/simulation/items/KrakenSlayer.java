@@ -25,8 +25,9 @@ public class KrakenSlayer extends Item {
     public void onHit() {
         ++autos;
         if (autos % 3 == 0) {
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                    (float) (20 + owner.getAD() * 0.6 + owner.AP * 0.45) * dmgMult, 1);
+            float baseDmg = 35 + 5 * Math.max(0, owner.lvl - 8);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
+                    (float) (baseDmg + owner.getAD() * 0.65 + owner.AP * 0.6) * dmgMult, 1);
             if (dmgMult < 2) dmgMult += 0.5;
         }
     }

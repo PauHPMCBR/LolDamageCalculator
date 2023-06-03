@@ -11,21 +11,21 @@ public class NavoriQuickblades extends Item {
 
     public NavoriQuickblades() {
         super(name, type, cost);
-        ad = 60;
+        ad = 65;
         crit = 20;
-        ah = 20;
+        ah = 15;
     }
 
     public void specialStats() {
         cs.navoriPercent = 1 + owner.CRIT_CHANCE/500; //untested
     }
     public void onHit() {
-        owner.q.currentCooldown *= (1 - 0.12);
-        owner.w.currentCooldown *= (1 - 0.12);
-        owner.e.currentCooldown *= (1 - 0.12);
+        owner.q.currentCooldown *= (1 - 0.15);
+        owner.w.currentCooldown *= (1 - 0.15);
+        owner.e.currentCooldown *= (1 - 0.15);
     }
     public void applyMythicPassive() {
-        owner.AH += 5 * owner.legendary_items_carried;
+        owner.BONUS_AD += 5 * owner.legendary_items_carried;
     }
 
     @Override

@@ -13,12 +13,12 @@ public class YoumuusGhostblade extends Item {
     public YoumuusGhostblade() {
         super(name, type, cost);
         ad = 60;
-        ah = 20;
+        ah = 15;
         lethality = 18;
     } //supposing already max stacked
 
     public void specialStats() {
-        lethalityGained = 8 + Math.max(0, owner.lvl - 6);
+        lethalityGained = 3 + Math.max(0, owner.lvl - 7);
         owner.LETHALITY += lethalityGained;
     }
     public void extraDmg() {

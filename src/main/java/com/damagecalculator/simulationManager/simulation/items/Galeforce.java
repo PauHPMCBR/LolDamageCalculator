@@ -26,8 +26,8 @@ public class Galeforce extends Item {
             putOnCooldown();
             float amount = 50;
             if (owner.lvl >= 10) amount += 7.41 * (owner.lvl - 9);
-            amount += 0.833 * owner.CRIT_CHANCE;
-            amount += amount * Math.min(0.75, missing) * 6 / 7.5;
+            amount += 0.666 * owner.CRIT_CHANCE;
+            amount += amount * Math.min(0.75, missing) * 5 / 7.5;
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);

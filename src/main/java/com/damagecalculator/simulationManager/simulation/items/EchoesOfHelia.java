@@ -27,7 +27,7 @@ public class EchoesOfHelia extends Item {
 
     public void extraDmg() { //supposing all abilities are heal/shield AND deal dmg (prob overtuned)
         if (stacks < 2) ++stacks;
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (20 + 10*owner.lvl) * stacks); //its supposed to be ally lvl
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (30 + 12.5f*Math.max(0, owner.lvl - 6)) * stacks); //its supposed to be ally lvl
         stacks = 0;
     }
 

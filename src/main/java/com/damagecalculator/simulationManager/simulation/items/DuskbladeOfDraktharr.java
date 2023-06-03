@@ -22,7 +22,7 @@ public class DuskbladeOfDraktharr extends Item {
 
     public void extraDmg() {
         cs.damageMultiplier /= currentDmgMult;
-        currentDmgMult = 1 + Math.min(0.8f, owner.getEnemy().getRelativeMissingHP())/0.8f * 0.15f; //up to 15% increase, maxed at 20% missing
+        currentDmgMult = 1 + Math.min(0.7f, owner.getEnemy().getRelativeMissingHP())/0.7f * 0.2f; //up to 20% increase, maxed at 30% remaining
         cs.damageMultiplier *= currentDmgMult;
     }
 

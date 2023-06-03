@@ -13,7 +13,7 @@ public class Stormrazor extends Item {
 
     public Stormrazor() {
         super(name, type, cost);
-        ad = 55;
+        ad = 50;
         crit = 20;
         as = 15;
 
@@ -24,7 +24,7 @@ public class Stormrazor extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 25 + owner.getAD()*0.65f + owner.AP*0.5f, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15 + owner.getAD()*0.6f + owner.AP*0.5f, 1);
         }
     }
 

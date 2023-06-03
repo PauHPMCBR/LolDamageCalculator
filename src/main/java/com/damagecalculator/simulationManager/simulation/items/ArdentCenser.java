@@ -20,7 +20,7 @@ public class ArdentCenser extends Item {
     }
 
     public void specialStats() {
-        owner.BONUS_AS += 15 + 15f / 17f * (owner.lvl - 1);
+        owner.BONUS_AS += 20;
 
         onhitDamage = 15 + 15f / 17f * (owner.lvl - 1);
     }

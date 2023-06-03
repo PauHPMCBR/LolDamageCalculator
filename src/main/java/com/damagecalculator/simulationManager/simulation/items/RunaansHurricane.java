@@ -17,7 +17,7 @@ public class RunaansHurricane extends Item {
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15);
     }
 
     @Override

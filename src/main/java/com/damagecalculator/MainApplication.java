@@ -45,7 +45,7 @@ public class MainApplication extends Application {
 
         controller.output.setEditable(false);
 
-        controller.LolPatch.setText("Lol Patch: 13.10");
+        controller.LolPatch.setText("Lol Patch: 13.11");
 
         controller.evd = startupThread.evd;
         controller.extraVariables.setMaxWidth(430);
