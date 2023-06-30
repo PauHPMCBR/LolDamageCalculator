@@ -9,8 +9,6 @@ public class ArdentCenser extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2100;
 
-    float onhitDamage;
-
     public ArdentCenser() {
         super(name, type, cost);
         ap = 35;
@@ -21,12 +19,10 @@ public class ArdentCenser extends Item {
 
     public void specialStats() {
         owner.BONUS_AS += 20;
-
-        onhitDamage = 15 + 15f / 17f * (owner.lvl - 1);
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, onhitDamage);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15, 1);
     }
 
     @Override

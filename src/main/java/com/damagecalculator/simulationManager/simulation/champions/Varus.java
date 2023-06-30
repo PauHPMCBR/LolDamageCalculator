@@ -70,7 +70,7 @@ public class Varus extends Champion {
             public void onExpiring() { //= use stacks
                 if (lvl < 0) return;
                 float mult = 3 + 0.5f * lvl; //from 3 to 5
-                mult += 0.025 * owner.AP;
+                mult += 0.015 * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
                         mult/100 * owner.getEnemy().getMaxHP() * extraVariable, 3);
 
@@ -88,7 +88,7 @@ public class Varus extends Champion {
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{40,40,40,40,40};
         w.damage = new float[]{7,12,17,22,27};
-        w.ap_scale = new float[]{0.3f,0.3f,0.3f,0.3f,0.3f};
+        w.ap_scale = new float[]{0.35f,0.35f,0.35f,0.35f,0.35f};
         w.cast_time = 0;
 
         e = new Ability(E) {

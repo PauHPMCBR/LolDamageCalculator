@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Bloodthirster extends Item {
     public static final String name = "Bloodthirster";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 3400;
 
     public Bloodthirster() {
         super(name, type, cost);

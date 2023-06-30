@@ -16,9 +16,7 @@ public class MoonstoneRenewer extends Item {
         manaRegen = 100;
     }
 
-    public void applyMythicPassive() {
-        owner.AH += 5 * owner.legendary_items_carried;
-    }
+    //heal and shield power mythic passive
 
     @Override
     public Item makeCopy() {

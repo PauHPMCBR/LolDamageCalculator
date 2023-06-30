@@ -13,7 +13,7 @@ public class PhantomDancer extends Item {
     public PhantomDancer() {
         super(name, type, cost);
         ad = 20;
-        as = 30;
+        as = 35;
         crit = 20;
         ms = 7;
 

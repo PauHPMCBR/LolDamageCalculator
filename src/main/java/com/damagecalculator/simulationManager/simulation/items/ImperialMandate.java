@@ -20,7 +20,7 @@ public class ImperialMandate extends Item {
     }
 
     public void specialStats() {
-        dmg = 35 + 40f / 17f * (owner.lvl - 1);
+        dmg = 40 + 2 * Math.max(0, owner.lvl - 8);
     }
     public void extraDmg() {
         if (canUse()) {

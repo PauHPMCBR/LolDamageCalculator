@@ -25,7 +25,7 @@ public class RapidFirecannon extends Item {
         ++energyze;
         if (energyze == 10) { //kinda arbitrary
             energyze = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60 + Math.max(0, owner.lvl - 10)*10, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60, 1);
         }
     }
 
