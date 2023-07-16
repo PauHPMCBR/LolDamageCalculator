@@ -1,12 +1,10 @@
 package com.damagecalculator;
 
-import com.damagecalculator.simulationManager.Printer;
 import com.damagecalculator.simulationManager.SimulationManager;
 import com.damagecalculator.simulationManager.simulation.AbilityType;
 import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.Inventory;
-import com.damagecalculator.simulationManager.simulation.champions.Dummy;
-import com.damagecalculator.simulationManager.simulation.champions.Lucian;
+import com.damagecalculator.simulationManager.simulation.champions.*;
 import com.damagecalculator.simulationManager.simulation.items.*;
 
 import java.io.File;
@@ -14,7 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
+
+import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
 
 public class GraphCreator {
 
@@ -42,6 +41,8 @@ public class GraphCreator {
 
             if (statName.equals("armor")) {
                 dummy = new Dummy(dummyStats[0], i, dummyStats[2]);
+            } else if (statName.equals("mr")) {
+                dummy = new Dummy(dummyStats[0], dummyStats[1], i);
             }
 
             SimulationManager sm = new SimulationManager();
@@ -49,54 +50,49 @@ public class GraphCreator {
             sm.setEnemy(dummy);
             if (isCombo) ans.add(List.of(Integer.toString(i), Float.toString(sm.simulateCombo(comboOrPrio, false))));
             else ans.add(List.of(Integer.toString(i), Float.toString(sm.simulateDps(comboOrPrio, false))));
+
         }
 
         return ans;
     }
 
     public static void main(String[] args) throws IOException {
-        int startingVal = 0, endingVal = 600, interval = 1;
+        int startingVal = 0, endingVal = 200, interval = 1;
 
         isCombo = true;
-        comboOrPrio = new AbilityType[]{AbilityType.AUTO};
+        comboOrPrio = new AbilityType[]{AbilityType.W, AbilityType.W};
+        dummyStats[0] = 2000; //3000 hp
 
-        Inventory withArmorPen = new Inventory();
-        withArmorPen.add(new MortalReminder());
-        withArmorPen.add(new InfinityEdge());
-        withArmorPen.add(new Bloodthirster());
+        Inventory lud = new Inventory();
+        lud.add(new SorcerersShoes());
+        lud.add(new StatikkShiv());
+        lud.add(new NashorsTooth());
+        lud.add(new LudensTempest());
 
-        Inventory withoutArmorPen = new Inventory();
-        withoutArmorPen.add(new TheCollector());
-        withoutArmorPen.add(new InfinityEdge());
-        withoutArmorPen.add(new Bloodthirster());
+        Inventory lia = new Inventory();
+        lia.add(new SorcerersShoes());
+        lia.add(new StatikkShiv());
+        lia.add(new NashorsTooth());
+        lia.add(new LiandrysAnguish());
 
-        Champion lucian = new Lucian();
-        lucian.lvl = 10;
-        lucian.setInventory(withArmorPen);
-        champion = lucian;
-        List<List<String>> results = new ArrayList<>(List.of(List.of("armor", "autoDmg")));
-        results.addAll(testStat("armor", startingVal, endingVal, interval));
-        generateFile(results, "armorPen.csv");
+        Champion kaisa = new Kaisa();
+        kaisa.upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
+        kaisa.lvl = 13;
+        kaisa.setInventory(lud);
+        champion = kaisa;
+        List<List<String>> results = new ArrayList<>(List.of(List.of("mr", "comboDmg")));
+        results.addAll(testStat("mr", startingVal, endingVal, interval));
+        generateFile(results, "withLudens.csv");
 
 
-        lucian = new Lucian();
-        lucian.lvl = 10;
-        lucian.setInventory(withoutArmorPen);
-        champion = lucian;
-        results = new ArrayList<>(List.of(List.of("armor", "autoDmg")));
-        results.addAll(testStat("armor", startingVal, endingVal, interval));
-        generateFile(results, "noArmorPen.csv");
-
-        lucian = new Lucian();
-        lucian.lvl = 10;
-        withoutArmorPen.remove(new TheCollector());
-        withoutArmorPen.add(new ChempunkChainsword());
-        System.out.println(withoutArmorPen.getItems());
-        lucian.setInventory(withoutArmorPen); //85 ad
-        champion = lucian;
-        results = new ArrayList<>(List.of(List.of("armor", "autoDmg")));
-        results.addAll(testStat("armor", startingVal, endingVal, interval));
-        generateFile(results, "moreAD.csv");
+        kaisa = new Kaisa();
+        kaisa.upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
+        kaisa.lvl = 13;
+        kaisa.setInventory(lia);
+        champion = kaisa;
+        results = new ArrayList<>(List.of(List.of("mr", "comboDmg")));
+        results.addAll(testStat("mr", startingVal, endingVal, interval));
+        generateFile(results, "withLiandry.csv");
     }
 
 

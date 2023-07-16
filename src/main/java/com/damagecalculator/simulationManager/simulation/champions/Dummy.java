@@ -5,11 +5,11 @@ import com.damagecalculator.simulationManager.simulation.*;
 public class Dummy extends Champion {
     public static final String name = "Dummy";
 
-    int dummyHP, dummyArmor, dummyMr;
+    public int dummyBaseHP, dummyBonusHP, dummyArmor, dummyMr;
 
-    public Dummy(int dummyHP, int dummyArmor, int dummyMr) {
+    public Dummy(int dummyBaseHP, int dummyBonusHP, int dummyArmor, int dummyMr) {
         super (name,
-                Math.min(2000, dummyHP),
+                dummyBaseHP,
                 0f,
                 0f,
                 0f,
@@ -26,20 +26,24 @@ public class Dummy extends Champion {
                 0f,
                 0f,
                 false);
-        this.dummyHP = dummyHP;
+        this.dummyBaseHP = dummyBaseHP;
+        this.dummyBonusHP = dummyBonusHP;
         this.dummyArmor = dummyArmor;
         this.dummyMr = dummyMr;
 
         lvl = 1;
 
-        Item dummyStats = new DummyStats(Math.max(0, dummyHP - 2000), dummyArmor, dummyMr);
+        Item dummyStats = new DummyStats(dummyBonusHP, dummyArmor, dummyMr);
         dummyStats.is_hidden = true;
         addUniqueItem(dummyStats);
+    }
+    public Dummy(int dummyHP, int dummyArmor, int dummyMr) { //?
+        this(Math.min(2000, dummyHP), Math.max(0, dummyHP - 2000), dummyArmor, dummyMr);
     }
 
     @Override
     public Champion makeCopy() {
-        return new Dummy(dummyHP, dummyArmor, dummyMr);
+        return new Dummy(dummyBaseHP, dummyBonusHP, dummyArmor, dummyMr);
     }
 
 

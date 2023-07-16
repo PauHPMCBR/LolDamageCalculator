@@ -4,10 +4,9 @@ import com.damagecalculator.displays.*;
 import com.damagecalculator.simulationManager.BuildTester;
 import com.damagecalculator.simulationManager.Printer;
 import com.damagecalculator.simulationManager.SimulationManager;
+import com.damagecalculator.simulationManager.StatsTester;
 import com.damagecalculator.simulationManager.simulation.*;
-import com.damagecalculator.simulationManager.simulation.champions.Ahri;
 import com.damagecalculator.simulationManager.simulation.champions.Dummy;
-import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,12 +18,12 @@ import javafx.util.Pair;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MainView {
     public HBox champion;
     public HBox inventory;
     public HBox runes;
+    public HBox graph;
 
     public HBox extraVariables;
 
@@ -38,17 +37,22 @@ public class MainView {
     public Button comboButton;
     public Button dpsButton;
 
-    public CheckBox buildCombinations;
-    public Label modeSelected;
+    public String[] modes = {"Single Build", "Build Combinations", "Stat Graph"};
+    public MenuButton currentMode;
     public Button variableItemsButton;
-    public Button resetVariableItemsButton;
+    public Button resetButton;
 
-    public Label maxItemsLabel;
+    public HBox buildCombinationConstraints;
     public TextField maxItemsVal;
-    public Label maxCostLabel;
     public TextField maxCostVal;
 
-    public TextField enemyHP;
+    public HBox var1box, var2box;
+    public MenuButton var1type, var2type;
+    public TextField var1min, var1max, var2min, var2max;
+
+
+    public TextField enemyBaseHP;
+    public TextField enemyBonusHP;
     public TextField enemyArmor;
     public TextField enemyMR;
 
@@ -62,6 +66,8 @@ public class MainView {
 
     Champion currentChampion;
     ArrayList<Item> variableItemList;
+
+    GraphDisplay graphDisplay;
 
     public void setChampion(Champion c) {
         currentChampion = c; //had .makeCopy()
@@ -132,13 +138,26 @@ public class MainView {
 
     @FXML
     protected void onComboButtonClick() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Champion dummy = new Dummy(
-                Integer.parseInt(enemyHP.getText()),
+        Dummy dummy = new Dummy(
+                Integer.parseInt(enemyBaseHP.getText()),
+                Integer.parseInt(enemyBonusHP.getText()),
                 Integer.parseInt(enemyArmor.getText()),
                 Integer.parseInt(enemyMR.getText())
         );
 
-        if (buildCombinations.isSelected()) {
+        if (currentMode.getText().equals("Single Build")) {
+            SimulationManager sm = new SimulationManager();
+            sm.setChampion(setUpChampion());
+            sm.setEnemy(dummy);
+            output.setText("");
+            sm.printer = new Printer() {
+                public void print(String s) {
+                    output.setText(output.getText() + s);
+                }
+            };
+            sm.simulateCombo(DisplayUtils.getAbilityList(comboOrPriority.getText()));
+        }
+        else if (currentMode.getText().equals("Build Combinations")) {
             BuildTester bt = new BuildTester(
                     Integer.parseInt(maxItemsVal.getText()),
                     Integer.parseInt(maxCostVal.getText())
@@ -160,28 +179,47 @@ public class MainView {
             );
         }
         else {
-            SimulationManager sm = new SimulationManager();
-            sm.setChampion(setUpChampion());
-            sm.setEnemy(dummy);
-            output.setText("");
-            sm.printer = new Printer() {
-                public void print(String s) {
-                    output.setText(output.getText() + s);
-                }
-            };
-            sm.simulateCombo(DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            graph.getChildren().clear();
+            StatsTester statsTester = new StatsTester(setUpChampion(), dummy, true, DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            int xMin = Integer.parseInt(var1min.getText());
+            int xMax = Integer.parseInt(var1max.getText());
+            int yMin = Integer.parseInt(var2min.getText());
+            int yMax = Integer.parseInt(var2max.getText());
+            int xStep = 1, yStep = 1;
+            if (xMax - xMin >= 1000) xStep = 10;
+            if (yMax - yMin >= 1000) yStep = 10;
+            Data3D data3D = new Data3D(
+                    var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Damage");
+            data3D.setData(statsTester.testStats(
+                    StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
+                    StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+            ));
+            graph.getChildren().add(graphDisplay.getDisplay(data3D));
         }
     }
 
     @FXML
     protected void onDpsButtonClick() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        Champion dummy = new Dummy(
-                Integer.parseInt(enemyHP.getText()),
+        output.setText("");
+        Dummy dummy = new Dummy(
+                Integer.parseInt(enemyBaseHP.getText()),
+                Integer.parseInt(enemyBonusHP.getText()),
                 Integer.parseInt(enemyArmor.getText()),
                 Integer.parseInt(enemyMR.getText())
         );
 
-        if (buildCombinations.isSelected()) {
+        if (currentMode.getText().equals("Single Build")) {
+            SimulationManager sm = new SimulationManager();
+            sm.setChampion(setUpChampion());
+            sm.setEnemy(dummy);
+            sm.printer = new Printer() {
+                public void print(String s) {
+                    output.setText(output.getText() + s);
+                }
+            };
+            sm.simulateDps(DisplayUtils.getAbilityList(comboOrPriority.getText()));
+        }
+        else if (currentMode.getText().equals("Build Combinations")) {
             BuildTester bt = new BuildTester(
                     Integer.parseInt(maxItemsVal.getText()),
                     Integer.parseInt(maxCostVal.getText())
@@ -189,7 +227,6 @@ public class MainView {
             bt.setRunePage(setUpRunes());
             bt.setPermanentItems(currentInventory.getInventory().getItems());
             bt.setVariableItems(variableItemList);
-            output.setText("");
             bt.printer = new Printer() {
                 public void print(String s) {
                     output.setText(output.getText() + s);
@@ -203,43 +240,56 @@ public class MainView {
             );
         }
         else {
-            SimulationManager sm = new SimulationManager();
-            sm.setChampion(setUpChampion());
-            sm.setEnemy(dummy);
-            output.setText("");
-            sm.printer = new Printer() {
-                public void print(String s) {
-                    output.setText(output.getText() + s);
-                }
-            };
-            sm.simulateDps(DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            StatsTester statsTester = new StatsTester(setUpChampion(), dummy, false, DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            int xMin = Integer.parseInt(var1min.getText());
+            int xMax = Integer.parseInt(var1max.getText());
+            int yMin = Integer.parseInt(var2min.getText());
+            int yMax = Integer.parseInt(var2max.getText());
+            int xStep = 1, yStep = 1;
+            if (xMax - xMin >= 1000) xStep = 10;
+            if (yMax - yMin >= 1000) yStep = 10;
+            Data3D data3D = new Data3D(
+                    var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Time");
+            data3D.setData(statsTester.testStats(
+                    StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
+                    StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+            ));
+            graph.getChildren().clear();
+            graph.getChildren().add(graphDisplay.getDisplay(data3D));
         }
     }
 
-    boolean previousState = false;
-    @FXML
-    protected void onModeSwitch() {
-        if (buildCombinations.isSelected() != previousState) {
-            if (buildCombinations.isSelected()) {
-                modeSelected.setText("Combinations");
-                variableItemsButton.setVisible(true);
-                resetVariableItemsButton.setVisible(true);
-                maxCostLabel.setVisible(true);
-                maxCostVal.setVisible(true);
-                maxItemsVal.setVisible(true);
-                maxItemsLabel.setVisible(true);
-            }
-            else {
-                modeSelected.setText("Single build");
-                variableItemsButton.setVisible(false);
-                resetVariableItemsButton.setVisible(false);
-                maxCostLabel.setVisible(false);
-                maxCostVal.setVisible(false);
-                maxItemsVal.setVisible(false);
-                maxItemsLabel.setVisible(false);
-            }
-            previousState = !previousState;
+
+    String previousState = "-";
+    protected void onModeSwitch(String newState) {
+        if (newState.equals(previousState)) return;
+
+        if (newState.equals("Single Build")) {
+            variableItemsButton.setVisible(false);
+            resetButton.setVisible(false);
+            buildCombinationConstraints.setVisible(false);
+
+            var1box.setVisible(false);
+            var2box.setVisible(false);
         }
+        else if (newState.equals("Build Combinations")) {
+            variableItemsButton.setVisible(true);
+            resetButton.setVisible(true);
+            buildCombinationConstraints.setVisible(true);
+
+            var1box.setVisible(false);
+            var2box.setVisible(false);
+        }
+        else { //Stat Graph
+            variableItemsButton.setVisible(false);
+            resetButton.setVisible(true);
+            buildCombinationConstraints.setVisible(false);
+
+            var1box.setVisible(true);
+            var2box.setVisible(true);
+        }
+        previousState = newState;
+        currentMode.setText(newState);
     }
 
     @FXML
@@ -254,5 +304,8 @@ public class MainView {
             variableItems.itemList.add(new Pair<>(i, false));
         }
         variableItemList.clear();
+
+        graph.getChildren().clear();
+        graphDisplay.clearDisplay();
     }
 }

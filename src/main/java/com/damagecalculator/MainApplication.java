@@ -1,17 +1,18 @@
 package com.damagecalculator;
 
 import com.damagecalculator.displays.*;
+import com.damagecalculator.simulationManager.StatsTester;
 import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
-import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MainApplication extends Application {
 
         Scene scene = new Scene(root);
         stage.setTitle("Damage Calculator");
+        stage.setMaximized(true);
         stage.getIcons().add(new Image(
                 Objects.requireNonNull(MainApplication.class.getResourceAsStream("trueDmgIcon.png"))));
         stage.setScene(scene);
@@ -59,8 +61,13 @@ public class MainApplication extends Application {
         controller.extraVariableLabel.setVisible(false);
         controller.extraVariableValue.setVisible(false);
 
-        controller.modeSelected.setText("Single build");
-        controller.resetVariableItemsButton.setVisible(false);
+        for (String mode : controller.modes) {
+            MenuItem mi = new MenuItem(mode);
+            mi.setOnAction(e -> controller.onModeSwitch(((MenuItem) e.getSource()).getText()));
+            controller.currentMode.getItems().add(mi);
+        }
+
+        controller.resetButton.setVisible(false);
         controller.variableItemsButton.setVisible(false);
         controller.variableItems = new ItemListDisplay() {
             public void pickedItem(Item i, boolean b) {
@@ -75,15 +82,27 @@ public class MainApplication extends Application {
                 updateDisplay();
             }
         };
-        controller.maxCostLabel.setVisible(false);
-        controller.maxCostVal.setVisible(false);
-        controller.maxItemsVal.setVisible(false);
-        controller.maxItemsLabel.setVisible(false);
+        controller.buildCombinationConstraints.setVisible(false);
+
+        controller.var1box.setVisible(false);
+        controller.var2box.setVisible(false);
+
+        for (StatsTester.StatType statType : StatsTester.StatType.values()) {
+            MenuItem mi = new MenuItem(statType.name());
+            mi.setOnAction(e -> controller.var1type.setText(statType.name()));
+            controller.var1type.getItems().add(mi);
+        }
+        for (StatsTester.StatType statType : StatsTester.StatType.values()) {
+            MenuItem mi = new MenuItem(statType.name());
+            mi.setOnAction(e -> controller.var2type.setText(statType.name()));
+            controller.var2type.getItems().add(mi);
+        }
 
         controller.maxCostVal.setText("100000");
         controller.maxItemsVal.setText("6");
 
-        controller.enemyHP.setText("1000");
+        controller.enemyBaseHP.setText("1000");
+        controller.enemyBonusHP.setText("500");
         controller.enemyMR.setText("30");
         controller.enemyArmor.setText("50");
 
@@ -96,7 +115,11 @@ public class MainApplication extends Application {
         controller.inventory.getChildren().add(controller.currentInventory.getDisplay());
 
         controller.currentRunes = startupThread.currentRunes;
+
         controller.runes.getChildren().add(controller.currentRunes.getDisplay());
+
+        controller.graphDisplay = new GraphDisplay();
+        controller.graph.setVisible(true);
 
         controller.onResetClick();
 

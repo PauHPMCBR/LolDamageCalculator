@@ -29,10 +29,14 @@ public class Kaisa extends Champion {
         );
 
         passive = new Ability(PASSIVE) { //extraVariable = plasma stacks
+            float lastApplied = 0;
             public void startingCalculations() {
                 extraVariable = 0;
             }
             public void onCall() {
+                if (cs.time > lastApplied + 4) extraVariable = 0;
+                lastApplied = cs.time;
+
                 float dmg = 5 + ((float)(owner.lvl-1)*18)/17;
                 dmg += (1+((float)(owner.lvl-1)*11)/17) * extraVariable;
                 dmg += (0.15 + 0.025*extraVariable) * owner.AP;
