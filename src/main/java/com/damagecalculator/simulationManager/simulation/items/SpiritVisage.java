@@ -12,7 +12,7 @@ public class SpiritVisage extends Item {
         super(name, type, cost);
         ah = 10;
         hp = 450;
-        mr = 50;
+        mr = 60;
         hpRegen = 100;
     }
 

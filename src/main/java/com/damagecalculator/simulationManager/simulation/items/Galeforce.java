@@ -15,7 +15,7 @@ public class Galeforce extends Item {
         as = 15;
         crit = 20;
         ms = 7;
-        item_cooldown = 90;
+        item_cooldown = 120;
     }
 
     public void extraDmg() {

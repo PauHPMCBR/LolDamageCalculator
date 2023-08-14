@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SpearOfShojin extends Item {
     public static final String name = "Spear of Shojin";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3400;
+    public static final int cost = 3300;
 
     float specialAH;
 
@@ -14,7 +14,7 @@ public class SpearOfShojin extends Item {
         super(name, type, cost);
         ad = 65;
         ah = 20;
-        hp = 300;
+        hp = 350;
     }
 
     public void specialStats() {

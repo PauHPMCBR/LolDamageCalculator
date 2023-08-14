@@ -9,7 +9,7 @@ public class Kaisa extends Champion {
     public Kaisa() {
         super(
                 name,
-                670f,
+                640f,
                 102f,
                 344.88f,
                 38f,
@@ -71,7 +71,7 @@ public class Kaisa extends Champion {
         q.cooldown = new float[]{10, 9, 8, 7, 6};
         q.damage = new float[]{40,55,70,85,100};
         q.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
-        q.ap_scale = new float[]{0.3f,0.3f,0.3f,0.3f,0.3f};
+        q.ap_scale = new float[]{0.2f,0.2f,0.2f,0.2f,0.2f};
         q.cast_time = 0;
 
         w = new Ability(W) { //extraVariable = is w evolved
@@ -86,7 +86,7 @@ public class Kaisa extends Champion {
                 currentCooldown = getCooldown();
                 if (extraVariable == 1) {
                     owner.passive.onCall();
-                    currentCooldown *= 0.27; //77% cd refund
+                    currentCooldown *= 0.25; //75% cd refund
                 }
             }
         };
@@ -127,7 +127,9 @@ public class Kaisa extends Champion {
         Item passiveOnHit = new PassiveKaisaOnhit();
         addUniqueItem(passiveOnHit);
 
-        upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, E, Q, E, R, E, E, W, W, R, W, W};
+        //upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, E, Q, E, R, E, E, W, W, R, W, W};
+        upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
+
         abilityPriorities = new AbilityType[] {Q, AUTO, E, W};
     }
 

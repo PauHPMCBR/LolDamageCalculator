@@ -10,12 +10,12 @@ public class InfinityEdge extends Item {
 
     public InfinityEdge() {
         super(name, type, cost);
-        ad = 70;
+        ad = 65;
         crit = 20;
     }
 
     public void specialStats() {
-        owner.crit_damage += 0.35f;
+        owner.crit_damage += 0.45f;
     }
 
     public void applyMythicPassive() {

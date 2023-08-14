@@ -26,9 +26,9 @@ public class LiandrysAnguish extends Item {
     }
 
     public void extraDmg() {
-        float ticks = Math.min(cs.time - lastTick, 4); //extra variable is time
+        float secs = Math.min(cs.time - lastTick, 4); //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (50 + 0.06 * owner.AP + 0.04 * owner.getEnemy().getMaxHP())), 1);
+                (float) (secs * (50 + 0.06 * owner.AP + 0.04 * owner.getEnemy().getMaxHP())/4), 1);
         lastTick = cs.time;
     }
 

@@ -15,7 +15,7 @@ public class TrinityForce extends Item {
     public TrinityForce() {
         super(name, type, cost);
         ad = 40;
-        as = 35;
+        as = 33;
         ah = 20;
         hp = 300;
         item_cooldown = 1.5f;
@@ -28,8 +28,8 @@ public class TrinityForce extends Item {
     }
 
     public void onHit() {
-        if (threefoldStrikeStacks < 5) {
-            owner.BASE_AD += originalBaseAd * 0.04;
+        if (threefoldStrikeStacks < 3) {
+            owner.BASE_AD += originalBaseAd * 0.06;
             ++threefoldStrikeStacks;
         }
         if (canUse()) {

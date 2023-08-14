@@ -1,6 +1,9 @@
 package com.damagecalculator.simulationManager;
 
 import com.damagecalculator.simulationManager.simulation.*;
+import com.damagecalculator.simulationManager.simulation.items.DemonicEmbrace;
+import com.damagecalculator.simulationManager.simulation.items.LiandrysAnguish;
+
 import java.util.*;
 
 /**
@@ -134,6 +137,7 @@ public class DamageCalculator {
     /**
      * Main function to apply a specific combo, not accounting for mana limitations
      */
+    public boolean includeFinalBurn = true;
     public void applyCombo(AbilityType[] combo) {
         eventTimes = new PriorityQueue<>();
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
@@ -148,6 +152,18 @@ public class DamageCalculator {
                 increaseTime(a.currentCooldown);
                 if (a.isUnlocked()) useAbility(a);
                 else System.out.println("Can't use " + a.type + " because it's not unlocked!");
+            }
+        }
+        if (includeFinalBurn) {
+            boolean hasBurnItem = false;
+            for (Item i : cs.champion.allItems) {
+                if (i.equals(new LiandrysAnguish()) || i.equals(new DemonicEmbrace())) {
+                    if (!hasBurnItem) {
+                        hasBurnItem = true;
+                        cs.time += 4; //extra burn time
+                    }
+                    i.extraDmg();
+                }
             }
         }
     }

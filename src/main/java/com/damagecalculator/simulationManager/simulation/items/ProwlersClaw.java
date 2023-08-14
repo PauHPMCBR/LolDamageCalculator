@@ -13,7 +13,7 @@ public class ProwlersClaw extends Item {
         super(name, type, cost);
         ad = 55;
         ah = 15;
-        lethality = 15;
+        lethality = 18;
         item_cooldown = 10;
     }
 
