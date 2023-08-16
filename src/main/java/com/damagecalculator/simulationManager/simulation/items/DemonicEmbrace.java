@@ -28,7 +28,7 @@ public class DemonicEmbrace extends Item {
         float mult = 0.064f;
         if (owner.is_ranged) mult = 0.04f;
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (ticks * (owner.getEnemy().getMaxHP() * mult)), 1);
+                (ticks * (owner.getEnemy().getMaxHP() * mult)/4), 1);
         lastTick = cs.time;
     }
 
