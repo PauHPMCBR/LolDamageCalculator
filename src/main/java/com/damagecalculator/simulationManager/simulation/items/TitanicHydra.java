@@ -12,6 +12,9 @@ public class TitanicHydra extends Item {
 
     public TitanicHydra() {
         super(name, type, cost);
+
+        ad = 30;
+        hp = 500;
     }
 
     public void specialStats() {

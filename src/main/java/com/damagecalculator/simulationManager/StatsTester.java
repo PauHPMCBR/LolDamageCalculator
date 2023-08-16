@@ -2,8 +2,6 @@ package com.damagecalculator.simulationManager;
 
 import com.damagecalculator.simulationManager.simulation.AbilityType;
 import com.damagecalculator.simulationManager.simulation.Champion;
-import com.damagecalculator.simulationManager.simulation.Inventory;
-import com.damagecalculator.simulationManager.simulation.RunePage;
 import com.damagecalculator.simulationManager.simulation.champions.Dummy;
 
 public class StatsTester {
@@ -53,6 +51,23 @@ public class StatsTester {
                 if (isCombo) result[i][j] = sm.simulateCombo(comboOrPrio, false);
                 else result[i][j] = sm.simulateDps(comboOrPrio, false);
             }
+        }
+
+        return result;
+    }
+
+    public float[] testStat(StatType stat, int start, int step, int end) {
+        float[] result = new float[(end - start)/step + 1];
+
+        for (int i = 0; start + i * step <= end; ++i) {
+            updateEnemy(stat, start + i * step);
+
+            SimulationManager sm = new SimulationManager();
+            sm.setChampion(champion);
+            sm.setEnemy(dummy);
+
+            if (isCombo) result[i] = sm.simulateCombo(comboOrPrio, false);
+            else result[i] = sm.simulateDps(comboOrPrio, false);
         }
 
         return result;

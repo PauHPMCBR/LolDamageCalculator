@@ -3,128 +3,151 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="722.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damagecalculator.MainView">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.damagecalculator.MainView">
    <children>
-      <HBox prefHeight="730.0" prefWidth="1226.0">
+      <VBox>
          <children>
-            <VBox prefHeight="722.0" prefWidth="790.0">
-                <Label />
-            <HBox layoutX="6.0" prefHeight="409.0" prefWidth="790.0" spacing="10">
-                <Label />
-      
-              <VBox layoutX="315.0" prefHeight="458.0" prefWidth="324.0" spacing="10">
-      
-                  <HBox prefHeight="62.0" prefWidth="324.0" spacing="20">
-                      <HBox fx:id="champion" prefHeight="65.0" prefWidth="67.0" />
-                      <HBox fx:id="inventory" prefHeight="83.0" prefWidth="246.0" />
-                  </HBox>
-      
-                  <HBox prefWidth="324.0" spacing="10">
-                      <Label prefWidth="18.0" text="Lvl:" />
-                      <TextField fx:id="level" prefWidth="61.0" />
-                      <Label fx:id="extraVariableLabel" text="Extra Variable:" />
-                      <TextField fx:id="extraVariableValue" prefWidth="40.0" />
-                  </HBox>
-      
-                  <HBox>
-                      <Label prefWidth="100" text="Upgrade Order: " />
-                      <TextField fx:id="upgradeOrder" prefWidth="240.0" />
-                  </HBox>
-      
-                  <Separator />
-      
-                  <HBox spacing="10">
-                      <TextField fx:id="comboOrPriority" prefHeight="26.0" prefWidth="202.0" />
-                      <Button fx:id="comboButton" onAction="#onComboButtonClick" text="Combo" />
-                      <Button fx:id="dpsButton" onAction="#onDpsButtonClick" text="DPS" />
-                  </HBox>
-      
-                  <Separator />
-      
-                  <VBox prefHeight="100.0" prefWidth="200.0" spacing="10">
-                      <HBox>
-                          <Label text="Enemy stats:" />
-                      </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                            <HBox prefHeight="26.0" prefWidth="155.0">
-                                <Label prefWidth="80" text="Base HP:" />
-                                <TextField fx:id="enemyBaseHP" prefHeight="26.0" prefWidth="80.0" />
+            <MenuBar fx:id="menuBar" prefHeight="26.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#onNewClick" text="New" />
+                    <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#onLoadClick" text="Load" />
+                    <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
+                    <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#onCloseClick" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="howToUseButton" mnemonicParsing="false" onAction="#onHowToUseClick" text="How to use" />
+                    <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutClick" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox>
+               <children>
+                  <VBox>
+                      <Label />
+                  <HBox layoutX="6.0" prefHeight="409.0" prefWidth="790.0" spacing="10">
+                      <Label />
+
+                    <VBox layoutX="315.0" prefHeight="458.0" prefWidth="324.0" spacing="10">
+
+                        <HBox prefHeight="62.0" prefWidth="324.0" spacing="20">
+                            <HBox fx:id="champion" prefHeight="65.0" prefWidth="67.0" />
+                            <HBox fx:id="inventory" prefHeight="83.0" prefWidth="246.0" />
+                        </HBox>
+
+                        <HBox prefWidth="324.0" spacing="10">
+                            <Label prefWidth="18.0" text="Lvl:" />
+                            <TextField fx:id="level" prefWidth="61.0" />
+                            <Label fx:id="extraVariableLabel" text="Extra Variable:" />
+                            <TextField fx:id="extraVariableValue" prefWidth="40.0" />
+                        </HBox>
+
+                        <HBox>
+                            <Label prefWidth="100" text="Upgrade Order: " />
+                            <TextField fx:id="upgradeOrder" prefWidth="240.0" />
+                        </HBox>
+
+                        <Separator />
+
+                        <HBox spacing="10">
+                            <TextField fx:id="comboOrPriority" prefHeight="26.0" prefWidth="202.0" />
+                            <Button fx:id="comboButton" onAction="#onComboButtonClick" text="Combo" />
+                            <Button fx:id="dpsButton" onAction="#onDpsButtonClick" text="DPS" />
+                        </HBox>
+
+                        <Separator />
+
+                        <VBox prefHeight="100.0" prefWidth="200.0" spacing="10">
+                            <HBox>
+                                <Label text="Enemy stats:" />
                             </HBox>
-                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="165.0">
+                              <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label prefWidth="80" text="  Bonus HP:" />
-                                    <TextField fx:id="enemyBonusHP" prefHeight="26.0" prefWidth="80.0" />
+                                  <HBox prefHeight="26.0" prefWidth="155.0">
+                                      <Label prefWidth="80" text="Base HP:" />
+                                      <TextField fx:id="enemyBaseHP" prefHeight="26.0" prefWidth="80.0" />
+                                  </HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="165.0">
+                                       <children>
+                                          <Label prefWidth="80" text="  Bonus HP:" />
+                                          <TextField fx:id="enemyBonusHP" prefHeight="26.0" prefWidth="80.0" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </HBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                            <HBox prefHeight="26.0" prefWidth="155.0">
-                                <Label prefWidth="80" text="Armor:" />
-                                <TextField fx:id="enemyArmor" prefHeight="26.0" prefWidth="80.0" />
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                  <HBox prefHeight="26.0" prefWidth="155.0">
+                                      <Label prefWidth="80" text="Armor:" />
+                                      <TextField fx:id="enemyArmor" prefHeight="26.0" prefWidth="80.0" />
+                                  </HBox>
+                                  <HBox prefHeight="26.0" prefWidth="165.0">
+                                      <Label prefWidth="80" text="  Magic resist:" />
+                                      <TextField fx:id="enemyMR" prefHeight="26.0" prefWidth="80.0" />
+                                  </HBox>
+                                 </children>
+                              </HBox>
+                        </VBox>
+
+                        <Separator />
+
+                        <VBox prefHeight="100.0" prefWidth="324.0" spacing="10">
+                            <HBox spacing="10">
+                                 <MenuButton fx:id="currentMode" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Single Build" />
+                                <Button fx:id="variableItemsButton" onAction="#onVariableItemsClick" text="Variable Items" />
+                                 <CheckBox fx:id="variablesNum" mnemonicParsing="false" onAction="#onVariablesClick" text="2 Variables" />
+                                <Button fx:id="resetButton" onAction="#onResetClick" text="Reset" />
                             </HBox>
-                            <HBox prefHeight="26.0" prefWidth="165.0">
-                                <Label prefWidth="80" text="  Magic resist:" />
-                                <TextField fx:id="enemyMR" prefHeight="26.0" prefWidth="80.0" />
+                            <HBox fx:id="buildCombinationConstraints" spacing="10">
+                                <Label fx:id="maxItemsLabel" text="Max items:" />
+                                <TextField fx:id="maxItemsVal" prefWidth="30" />
+                                <Label fx:id="maxCostLabel" text="Max build cost:" />
+                                <TextField fx:id="maxCostVal" prefWidth="60" />
                             </HBox>
-                           </children>
-                        </HBox>
+                              <HBox fx:id="var1box" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <MenuButton fx:id="var1type" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="BonusHP" />
+                                    <Label text="  Min: " />
+                                    <TextField fx:id="var1min" prefHeight="26.0" prefWidth="70.0" text="0" />
+                                    <Label text="  Max: " />
+                                    <TextField fx:id="var1max" prefHeight="26.0" prefWidth="70.0" text="100" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="var2box" layoutX="10.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <MenuButton fx:id="var2type" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Armor" />
+                                    <Label text="  Min: " />
+                                    <TextField fx:id="var2min" prefHeight="26.0" prefWidth="70.0" text="0" />
+                                    <Label text="  Max: " />
+                                    <TextField fx:id="var2max" prefHeight="26.0" prefWidth="70.0" text="100" />
+                                 </children>
+                              </HBox>
+                        </VBox>
+
+                    </VBox>
+                    <VBox>
+                        <HBox fx:id="runes" spacing="10" />
+                        <HBox fx:id="extraVariables" />
+                    </VBox>
+
+                  </HBox>
+                   <Label fx:id="LolPatch" alignment="BOTTOM_RIGHT" prefHeight="18.0" prefWidth="780.0" />
+                   <TextArea fx:id="output" prefHeight="291.0" prefWidth="790.0" />
+
+
                   </VBox>
-      
-                  <Separator />
-      
-                  <VBox prefHeight="105.0" prefWidth="324.0" spacing="10">
-                      <HBox spacing="10">
-                           <MenuButton fx:id="currentMode" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Single Build" />
-                          <Button fx:id="variableItemsButton" onAction="#onVariableItemsClick" text="Variable Items" />
-                          <Button fx:id="resetButton" onAction="#onResetClick" text="Reset" />
-                      </HBox>
-                      <HBox fx:id="buildCombinationConstraints" spacing="10">
-                          <Label fx:id="maxItemsLabel" text="Max items:" />
-                          <TextField fx:id="maxItemsVal" prefWidth="30" />
-                          <Label fx:id="maxCostLabel" text="Max build cost:" />
-                          <TextField fx:id="maxCostVal" prefWidth="60" />
-                      </HBox>
-                        <HBox fx:id="var1box" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <MenuButton fx:id="var1type" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="BonusHP" />
-                              <Label text="  Min: " />
-                              <TextField fx:id="var1min" prefHeight="26.0" prefWidth="70.0" text="0" />
-                              <Label text="  Max: " />
-                              <TextField fx:id="var1max" prefHeight="26.0" prefWidth="70.0" text="100" />
-                           </children>
-                        </HBox>
-                        <HBox fx:id="var2box" layoutX="10.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <MenuButton fx:id="var2type" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Armor" />
-                              <Label text="  Min: " />
-                              <TextField fx:id="var2min" prefHeight="26.0" prefWidth="70.0" text="0" />
-                              <Label text="  Max: " />
-                              <TextField fx:id="var2max" prefHeight="26.0" prefWidth="70.0" text="100" />
-                           </children>
-                        </HBox>
+                  <VBox>
+                     <children>
+                        <HBox fx:id="graph"/>
+                     </children>
                   </VBox>
-      
-              </VBox>
-              <VBox>
-                  <HBox fx:id="runes" spacing="10" />
-                  <HBox fx:id="extraVariables" />
-              </VBox>
-      
-            </HBox>
-             <Label fx:id="LolPatch" alignment="BOTTOM_RIGHT" prefHeight="18.0" prefWidth="780.0" />
-             <TextArea fx:id="output" prefHeight="300" prefWidth="543.0" />
-      
-      
-            </VBox>
-            <VBox prefHeight="730.0" prefWidth="439.0">
-               <children>
-                  <HBox fx:id="graph" prefHeight="423.0" prefWidth="438.0" />
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>

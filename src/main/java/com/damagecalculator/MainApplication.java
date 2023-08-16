@@ -74,6 +74,7 @@ public class MainApplication extends Application {
             controller.currentMode.getItems().add(mi);
         }
 
+        controller.variablesNum.setVisible(false);
         controller.resetButton.setVisible(false);
         controller.variableItemsButton.setVisible(false);
         controller.variableItems = new ItemListDisplay() {
@@ -90,6 +91,11 @@ public class MainApplication extends Application {
             }
         };
         controller.buildCombinationConstraints.setVisible(false);
+
+        controller.variablesNum.setManaged(false);
+        controller.variableItemsButton.setManaged(false);
+        controller.resetButton.setManaged(false);
+        controller.buildCombinationConstraints.setManaged(false);
 
         controller.var1box.setVisible(false);
         controller.var2box.setVisible(false);
@@ -112,6 +118,13 @@ public class MainApplication extends Application {
         controller.enemyBonusHP.setText("500");
         controller.enemyMR.setText("30");
         controller.enemyArmor.setText("50");
+
+        int graphSize = (int) (Math.min(screenWidth - controller.output.getWidth(), screenHeight) - 50);
+        System.out.println(graphSize);
+        controller.graph.setPrefWidth(graphSize);
+        controller.graph.setPrefHeight(graphSize);
+        System.out.println(controller.graph.getWidth());
+        System.out.println(controller.graph.getHeight());
 
         startupThread.join();
 

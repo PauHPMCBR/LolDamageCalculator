@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Config implements Serializable {
+    static final int newestVersion = 1;
+
+    int version;
+
     String championName;
 
     List<String> itemNames;
@@ -38,12 +42,15 @@ public class Config implements Serializable {
     int maxItems, maxBuildCost;
 
     //for "Stat Graph"
+    boolean secondStatEnabled;
     String firstStatName, secondStatName;
     int firstStatMin, firstStatMax, secondStatMin, secondStatMax;
 
 
 
     public Config(MainView mv) {
+        version = newestVersion;
+
         championName = mv.currentChampion.name;
 
         itemNames = new ArrayList<>();
@@ -92,12 +99,15 @@ public class Config implements Serializable {
             maxBuildCost = Integer.parseInt(mv.maxCostVal.getText());
         }
         else if (modeSelected.equals("Stat Graph")) {
+            secondStatEnabled = mv.variablesNum.isSelected();
             firstStatName = mv.var1type.getText();
-            secondStatName = mv.var2type.getText();
             firstStatMin = Integer.parseInt(mv.var1min.getText());
             firstStatMax = Integer.parseInt(mv.var1max.getText());
-            secondStatMin = Integer.parseInt(mv.var2min.getText());
-            secondStatMax = Integer.parseInt(mv.var2max.getText());
+            if (secondStatEnabled) {
+                secondStatName = mv.var2type.getText();
+                secondStatMin = Integer.parseInt(mv.var2min.getText());
+                secondStatMax = Integer.parseInt(mv.var2max.getText());
+            }
         }
     }
 
@@ -113,6 +123,11 @@ public class Config implements Serializable {
         ObjectInputStream ois = new ObjectInputStream(fin);
         Config config = (Config) ois.readObject();
         ois.close();
+
+        if (config.version != newestVersion) {
+            System.out.println("Warning, file loaded is from an older save version! Overwriting the save is recommended.");
+        }
+
         return config;
     }
 

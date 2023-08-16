@@ -11,11 +11,12 @@ import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -63,6 +64,7 @@ public class MainView {
     public MenuButton var1type, var2type;
     public TextField var1min, var1max, var2min, var2max;
 
+    public CheckBox variablesNum;
 
     public TextField enemyBaseHP;
     public TextField enemyBonusHP;
@@ -203,13 +205,24 @@ public class MainView {
             int xStep = 1, yStep = 1;
             if (xMax - xMin >= 1000) xStep = 10;
             if (yMax - yMin >= 1000) yStep = 10;
-            Data3D data3D = new Data3D(
-                    var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Damage");
-            data3D.setData(statsTester.testStats(
-                    StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
-                    StatsTester.getType(var2type.getText()), yMin, yStep, yMax
-            ));
-            graph.getChildren().add(graphDisplay.getDisplay(data3D));
+
+            if (variablesNum.isSelected()) {
+                Data3D data3D = new Data3D(
+                        var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Damage");
+                data3D.setData(statsTester.testStats(
+                        StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
+                        StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+                ));
+                ImageView iv = graphDisplay.getDisplay(data3D);
+                iv.setFitHeight(graph.getHeight());
+                iv.setFitWidth(graph.getWidth());
+                graph.getChildren().add(iv);
+
+            }
+            else {
+                float[] result = statsTester.testStat(StatsTester.getType(var1type.getText()), xMin, xStep, xMax);
+                graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, "Damage", result));
+            }
         }
     }
 
@@ -255,6 +268,7 @@ public class MainView {
             );
         }
         else {
+            graph.getChildren().clear();
             StatsTester statsTester = new StatsTester(setUpChampion(), dummy, false, DisplayUtils.getAbilityList(comboOrPriority.getText()));
             int xMin = Integer.parseInt(var1min.getText());
             int xMax = Integer.parseInt(var1max.getText());
@@ -263,14 +277,23 @@ public class MainView {
             int xStep = 1, yStep = 1;
             if (xMax - xMin >= 1000) xStep = 10;
             if (yMax - yMin >= 1000) yStep = 10;
-            Data3D data3D = new Data3D(
-                    var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Time");
-            data3D.setData(statsTester.testStats(
-                    StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
-                    StatsTester.getType(var2type.getText()), yMin, yStep, yMax
-            ));
-            graph.getChildren().clear();
-            graph.getChildren().add(graphDisplay.getDisplay(data3D));
+
+            if (variablesNum.isSelected()) {
+                Data3D data3D = new Data3D(
+                        var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Time");
+                data3D.setData(statsTester.testStats(
+                        StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
+                        StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+                ));
+                ImageView iv = graphDisplay.getDisplay(data3D);
+                iv.setFitHeight(graph.getHeight());
+                iv.setFitWidth(graph.getWidth());
+                graph.getChildren().add(iv);
+            }
+            else {
+                float[] result = statsTester.testStat(StatsTester.getType(var1type.getText()), xMin, xStep, xMax);
+                graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, "Time", result));
+            }
         }
     }
 
@@ -283,25 +306,48 @@ public class MainView {
             variableItemsButton.setVisible(false);
             resetButton.setVisible(false);
             buildCombinationConstraints.setVisible(false);
+            variableItemsButton.setManaged(false);
+            resetButton.setManaged(false);
+            buildCombinationConstraints.setManaged(false);
+
+            variablesNum.setVisible(false);
+            variablesNum.setManaged(false);
 
             var1box.setVisible(false);
+            var1box.setManaged(true);
             var2box.setVisible(false);
         }
         else if (newState.equals("Build Combinations")) {
             variableItemsButton.setVisible(true);
             resetButton.setVisible(true);
             buildCombinationConstraints.setVisible(true);
+            variableItemsButton.setManaged(true);
+            resetButton.setManaged(true);
+            buildCombinationConstraints.setManaged(true);
+
+            variablesNum.setVisible(false);
+            variablesNum.setManaged(false);
 
             var1box.setVisible(false);
+            var1box.setManaged(false);
             var2box.setVisible(false);
+            //no!
         }
         else { //Stat Graph
             variableItemsButton.setVisible(false);
             resetButton.setVisible(true);
             buildCombinationConstraints.setVisible(false);
+            variableItemsButton.setManaged(false);
+            resetButton.setManaged(true);
+            buildCombinationConstraints.setManaged(false);
+
+            variablesNum.setVisible(true);
+            variablesNum.setManaged(true);
 
             var1box.setVisible(true);
-            var2box.setVisible(true);
+            var1box.setManaged(true);
+            if (variablesNum.isSelected())
+                var2box.setVisible(true);
         }
         previousState = newState;
         currentMode.setText(newState);
@@ -310,6 +356,11 @@ public class MainView {
     @FXML
     protected void onVariableItemsClick() {
         variableItems.openWindow();
+    }
+
+    @FXML
+    protected void onVariablesClick() {
+        var2box.setVisible(variablesNum.isSelected());
     }
 
     @FXML

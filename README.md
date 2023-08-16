@@ -1,5 +1,49 @@
 # League of Legends Damage Calculator
-Tool to calculate DPS or damage made by a combo with a certain build and sort builds by performance.
+Tool to make analyzing builds a lot easier. Created to compare items and runes between each other and in many different situations, efficiently.
+
+## How to use the program
+The GUI has the following features:
+
+![GUIde](images/GUIde2.png)
+The main screen will always look similar to this. All simulations will start running by pressing either the "Combo" or the "DPS" button.
+1. **Champion:** the champion that will be used in the simulation (as offender). Clicking on it opens a new window with all the champions available to test. Clicking on a champion in that window selects it.
+2. **Inventory:** if an item is clicked, it will get removed from the inventory. If an empty slot is clicked, a list of all items will appear (with the ones ineligible greyed out). Clicking a valid item in that list will add it to the inventory.
+3. **Champion level:** number between 1 and 18
+4. **Champion specific variable:** some champions have some kind of stacking mechanic (Syndra, Sena, ASol...). Set their starting value here.
+5. **Ability upgrade order:** a list of 18 abilities (the detection is pretty sparing. Capitalization, spaces or commas, etc. doesn't matter).
+6. **Combo / Ability priority:** when the button "Combo" is clicked, a simulation will start setting this list of abilities as the combo used. If "DPS" button is clicked, a simulation will start where it will try to use the first ability, if it can't, the second, if it can't, the third... Every champion has a specific ability priority order that maximises their DPS.
+7. **Enemy stats:** to set the 4 main stats of the enemy, or defender.
+8. **Mode select:** there are 3 modes available. The first one, "Single Build", has no extra configuration, and is the one shown in the image above (the other 2 are explained in more detail in the next section).
+9. **Rune page:** interactive rune page
+10. **Items and runes extra variables:** some items and runes have stacking mechanics (like Mejai's, ROA, Alacrity, Eyeball collection...). This space is to set their specific values before the start of the simulation.
+11. **Output console:** the output is generated here (after starting a simulation with "Combo" or "DPS" button). If no output is generated, it is probably because too many combinations are being generated (in mode "Combinations"). If you don't know how much it can last, I recommend it to stop, since it could be from seconds to months, depending on the scale of the amount of possible combinations.
+12. **Graph display:** when the mode "Stat Graph" is chosen (option inside (8) pop up), the generated graph after pressing the "Combo" or "DPS" output will be shown in this spot. More details in the next section.
+13. **Current patch:** displays the League of Legends' patch this program is running on. If your patch is outdated, there probably is a newer version with the newest patch added.
+14. **Menu bar:** the "File" menu enables saving and the current configuration to a file (and loading a configuration from a file). The "Help" menu has options that lead to this website.
+
+### Testing build combinations
+The second mode is "Build Combinations", and will look like this:
+![BuildCombinations](images/BuildCombinations.png)
+The "Variable Items" button opens a different item list, where the marked items are the ones that will be used to try every combination possible.
+The "Reset" button resets this item list, with all items not chosen.
+
+"Max Items" and "Max build cost" are constraints for what a combination can have. Keep in mind that combinations will include the
+items present in the "Inventory" (6 item slots on top), so if "Max Items" is set to 3, but there are 2 items in the main Inventory already,
+only groups of 3 and 2 items will be tested (that contain those 2 items).
+
+As always, press the "Combo" or "DPS" button to obtain an output, in this case, through console.
+
+### Displaying 2D and 3D graphs
+The third mode is "Stat Graph", whose purpose is to test a build with a given range of enemy defensive stats. The UI looks like this:
+![2DGraph](images/2DGraph.png)
+In this case, the "2 variables" option is not selected, so only one variable will be tested (in this case, Magic Resist, from 0 to 150).
+This image shows that 4 different builds have been tested, and there are 4 "functions" drawn in the same space. To remove everything from the right side of the screen, just press the "Reset" button.
+
+When the "2 variables" option is selected, the output is a 3D graph:
+![3DGraph](images/3DGraph.png)
+This case is only useful when comparing 2 variables is important, since it's a lot more difficult to visualize.
+The right screen is interactive, in this case, and the graph can be moved around to see it in different angles (made with jzy3d).
+
 
 ## What it CAN do
 Right now, only a few champions are implemented (they have to be handcoded).
@@ -20,7 +64,7 @@ Total damage: 1560.6393   (0.0 physical, 1486.2421 magic, 74.39725 true)
 58.489304 from Hextech Alternator
 110.968414 from Electrocute
 ```
-- Calculate the time it would take to kill an enemy (similar to getting the DPS of a build). Example for Kai'sa:
+- Calculate the time it would take to kill an enemy (similar to getting the DPS of a build). Example for (old items) Kai'sa:
 ```
 Champion (Kai'sa) stats: Level 13, 301 tAD, 0 AP, 2294 HP, 78 armor, 85 MR, 243 bAS, 30 AH
   Build: Berserker's Greaves, Kraken Slayer, Wit's End, Blade of the Ruined King, Black Cleaver
@@ -40,7 +84,7 @@ Total damage: 7244.4067   (4445.0815 physical, 1605.4052 magic, 1193.9199 true)
 1663.9911 from Blade of the Ruined King
 ```
 
-You can get 2 types of outputs:
+You can get 3 types of outputs:
 - Detailed description of the damage done, separated by type and by source of damage (autos, abilities, items, runes). This output is the one of the examples shown above.
 - Comparison between builds (given a set of items, choosing every possible combination and giving each build a score). For example, here is the output after testing builds of size 3 on Lucian vs an enemy with 5k HP, 200 armor and 150 MR:
 ```
@@ -61,6 +105,7 @@ The best 15 builds, sorted by DPS (time taken to kill enemy):
  14.  (8.296218)  Guinsoo's Rageblade, Blade of the Ruined King, Lord Dominik's Regards
  15.  (8.429257)  Blade of the Ruined King, Wit's End, Lord Dominik's Regards
 ```
+- Graphing a damage/time result of testing a build through a range of defensive stats, examples shown in the previous section.
 
 ## What it CAN'T do
 This tool is to calculate DPS vs a "target dummy". It can't put 2 champions in a 1v1 and test their damage one against other.
@@ -68,22 +113,7 @@ Because of that, things like healing are not considered. For the same reason, a 
 
 The feature of getting a 1v1 is possible to implement, just not a priority right now (because there are a lot of champions to implement, which is more important), and it would be a bit pointless given the fact this program assumes you are hitting all the abilities and are trying to deal maximum DPS.
 
-## How to use the program
-The GUI has the following features:
 
-![GUIde](images/GUIde.png)
-
-1. **Champion select:** a new window with all the available champions will open. Click the desired champion.
-2. **Inventory select:** if an item is clicked, it will get removed from the inventory. If an empty slot is clicked, a list of all items will appear (with the ones ineligible greyed out). Click any item to add it into the inventory.
-3. **Champion level:** write a number between 1 and 18
-4. **Champion specific variable:** some champions have some kind of stacking mechanic (Syndra, Sena, ASol...). Set their starting value here.
-5. **Ability upgrade order:** set a list of 18 abilities (the detection is pretty sparing, there can be capitals, spaces, etc.).
-6. **Combo / Ability priority:** when the button "Combo" is clicked, a simulation will start setting this list of abilities as the combo used. If "DPS" button is clicked, a simulation will start where it will try to use the first ability, if it can't, the second, if it can't, the third... Every champion has a specific ability priority order that maximises their DPS.
-7. **Build combination comparison:** when the checkbox is activated, instead of simulating a single build, the program will create all possible builds given the items already on the build and items added to the "Variable Items" set (add items by clicking them on the new item list that appears when clicking the button). The reset button resets the previous mentioned item list. To restrict the builds, there are the options of "Max items" and "Max build cost", and only builds that fit into these constraints will be tested.
-8. **Enemy stats:** Set the enemy defensive stats.
-9. **Rune page:** Interactive rune page
-10. **Items and runes extra variables:** Some items and runes have stacking mechanics (like Mejai's, ROA, Alacrity, Eyeball collection...). This space is to set their specific values before the start of the simulation.
-11. **Output console:** Here the output is generated (after starting a simulation with "Combo" or "DPS" button). If no output is generated, it is probably because too many combinations are being generated (in mode "Combinations"). If you don't know how much it can last, I recommend it to stop, since it could be from seconds to months, depending on the scale of the amount of possible combinations.
 ## How the simulation works
 ### Simulation Manager
 Inside the "simulationManager" package, there are 4 essential files:
@@ -114,17 +144,13 @@ Same for "RunePage", it will create an "organized" list of runes, setting keysto
 
 And finally, "AbilityType", "DamageType" and "RunePath" are just enums.
 
-## How to create new Champions
-(to do)
-
 ## Imperfections the program has
 Although this program is a very faithful recreation on what happens exactly in game, there are some things that can't be taken into account (or are very difficult). Most of them are very slight issues that can just be ignored, tho.
 - Mana cost is not taken into account.
 - All healing and movement speed is ignored (irrelevant for damage calculations. Well, except for Hecarim...)
-- Lucian needs to have the variable "useAutosBetweenAbilities" (located in SimulationManager and BuildTester) set to true for max DPS, because of the passive. More champion exclusive exceptions may appear in the future and may need more variables like this one.
+- Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
-- Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
 
 ## Things planned to do
 In parallel to adding new champions, these are the things planned to implement, in order of priority:
@@ -136,3 +162,5 @@ In parallel to adding new champions, these are the things planned to implement, 
 
 And lastly, implement the feature of being able to simulate 1v1s
 
+## Questions
+If you have any questions / requests / bug reports, please contact me on Discord (@paumb)

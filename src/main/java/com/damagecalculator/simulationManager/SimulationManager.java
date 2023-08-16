@@ -34,11 +34,6 @@ public class SimulationManager {
     public float simulateCombo(AbilityType[] combo, boolean print) {
         startSimulation();
         dmgCalc.applyCombo(combo);
-        System.out.println(cs.champion.base_ad);
-        System.out.println(cs.champion.ad_growth);
-        System.out.println(cs.champion.BASE_AD);
-        System.out.println(cs.champion.BONUS_AD);
-        System.out.println(cs.champion.getAD());
 
         if (print) {
             printer.printChampionStats(cs.champion, true, false);

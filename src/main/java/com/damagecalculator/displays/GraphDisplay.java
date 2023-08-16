@@ -1,23 +1,23 @@
 package com.damagecalculator.displays;
 
+import javafx.geometry.Insets;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import org.jzy3d.chart.AWTChart;
 import org.jzy3d.colors.Color;
 import org.jzy3d.colors.ColorMapper;
 import org.jzy3d.colors.colormaps.AbstractColorMap;
-import org.jzy3d.colors.colormaps.ColorMapRainbow;
 import org.jzy3d.colors.colormaps.IColorMap;
 import org.jzy3d.javafx.JavaFXChartFactory;
-import org.jzy3d.javafx.JavaFXRenderer3d;
-import org.jzy3d.javafx.controllers.mouse.JavaFXCameraMouseController;
 import org.jzy3d.maths.Coord3d;
 import org.jzy3d.plot3d.builder.concrete.OrthonormalTessellator;
 import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GraphDisplay {
     public class ColorMapScale extends AbstractColorMap implements IColorMap {
@@ -39,18 +39,23 @@ public class GraphDisplay {
 
     public JavaFXChartFactory factory;
     public AWTChart chart;
+
+    public LineChart lineChart;
+
     int graphsPresent;
+    boolean was2DBefore = true;
 
     public void clearDisplay() {
         factory = null;
         chart = null;
+        lineChart = null;
         graphsPresent = 0;
     }
-    public HBox getDisplay(Data3D data3D) {
-        if (graphsPresent >= 5) {
-            System.out.println("Max amount of graphs reached!");
+    public ImageView getDisplay(Data3D data3D) {
+        if (graphsPresent >= 5 || was2DBefore) {
             clearDisplay();
         }
+        was2DBefore = false;
         if (chart == null || factory == null) {
             factory = new JavaFXChartFactory();
             chart = (AWTChart) factory.newChart(Quality.Advanced, "offscreen");
@@ -72,11 +77,7 @@ public class GraphDisplay {
         chart.getAxeLayout().setYAxeLabel(data3D.yName);
         chart.getAxeLayout().setZAxeLabel(data3D.zName);
 
-        ImageView imageView = factory.bindImageView(chart);
-
-        HBox result = new HBox();
-        result.getChildren().add(imageView);
-        return result;
+        return factory.bindImageView(chart);
     }
 
     void addDataChart(Data3D data3D) {
@@ -90,5 +91,38 @@ public class GraphDisplay {
         surface.setWireframeDisplayed(false);
 
         chart.getScene().getGraph().add(surface);
+    }
+
+
+    public HBox getDisplay(String var1Name, int start, int step, String var2Name, float[] vals) {
+        if (graphsPresent >= 5 || !was2DBefore) {
+            clearDisplay();
+        }
+        was2DBefore = true;
+        if (lineChart == null) {
+            final NumberAxis xAxis = new NumberAxis();
+            final NumberAxis yAxis = new NumberAxis();
+            xAxis.setLabel(var1Name);
+            yAxis.setLabel(var2Name);
+            lineChart = new LineChart<>(xAxis, yAxis);
+            lineChart.setCreateSymbols(false);
+            lineChart.setPrefWidth(7000); //make it cover the entire hbox
+            lineChart.setPrefHeight(7000);
+        }
+
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("");
+        //populating the series with data
+        int var1val = start;
+        for (float f : vals) {
+            series.getData().add(new XYChart.Data(var1val, f));
+            var1val += step;
+        }
+
+        lineChart.getData().add(series);
+        ++graphsPresent;
+
+        return new HBox(lineChart);
     }
 }
