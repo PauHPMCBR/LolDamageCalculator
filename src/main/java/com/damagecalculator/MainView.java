@@ -8,18 +8,31 @@ import com.damagecalculator.simulationManager.StatsTester;
 import com.damagecalculator.simulationManager.simulation.*;
 import com.damagecalculator.simulationManager.simulation.champions.Dummy;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainView {
+    Stage stageToClose;
+
+    public MenuBar menuBar;
+
     public HBox champion;
     public HBox inventory;
     public HBox runes;
@@ -58,6 +71,8 @@ public class MainView {
 
     public TextArea output;
     public Label LolPatch;
+
+    Config defaultConfig;
 
     InventoryDisplay currentInventory;
     RunePageDisplay currentRunes;
@@ -307,5 +322,58 @@ public class MainView {
 
         graph.getChildren().clear();
         graphDisplay.clearDisplay();
+    }
+
+    private static String lastVisitedDirectory=System.getProperty("user.home");
+
+    @FXML
+    protected void onNewClick() {
+        defaultConfig.applyConfig(this);
+    }
+
+    @FXML
+    protected void onLoadClick() throws IOException, ClassNotFoundException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load Configuration");
+        fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Damage Calculator Configuration", "*.dcc"));
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile != null) {
+            System.out.println(selectedFile.getAbsolutePath());
+            Config config = Config.loadConfig(selectedFile.getAbsolutePath());
+            config.applyConfig(this);
+        }
+    }
+
+    @FXML
+    protected void onSaveClick() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Configuration As");
+        fileChooser.setInitialFileName("save.dcc");
+        fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Damage Calculator Configuration", "*.dcc"));
+
+        File selectedFile = fileChooser.showSaveDialog(new Stage());
+        if (selectedFile != null) {
+            System.out.println(selectedFile.getAbsolutePath());
+            Config config = new Config(this);
+            config.saveConfig(selectedFile.getAbsolutePath());
+            lastVisitedDirectory = selectedFile.getParent();
+        }
+    }
+
+    @FXML
+    protected void onCloseClick() {
+        stageToClose.close();
+    }
+
+    @FXML
+    protected void onHowToUseClick() {
+        System.out.println("5");
+    }
+
+    @FXML
+    protected void onAboutClick() {
+        System.out.println("6");
     }
 }

@@ -19,7 +19,7 @@ public class Inventory {
     private int cost;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, catalystOfAeons}, //mythic component
+            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, catalystOfAeons, rageknife}, //mythic component
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
             new Item[] {navoriQuickblades, spearOfShojin}, //cd mod
             new Item[] {trinityForce, divineSunderer, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade

@@ -6,7 +6,7 @@ public abstract class Rune {
 
     public final String name;
     public final RunePath path;
-    public final int column; //(0 is for keystone)
+    public final int column; //(0 is for keystone), yeah, it's swapped (row - column)
     public final int row;
 
     public String extraVariableName = null;

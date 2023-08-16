@@ -82,7 +82,8 @@ public class RunePageDisplay {
             }
             secondaryH.getChildren().add(iv);
         }
-
+        s1 = none.makeCopy();
+        s2 = none.makeCopy();
         updateSecondary1(none);
         updateSecondary2(none);
         updateSecondary3(none);
@@ -182,7 +183,7 @@ public class RunePageDisplay {
             runes = RuneList.getColumn3(secondary);
         }
 
-        ArrayList<ImageView> ivs = new ArrayList<>();
+        hBox.getChildren().clear();
         for (Rune r : runes) {
             ImageView iv = new ImageView(DisplayUtils.getRuneImage(r));
             DisplayUtils.desaturate(iv);
@@ -191,12 +192,9 @@ public class RunePageDisplay {
                 else if (column == 2) updateSecondary2(r);
                 else updateSecondary3(r);
             });
-            ivs.add(iv);
+            hBox.getChildren().add(iv);
         }
 
-        for (int i = 0; i < 3; ++i) hBox.getChildren().set(i, ivs.get(i));
-        while (ivs.size() < hBox.getChildren().size()) hBox.getChildren().remove(3);
-        if (ivs.size() > hBox.getChildren().size()) hBox.getChildren().add(ivs.get(3));
         DisplayUtils.distribute(hBox);
     }
 
@@ -365,18 +363,20 @@ public class RunePageDisplay {
         shards = new Shards(3,3,3);
 
         updatePrimaryPath(primary);
-        updateKeystone(none);
-        updatePrimary1(none);
-        updatePrimary2(none);
-        updatePrimary3(none);
+        //updateKeystone(none);
+        //updatePrimary1(none);
+        //updatePrimary2(none);
+        //updatePrimary3(none);
 
         s1 = none.makeCopy();
         s2 = none.makeCopy();
         updateSecondaryPath(secondary);
-        updateSecondary1(none);
-        updateSecondary2(none);
-        updateSecondary3(none);
+        //updateSecondary1(none);
+        //updateSecondary2(none);
+        //updateSecondary3(none);
 
         updateShards(3,3);
     }
 }
+
+//current bug: if first secondary selected is in row-col 3, it will disappear after choosing another secondary

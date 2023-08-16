@@ -3,6 +3,7 @@ package com.damagecalculator.simulationManager.simulation.items;
 import com.damagecalculator.simulationManager.simulation.Item;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ItemList {
     public static AbyssalMask abyssalMask = new AbyssalMask();
@@ -371,6 +372,10 @@ public class ItemList {
         add(zekesConvergence);
         add(zhonyasHourglass);
     }};
+    public static HashMap<String, Item> nameToItem = new HashMap<>();
+    static {
+        for (Item i : allItems) nameToItem.put(i.name, i);
+    }
 
     public static ArrayList<Item> allMagicDmg = new ArrayList<>() {{
         add(aetherWisp);

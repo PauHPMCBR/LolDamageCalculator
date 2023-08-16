@@ -9,9 +9,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,7 +36,10 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         MainView controller = fxmlLoader.getController();
 
-        Scene scene = new Scene(root);
+        int screenWidth = (int) Screen.getPrimary().getBounds().getWidth(); //1536 def
+        int screenHeight = (int) Screen.getPrimary().getBounds().getHeight(); //864 def
+
+        Scene scene = new Scene(root, screenWidth-100, screenHeight-100);
         stage.setTitle("Damage Calculator");
         stage.setMaximized(true);
         stage.getIcons().add(new Image(
@@ -45,7 +48,11 @@ public class MainApplication extends Application {
 
         stage.show();
 
+        controller.stageToClose = stage;
+
         controller.output.setEditable(false);
+
+        controller.menuBar.prefWidthProperty().bind(stage.widthProperty());
 
         controller.LolPatch.setText("Lol Patch: 13.15");
 
@@ -122,6 +129,8 @@ public class MainApplication extends Application {
         controller.graph.setVisible(true);
 
         controller.onResetClick();
+
+        controller.defaultConfig = new Config(controller);
 
         System.out.println("GUI started.");
     }

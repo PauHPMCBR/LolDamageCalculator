@@ -3,6 +3,11 @@ package com.damagecalculator.simulationManager.simulation.runes;
 import com.damagecalculator.simulationManager.simulation.Rune;
 import com.damagecalculator.simulationManager.simulation.RunePath;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 public class RuneList {
     public static Rune[] precisionKeystone = new Rune[] {new PressTheAttack(), new LethalTempo(), new FleetFootwork(), new Conqueror()};
     public static Rune[] precision1 = new Rune[] {new Overheal(), new Triumph(), new PresenceOfMind()};
@@ -28,6 +33,37 @@ public class RuneList {
     public static Rune[] inspiration1 = new Rune[] {new HextechFlashtraption(), new MagicalFootwear(), new PerfectTiming()};
     public static Rune[] inspiration2 = new Rune[] {new FuturesMarket(), new MinionDematerializer(), new BiscuitDelivery(3)};
     public static Rune[] inspiration3 = new Rune[] {new CosmicInsight(), new ApproachVelocity(), new TimeWarpTonic()};
+
+    public static ArrayList<Rune> allRunes = new ArrayList<>();
+    public static HashMap<String, Rune> nameToRune = new HashMap<>();
+    static {
+        allRunes.addAll(Arrays.asList(precisionKeystone));
+        allRunes.addAll(Arrays.asList(precision1));
+        allRunes.addAll(Arrays.asList(precision2));
+        allRunes.addAll(Arrays.asList(precision3));
+
+        allRunes.addAll(Arrays.asList(dominationKeystone));
+        allRunes.addAll(Arrays.asList(domination1));
+        allRunes.addAll(Arrays.asList(domination2));
+        allRunes.addAll(Arrays.asList(domination3));
+
+        allRunes.addAll(Arrays.asList(sorceryKeystone));
+        allRunes.addAll(Arrays.asList(sorcery1));
+        allRunes.addAll(Arrays.asList(sorcery2));
+        allRunes.addAll(Arrays.asList(sorcery3));
+
+        allRunes.addAll(Arrays.asList(resolveKeystone));
+        allRunes.addAll(Arrays.asList(resolve1));
+        allRunes.addAll(Arrays.asList(resolve2));
+        allRunes.addAll(Arrays.asList(resolve3));
+
+        allRunes.addAll(Arrays.asList(inspirationKeystone));
+        allRunes.addAll(Arrays.asList(inspiration1));
+        allRunes.addAll(Arrays.asList(inspiration2));
+        allRunes.addAll(Arrays.asList(inspiration3));
+
+        for (Rune r : allRunes) nameToRune.put(r.name, r);
+    }
 
     public static Rune[] getKeystones(RunePath rp) {
         switch (rp) {

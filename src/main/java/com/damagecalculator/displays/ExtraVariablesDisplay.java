@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -15,19 +16,21 @@ public class ExtraVariablesDisplay {
     public VBox col1;
     public VBox col2;
 
+    public ArrayList<HBox> hBoxes;
+
     private final ArrayList<Item> items;
     private final ArrayList<Rune> runes;
 
-    public HBox createSetter(Item i) {
-        TextField tf = new TextField("0");
+    public HBox createSetter(Item i, int val) {
+        TextField tf = new TextField(Integer.toString(val));
         tf.setId(i.name);
         tf.setPrefWidth(40);
         HBox res = new HBox(new Label(i.extraVariableName), DisplayUtils.createSpacer(), tf);
         res.setPrefWidth(200);
         return res;
     }
-    public HBox createSetter(Rune r) {
-        TextField tf = new TextField("0");
+    public HBox createSetter(Rune r, int val) {
+        TextField tf = new TextField(Integer.toString(val));
         tf.setId(r.name);
         tf.setPrefWidth(40);
         HBox res = new HBox(new Label(r.extraVariableName), DisplayUtils.createSpacer(), tf);
@@ -38,33 +41,46 @@ public class ExtraVariablesDisplay {
     public void update() {
         col1.getChildren().clear();
         col2.getChildren().clear();
-        int parity = 1;
-        for (Item i : items) {
-            if (parity == 1) col1.getChildren().add(createSetter(i));
-            else col2.getChildren().add(createSetter(i));
-            parity *= -1;
-        }
-        for (Rune r : runes) {
-            if (parity == 1) col1.getChildren().add(createSetter(r));
-            else col2.getChildren().add(createSetter(r));
-            parity *= -1;
+        boolean parity = true;
+        for (HBox hBox : hBoxes) {
+            if (parity) col1.getChildren().add(hBox);
+            else col2.getChildren().add(hBox);
+            parity = !parity;
         }
     }
 
-    public void add(Item i) {
+    public void add(Item i, int val) {
         items.add(i);
+        hBoxes.add(createSetter(i, val));
         update();
+    }
+    public void add(Item i) {
+        add(i, 0);
     }
     public void remove(Item i) {
         items.remove(i);
+        for (HBox hBox : hBoxes)
+            if (((Label)hBox.getChildren().get(0)).getText().equals(i.extraVariableName)) {
+                hBoxes.remove(hBox);
+                break;
+            }
+        update();
+    }
+    public void add(Rune r, int val) {
+        runes.add(r);
+        hBoxes.add(createSetter(r, val));
         update();
     }
     public void add(Rune r) {
-        runes.add(r);
-        update();
+        add(r, 0);
     }
     public void remove(Rune r) {
         runes.remove(r);
+        for (HBox hBox : hBoxes)
+            if (((Label)hBox.getChildren().get(0)).getText().equals(r.extraVariableName)) {
+                hBoxes.remove(hBox);
+                break;
+            }
         update();
     }
 
@@ -114,9 +130,17 @@ public class ExtraVariablesDisplay {
         return ans;
     }
 
+    public void reset() {
+        col1.getChildren().clear();
+        col2.getChildren().clear();
+        items.clear();
+        runes.clear();
+    }
+
     public ExtraVariablesDisplay() {
         col1 = new VBox();
         col2 = new VBox();
+        hBoxes = new ArrayList<>();
 
         items = new ArrayList<>();
         runes = new ArrayList<>();

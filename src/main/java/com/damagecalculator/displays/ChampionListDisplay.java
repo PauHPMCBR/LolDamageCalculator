@@ -19,12 +19,11 @@ import java.util.Objects;
 public class ChampionListDisplay {
     static final int columns = 5;
 
-    public List<Champion> championList;
 
     public Scene getScene() {
         TilePane tilePane = new TilePane();
 
-        for (Champion c : championList) {
+        for (Champion c : ChampionList.allChampions) {
             ImageView iv = new ImageView(DisplayUtils.getChampionIcon(c));
             iv.setOnMouseClicked((MouseEvent e) -> pickedChampion(c));
 
@@ -63,13 +62,4 @@ public class ChampionListDisplay {
 
     public void pickedChampion(Champion c) {}
 
-    public ChampionListDisplay() {
-        championList = new ArrayList<>();
-        championList.add(new Ahri());
-        championList.add(new Kaisa());
-        championList.add(new Lucian());
-        championList.add(new Syndra(0));
-        championList.add(new Varus());
-        championList.add(new Vayne());
-    }
 }
