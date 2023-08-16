@@ -375,7 +375,7 @@ public class MainView {
         graphDisplay.clearDisplay();
     }
 
-    private static String lastVisitedDirectory=System.getProperty("user.home");
+    private static String lastVisitedDirectory = System.getProperty("user.dir");
 
     @FXML
     protected void onNewClick() {
