@@ -14,16 +14,16 @@ public class ProwlersClaw extends Item {
         ad = 55;
         ah = 15;
         lethality = 18;
-        item_cooldown = 10;
+        item_cooldown = 5;
     }
 
     public void extraDmg() { //supposing can always use after dash
         if (canUse()) {
             putOnCooldown();
             if (owner.is_ranged)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 65 + 30 * owner.BONUS_AD, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 65 + 35 * owner.BONUS_AD, 1);
             else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 85 + 45 * owner.BONUS_AD, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 85 + 55 * owner.BONUS_AD, 1);
         }
     }
 

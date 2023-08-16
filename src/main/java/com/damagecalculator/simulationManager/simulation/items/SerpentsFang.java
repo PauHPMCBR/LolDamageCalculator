@@ -11,7 +11,7 @@ public class SerpentsFang extends Item {
     public SerpentsFang() {
         super(name, type, cost);
         ad = 55;
-        lethality = 12;
+        lethality = 15;
     }
 
     @Override

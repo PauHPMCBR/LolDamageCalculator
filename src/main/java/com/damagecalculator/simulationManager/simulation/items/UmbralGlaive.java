@@ -12,7 +12,7 @@ public class UmbralGlaive extends Item {
         super(name, type, cost);
         ad = 50;
         ah = 15;
-        lethality = 10;
+        lethality = 13;
     }
 
     @Override
