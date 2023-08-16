@@ -135,6 +135,7 @@ public class Config implements Serializable {
 
         for (String name : runeNames) {
             Rune rune = RuneList.nameToRune.get(name);
+            if (rune == null) continue;
             if (rune.path.equals(rp1)) {
                 switch (rune.column) {
                     case 0 -> mv.currentRunes.updateKeystone(rune);
