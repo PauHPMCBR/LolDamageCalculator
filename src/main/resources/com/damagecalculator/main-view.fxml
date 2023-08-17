@@ -20,7 +20,8 @@
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
                     <MenuItem fx:id="howToUseButton" mnemonicParsing="false" onAction="#onHowToUseClick" text="How to use" />
-                    <MenuItem fx:id="newestReleaseButton" mnemonicParsing="false" onAction="#onNewestReleaseClick" text="Newest Release" />
+                    <MenuItem fx:id="championSpecificDetailsButton" mnemonicParsing="false" onAction="#onChampionSpecificDetailsButton" text="Champion specific details" />
+                    <MenuItem fx:id="newestReleaseButton" mnemonicParsing="false" onAction="#onNewestReleaseClick" text="Newest release" />
                     <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutClick" text="About" />
                   </items>
                 </Menu>

@@ -448,6 +448,27 @@ public class MainView {
     }
 
     @FXML
+    protected void onChampionSpecificDetailsButton() {
+        String url = "https://github.com/PauHPMCBR/LolDamageCalculator#champion-specific-details";
+
+        if(Desktop.isDesktopSupported()){
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }else{
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec("x-www-browser " + url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
     protected void onNewestReleaseClick() {
         String url = "https://github.com/PauHPMCBR/LolDamageCalculator/releases/";
 
@@ -488,4 +509,6 @@ public class MainView {
             }
         }
     }
+
+
 }
