@@ -18,7 +18,7 @@ public class Scorch extends Rune {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 20 + 20f/17*(cs.champion.lvl-1));
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 20 + 20f/17*(cs.champion.lvl-1), 2);
         }
     }
 

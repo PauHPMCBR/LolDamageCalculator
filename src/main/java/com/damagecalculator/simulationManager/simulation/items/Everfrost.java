@@ -21,7 +21,7 @@ public class Everfrost extends Item {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (float) (100 + 0.3 * owner.AP));
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (float) (100 + 0.3 * owner.AP), 2);
         }
     }
 

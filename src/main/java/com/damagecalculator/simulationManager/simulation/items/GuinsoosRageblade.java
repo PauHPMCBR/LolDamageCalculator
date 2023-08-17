@@ -33,7 +33,7 @@ public class GuinsoosRageblade extends Item {
             if (autos == 3) {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, critOnhit + 30, 1); //rageblade onhit again
                 for (Item i : owner.allItems) {
-                    if (i.name.equals("Guinsoo's Rageblade")) continue;
+                    if (i.name.equals("Guinsoo's Rageblade") || i.name.equals("Kraken Slayer")) continue;
                     i.onHit();
                 }
                 autos = 0;

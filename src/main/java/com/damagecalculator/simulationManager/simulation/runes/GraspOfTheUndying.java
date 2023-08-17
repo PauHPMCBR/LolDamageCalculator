@@ -23,7 +23,7 @@ public class GraspOfTheUndying extends Rune {
             lastUsed = cs.time;
             float mult = 0.035f;
             if (owner.is_ranged) mult = 0.021f;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, owner.getMaxHP() * mult);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, owner.getMaxHP() * mult, 1);
             //ignoring heal part
             owner.BONUS_HP += 4;
             if (!owner.is_ranged) owner.BONUS_HP += 3;

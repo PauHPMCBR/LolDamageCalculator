@@ -40,7 +40,7 @@ public abstract class Champion {
     public float ULTIMATE_HASTE, ITEM_HASTE;
 
     Inventory inventory = new Inventory();
-    RunePage runes = null;
+    protected RunePage runes = null;
     List<Item> uniqueItems = new ArrayList<>(); //champion specific items that make certain tasks easier
     public List<Item> allItems;
     public int legendary_items_carried;
@@ -237,8 +237,8 @@ public abstract class Champion {
      */
     public void autoAttack() {
         boolean isCrit = (autosUsed%5) < CRIT_CHANCE/100 * 5; //works for every 20% crit chance, wouldn't work with 15% cloak/zeal, non-random cycle of 5
-        if (isCrit) autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD() * crit_damage);
-        else autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD());
+        if (isCrit) autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD() * crit_damage, 0);
+        else autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD(), 0);
         ++autosUsed;
         autoCd = 1/getAttackSpeed();
 

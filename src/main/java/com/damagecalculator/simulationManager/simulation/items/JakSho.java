@@ -28,7 +28,7 @@ public class JakSho extends Item {
         owner.MAGIC_RESIST += 2 * (newStacks - stacks);
         stacks = newStacks;
         if (stacks == 8) {
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 80f + 0.07f * owner.BONUS_HP);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 80f + 0.07f * owner.BONUS_HP, 2);
             //ignoring healing
             owner.ARMOR += (owner.ARMOR - owner.base_armor - owner.armor_growth*(owner.lvl-1)) * 0.2;
             owner.MAGIC_RESIST += (owner.MAGIC_RESIST - owner.base_mr - owner.mr_growth*(owner.lvl-1)) * 0.2; //increase BONUS resistances

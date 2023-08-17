@@ -38,7 +38,7 @@ public class Aftershock extends Rune {
             owner.ARMOR -= armorIncrease;
             owner.MAGIC_RESIST -= mrIncrease;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                    25 + 95f / 17f * (owner.lvl - 1) + owner.BONUS_HP * 0.08f);
+                    25 + 95f / 17f * (owner.lvl - 1) + owner.BONUS_HP * 0.08f, 2);
 
             isActive = false;
             putOnCooldown();

@@ -21,7 +21,7 @@ public class HextechRocketbelt extends Item {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (float) (125 + 0.15 * owner.AP));
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (float) (125 + 0.15 * owner.AP), 2);
             owner.autoReset(); //how many people know this? this is so random xd
         }
     }

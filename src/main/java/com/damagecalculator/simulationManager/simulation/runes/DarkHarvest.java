@@ -23,7 +23,7 @@ public class DarkHarvest extends Rune {
             if (owner.getEnemy().getRelativeMissingHP() >= 0.5) {
                 float dmg = 20 + 40f/17f*(owner.lvl -1) + 5*souls;
                 dmg += 0.25f * owner.BONUS_AD + 0.15f * owner.AP;
-                damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg);
+                damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg, 2);
                 ++souls;
                 putOnCooldown();
             }

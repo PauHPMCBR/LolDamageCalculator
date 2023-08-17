@@ -57,7 +57,7 @@ public class Vayne extends Champion {
         q.cooldown = new float[]{4,3.5f,3,2.5f,2};
         q.ad_scale = new float[]{0.75f,0.85f,0.95f,1.05f,1.15f};
         q.ap_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
-        q.cast_time = 0;
+        q.cast_time = 0.4f;
 
         w = new Ability(W) {
             public void startingCalculations() {
@@ -87,11 +87,11 @@ public class Vayne extends Champion {
                 currentCooldown = getCooldown();
             }
         };
+        e.damageType = DamageType.physicalDmg;
         e.cooldown = new float[]{20,18,16,14,12};
         e.damage = new float[]{50,85,120,155,190};
         e.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
         e.cast_time = 0.25f;
-        e.damageType = null;
 
         r = new Ability(R) {
             public void onUse() {

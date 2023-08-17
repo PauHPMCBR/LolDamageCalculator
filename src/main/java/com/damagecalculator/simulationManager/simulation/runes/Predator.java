@@ -25,7 +25,7 @@ public class Predator extends Rune {
         if (canUse()) {
             float dmg = 20 + 160f / 17f * (owner.lvl - 1);
             dmg += owner.BONUS_AD * 0.25 + owner.AP * 0.15;
-            damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg);
+            damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg, 2);
             putOnCooldown();
         }
     }

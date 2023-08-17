@@ -17,7 +17,7 @@ public class CheapShot extends Rune {
 
     public void extraDmg() { //extremely inaccurate, would be MUCH lower in a real game. this supposes perma CC
         if (cs.time - lastUsed > rune_cooldown) {
-            damageDealt += cs.damage.applyDamage(DamageType.trueDmg, 10 + 35f / 17f * (owner.lvl - 1));
+            damageDealt += cs.damage.applyDamage(DamageType.trueDmg, 10 + 35f / 17f * (owner.lvl - 1), 1);
             lastUsed = cs.time - rune_cooldown * (1 - cs.champion.getItemCooldownModification());
         }
     }

@@ -47,9 +47,7 @@ public class Damage {
     /**
      * Only call to skip damage multipliers, very specific uses
      */
-    public float applyDamage(DamageType type, float amount, boolean bypassExtras) {
-        if (!bypassExtras) return applyDamage(type, amount);
-
+    private float applyDirectDamage(DamageType type, float amount) {
         if (type == DamageType.physicalDmg) return applyPhysicalDamage(amount);
         if (type == DamageType.magicDmg) return applyMagicDamage(amount);
         return applyTrueDamage(amount);
@@ -63,7 +61,8 @@ public class Damage {
      *
      * Examples:
      *      0 comes from auto
-     *      1 comes from item on-hit
+     *      1 comes from item/rune on-hit
+     *      2 comes from item/rune active / independent dmg <- DOESNT AFFECT LUDENS ! ! ! !
      *      3 comes from ability passive
      *      6 comes from ability active
      */
@@ -71,7 +70,7 @@ public class Damage {
         amount *= cs.damageTrueMultiplier;
         if (cs.riftmakerItem != null) { //(riftmaker amplifies true damage as well)
             if (cs.time >= 3) cs.riftmakerItem.damageDealt += applyTrueDamage((float) (amount*0.09));
-            else cs.riftmakerItem.damageDealt += applyDamage(type, (float) (amount * 0.03* cs.time), true); //in theory it's every second increase
+            else cs.riftmakerItem.damageDealt += applyDirectDamage(type, (float) (amount * 0.03* cs.time)); //in theory it's every second increase
         }
         if (type != DamageType.trueDmg) {
             amount *= cs.damageMultiplier;
@@ -88,32 +87,31 @@ public class Damage {
             }
             //last stand can be controversial, since we don't know champion's relative hp. currently skipped
         }
-        if (damageInstanceType%3 == 0) { //damage from ability
-            amount *= cs.navoriPercent; //(navori amplifies tru damage as well)
+        if (damageInstanceType%3 == 0 && damageInstanceType != 0) { //damage from ability
+            amount *= cs.navoriPercent; //(navori amplifies true damage as well)
+            if (damageInstanceType%2 == 0) { //active dmg (not onhit)
+                if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.echo();
+            }
         }
 
-        float dmg = applyDamage(type, amount, true);
+        float dmg = applyDirectDamage(type, amount);
 
         if (cs.hasFirstStrike) {
-            cs.firstStrikeRune.damageDealt += applyDamage(DamageType.trueDmg, dmg * 0.09f, true);
+            cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.09f);
         }
 
         if (damageInstanceType%2 == 0) { //not proc damage
             if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
-            if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.echo();
         }
 
         return dmg;
-    }
-    public float applyDamage(DamageType type, float amount) {
-        return applyDamage(type, amount, 0);
     }
 
     /**
      * Called by true executes (aka instantly kill the enemy) like collector, Pyke or Syndra ult...
      */
     public void execute() {
-        applyDamage(DamageType.trueDmg, cs.enemy.HP+10, true);
+        applyDirectDamage(DamageType.trueDmg, cs.enemy.HP+10);
     }
 
     public Damage(CurrentState cs) {

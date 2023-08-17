@@ -9,6 +9,8 @@ public class Syndra extends Champion {
 
     public int splinters;
 
+    public int ballsPresent;
+
     public Syndra(int splinters) {
         super (name,
                 563f,
@@ -36,6 +38,8 @@ public class Syndra extends Champion {
             public void startingCalculations() {
                 extraVariable = splinters;
                 if (extraVariable >= 120) owner.AP *= 1.15;
+
+                ballsPresent = 0;
             }
         };
 
@@ -47,6 +51,7 @@ public class Syndra extends Champion {
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (damage[lvl] +
                         ap_scale[lvl] * owner.AP), 6);
+                ++ballsPresent;
                 if (extraVariable == 1) extraVariable = 2; //first q no cooldown cause 2 stacked
                 else {
                     int extraAH = owner.r.lvl * 10;
@@ -103,9 +108,9 @@ public class Syndra extends Champion {
             }
             public void onUse() {
                 float dmg = damage[lvl] + ap_scale[lvl] * owner.AP;
-                int spheres = 5; //supposing 5 as average? min 3, max 7
+                ballsPresent += 3;
 
-                for (int i = 0; i < spheres; ++i)
+                for (int i = 0; i < ballsPresent; ++i)
                     damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 6);
 
                 if (extraVariable == 1 && owner.getEnemy().getRelativeMissingHP() > 0.85) cs.damage.execute();

@@ -154,6 +154,13 @@ public class DamageCalculator {
                 else System.out.println("Can't use " + a.type + " because it's not unlocked!");
             }
         }
+
+        while(!expiringAbilities.isEmpty()) { //apply all expiring abilities before ending, but will not count towards time taken
+            Ability a = expiringAbilities.remove().ability;
+            a.onExpiring();
+            a.active = false;
+        }
+
         if (includeFinalBurn) {
             boolean hasBurnItem = false;
             for (Item i : cs.champion.allItems) {

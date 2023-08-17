@@ -28,9 +28,9 @@ public class Galeforce extends Item {
             if (owner.lvl >= 10) amount += 7.41 * (owner.lvl - 9);
             amount += 0.15 * owner.BONUS_AD;
             amount += amount * Math.min(0.75, missing) * 5 / 7.5;
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount, 2);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount, 2);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, amount, 2);
         }
     }
 

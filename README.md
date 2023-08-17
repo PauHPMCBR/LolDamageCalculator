@@ -152,6 +152,56 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
 
+
+## Things the program assumes
+- Every ability hits.
+- Things that have a delay (like Jinx E, that explodes after 0.9 secs if enemy is in contact) will get counted towards combo damage, even tho it would take more time to finish it completely.
+- Burns (aka Liandry and Demonic) will complete their duration for combo damage calculation.
+- The attacking champion is alone vs the deffending champion (no external buffs like Lucian vigilance).
+- The program won't wait for Sheen cooldown before using an ability or similar niche things that would increase damage slightly. 
+- Projectile travel distance is always 0. The program supposes you are melee range against the enemy.
+
+## Champion specific details
+### Ahri
+- Q has no delay
+- W has no delay
+- R has no delay (all 3 casts are done instantly)
+
+This shouldn't be much of a problem, since what you usually want to calculate with Ahri is combo damage, and not DPS.
+
+### Jinx
+- Passive not implemented, since she needs to kill a champion/objective to proc it
+- Q means using Rocket Launcher, and Auto means using Fishbones
+- Although swapping between Q and Auto is almost always consistent with real damage, spamming it will cause a false increase of DPS, since swapping doesn't have a cooldown applied (normally it's 0.9s)
+- For consistency, only use either Q or Autos, when testing for DPS
+- R damage is calculated as if Jinx was 700 units away (aprox.) from the enemy, which results on a 50% base damage
+- W cast time is updated after each use, which results in a (very) slight time increase / DPS decrease
+
+### Kai'Sa
+- Q is applied instantly (doesn't take time for all projectiles to fly one by one)
+- E cast time won't get updated (it scales with bonus attack speed and will only be calculated at the start of the simulation)
+- R is not implemented, as it's only an auto reset
+
+### Lucian
+- To maximise passive damage, Lucian will try to auto after each ability use (the simulation will wait until an auto is done before using any other ability)
+- If you are testing a Lucian combo, insert an auto attack between each ability, or the damage will be higher than it should (the "second" auto that passive provides is ALWAYS applied after each ability use)
+- Vigilance is not implemented, since it's a 1v1 without external buffs
+
+### Syndra
+- If Syndra has 40 or more splinters, first Q cast won't make the ability go on cooldown
+- Q has no delay
+- W has no delay and no cast time
+- Dark Spheres don't despawn
+
+### Varus
+- Passive not implemented, since he needs to kill a unit to proc it
+- Q charge time is always 1.25 seconds (minimum time to reach max damage increase)
+- To use W, first W must be cast, and then Q, like in game
+
+### Vayne
+- Q cast time is set to 0.4 seconds, since it's unlikely to always be near a wall when 1v1ing someone
+- E will always do both instances of damage (it supposes the target will always collide with terrain)
+
 ## Things planned to do
 In parallel to adding new champions, these are the things planned to implement, in order of priority:
 - Add the buffing effect of supporting items (like Zeke's, Staff...)
@@ -159,6 +209,7 @@ In parallel to adding new champions, these are the things planned to implement, 
 - Add mana costs for abilities (and deplete mana as the simulation goes on)
 - Be able to add defensive items to the enemy (like frozen heart)
 - Add potions (the ones that cost 500 and give AD, AP or HP)
+- Add champion specific settings, like deciding if an ability sweet-spot should be hit
 
 And lastly, implement the feature of being able to simulate 1v1s
 

@@ -32,10 +32,10 @@ public class Varus extends Champion {
             //ignoring the bonus AS
         };
 
-        q = new Ability(Q) {
+        q = new Ability(Q) { //extraVariable = is W activated
             public void onUse() {
                 float dmg = damage[lvl] + ad_scale[lvl]*owner.getAD();
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 6);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg * 1.5f, 6);
                 owner.w.onExpiring();
 
                 if (extraVariable == 1) {
@@ -45,7 +45,7 @@ public class Varus extends Champion {
                     if (owner.lvl >= 10) missingHP += 0.02;
                     if (owner.lvl >= 13) missingHP += 0.02;
                     owner.w.damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                            missingHP * owner.getEnemy().getMissingHP(), 3);
+                            missingHP * owner.getEnemy().getMissingHP() * 1.5f, 3);
                 }
 
                 currentCooldown = getCooldown();
@@ -55,7 +55,7 @@ public class Varus extends Champion {
         q.cooldown = new float[]{16,15,14,13,12};
         q.damage = new float[]{10,46.67f,83.33f,120,156.67f};
         q.ad_scale = new float[]{0.83f,0.87f,0.9f,0.93f,0.97f};
-        q.cast_time = 0;
+        q.cast_time = 1.25f; //max cast time, all damage increased by 50%
 
         w = new Ability(W) { //extraVariable = blight stacks
             public void startingCalculations() {
@@ -99,11 +99,11 @@ public class Varus extends Champion {
                 currentCooldown = getCooldown();
             }
         };
+        e.damageType = DamageType.physicalDmg;
         e.cooldown = new float[]{18,16,14,12,10};
         e.damage = new float[]{60,100,140,180,220};
         e.ad_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
         e.cast_time = 0.2419f;
-        e.damageType = null;
 
         r = new Ability(R) {
             public void onUse() {
@@ -113,6 +113,7 @@ public class Varus extends Champion {
                 owner.w.extraVariable = 3;
             }
         };
+        r.damageType = DamageType.magicDmg;
         r.cooldown = new float[]{100,80,60};
         r.damage = new float[]{150,250,350};
         r.ap_scale = new float[]{1,1,1};

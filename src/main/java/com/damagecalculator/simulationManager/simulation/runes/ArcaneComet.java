@@ -21,7 +21,7 @@ public class ArcaneComet extends Rune {
         if (canUse()) {
             float dmg = 30 + 70f / 17f * (owner.lvl - 1);
             dmg += 0.35f * owner.BONUS_AD + 0.20f * owner.AP;
-            damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg);
+            damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg, 2);
             putOnCooldown();
         }
         else {

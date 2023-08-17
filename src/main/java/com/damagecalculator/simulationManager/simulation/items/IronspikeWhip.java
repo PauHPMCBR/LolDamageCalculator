@@ -17,7 +17,7 @@ public class IronspikeWhip extends Item {
     public void extraDmg() {
         if (canUse()) {
             lastUsed = cs.time - item_cooldown*(1 - 100/(100+owner.ITEM_HASTE + owner.AH));
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD, 2);
         }
     }
 
