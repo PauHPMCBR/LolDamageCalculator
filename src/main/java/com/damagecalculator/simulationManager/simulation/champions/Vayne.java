@@ -96,6 +96,7 @@ public class Vayne extends Champion {
         r = new Ability(R) {
             public void onUse() {
                 owner.BONUS_AD += damage[lvl];
+                currentCooldown = getCooldown();
             }
             public void onExpiring() {
                 owner.BONUS_AD -= damage[lvl];

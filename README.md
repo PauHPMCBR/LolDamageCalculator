@@ -204,6 +204,13 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - Q cast time is set to 0.4 seconds, since it's unlikely to always be near a wall when 1v1ing someone
 - E will always do both instances of damage (it supposes the target will always collide with terrain)
 
+### Zed
+- Passive checks if enemy is below 50% hp after doing the auto (shouldn't be a problem unless it's a very specific case)
+- Abilities don't consume energy
+- Shadows don't despawn after their duration (but won't stack either, always 1 for W and 1 for R, maximum)
+- Supposing all shurikens hit at the same time
+- Supposing that W and R are never recasted
+
 ## Things planned to do
 In parallel to adding new champions, these are the things planned to implement, in order of priority:
 - Add the buffing effect of supporting items (like Zeke's, Staff...)

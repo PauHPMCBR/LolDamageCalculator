@@ -208,12 +208,16 @@ public class Config implements Serializable {
             mv.maxCostVal.setText(Integer.toString(maxBuildCost));
         }
         else if (modeSelected.equals("Stat Graph")) {
+            mv.variablesNum.setSelected(secondStatEnabled);
             mv.var1type.setText(firstStatName);
-            mv.var2type.setText(secondStatName);
             mv.var1min.setText(Integer.toString(firstStatMin));
             mv.var1max.setText(Integer.toString(firstStatMax));
-            mv.var2min.setText(Integer.toString(secondStatMin));
-            mv.var2max.setText(Integer.toString(secondStatMax));
+            mv.onVariablesClick();
+            if (secondStatEnabled) {
+                mv.var2type.setText(secondStatName);
+                mv.var2min.setText(Integer.toString(secondStatMin));
+                mv.var2max.setText(Integer.toString(secondStatMax));
+            }
         }
     }
 

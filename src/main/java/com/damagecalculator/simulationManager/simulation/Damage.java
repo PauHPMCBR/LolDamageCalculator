@@ -16,41 +16,36 @@ public class Damage {
         return totalMagic + totalPhysical + totalTrue;
     }
 
-    private float applyTrueDamage(float amount) {
-        cs.enemy.substractHP(amount);
-        totalTrue += amount;
-        return amount;
-    }
-    private float applyPhysicalDamage(float amount) {
+    public float getPostPhysicalDamage(float amount) {
         float armor = cs.enemy.ARMOR;
         armor *= (1 - cs.champion.ARMOR_PEN);
         armor -= cs.champion.LETHALITY;
         if (armor < 0) armor = 0;
         amount *= (100/(100 + armor));
-        cs.enemy.substractHP(amount);
-        totalPhysical += amount;
         return amount;
     }
-    private float applyMagicDamage(float amount) {
-
+    public float getPostMagicDamage(float amount) {
         float mr = cs.enemy.MAGIC_RESIST;
         mr *= (1 - cs.champion.PERCENTAGE_MAGIC_PEN);
         mr -= cs.champion.MAGIC_PEN;
         if (mr < 0) mr = 0;
         amount *= (100/(100 + mr));
         amount *= cs.liandryPercent; //!
-        cs.enemy.substractHP(amount);
-        totalMagic += amount;
         return amount;
     }
 
-    /**
-     * Only call to skip damage multipliers, very specific uses
-     */
     private float applyDirectDamage(DamageType type, float amount) {
-        if (type == DamageType.physicalDmg) return applyPhysicalDamage(amount);
-        if (type == DamageType.magicDmg) return applyMagicDamage(amount);
-        return applyTrueDamage(amount);
+        if (type == DamageType.physicalDmg) {
+            amount = getPostPhysicalDamage(amount);
+            totalPhysical += amount;
+        }
+        else if (type == DamageType.magicDmg) {
+            amount = getPostMagicDamage(amount);
+            totalMagic += amount;
+        }
+        else totalTrue += amount;
+        cs.enemy.substractHP(amount);
+        return amount;
     }
 
     /**
@@ -69,7 +64,7 @@ public class Damage {
     public float applyDamage(DamageType type, float amount, int damageInstanceType) {
         amount *= cs.damageTrueMultiplier;
         if (cs.riftmakerItem != null) { //(riftmaker amplifies true damage as well)
-            if (cs.time >= 3) cs.riftmakerItem.damageDealt += applyTrueDamage((float) (amount*0.09));
+            if (cs.time >= 3) cs.riftmakerItem.damageDealt += applyDirectDamage(DamageType.trueDmg, (float) (amount*0.09));
             else cs.riftmakerItem.damageDealt += applyDirectDamage(type, (float) (amount * 0.03* cs.time)); //in theory it's every second increase
         }
         if (type != DamageType.trueDmg) {

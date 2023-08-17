@@ -12,6 +12,7 @@ public class ChampionList {
     public static Syndra syndra = new Syndra(0);
     public static Varus varus = new Varus();
     public static Vayne vayne = new Vayne();
+    public static Zed zed = new Zed();
 
 
     public static ArrayList<Champion> allChampions = new ArrayList<>() {{
@@ -22,5 +23,6 @@ public class ChampionList {
         add(syndra);
         add(varus);
         add(vayne);
+        add(zed);
     }};
 }
