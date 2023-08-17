@@ -37,6 +37,8 @@ As always, press the "Combo" or "DPS" button to obtain an output, in this case, 
 The third mode is "Stat Graph", whose purpose is to test a build with a given range of enemy defensive stats. The UI looks like this:
 ![2DGraph](images/2DGraph.png)
 In this case, the "2 variables" option is not selected, so only one variable will be tested (in this case, Magic Resist, from 0 to 150).
+When a variable is selected to test a range for it, it will overwrite the value it had in the "Enemy stats" section (in this case, MR is overwritten).
+
 This image shows that 4 different builds have been tested, and there are 4 "functions" drawn in the same space. To remove everything from the right side of the screen, just press the "Reset" button.
 
 When the "2 variables" option is selected, the output is a 3D graph:
