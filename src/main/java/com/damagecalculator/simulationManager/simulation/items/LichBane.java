@@ -13,7 +13,7 @@ public class LichBane extends Item {
         super(name, type, cost);
         ap = 85;
         ah = 15;
-        ms = 8;
+        percent_ms = 8;
     }
 
     public void onHit() {

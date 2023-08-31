@@ -11,7 +11,7 @@ public class AetherWisp extends Item {
     public AetherWisp() {
         super(name, type, cost);
         ap = 30;
-        ms = 5;
+        percent_ms = 5;
     }
 
     @Override

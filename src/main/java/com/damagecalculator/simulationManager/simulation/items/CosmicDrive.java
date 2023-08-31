@@ -14,7 +14,7 @@ public class CosmicDrive extends Item {
         super(name, type, cost);
         ap = 100;
         ah = 30;
-        ms = 5;
+        percent_ms = 5;
 
         instancesOfDamage = 0;
     }

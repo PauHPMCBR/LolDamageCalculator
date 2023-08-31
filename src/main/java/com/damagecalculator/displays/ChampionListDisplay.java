@@ -7,12 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,8 +92,13 @@ public class ChampionListDisplay {
 
         championImages = new HashMap<>();
         for (Champion c : ChampionList.allChampions) {
+            Tooltip tooltip = new Tooltip(c.name);
+            tooltip.setStyle("-fx-font-weight: bold; -fx-font-size: 12");
+            tooltip.setShowDelay(Duration.millis(0));
+
             ImageView iv = new ImageView(DisplayUtils.getChampionIcon(c));
             iv.setOnMouseClicked((MouseEvent e) -> pickedChampion(c));
+            Tooltip.install(iv, tooltip);
             championImages.put(c.name, iv);
         }
     }

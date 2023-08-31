@@ -13,7 +13,7 @@ public class KnightsVow extends Item {
         ah = 15;
         armor = 25;
         hp = 350;
-        hpRegen = 125;
+        hp_regen = 125;
     }
 
     @Override

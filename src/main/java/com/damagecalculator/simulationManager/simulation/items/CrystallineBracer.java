@@ -11,7 +11,7 @@ public class CrystallineBracer extends Item {
     public CrystallineBracer() {
         super(name, type, cost);
         hp = 200;
-        hpRegen = 100;
+        hp_regen = 100;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class WatchfulWardstone extends Item {
         super(name, type, cost);
         ap = 10;
         hp = 150;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     public void specialStats() {

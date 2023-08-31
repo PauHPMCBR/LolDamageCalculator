@@ -14,7 +14,7 @@ public class Galeforce extends Item {
         ad = 50;
         as = 15;
         crit = 20;
-        ms = 7;
+        percent_ms = 7;
         item_cooldown = 120;
     }
 

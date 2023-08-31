@@ -12,7 +12,7 @@ public class ShardOfTrueIce extends Item {
         super(name, type, cost);
         ap = 40;
         hp = 75;
-        manaRegen = 100;
+        mana_regen = 100;
     }
 
     @Override

@@ -10,7 +10,7 @@ public class ForbiddenIdol extends Item {
 
     public ForbiddenIdol() {
         super(name, type, cost);
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class SpiritVisage extends Item {
         ah = 10;
         hp = 450;
         mr = 60;
-        hpRegen = 100;
+        hp_regen = 100;
     }
 
     @Override

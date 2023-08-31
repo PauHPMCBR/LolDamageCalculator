@@ -15,7 +15,7 @@ public class PhantomDancer extends Item {
         ad = 20;
         as = 35;
         crit = 20;
-        ms = 7;
+        percent_ms = 7;
 
         autos = 0;
     }

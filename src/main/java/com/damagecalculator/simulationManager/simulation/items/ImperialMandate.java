@@ -15,7 +15,7 @@ public class ImperialMandate extends Item {
         super(name, type, cost);
         ap = 55;
         ah = 20;
-        manaRegen = 100;
+        mana_regen = 100;
         item_cooldown = 6;
     }
 

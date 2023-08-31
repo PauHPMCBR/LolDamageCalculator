@@ -10,6 +10,7 @@ public class SorcerersShoes extends Item {
 
     public SorcerersShoes() {
         super(name, type, cost);
+        ms = 45;
         magic_pen = 18;
     }
 

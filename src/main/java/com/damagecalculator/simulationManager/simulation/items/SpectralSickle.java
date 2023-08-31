@@ -12,7 +12,7 @@ public class SpectralSickle extends Item {
         super(name, type, cost);
         ad = 5;
         hp = 10;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

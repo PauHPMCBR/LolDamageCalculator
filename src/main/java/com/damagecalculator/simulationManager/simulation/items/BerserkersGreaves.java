@@ -10,6 +10,7 @@ public class BerserkersGreaves extends Item {
 
     public BerserkersGreaves() {
         super(name, type, cost);
+        ms = 45;
         as = 35;
     }
 

@@ -10,7 +10,7 @@ public class RejuvenationBead extends Item {
 
     public RejuvenationBead() {
         super(name, type, cost);
-        hpRegen = 100;
+        hp_regen = 100;
     }
 
     @Override

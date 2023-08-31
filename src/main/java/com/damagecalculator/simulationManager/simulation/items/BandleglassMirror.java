@@ -12,7 +12,7 @@ public class BandleglassMirror extends Item {
         super(name, type, cost);
         ap = 20;
         ah = 10;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

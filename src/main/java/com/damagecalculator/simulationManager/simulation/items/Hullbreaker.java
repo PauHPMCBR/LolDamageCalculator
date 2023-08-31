@@ -12,8 +12,8 @@ public class Hullbreaker extends Item {
         super(name, type, cost);
         ad = 60;
         hp = 400;
-        hpRegen = 150;
-        ms = 5;
+        hp_regen = 150;
+        percent_ms = 5;
     }
 
     @Override

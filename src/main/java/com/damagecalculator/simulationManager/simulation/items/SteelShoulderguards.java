@@ -12,7 +12,7 @@ public class SteelShoulderguards extends Item {
         super(name, type, cost);
         ad = 3;
         hp = 30;
-        hpRegen = 50;
+        hp_regen = 50;
     }
 
     @Override

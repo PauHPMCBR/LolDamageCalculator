@@ -13,7 +13,7 @@ public class MoonstoneRenewer extends Item {
         ap = 35;
         ah = 20;
         hp = 200;
-        manaRegen = 100;
+        mana_regen = 100;
     }
 
     //heal and shield power mythic passive

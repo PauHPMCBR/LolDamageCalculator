@@ -12,7 +12,7 @@ public class WarmogsArmor extends Item {
         super(name, type, cost);
         ah = 10;
         hp = 800;
-        hpRegen = 200;
+        hp_regen = 200;
     }
 
     @Override

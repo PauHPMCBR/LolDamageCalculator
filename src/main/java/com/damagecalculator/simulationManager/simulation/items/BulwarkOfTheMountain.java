@@ -12,7 +12,7 @@ public class BulwarkOfTheMountain extends Item {
         super(name, type, cost);
         ap = 20;
         hp = 250;
-        hpRegen = 100;
+        hp_regen = 100;
     }
 
     @Override

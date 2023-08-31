@@ -11,9 +11,9 @@ public class StaffOfFlowingWater extends Item {
     public StaffOfFlowingWater() {
         super(name, type, cost);
         ap = 35;
-        manaRegen = 75;
-        healShieldPower = 8;
-        ms = 5;
+        mana_regen = 75;
+        hsp = 8;
+        percent_ms = 5;
     }
 
     public void specialStats() { //supposing it's always active

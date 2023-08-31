@@ -10,7 +10,7 @@ public class FaerieCharm extends Item {
 
     public FaerieCharm() {
         super(name, type, cost);
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class BlackMistScythe extends Item {
         super(name, type, cost);
         ad = 20;
         hp = 75;
-        manaRegen = 100;
+        mana_regen = 100;
     }
 
     @Override

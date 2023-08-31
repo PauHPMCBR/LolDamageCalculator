@@ -12,7 +12,7 @@ public class PauldronsOfWhiterock extends Item {
         super(name, type, cost);
         ad = 15;
         hp = 250;
-        hpRegen = 100;
+        hp_regen = 100;
     }
 
     @Override

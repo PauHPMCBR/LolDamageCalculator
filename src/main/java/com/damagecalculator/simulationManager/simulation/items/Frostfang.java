@@ -12,7 +12,7 @@ public class Frostfang extends Item {
         super(name, type, cost);
         ap = 15;
         hp = 70;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

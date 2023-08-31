@@ -6,16 +6,23 @@ import com.damagecalculator.simulationManager.simulation.Inventory;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
+import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -140,13 +147,19 @@ public class ItemListDisplay {
         for (Item i : ItemList.allItems) {
             itemList.add(new Pair<>(i, true));
 
+            Tooltip tooltip = new Tooltip(DisplayUtils.getItemDescription(i));
+            tooltip.setStyle("-fx-font-weight: bold; -fx-font-size: 12");
+            tooltip.setShowDelay(Duration.millis(0));
+
             ImageView iv = new ImageView(DisplayUtils.getItemImage(i));
             iv.setOnMouseClicked((MouseEvent e) -> pickedItem(i, true));
+            Tooltip.install(iv, tooltip);
             itemImages.put(i.name, iv);
 
             ImageView iv2 = new ImageView(DisplayUtils.getItemImage(i));
             DisplayUtils.desaturate(iv2);
             iv2.setOnMouseClicked((MouseEvent e) -> pickedItem(i, false));
+            Tooltip.install(iv2, tooltip);
             itemDesaturatedImages.put(i.name, iv2);
         }
 

@@ -11,7 +11,7 @@ public class ChaliceOfBlessing extends Item {
     public ChaliceOfBlessing() {
         super(name, type, cost);
         hp = 200;
-        manaRegen = 50;
+        mana_regen = 50;
     }
     //ignoring hp regen for each mana regen
 

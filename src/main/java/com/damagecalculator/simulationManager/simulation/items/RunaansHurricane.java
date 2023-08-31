@@ -13,7 +13,7 @@ public class RunaansHurricane extends Item {
         super(name, type, cost);
         as = 40;
         crit = 20;
-        ms = 7;
+        percent_ms = 7;
     }
 
     public void onHit() {

@@ -16,7 +16,7 @@ public class EchoesOfHelia extends Item {
         ap = 30;
         ah = 15;
         hp = 200;
-        manaRegen = 125;
+        mana_regen = 125;
 
         stacks = 0;
     }

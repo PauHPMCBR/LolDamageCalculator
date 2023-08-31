@@ -12,7 +12,7 @@ public class RelicShield extends Item {
         super(name, type, cost);
         ap = 5;
         hp = 30;
-        hpRegen = 50;
+        hp_regen = 50;
     }
 
     @Override

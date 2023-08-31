@@ -12,7 +12,7 @@ public class SpellthiefsEdge extends Item {
         super(name, type, cost);
         ap = 8;
         hp = 10;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class RunesteelSpaulders extends Item {
         super(name, type, cost);
         ad = 6;
         hp = 100;
-        hpRegen = 75;
+        hp_regen = 75;
     }
 
     @Override

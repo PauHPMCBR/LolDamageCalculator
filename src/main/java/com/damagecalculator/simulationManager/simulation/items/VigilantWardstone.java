@@ -12,7 +12,7 @@ public class VigilantWardstone extends Item {
         super(name, type, cost);
         hp = 250;
         ap = 10;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     public void specialStats() {

@@ -12,7 +12,7 @@ public class HarrowingCrescent extends Item {
         super(name, type, cost);
         ad = 10;
         hp = 60;
-        manaRegen = 50;
+        mana_regen = 50;
     }
 
     @Override

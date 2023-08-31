@@ -12,7 +12,7 @@ public class TargonsBuckler extends Item {
         super(name, type, cost);
         ap = 10;
         hp = 100;
-        hpRegen = 75;
+        hp_regen = 75;
     }
 
     @Override

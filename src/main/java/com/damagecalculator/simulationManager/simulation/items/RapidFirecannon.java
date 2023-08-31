@@ -16,7 +16,7 @@ public class RapidFirecannon extends Item {
         ad = 30;
         as = 15;
         crit = 20;
-        ms = 7;
+        percent_ms = 7;
 
         energyze = 9;
     }

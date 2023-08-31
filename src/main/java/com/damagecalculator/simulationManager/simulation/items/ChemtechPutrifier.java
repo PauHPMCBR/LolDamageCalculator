@@ -12,8 +12,8 @@ public class ChemtechPutrifier extends Item {
         super(name, type, cost);
         ap = 35;
         ah = 15;
-        manaRegen = 75;
-        healShieldPower = 10;
+        mana_regen = 75;
+        hsp = 10;
     }
 
     @Override
