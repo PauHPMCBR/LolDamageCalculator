@@ -1,5 +1,6 @@
 package com.damagecalculator.simulationManager;
 
+import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.simulationManager.simulation.*;
 
 public class SimulationManager {
@@ -75,7 +76,8 @@ public class SimulationManager {
             System.out.println();
         }
 
-        return time;
+        if (GlobalVariables.DpsInsteadOfTime) return cs.damage.getTotalDamage() / time;
+        else return time;
     }
     public float simulateDps(AbilityType[] abilityPriorities) {
         return simulateDps(abilityPriorities, true);

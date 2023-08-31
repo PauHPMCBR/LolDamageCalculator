@@ -16,7 +16,7 @@ public class Bloodthirster extends Item {
     }
 
     public void specialStats() {
-        owner.BONUS_AD += 10 + 5 * Math.max(0,(owner.lvl - 12)); //supposing always above 50%
+        owner.BONUS_AD += 10 + 5 * Math.max(0,(owner.lvl - 12)); //supposing always above 70%
     }
 
     @Override

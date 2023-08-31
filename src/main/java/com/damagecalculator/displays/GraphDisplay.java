@@ -1,5 +1,6 @@
 package com.damagecalculator.displays;
 
+import com.damagecalculator.GlobalVariables;
 import javafx.geometry.Insets;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -35,7 +36,7 @@ public class GraphDisplay {
             return new Color(r, g, b);
         }
     }
-    final Color[] chartColors = {Color.WHITE, Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE};
+    final Color[] chartColors = {Color.WHITE, Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE, Color.MAGENTA, Color.CYAN};
 
     public JavaFXChartFactory factory;
     public AWTChart chart;
@@ -52,7 +53,7 @@ public class GraphDisplay {
         graphsPresent = 0;
     }
     public ImageView getDisplay(Data3D data3D) {
-        if (graphsPresent >= 5 || was2DBefore) {
+        if (graphsPresent > GlobalVariables.max3DGraphs || was2DBefore) {
             clearDisplay();
         }
         was2DBefore = false;
@@ -95,7 +96,7 @@ public class GraphDisplay {
 
 
     public HBox getDisplay(String var1Name, int start, int step, String var2Name, float[] vals) {
-        if (graphsPresent >= 5 || !was2DBefore) {
+        if (graphsPresent > GlobalVariables.max2DGraphs || !was2DBefore) {
             clearDisplay();
         }
         was2DBefore = true;

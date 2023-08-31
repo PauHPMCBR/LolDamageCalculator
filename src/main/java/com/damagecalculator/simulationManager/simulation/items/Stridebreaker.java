@@ -14,7 +14,7 @@ public class Stridebreaker extends Item {
         ad = 60;
         as = 20;
         ah = 20;
-        hp = 300;
+        hp = 375;
         item_cooldown = 15;
     }
 

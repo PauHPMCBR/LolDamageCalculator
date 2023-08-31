@@ -12,13 +12,13 @@ public class SpearOfShojin extends Item {
 
     public SpearOfShojin() {
         super(name, type, cost);
-        ad = 65;
+        ad = 60;
         ah = 20;
-        hp = 350;
+        hp = 500;
     }
 
     public void specialStats() {
-        specialAH = (float) (8 + 0.08*owner.BONUS_AD);
+        specialAH = (float) (16 + 0.04*owner.BONUS_AD);
         if (owner.is_ranged) specialAH *= 0.75;
         owner.AH += specialAH;
         owner.ULTIMATE_HASTE -= specialAH; //ignoring *0.5 penalty for cc abilities

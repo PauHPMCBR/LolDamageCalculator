@@ -1,5 +1,6 @@
 package com.damagecalculator.displays;
 
+import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.MainApplication;
 import com.damagecalculator.simulationManager.simulation.Inventory;
 import com.damagecalculator.simulationManager.simulation.Item;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -23,8 +25,6 @@ import java.util.Objects;
 
 public class ItemListDisplay {
     static final int columns = 10;
-
-    public boolean displayAram = false;
 
     public List<Pair<Item, Boolean>> itemList;
 
@@ -49,7 +49,7 @@ public class ItemListDisplay {
 
             int pos = itemTypes.indexOf(i.type);
             if (i.name.startsWith("Guardian's")) {
-                if (!displayAram) continue;
+                if (!GlobalVariables.displayAramItems) continue;
                 pos = itemTypes.indexOf(ItemType.STARTER);
             }
             tilePanes[pos].getChildren().add(DisplayUtils.addBorder(iv));

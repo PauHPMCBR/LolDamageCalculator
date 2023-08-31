@@ -1,6 +1,8 @@
 package com.damagecalculator.simulationManager;
 
 import java.util.*;
+
+import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.simulationManager.simulation.*;
 
 /**
@@ -83,7 +85,7 @@ public class BuildTester {
 
 
 
-    public int displayedBuilds = 15;
+
 
     /**
      * Main function that will test every build combination and sort them by performance.
@@ -138,16 +140,22 @@ public class BuildTester {
         }
 
         if (isCombo) buildScores.sort(new BuildScoreComparator(true));
-        else buildScores.sort(new BuildScoreComparator(false));
+        else {
+            if (GlobalVariables.DpsInsteadOfTime) buildScores.sort(new BuildScoreComparator(true));
+            else buildScores.sort(new BuildScoreComparator(false));
+        }
 
 
-        int displayedBuilds2 = Math.min(displayedBuilds, buildScores.size());
+        int displayedBuilds2 = Math.min(GlobalVariables.displayedBuilds, buildScores.size());
         printer.print("The best " + displayedBuilds2 + " builds, sorted by ");
         if (isCombo) {
             printer.println("damage done with the following combo:");
             printer.printCombo(abilityTypes);
         }
-        else printer.println("DPS (time taken to kill enemy):");
+        else {
+            if (GlobalVariables.DpsInsteadOfTime) printer.println("DPS (until enemy is killed):");
+            else printer.println("DPS (time taken to kill enemy):");
+        }
         printer.printScores(buildScores, displayedBuilds2);
     }
 

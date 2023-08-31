@@ -13,7 +13,7 @@ public class Goredrinker extends Item {
         super(name, type, cost);
         ad = 55;
         ah = 20;
-        hp = 300;
+        hp = 400;
         omnivamp = 8;
         item_cooldown = 15;
     }

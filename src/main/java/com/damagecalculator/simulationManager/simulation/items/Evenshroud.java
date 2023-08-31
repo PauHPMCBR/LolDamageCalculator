@@ -17,7 +17,7 @@ public class Evenshroud extends Item {
     }
 
     public void specialStats() {
-        cs.damageTrueMultiplier *= 1.1;
+        cs.damageTrueMultiplier *= 1.07;
     }
 
     public void applyMythicPassive() {

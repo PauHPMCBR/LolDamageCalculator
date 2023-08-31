@@ -286,9 +286,11 @@ public class MainView {
             if (xMax - xMin >= 1000) xStep = 10;
             if (yMax - yMin >= 1000) yStep = 10;
 
+            String varName = "Time";
+            if (GlobalVariables.DpsInsteadOfTime) varName = "DPS";
             if (variablesNum.isSelected()) {
                 Data3D data3D = new Data3D(
-                        var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Time");
+                        var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, varName);
                 data3D.setData(statsTester.testStats(
                         StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
                         StatsTester.getType(var2type.getText()), yMin, yStep, yMax
@@ -300,7 +302,7 @@ public class MainView {
             }
             else {
                 float[] result = statsTester.testStat(StatsTester.getType(var1type.getText()), xMin, xStep, xMax);
-                graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, "Time", result));
+                graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, varName, result));
             }
         }
     }

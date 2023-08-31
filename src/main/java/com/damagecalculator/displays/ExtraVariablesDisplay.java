@@ -131,10 +131,10 @@ public class ExtraVariablesDisplay {
     }
 
     public void reset() {
-        col1.getChildren().clear();
-        col2.getChildren().clear();
         items.clear();
         runes.clear();
+        hBoxes.clear();
+        update();
     }
 
     public ExtraVariablesDisplay() {
