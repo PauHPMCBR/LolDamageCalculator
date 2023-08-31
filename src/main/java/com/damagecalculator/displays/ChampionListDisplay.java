@@ -5,6 +5,8 @@ import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.champions.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,47 +15,65 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class ChampionListDisplay {
     static final int columns = 5;
 
+    public HashMap<String,ImageView> championImages;
 
-    public Scene getScene() {
+    public TextField searchBar;
+
+    public VBox total;
+
+    public void updateDisplay() {
+        String searchText = searchBar.getText();
+
         TilePane tilePane = new TilePane();
 
         for (Champion c : ChampionList.allChampions) {
-            ImageView iv = new ImageView(DisplayUtils.getChampionIcon(c));
-            iv.setOnMouseClicked((MouseEvent e) -> pickedChampion(c));
+            if (!DisplayUtils.containsSubsequence(c.name.toUpperCase(), searchText.toUpperCase())) continue;
 
-            tilePane.getChildren().add(DisplayUtils.addBorder(iv));
+            tilePane.getChildren().add(DisplayUtils.addBorder(championImages.get(c.name)));
         }
 
-        VBox vBox = new VBox(tilePane);
+        total.getChildren().clear();
+        total.getChildren().add(tilePane);
+    }
 
-        ScrollPane scrollPane = new ScrollPane(vBox);
+
+    Stage stage;
+    public void openWindow() {
+        VBox withSearchBar = new VBox();
+        searchBar.setText("");
+        withSearchBar.getChildren().add(searchBar);
+        withSearchBar.getChildren().add(new Separator());
+
+        total = new VBox();
+        updateDisplay();
+        ScrollPane scrollPane = new ScrollPane(total);
         final double SPEED = 0.01;
         scrollPane.getContent().setOnScroll(scrollEvent -> {
             double deltaY = scrollEvent.getDeltaY() * SPEED;
             scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
         });
 
+        withSearchBar.getChildren().add(scrollPane);
+
         double width = DisplayUtils.getChampionIcon(new Kaisa()).getWidth();
         width += 4; //borders
         width *= columns;
         width += 30;
 
-        return new Scene(scrollPane, width, width * 1.4);
-    }
+        Scene scene = new Scene(withSearchBar, width, width * 1.4);
 
-    Stage stage;
-    public void openWindow() {
         stage = new Stage();
         stage.setTitle("Champion List");
         stage.getIcons().add(new Image(
                 Objects.requireNonNull(MainApplication.class.getResourceAsStream("dummyIcon.png"))));
-        stage.setScene(getScene());
+        stage.setScene(scene);
         stage.show();
     }
     public void closeWindow() {
@@ -62,4 +82,17 @@ public class ChampionListDisplay {
 
     public void pickedChampion(Champion c) {}
 
+    public ChampionListDisplay() {
+        searchBar = new TextField("");
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            updateDisplay();
+        });
+
+        championImages = new HashMap<>();
+        for (Champion c : ChampionList.allChampions) {
+            ImageView iv = new ImageView(DisplayUtils.getChampionIcon(c));
+            iv.setOnMouseClicked((MouseEvent e) -> pickedChampion(c));
+            championImages.put(c.name, iv);
+        }
+    }
 }

@@ -82,8 +82,6 @@ public class RunePageDisplay {
             }
             secondaryH.getChildren().add(iv);
         }
-        s1 = none.makeCopy();
-        s2 = none.makeCopy();
         updateSecondary1(none);
         updateSecondary2(none);
         updateSecondary3(none);
@@ -168,6 +166,7 @@ public class RunePageDisplay {
 
 
     public void updateSecondaryClear(int column) {
+        if (column > 3 ||column < 1) return;
         Rune[] runes;
         HBox hBox;
         if (column == 1) {
@@ -199,10 +198,10 @@ public class RunePageDisplay {
     }
 
     public void updateSecondary1(Rune selectedR) {
-        if (!s2.equals(none) && selectedR.column != s2.column) {
+        if (s2.column != 1) {
+            if (s1.extraVariableName != null) evd.remove(s1);
             updateSecondaryClear(s1.column);
 
-            if (s1 != null && s1.extraVariableName != null) evd.remove(s1);
             s1 = s2.makeCopy();
         }
         else if (s2.extraVariableName != null) evd.remove(s2);
@@ -225,10 +224,10 @@ public class RunePageDisplay {
     }
 
     public void updateSecondary2(Rune selectedR) {
-        if (!s2.equals(none) && selectedR.column != s2.column) {
+        if (s2.column != 2) {
+            if (s1.extraVariableName != null) evd.remove(s1);
             updateSecondaryClear(s1.column);
 
-            if (s1 != null && s1.extraVariableName != null) evd.remove(s1);
             s1 = s2.makeCopy();
         }
         else if (s2.extraVariableName != null) evd.remove(s2);
@@ -253,10 +252,10 @@ public class RunePageDisplay {
 
 
     public void updateSecondary3(Rune selectedR) {
-        if (!s2.equals(none) && selectedR.column != s2.column) {
+        if (s2.column != 3) {
+            if (s1.extraVariableName != null) evd.remove(s1);
             updateSecondaryClear(s1.column);
 
-            if (s1 != null && s1.extraVariableName != null) evd.remove(s1);
             s1 = s2.makeCopy();
         }
         else if (s2.extraVariableName != null) evd.remove(s2);

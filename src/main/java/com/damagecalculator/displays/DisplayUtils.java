@@ -53,6 +53,22 @@ public class DisplayUtils {
         return hBox;
     }
 
+    public static boolean containsSubsequence(final String sequence, final String subsequence) {
+        if (subsequence.isEmpty()) return true;
+        char[] seq = sequence.toCharArray();
+        char[] sub = subsequence.toCharArray();
+        int index = 0;
+        for (char c : seq) {
+            if (c == sub[index]) {
+                ++index;
+                if (index == sub.length) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static AbilityType[] getAbilityList(String s) {
         char[] chars = s.toCharArray();
         ArrayList<AbilityType> ans = new ArrayList<>();

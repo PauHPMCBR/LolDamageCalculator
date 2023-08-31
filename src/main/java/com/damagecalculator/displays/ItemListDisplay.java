@@ -7,10 +7,7 @@ import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,18 +17,26 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class ItemListDisplay {
     static final int columns = 10;
+    static final List<ItemType> itemTypes = List.of(ItemType.values());
 
-    public List<Pair<Item, Boolean>> itemList;
+    public ArrayList<Pair<Item, Boolean>> itemList;
+    public HashMap<String,ImageView> itemImages;
+    public HashMap<String,ImageView> itemDesaturatedImages;
+
+    public TextField searchBar;
 
     public VBox total;
 
+
     public void updateDisplay() {
-        List<ItemType> itemTypes = List.of(ItemType.values());
+        String searchText = searchBar.getText();
+
         TilePane[] tilePanes = new TilePane[itemTypes.size()];
 
         for (int i = 0; i < tilePanes.length; ++i) {
@@ -41,18 +46,18 @@ public class ItemListDisplay {
 
         for (Pair<Item, Boolean> p : itemList) {
             Item i = p.getKey();
-            ImageView iv = new ImageView(DisplayUtils.getItemImage(i));
-            if (p.getValue() == false) {
-                DisplayUtils.desaturate(iv);
-            }
-            iv.setOnMouseClicked((MouseEvent e) -> pickedItem(i, p.getValue()));
+
+            if (!DisplayUtils.containsSubsequence(i.name.toUpperCase(), searchText.toUpperCase())) continue;
 
             int pos = itemTypes.indexOf(i.type);
             if (i.name.startsWith("Guardian's")) {
                 if (!GlobalVariables.displayAramItems) continue;
                 pos = itemTypes.indexOf(ItemType.STARTER);
             }
-            tilePanes[pos].getChildren().add(DisplayUtils.addBorder(iv));
+
+            //add desaturated or not, depending on p.val
+            if (p.getValue()) tilePanes[pos].getChildren().add(DisplayUtils.addBorder(itemImages.get(p.getKey().name)));
+            else tilePanes[pos].getChildren().add(DisplayUtils.addBorder(itemDesaturatedImages.get(p.getKey().name)));
         }
 
         total.getChildren().clear();
@@ -73,6 +78,11 @@ public class ItemListDisplay {
 
     public Stage stage;
     public void openWindow() {
+        VBox withSearchBar = new VBox();
+        searchBar.setText("");
+        withSearchBar.getChildren().add(searchBar);
+        withSearchBar.getChildren().add(new Separator());
+
         total = new VBox();
         updateDisplay();
         ScrollPane scrollPane = new ScrollPane(total);
@@ -82,12 +92,14 @@ public class ItemListDisplay {
             scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
         });
 
+        withSearchBar.getChildren().add(scrollPane);
+
         double width = DisplayUtils.getEmptyItemImage().getWidth();
         width += 4; //for border
         width *= columns;
         width += 30;
 
-        Scene scene = new Scene(scrollPane, width, width * 1.4);
+        Scene scene = new Scene(withSearchBar, width, width * 1.4);
 
         stage = new Stage();
         stage.setTitle("Item List");
@@ -117,9 +129,26 @@ public class ItemListDisplay {
     public void pickedItem(Item i, boolean b) {}
 
     public ItemListDisplay() {
+        searchBar = new TextField("");
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            updateDisplay();
+        });
+
         itemList = new ArrayList<>();
+        itemImages = new HashMap<>();
+        itemDesaturatedImages = new HashMap<>();
         for (Item i : ItemList.allItems) {
             itemList.add(new Pair<>(i, true));
+
+            ImageView iv = new ImageView(DisplayUtils.getItemImage(i));
+            iv.setOnMouseClicked((MouseEvent e) -> pickedItem(i, true));
+            itemImages.put(i.name, iv);
+
+            ImageView iv2 = new ImageView(DisplayUtils.getItemImage(i));
+            DisplayUtils.desaturate(iv2);
+            iv2.setOnMouseClicked((MouseEvent e) -> pickedItem(i, false));
+            itemDesaturatedImages.put(i.name, iv2);
         }
+
     }
 }
