@@ -154,6 +154,7 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
 - Autos refresh Liandry and Demonic burn as well, not just abilities
+- Champion base AD scaling is treated linearly (every lvl gains same base AD), but it's not the case in game. This will create slight damage changes in some levels. This inconvenience holds true for all stats that scale with level (mana, hp, ad...).
 
 ## Things the program assumes
 - Every ability hits.
