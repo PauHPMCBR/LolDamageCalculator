@@ -13,7 +13,7 @@ public class BiscuitDelivery extends Rune {
 
     public BiscuitDelivery(int biscuits) {
         super(name, path, column, row);
-        extraVariableName = "Cookies Consumed";
+        extraVariableName = "Cookies Consumed (0-3)";
         this.biscuits = Math.min(biscuits, 3);
     }
 

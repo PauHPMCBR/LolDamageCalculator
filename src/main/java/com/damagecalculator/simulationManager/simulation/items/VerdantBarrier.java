@@ -14,7 +14,7 @@ public class VerdantBarrier extends Item {
         super(name, type, cost);
         ap = 20;
         mr = 25;
-        extraVariableName = "Verdant Stacks";
+        extraVariableName = "Verdant Stacks (0-30)";
         this.stacks = Math.min(stacks, 30);
     }
 

@@ -12,7 +12,7 @@ public class TearOfTheGoddess extends Item {
 
     public TearOfTheGoddess(int manaStacks) {
         super(name, type, cost);
-        extraVariableName = "Tear Bonus Mana";
+        extraVariableName = "Tear Bonus Mana (0-360)";
         this.manaStacks = Math.min(manaStacks, 360);
         mana = 240 + manaStacks;
     }

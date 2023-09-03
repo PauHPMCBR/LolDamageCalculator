@@ -14,7 +14,7 @@ public class GhostPoro extends Rune {
 
     public GhostPoro(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Ghost Poros";
+        extraVariableName = "Ghost Poros (0-10)";
         this.stacks = Math.min(stacks, 10);
     }
 

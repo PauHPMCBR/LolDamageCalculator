@@ -14,7 +14,7 @@ public class EyeballCollection extends Rune {
 
     public EyeballCollection(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Eyeballs Collected";
+        extraVariableName = "Eyeballs Collected (0-10)";
         this.stacks = Math.min(stacks, 10);
     }
 

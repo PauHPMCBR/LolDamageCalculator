@@ -13,7 +13,7 @@ public class UltimateHunter extends Rune {
 
     public UltimateHunter(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Ultimate Stacks";
+        extraVariableName = "Ultimate Stacks (0-5)";
         this.stacks = Math.min(stacks, 5);
     }
 

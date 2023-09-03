@@ -23,7 +23,7 @@ public class RadiantVirtue extends Item {
 
     public void extraDmg() { //supposing insta ult, ignoring healing part
         if (canUse()) {
-            lastUsed = cs.time - item_cooldown*(1 - 100/(100+owner.ITEM_HASTE + owner.AH));
+            putOnCooldown(); //?
             bonusHPGained = 0.125f * owner.getMaxHP();
             owner.BONUS_HP += bonusHPGained;
         }

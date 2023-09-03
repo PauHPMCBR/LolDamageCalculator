@@ -10,15 +10,16 @@ public class GatheringStorm extends Rune {
     public static final int column = 3;
     public static final int row = 2;
 
-    int stacks;
+    int minutes;
 
-    public GatheringStorm(int stacks) {
+    public GatheringStorm(int minutes) {
         super(name, path, column, row);
-        extraVariableName = "Gathering Stacks";
-        this.stacks = stacks;
+        extraVariableName = "Gathering Storm Minutes";
+        this.minutes = minutes;
     }
 
     public void specialStats() {
+        int stacks = minutes/10;
         if (cs.champion.getAdaptive().equals(DamageType.physicalDmg))
             cs.champion.BONUS_AD += 2.4 * stacks * (stacks + 1);
         else
@@ -27,6 +28,6 @@ public class GatheringStorm extends Rune {
 
     @Override
     public Rune makeCopy() {
-        return new GatheringStorm(stacks);
+        return new GatheringStorm(minutes);
     }
 }

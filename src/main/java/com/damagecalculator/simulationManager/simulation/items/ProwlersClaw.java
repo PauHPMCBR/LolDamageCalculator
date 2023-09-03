@@ -21,9 +21,9 @@ public class ProwlersClaw extends Item {
         if (canUse()) {
             putOnCooldown();
             if (owner.is_ranged)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 65 + 35 * owner.BONUS_AD, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 65 + 0.35f * owner.BONUS_AD, 1);
             else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 85 + 55 * owner.BONUS_AD, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 85 + 0.55f * owner.BONUS_AD, 1);
         }
     }
 

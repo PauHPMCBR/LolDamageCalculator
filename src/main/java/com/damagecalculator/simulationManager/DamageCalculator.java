@@ -3,6 +3,7 @@ package com.damagecalculator.simulationManager;
 import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.simulationManager.simulation.*;
 import com.damagecalculator.simulationManager.simulation.items.DemonicEmbrace;
+import com.damagecalculator.simulationManager.simulation.items.ItemList;
 import com.damagecalculator.simulationManager.simulation.items.LiandrysAnguish;
 
 import java.util.*;
@@ -149,8 +150,10 @@ public class DamageCalculator {
             }
             else {
                 Ability a = cs.champion.getAbility(abilityType);
-                increaseTime(a.currentCooldown);
-                if (a.isUnlocked()) useAbility(a);
+                if (a.isUnlocked()) {
+                    increaseTime(a.currentCooldown);
+                    useAbility(a);
+                }
                 else System.out.println("Can't use " + a.type + " because it's not unlocked!");
             }
         }
@@ -164,7 +167,7 @@ public class DamageCalculator {
         if (GlobalVariables.extraBurnTime != 0) {
             boolean hasBurnItem = false;
             for (Item i : cs.champion.allItems) {
-                if (i.equals(new LiandrysAnguish()) || i.equals(new DemonicEmbrace())) {
+                if (i.equals(ItemList.liandrysAnguish) || i.equals(ItemList.demonicEmbrace)) {
                     if (!hasBurnItem) {
                         hasBurnItem = true;
                         cs.time += GlobalVariables.extraBurnTime; //extra burn time

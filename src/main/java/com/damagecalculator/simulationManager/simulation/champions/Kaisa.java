@@ -52,7 +52,7 @@ public class Kaisa extends Champion {
 
         q = new Ability(Q) { //extraVariable = is q evolved
             public void startingCalculations() {
-                if (owner.BONUS_AD + owner.BASE_AD - 59 >= 100) //59 is base ad (base_ad in champion is private)
+                if (owner.BONUS_AD + owner.BASE_AD - owner.base_ad >= 100) //59 is base ad (base_ad in champion is private)
                     extraVariable = 1;
             }
             public void onUse() {

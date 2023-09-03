@@ -14,8 +14,8 @@ public class MejaisSoulstealer extends Item {
         super(name, type, cost);
         ap = 20;
         hp = 100;
-        extraVariableName = "Mejai's Stacks";
-        this.stacks = stacks;
+        extraVariableName = "Mejai's Stacks (0-25)";
+        this.stacks = Math.min(25, stacks);
     }
 
     public void specialStats() {

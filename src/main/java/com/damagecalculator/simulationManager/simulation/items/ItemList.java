@@ -136,7 +136,7 @@ public class ItemList {
     public static RejuvenationBead rejuvenationBead = new RejuvenationBead();
     public static RelicShield relicShield = new RelicShield();
     public static Riftmaker riftmaker = new Riftmaker();
-    public static RodOfAges rodOfAges = new RodOfAges();
+    public static RodOfAges rodOfAges = new RodOfAges(10);
     public static RubyCrystal rubyCrystal = new RubyCrystal();
     public static RunaansHurricane runaansHurricane = new RunaansHurricane();
     public static RunesteelSpaulders runesteelSpaulders = new RunesteelSpaulders();

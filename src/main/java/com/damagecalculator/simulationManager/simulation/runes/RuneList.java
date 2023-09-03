@@ -24,7 +24,7 @@ public class RuneList {
     public static Rune[] sorcery2 = new Rune[] {new Transcendence(), new Celerity(), new AbsoluteFocus()};
     public static Rune[] sorcery3 = new Rune[] {new Scorch(), new Waterwalking(false), new GatheringStorm(2)};
 
-    public static Rune[] resolveKeystone = new Rune[] {new GraspOfTheUndying(), new Aftershock(), new Guardian()};
+    public static Rune[] resolveKeystone = new Rune[] {new GraspOfTheUndying(0), new Aftershock(), new Guardian()};
     public static Rune[] resolve1 = new Rune[] {new Demolish(), new FontOfLife(), new ShieldBash()};
     public static Rune[] resolve2 = new Rune[] {new Conditioning(), new SecondWind(), new BonePlating()};
     public static Rune[] resolve3 = new Rune[] {new Overgrowth(15), new Revitalize(), new Unflinching()};

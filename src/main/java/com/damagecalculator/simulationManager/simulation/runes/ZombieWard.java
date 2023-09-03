@@ -14,7 +14,7 @@ public class ZombieWard extends Rune {
 
     public ZombieWard(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Zombie Wards";
+        extraVariableName = "Zombie Wards (0-10)";
         this.stacks = Math.min(stacks, 10);
     }
 

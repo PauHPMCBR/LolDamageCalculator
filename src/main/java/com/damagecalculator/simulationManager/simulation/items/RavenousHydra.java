@@ -15,7 +15,7 @@ public class RavenousHydra extends Item {
         ad = 65;
         ah = 25;
         lifesteal = 10;
-        extraVariableName = "Ravenous Stacks";
+        extraVariableName = "Ravenous Stacks (0-40)";
         this.ravenousStacks = Math.min(ravenousStacks, 40);
     }
 

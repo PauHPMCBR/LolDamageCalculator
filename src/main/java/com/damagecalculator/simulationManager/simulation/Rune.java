@@ -22,7 +22,7 @@ public abstract class Rune {
     }
 
     public final void putOnCooldown() {
-        lastUsed = cs.time - rune_cooldown * (1 - owner.getItemCooldownModification());
+        lastUsed = cs.time;
     }
     public final boolean canUse() {
         return cs.time > lastUsed + rune_cooldown;

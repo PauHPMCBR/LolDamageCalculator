@@ -13,7 +13,7 @@ public class ManaflowBand extends Rune {
 
     public ManaflowBand(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Manaflow Stacks";
+        extraVariableName = "Manaflow Stacks (0-10)";
         this.stacks = Math.min(stacks, 10);
     }
     public ManaflowBand() {

@@ -13,7 +13,7 @@ public class IngeniousHunter extends Rune {
 
     public IngeniousHunter(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Ingenious Stacks";
+        extraVariableName = "Ingenious Stacks (0-5)";
         this.stacks = Math.min(stacks, 5);
     }
 

@@ -14,7 +14,7 @@ public class LegendAlacrity extends Rune {
 
     public LegendAlacrity(int stacks) {
         super(name, path, column, row);
-        extraVariableName = "Alacrity Stacks";
+        extraVariableName = "Alacrity Stacks (0-10)";
 
         this.stacks = stacks;
     }

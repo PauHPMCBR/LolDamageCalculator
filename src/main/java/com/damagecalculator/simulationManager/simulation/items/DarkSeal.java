@@ -14,8 +14,8 @@ public class DarkSeal extends Item {
         super(name, type, cost);
         ap = 15;
         hp = 40;
-        extraVariableName = "Dark Seal Stacks";
-        this.stacks = stacks;
+        extraVariableName = "Dark Seal Stacks (0-10)";
+        this.stacks = Math.min(10, stacks);
     }
 
     public void specialStats() {

@@ -145,7 +145,6 @@ public class BuildTester {
             else buildScores.sort(new BuildScoreComparator(false));
         }
 
-
         int displayedBuilds2 = Math.min(GlobalVariables.displayedBuilds, buildScores.size());
         printer.print("The best " + displayedBuilds2 + " builds, sorted by ");
         if (isCombo) {

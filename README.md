@@ -153,7 +153,7 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
-
+- Autos refresh Liandry and Demonic burn as well, not just abilities
 
 ## Things the program assumes
 - Every ability hits.

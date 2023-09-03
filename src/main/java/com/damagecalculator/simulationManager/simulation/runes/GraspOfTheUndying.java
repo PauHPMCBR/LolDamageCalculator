@@ -10,12 +10,19 @@ public class GraspOfTheUndying extends Rune {
     public static final int column = 0;
     public static final int row = 0;
 
+    int stacks;
     float lastHit;
 
-    public GraspOfTheUndying() {
+    public GraspOfTheUndying(int stacks) {
         super(name, path, column, row);
-
+        extraVariableName = "Grasp Procs";
+        this.stacks = stacks;
         lastHit = 0;
+    }
+
+    public void specialStats() {
+        if (owner.is_ranged) owner.BONUS_HP += 7 * stacks;
+        else owner.BONUS_HP += 4 * stacks;
     }
 
     public void onHit() {
@@ -32,6 +39,6 @@ public class GraspOfTheUndying extends Rune {
 
     @Override
     public Rune makeCopy() {
-        return new GraspOfTheUndying();
+        return new GraspOfTheUndying(stacks);
     }
 }

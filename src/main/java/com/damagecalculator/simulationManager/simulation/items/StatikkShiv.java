@@ -11,6 +11,8 @@ public class StatikkShiv extends Item {
 
     int energize;
 
+    int dmg;
+
     public StatikkShiv() {
         super(name, type, cost);
         ad = 45;
@@ -20,11 +22,15 @@ public class StatikkShiv extends Item {
         energize = 9;
     }
 
+    public void specialStats() {
+        dmg = 100 + Math.max(0, owner.lvl-6) * 10 - Math.max(0, owner.lvl-10) * 5;
+    }
+
     public void onHit() {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 80+Math.max(0, owner.lvl-7)*10 + 0.15f*owner.AP, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg + 0.15f*owner.AP, 1);
         }
     }
 
