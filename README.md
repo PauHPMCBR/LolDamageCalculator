@@ -1,6 +1,12 @@
 # League of Legends Damage Calculator
 Tool to make analyzing builds a lot easier. Created to compare items and runes between each other and in many different situations, efficiently.
 
+## Download
+To get the program, go to the [latest release](https://github.com/PauHPMCBR/LolDamageCalculator/releases) and download the 1st zip.
+
+If you are using Windows, it may happen that when you try to execute the .exe, a message appears saying "Windows protected your PC".
+Just click on "More info" and then "Run anyway" (it's just a Java program and a JRE).
+
 ## How to use the program
 The GUI has the following features:
 
