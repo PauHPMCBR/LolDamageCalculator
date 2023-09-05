@@ -38,6 +38,7 @@ public class DamageCalculator {
     List<AbilityType> comboDone; //saves the order of which abilities (and autos) have been used
 
     private void increaseTime(float amount) {
+        if (amount < 0) return; //no back in time :)
         cs.time += amount;
         cs.champion.q.currentCooldown -= amount;
         cs.champion.w.currentCooldown -= amount;
@@ -48,7 +49,7 @@ public class DamageCalculator {
     }
 
     private static boolean canUse(Ability a) {
-        return a.isUnlocked() && (a.getCooldown() != -1) && a.currentCooldown <= 0.05 && !a.active;
+        return a.isUnlocked() && (a.getCooldown() != -1) && a.currentCooldown <= 0.05 && !a.active; //TODO the active part may cause problems later
     }
 
     private void useAbility(Ability a) {
@@ -63,6 +64,12 @@ public class DamageCalculator {
             a.active = true;
         }
     }
+    private void useAuto() {
+        increaseTime(cs.champion.getAttackWindupTime());
+        cs.champion.autoAttack();
+        comboDone.add(AbilityType.AUTO);
+        eventTimes.add(cs.time + cs.champion.autoCd);
+    }
 
     /**
      * Main function to calculate the time it takes to kill an enemy using everything, not accounting for mana limitations
@@ -72,10 +79,6 @@ public class DamageCalculator {
         eventTimes = new PriorityQueue<>();
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new ArrayList<>();
-        Ability q = cs.champion.q;
-        Ability w = cs.champion.w;
-        Ability e = cs.champion.e;
-        Ability r = cs.champion.r;
         eventTimes.add(0f);
 
         while (cs.enemy.alive) { //simulationManager.simulation will stop when enemy dies
@@ -93,10 +96,7 @@ public class DamageCalculator {
                 if (a == AbilityType.AUTO) {
                     if (cs.champion.autoCd <= 0.05) {
                         if (debug) System.out.println("Used a in time " + cs.time);
-                        increaseTime(cs.champion.getAttackWindupTime());
-                        cs.champion.autoAttack();
-                        comboDone.add(AbilityType.AUTO);
-                        eventTimes.add(cs.time + cs.champion.autoCd);
+                        useAuto();
 
                         doneSomething = true;
                         break;
@@ -139,6 +139,7 @@ public class DamageCalculator {
     /**
      * Main function to apply a specific combo, not accounting for mana limitations
      */
+    boolean hasBurnItem;
     public void applyCombo(AbilityType[] combo) {
         eventTimes = new PriorityQueue<>();
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
@@ -146,6 +147,7 @@ public class DamageCalculator {
         for (AbilityType abilityType : combo) {
             if (abilityType == AbilityType.AUTO) {
                 increaseTime(cs.champion.autoCd);
+                useAuto();
                 cs.champion.autoAttack();
             }
             else {
@@ -165,7 +167,7 @@ public class DamageCalculator {
         }
 
         if (GlobalVariables.extraBurnTime != 0) {
-            boolean hasBurnItem = false;
+            hasBurnItem = false;
             for (Item i : cs.champion.allItems) {
                 if (i.equals(ItemList.liandrysAnguish) || i.equals(ItemList.demonicEmbrace)) {
                     if (!hasBurnItem) {

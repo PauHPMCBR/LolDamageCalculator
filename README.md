@@ -1,5 +1,5 @@
 # League of Legends Damage Calculator
-Tool to make analyzing builds a lot easier. Created to compare items and runes between each other and in many different situations, efficiently.
+Tool to make analyzing builds a lot easier. Created to compare items and runes between each other and in many situations, efficiently.
 
 ## Download
 To get the program, go to the [latest release](https://github.com/PauHPMCBR/LolDamageCalculator/releases) and download the 1st zip.
@@ -116,41 +116,10 @@ The best 15 builds, sorted by DPS (time taken to kill enemy):
 - Graphing a damage/time result of testing a build through a range of defensive stats, examples shown in the previous section.
 
 ## What it CAN'T do
-This tool is to calculate DPS vs a "target dummy". It can't put 2 champions in a 1v1 and test their damage one against other.
+This tool is to calculate DPS vs a "target dummy". It can't put 2 champions in a 1v1 and test their damage one against the other.
 Because of that, things like healing are not considered. For the same reason, a build that does similar damage compared to another, but it gives better tanky stats (for example, Wit's End vs BORK) won't be given any special score/reward/consideration.
 
 The feature of getting a 1v1 is possible to implement, just not a priority right now (because there are a lot of champions to implement, which is more important), and it would be a bit pointless given the fact this program assumes you are hitting all the abilities and are trying to deal maximum DPS.
-
-
-## How the simulation works
-### Simulation Manager
-Inside the "simulationManager" package, there are 4 essential files:
-- BuildTester: Responsible for generating item combinations, testing them calling the "SimulationManager" class and sorting them.
-- DamageCalculator: The class that runs the simulation. Uses abilities-autos-items, increases time, remembers when the next event will occur (an ability getting off-cooldown, the champion can auto again, an ability has expired...)
-- Printer: Has all the funcions that print results through the terminal, called by "BuildTester" and "SimulationManager" classes to output the results
-- SimulationManager: Responsible for creating new simulations, setting up initial variables and starting the simulation (that runs under a "DamageCalculator" instance).
-
-### Simulation
-Inside the package "simulationManager", there's also another package called "simulation", where items, abilities and champions are declared/defined.
-
-
-These 4 classes: "Ability", "Champion", "Item", and "Rune" define the structure of an ability, champion or item. To create any of those, a new class that implements any of these classes is required.
-
-
-All of them share the fact that they have stats that have to be filled. On top of that, the classes "Ability", "Item" and "Rune" have functions that can be overriten to implement the effects every unique ability/item does. 
-Some classes can have additional variables, used to store some values for a specific purpose (like Black Cleaver stacks, Shadowflame current magic penetration...).
-
-Almost all items are implemented inside the "items" folder, same for runes (although not the ones that don't intervene in combat, like triumph or approeach velocity).
-
-"CurrentState" keeps track of some variables for the simulation, like the current time, and things that are not easily programmable on their own (for example, pointers to items that behave different than the rest like Riftmaker, Black Cleaver and Luden's. See "Damage" class to see how they are implemented). "CurrentState" also initialises variables inside the "simulation" package.
-
-"Inventory" will make sure the items inside the class are legal to have in the game. It checks for discrepancies and it has a list of exclusive effects (lifeline, spellblade, crit modifier...)
-
-Same for "RunePage", it will create an "organized" list of runes, setting keystone, both primary and secondary paths, shards...
-
-"Damage" is the class responsible for applying damage to the enemy. It checks for modifiers, calculates the final damage taken armor and MR into account...
-
-And finally, "AbilityType", "DamageType" and "RunePath" are just enums.
 
 ## Imperfections the program has
 Although this program is a very faithful recreation on what happens exactly in game, there are some things that can't be taken into account (or are very difficult). Most of them are very slight issues that can just be ignored, tho.
@@ -161,13 +130,14 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
 - Autos refresh Liandry and Demonic burn as well, not just abilities
 - Champion base AD scaling is treated linearly (every lvl gains same base AD), but it's not the case in game. This will create slight damage changes in some levels. This inconvenience holds true for all stats that scale with level (mana, hp, ad...).
+- In "Combo" mode, the time taken to execute the combo doesn't take into account expiring abilities / abilities with duration (even though their ending effect will be counted towards combo damage). For example, Ahri R will take 0 seconds to execute completely, even tho in game there's a static 1s cooldown between casts.
 
 ## Things the program assumes
 - Every ability hits.
 - Things that have a delay (like Jinx E, that explodes after 0.9 secs if enemy is in contact) will get counted towards combo damage, even tho it would take more time to finish it completely.
 - Burns (aka Liandry and Demonic) will complete their duration for combo damage calculation.
-- The attacking champion is alone vs the deffending champion (no external buffs like Lucian vigilance).
-- The program won't wait for Sheen cooldown before using an ability or similar niche things that would increase damage slightly. 
+- The attacking champion is alone vs the defending champion (no external buffs like Lucian vigilance).
+- The program won't wait for Sheen cooldown before using an ability or similar niche things that would increase damage slightly.
 - Projectile travel distance is always 0. The program supposes you are melee range against the enemy.
 
 ## Champion specific details
@@ -183,7 +153,7 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - Q means using Rocket Launcher, and Auto means using Fishbones
 - Although swapping between Q and Auto is almost always consistent with real damage, spamming it will cause a false increase of DPS, since swapping doesn't have a cooldown applied (normally it's 0.9s)
 - For consistency, only use either Q or Autos, when testing for DPS
-- R damage is calculated as if Jinx was 700 units away (aprox.) from the enemy, which results on a 50% base damage
+- R damage is calculated as if Jinx was 700 units away (approx.) from the enemy, which results on a 50% base damage
 - W cast time is updated after each use, which results in a (very) slight time increase / DPS decrease
 
 ### Kai'Sa
@@ -228,6 +198,38 @@ In parallel to adding new champions, these are the things planned to implement, 
 - Add champion specific settings, like deciding if an ability sweet-spot should be hit
 
 And lastly, implement the feature of being able to simulate 1v1s
+
+
+## How the simulation works
+### Simulation Manager
+Inside the "simulationManager" package, there are 4 essential files:
+- BuildTester: Responsible for generating item combinations, testing them calling the "SimulationManager" class and sorting them.
+- DamageCalculator: The class that runs the simulation. Uses abilities-autos-items, increases time, remembers when the next event will occur (an ability getting off-cooldown, the champion can auto again, an ability has expired...)
+- Printer: Has all the functions that print results through the terminal, called by "BuildTester" and "SimulationManager" classes to output the results
+- SimulationManager: Responsible for creating new simulations, setting up initial variables and starting the simulation (that runs under a "DamageCalculator" instance).
+
+### Simulation
+Inside the package "simulationManager", there's also another package called "simulation", where items, abilities and champions are declared/defined.
+
+
+These 4 classes: "Ability", "Champion", "Item", and "Rune" define the structure of an ability, champion or item. To create any of those, a new class that implements any of these classes is required.
+
+
+All of them share the fact that they have stats that have to be filled. On top of that, the classes "Ability", "Item" and "Rune" have functions that can be overwritten to implement the effects every unique ability/item does. 
+Some classes can have additional variables, used to store some values for a specific purpose (like Black Cleaver stacks, Shadowflame current magic penetration...).
+
+Almost all items are implemented inside the "items" folder, same for runes (although not the ones that don't intervene in combat, like triumph or approach velocity).
+
+"CurrentState" keeps track of some variables for the simulation, like the current time, and things that are not easily programmable on their own (for example, pointers to items that behave different from the rest like Riftmaker, Black Cleaver and Luden's. See "Damage" class to see how they are implemented). "CurrentState" also initialises variables inside the "simulation" package.
+
+"Inventory" will make sure the items inside the class are legal to have in the game. It checks for discrepancies, and it has a list of exclusive effects (lifeline, spellblade, crit modifier...)
+
+Same for "RunePage", it will create an "organized" list of runes, setting keystone, both primary and secondary paths, shards...
+
+"Damage" is the class responsible for applying damage to the enemy. It checks for modifiers, calculates the final damage taken armor and MR into account...
+
+And finally, "AbilityType", "DamageType" and "RunePath" are just enums.
+
 
 ## Questions
 If you have any questions / requests / bug reports, please contact me on Discord (@paumb)

@@ -52,7 +52,10 @@ public class Syndra extends Champion {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (damage[lvl] +
                         ap_scale[lvl] * owner.AP), 6);
                 ++ballsPresent;
-                if (extraVariable == 1) extraVariable = 2; //first q no cooldown cause 2 stacked
+                if (extraVariable == 1) {
+                    extraVariable = 2; //first q 1.25s cooldown cause 2 stacked
+                    currentCooldown = 1.25f;
+                }
                 else {
                     int extraAH = owner.r.lvl * 10;
                     owner.AH += extraAH;

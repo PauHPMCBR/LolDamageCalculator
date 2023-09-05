@@ -107,10 +107,6 @@ public class Printer {
         }
     }
 
-    public void printTimeTaken(float time) {
-        println("Took " + time + " seconds to kill.");
-    }
-
     /**
      * Used to print the list of builds and their scores
      */

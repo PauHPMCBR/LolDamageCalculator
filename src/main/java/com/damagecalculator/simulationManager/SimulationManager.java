@@ -40,10 +40,14 @@ public class SimulationManager {
             printer.printChampionStats(cs.champion, true, false);
             printer.printDummyStats(cs.enemy.name, startingHP, startingArmor, startingMR);
             printer.printSeparator();
+            if (dmgCalc.hasBurnItem && GlobalVariables.extraBurnTime > 0)
+                printer.println("Took " + cs.time + " seconds to execute the combo, including "
+                        + GlobalVariables.extraBurnTime + " seconds of item burn time.");
+            else
+                printer.println("Took " + cs.time + " seconds to execute the combo.");
+            printer.printSeparator();
             printer.printDamages(cs.champion, cs.damage);
 
-            System.out.println();
-            System.out.println();
         }
 
         return cs.damage.getTotalDamage();
@@ -66,14 +70,11 @@ public class SimulationManager {
             printer.printChampionStats(cs.champion, true, false);
             printer.printDummyStats(cs.enemy.name, startingHP, startingArmor, startingMR);
             printer.printSeparator();
-            printer.printTimeTaken(time);
+            printer.println("Took " + time + " seconds to kill.");
             AbilityType[] combo = dmgCalc.comboDone.toArray(new AbilityType[0]);
             printer.printCombo(combo);
             printer.printSeparator();
             printer.printDamages(cs.champion, cs.damage);
-
-            System.out.println();
-            System.out.println();
         }
 
         if (GlobalVariables.DpsInsteadOfTime) return cs.damage.getTotalDamage() / time;
