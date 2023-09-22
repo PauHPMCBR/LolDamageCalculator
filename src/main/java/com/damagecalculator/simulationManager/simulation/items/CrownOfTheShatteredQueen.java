@@ -10,16 +10,12 @@ public class CrownOfTheShatteredQueen extends Item {
 
     public CrownOfTheShatteredQueen() {
         super(name, type, cost);
-        ap = 70;
+        ap = 85;
         ah = 20;
         hp = 250;
         mana = 600;
     }
 
-    public void specialStats() {
-        owner.AP += 10;
-        if (owner.lvl >= 9) owner.AP += (owner.lvl-8)*3;
-    }
     public void applyMythicPassive() {
         //ignoring +1% bonus ms
         owner.AP += 8 * owner.legendary_items_carried;

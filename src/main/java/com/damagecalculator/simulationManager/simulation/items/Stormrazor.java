@@ -13,7 +13,7 @@ public class Stormrazor extends Item {
 
     public Stormrazor() {
         super(name, type, cost);
-        ad = 50;
+        ad = 55;
         crit = 20;
         as = 15;
 

@@ -12,7 +12,7 @@ public class SpearOfShojin extends Item {
 
     public SpearOfShojin() {
         super(name, type, cost);
-        ad = 60;
+        ad = 55;
         ah = 20;
         hp = 500;
     }

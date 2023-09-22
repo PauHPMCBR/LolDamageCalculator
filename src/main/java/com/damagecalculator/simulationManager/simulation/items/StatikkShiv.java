@@ -15,7 +15,7 @@ public class StatikkShiv extends Item {
 
     public StatikkShiv() {
         super(name, type, cost);
-        ad = 45;
+        ad = 50;
         crit = 20;
         as = 30;
 
