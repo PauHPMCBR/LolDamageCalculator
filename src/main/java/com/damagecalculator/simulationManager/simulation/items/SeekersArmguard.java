@@ -13,7 +13,7 @@ public class SeekersArmguard extends Item {
     public SeekersArmguard(int stacks) {
         super(name, type, cost);
         ap = 30;
-        armor = 15;
+        armor = 20;
         extraVariableName = "Seeker's Stacks (0-30)";
         this.stacks = Math.min(stacks, 30);
     }
