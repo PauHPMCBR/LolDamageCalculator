@@ -10,8 +10,8 @@ public class SteelShoulderguards extends Item {
 
     public SteelShoulderguards() {
         super(name, type, cost);
-        ad = 3;
-        hp = 30;
+        ad = 4;
+        hp = 50;
         hp_regen = 50;
     }
 

@@ -22,9 +22,9 @@ public class Conqueror extends Rune {
         if (stacks == 12) return;
         ++stacks; //ignoring healing
         if (cs.champion.getAdaptive().equals(DamageType.physicalDmg))
-            cs.champion.BONUS_AD += 1.2 + 1.5/17*(cs.champion.lvl-1);
+            cs.champion.BONUS_AD += 1.08 + 1.32/17*(cs.champion.lvl-1);
         else
-            cs.champion.AP += 2 + 2.5/17*(cs.champion.lvl-1);
+            cs.champion.AP += 1.8 + 2.2/17*(cs.champion.lvl-1);
     }
 
     public void onHit() {

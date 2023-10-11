@@ -23,8 +23,7 @@ public class PressTheAttack extends Rune {
     public void onHit() {
         if (isActive) {
             if (cs.time >= timeActivated + 6) {
-                float increasedDmg = (float) (1.08 + 0.04 * (cs.champion.lvl-1)/17);
-                cs.damageMultiplier /= increasedDmg;
+                cs.damageMultiplier /= 1.08;
 
                 isActive = false;
             }
@@ -34,8 +33,7 @@ public class PressTheAttack extends Rune {
             if (autos == 3) {
                 damageDealt += cs.damage.applyDamage(cs.champion.getAdaptive(),
                         40 + ((float)(140*cs.champion.lvl-1))/17, 1);
-                float increasedDmg = (float) (1.08 + 0.04 * (cs.champion.lvl-1)/17);
-                cs.damageMultiplier *= increasedDmg;
+                cs.damageMultiplier *= 1.08;
 
                 isActive = true;
                 timeActivated = cs.time;

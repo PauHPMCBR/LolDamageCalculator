@@ -70,7 +70,7 @@ public class Zed extends Champion {
             }
         };
         w.damageType = null;
-        w.cooldown = new float[]{20,18.5f,17,15.5f,14};
+        w.cooldown = new float[]{20,19.25f,18.5f,17.75f,17};
         w.cast_time = 0;
 
         e = new Ability(E) {

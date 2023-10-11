@@ -21,9 +21,9 @@ public class Waterwalking extends Rune {
     public void specialStats() {
         if (!isOnWater) return;
         if (owner.getAdaptive() == DamageType.physicalDmg)
-            owner.BONUS_AD += 3 + 15f / 17f * (owner.lvl - 1);
+            owner.BONUS_AD += 7.2f + 0.6f * (owner.lvl - 1);
         else
-            owner.AP += 5 + 25f / 17f * (owner.lvl - 1);
+            owner.AP += 13 + (owner.lvl - 1);
     }
 
     @Override

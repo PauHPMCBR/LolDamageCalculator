@@ -10,8 +10,8 @@ public class RelicShield extends Item {
 
     public RelicShield() {
         super(name, type, cost);
-        ap = 5;
-        hp = 30;
+        ap = 7;
+        hp = 50;
         hp_regen = 50;
     }
 

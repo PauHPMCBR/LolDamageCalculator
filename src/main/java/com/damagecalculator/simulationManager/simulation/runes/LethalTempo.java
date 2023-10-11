@@ -21,8 +21,8 @@ public class LethalTempo extends Rune {
         if (autos == 6) return;
         ++autos;
         float bonus_as;
-        if (cs.champion.is_ranged) bonus_as = 3.7f + 0.3f*cs.champion.lvl;
-        else bonus_as = 10 + (int)(Math.min(15, cs.champion.lvl)/3);
+        if (cs.champion.is_ranged) bonus_as = 3.3f + 0.3f*cs.champion.lvl;
+        else bonus_as = 9 + 0.9f*(int)(Math.min(15, cs.champion.lvl)/3);
 
         cs.champion.BONUS_AS += bonus_as;
         if (autos == 6) cs.champion.max_as = 10;

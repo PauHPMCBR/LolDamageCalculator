@@ -10,8 +10,8 @@ public class SpectralSickle extends Item {
 
     public SpectralSickle() {
         super(name, type, cost);
-        ad = 5;
-        hp = 10;
+        ad = 6;
+        hp = 25;
         mana_regen = 50;
     }
 

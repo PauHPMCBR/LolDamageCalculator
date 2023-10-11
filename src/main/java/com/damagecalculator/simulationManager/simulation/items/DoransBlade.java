@@ -10,8 +10,8 @@ public class DoransBlade extends Item {
 
     public DoransBlade() {
         super(name, type, cost);
-        ad = 8;
-        hp = 80;
+        ad = 10;
+        hp = 100;
         omnivamp = 2; //L + ratio
     }
 

@@ -18,7 +18,7 @@ public class YoumuusGhostblade extends Item {
     } //supposing already max stacked
 
     public void specialStats() {
-        lethalityGained = 3 + Math.max(0, owner.lvl - 7);
+        lethalityGained = Math.max(7, owner.lvl);
         owner.LETHALITY += lethalityGained;
     }
     public void extraDmg() {

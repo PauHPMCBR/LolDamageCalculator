@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class BlightingJewel extends Item {
     public static final String name = "Blighting Jewel";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1250;
+    public static final int cost = 1100;
 
     public BlightingJewel() {
         super(name, type, cost);

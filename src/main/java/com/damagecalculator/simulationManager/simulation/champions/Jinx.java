@@ -11,7 +11,7 @@ public class Jinx extends Champion {
         super(
                 name,
                 630f,
-                100f,
+                105f,
                 260f,
                 50f,
                 26f,
@@ -110,10 +110,10 @@ public class Jinx extends Champion {
             }
         };
         r.damageType = DamageType.physicalDmg;
-        r.damage = new float[]{300,450,600};
-        r.ad_scale = new float[]{1.5f,1.5f,1.5f};
+        r.damage = new float[]{325,475,625};
+        r.ad_scale = new float[]{1.65f,1.65f,1.65f};
         r.ap_scale = new float[]{0.25f,0.30f,0.35f}; //missing hp dmg
-        r.cooldown = new float[]{75,65,55};
+        r.cooldown = new float[]{70,60,50};
         r.cast_time = 0.6f;
 
 

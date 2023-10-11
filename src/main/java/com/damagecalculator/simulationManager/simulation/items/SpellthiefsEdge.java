@@ -10,8 +10,8 @@ public class SpellthiefsEdge extends Item {
 
     public SpellthiefsEdge() {
         super(name, type, cost);
-        ap = 8;
-        hp = 10;
+        ap = 10;
+        hp = 25;
         mana_regen = 50;
     }
 

@@ -16,8 +16,8 @@ public class SummonAery extends Rune {
 
     public void extraDmg() {
         if (canUse()) {
-            float dmg = 10 + 30f / 17f * (owner.lvl - 1);
-            dmg += 0.15f * owner.BONUS_AD + 0.10f * owner.AP;
+            float dmg = 10 + 40f / 17f * (owner.lvl - 1);
+            dmg += 0.1f * owner.BONUS_AD + 0.05f * owner.AP;
             damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg, 2);
             putOnCooldown();
         }

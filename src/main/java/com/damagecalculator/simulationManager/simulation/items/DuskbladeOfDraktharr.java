@@ -14,7 +14,7 @@ public class DuskbladeOfDraktharr extends Item {
         super(name, type, cost);
         ad = 60;
         lethality = 18;
-        ah = 20;
+        ah = 15;
         item_cooldown = 30;
 
         currentDmgMult = 1;
@@ -22,7 +22,7 @@ public class DuskbladeOfDraktharr extends Item {
 
     public void extraDmg() {
         cs.damageMultiplier /= currentDmgMult;
-        currentDmgMult = 1 + Math.min(0.7f, owner.getEnemy().getRelativeMissingHP())/0.7f * 0.18f; //up to 18% increase, maxed at 30% remaining
+        currentDmgMult = 1 + Math.min(0.7f, owner.getEnemy().getRelativeMissingHP())/0.7f * 0.16f; //up to 18% increase, maxed at 30% remaining
         cs.damageMultiplier *= currentDmgMult;
     }
 

@@ -10,8 +10,8 @@ public class DoransRing extends Item {
 
     public DoransRing() {
         super(name, type, cost);
-        ap = 15;
-        hp = 70;
+        ap = 18;
+        hp = 90;
     }
 
     @Override

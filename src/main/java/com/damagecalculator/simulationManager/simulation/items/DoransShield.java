@@ -10,7 +10,7 @@ public class DoransShield extends Item {
 
     public DoransShield() {
         super(name, type, cost);
-        hp = 80;
+        hp = 110;
     }
 
     @Override
