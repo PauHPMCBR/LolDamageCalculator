@@ -12,8 +12,9 @@
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#onNewClick" text="New" />
-                    <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#onLoadClick" text="Load" />
-                    <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
+                    <MenuItem fx:id="loadConfigButton" mnemonicParsing="false" onAction="#onLoadConfigClick" text="Load Config" />
+                    <MenuItem fx:id="saveConfigButton" mnemonicParsing="false" onAction="#onSaveConfigClick" text="Save Config" />
+                    <MenuItem fx:id="saveGraphDataButton" mnemonicParsing="false" onAction="#onSaveGraphDataClick" text="Save Graph Data" />
                     <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#onCloseClick" text="Close" />
                   </items>
                 </Menu>

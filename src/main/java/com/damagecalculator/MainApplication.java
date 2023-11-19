@@ -2,6 +2,7 @@ package com.damagecalculator;
 
 import com.damagecalculator.displays.*;
 import com.damagecalculator.simulationManager.StatsTester;
+import com.damagecalculator.simulationManager.simulation.AbilityType;
 import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
@@ -144,6 +145,7 @@ public class MainApplication extends Application {
         controller.onResetClick();
 
         controller.defaultConfig = new Config(controller);
+        controller.statsTester = new StatsTester();
 
         System.out.println("GUI started.");
     }

@@ -8,10 +8,7 @@ import com.damagecalculator.simulationManager.StatsTester;
 import com.damagecalculator.simulationManager.simulation.*;
 import com.damagecalculator.simulationManager.simulation.champions.Dummy;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -32,8 +28,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +77,8 @@ public class MainView {
     public Label LolPatch;
 
     Config defaultConfig;
+
+    StatsTester statsTester;
 
     InventoryDisplay currentInventory;
     RunePageDisplay currentRunes;
@@ -205,7 +201,7 @@ public class MainView {
         }
         else {
             graph.getChildren().clear();
-            StatsTester statsTester = new StatsTester(setUpChampion(), dummy, true, DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            statsTester.setSimulation(setUpChampion(), dummy, true, DisplayUtils.getAbilityList(comboOrPriority.getText()));
             int xMin = Integer.parseInt(var1min.getText());
             int xMax = Integer.parseInt(var1max.getText());
             int yMin = Integer.parseInt(var2min.getText());
@@ -218,8 +214,8 @@ public class MainView {
                 Data3D data3D = new Data3D(
                         var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, "Damage");
                 data3D.setData(statsTester.testStats(
-                        StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
-                        StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+                        new StatsTester.StatParams(var1type.getText(), xMin, xStep, xMax),
+                        new StatsTester.StatParams(var2type.getText(), yMin, yStep, yMax)
                 ));
                 ImageView iv = graphDisplay.getDisplay(data3D);
                 iv.setFitHeight(graph.getHeight());
@@ -228,7 +224,8 @@ public class MainView {
 
             }
             else {
-                float[] result = statsTester.testStat(StatsTester.getType(var1type.getText()), xMin, xStep, xMax);
+                float[] result = statsTester.testStat(new StatsTester.StatParams(var1type.getText(), xMin, xStep, xMax));
+                if (statsTester.results.size() == 1) graphDisplay.clearDisplay(); //that means axis changed
                 graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, "Damage", result));
             }
         }
@@ -277,7 +274,7 @@ public class MainView {
         }
         else {
             graph.getChildren().clear();
-            StatsTester statsTester = new StatsTester(setUpChampion(), dummy, false, DisplayUtils.getAbilityList(comboOrPriority.getText()));
+            statsTester.setSimulation(setUpChampion(), dummy, false, DisplayUtils.getAbilityList(comboOrPriority.getText()));
             int xMin = Integer.parseInt(var1min.getText());
             int xMax = Integer.parseInt(var1max.getText());
             int yMin = Integer.parseInt(var2min.getText());
@@ -292,8 +289,8 @@ public class MainView {
                 Data3D data3D = new Data3D(
                         var1type.getText(), xMin, xStep, var2type.getText(), yMin, yStep, varName);
                 data3D.setData(statsTester.testStats(
-                        StatsTester.getType(var1type.getText()), xMin, xStep, xMax,
-                        StatsTester.getType(var2type.getText()), yMin, yStep, yMax
+                        new StatsTester.StatParams(var1type.getText(), xMin, xStep, xMax),
+                        new StatsTester.StatParams(var2type.getText(), yMin, yStep, yMax)
                 ));
                 ImageView iv = graphDisplay.getDisplay(data3D);
                 iv.setFitHeight(graph.getHeight());
@@ -301,7 +298,8 @@ public class MainView {
                 graph.getChildren().add(iv);
             }
             else {
-                float[] result = statsTester.testStat(StatsTester.getType(var1type.getText()), xMin, xStep, xMax);
+                float[] result = statsTester.testStat(new StatsTester.StatParams(var1type.getText(), xMin, xStep, xMax));
+                if (statsTester.results.size() == 1) graphDisplay.clearDisplay();
                 graph.getChildren().add(graphDisplay.getDisplay(var1type.getText(), xMin, xStep, varName, result));
             }
         }
@@ -393,7 +391,7 @@ public class MainView {
     }
 
     @FXML
-    protected void onLoadClick() throws IOException, ClassNotFoundException {
+    protected void onLoadConfigClick() throws IOException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Configuration");
         fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
@@ -407,7 +405,7 @@ public class MainView {
     }
 
     @FXML
-    protected void onSaveClick() throws IOException {
+    protected void onSaveConfigClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Configuration As");
         fileChooser.setInitialFileName("save.dcc");
@@ -422,6 +420,23 @@ public class MainView {
             lastVisitedDirectory = selectedFile.getParent();
         }
     }
+
+    @FXML
+    protected void onSaveGraphDataClick() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Data As");
+        fileChooser.setInitialFileName("data.csv");
+        fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Comma-Separated Values", "*.csv"));
+
+        File selectedFile = fileChooser.showSaveDialog(new Stage());
+        if (selectedFile != null) {
+            System.out.println(selectedFile.getAbsolutePath());
+            statsTester.saveResults(selectedFile.getAbsolutePath());
+            lastVisitedDirectory = selectedFile.getParent();
+        }
+    }
+
 
     @FXML
     protected void onCloseClick() {
