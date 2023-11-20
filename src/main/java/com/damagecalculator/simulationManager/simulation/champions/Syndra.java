@@ -24,10 +24,10 @@ public class Syndra extends Champion {
                 30f,
                 1.3f,
                 1.75f,
-                0.625f,
+                0.658f,
                 2.5f,
                 18.75f,
-                1f,
+                0.625f,
                 2f,
                 true
         );

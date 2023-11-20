@@ -109,7 +109,7 @@ public abstract class Champion {
         return BASE_AD + BONUS_AD;
     }
     public float getAttackSpeed() {
-        return Math.min(max_as, base_as * (1 + (BONUS_AS *as_ratio)/100));
+        return Math.min(max_as, base_as + (BONUS_AS*as_ratio)/100);
     }
     public float getMaxHP() {
         return BASE_HP + BONUS_HP;

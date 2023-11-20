@@ -55,7 +55,7 @@ public class MainApplication extends Application {
 
         controller.menuBar.prefWidthProperty().bind(stage.widthProperty());
 
-        controller.LolPatch.setText("Lol Patch: 13.20");
+        controller.LolPatch.setText("Lol Patch: 13.23");
 
         controller.evd = startupThread.evd;
         controller.extraVariables.setMaxWidth(430);

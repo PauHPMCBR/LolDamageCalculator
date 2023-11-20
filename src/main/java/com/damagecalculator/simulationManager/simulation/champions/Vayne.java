@@ -23,7 +23,7 @@ public class Vayne extends Champion {
                 0.658f,
                 2.5f,
                 17.554f,
-                1f,
+                0.658f,
                 3.3f,
                 true
         );

@@ -21,9 +21,9 @@ public class Ahri extends Champion {
                 1.75f,
                 0.668f,
                 2.5f,
-                20.054f,
-                1f,
-                2f,
+                20f,
+                0.625f,
+                2.2f,
                 true
         );
 
