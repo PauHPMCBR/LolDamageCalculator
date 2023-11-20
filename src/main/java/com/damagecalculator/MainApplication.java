@@ -121,11 +121,11 @@ public class MainApplication extends Application {
         controller.enemyArmor.setText("50");
 
         int graphSize = (int) (Math.min(screenWidth - controller.output.getWidth(), screenHeight) - 50);
-        System.out.println(graphSize);
+        //System.out.println(graphSize);
         controller.graph.setPrefWidth(graphSize);
         controller.graph.setPrefHeight(graphSize);
-        System.out.println(controller.graph.getWidth());
-        System.out.println(controller.graph.getHeight());
+        //System.out.println(controller.graph.getWidth());
+        //System.out.println(controller.graph.getHeight());
 
         startupThread.join();
 

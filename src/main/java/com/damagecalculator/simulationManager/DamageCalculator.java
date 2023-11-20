@@ -148,7 +148,6 @@ public class DamageCalculator {
             if (abilityType == AbilityType.AUTO) {
                 increaseTime(cs.champion.autoCd);
                 useAuto();
-                cs.champion.autoAttack();
             }
             else {
                 Ability a = cs.champion.getAbility(abilityType);

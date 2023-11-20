@@ -57,11 +57,7 @@ public class Jinx extends Champion {
                 owner.BONUS_AS /= 0.9;
                 owner.BONUS_AS += extraASGiven;
 
-                for (Item i : allItems) {
-                    if (i.name.equals("_q onhit")) continue; //no q onhit, only works with normal autos
-                    i.onHit();
-                }
-                for (Rune r : runes.runeList) r.onHit();
+                owner.applyOnhit(1, JinxOnHit.name); //onhit except q attack speed buff
             }
         };
         q.damageType = null;

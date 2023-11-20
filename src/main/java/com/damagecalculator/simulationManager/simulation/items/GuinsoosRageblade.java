@@ -3,6 +3,7 @@ package com.damagecalculator.simulationManager.simulation.items;
 import com.damagecalculator.simulationManager.simulation.DamageType;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
+import com.damagecalculator.simulationManager.simulation.Rune;
 
 public class GuinsoosRageblade extends Item {
     public static final String name = "Guinsoo's Rageblade";
@@ -32,10 +33,12 @@ public class GuinsoosRageblade extends Item {
             ++autos;
             if (autos == 3) {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, critOnhit + 30, 1); //rageblade onhit again
+                //can't call the onhit function cause there are TWO items that should be skipped :/
                 for (Item i : owner.allItems) {
                     if (i.name.equals("Guinsoo's Rageblade") || i.name.equals("Kraken Slayer")) continue;
                     i.onHit();
                 }
+                for (Rune r : owner.getRunes()) r.onHit();
                 autos = 0;
             }
         }

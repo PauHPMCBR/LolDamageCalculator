@@ -9,6 +9,7 @@ public class ChampionList {
     public static Jinx jinx = new Jinx();
     public static Kaisa kaisa = new Kaisa();
     public static Lucian lucian = new Lucian();
+    public static Senna senna = new Senna(0);
     public static Syndra syndra = new Syndra(0);
     public static Varus varus = new Varus();
     public static Vayne vayne = new Vayne();
@@ -20,6 +21,7 @@ public class ChampionList {
         add(jinx);
         add(kaisa);
         add(lucian);
+        add(senna);
         add(syndra);
         add(varus);
         add(vayne);

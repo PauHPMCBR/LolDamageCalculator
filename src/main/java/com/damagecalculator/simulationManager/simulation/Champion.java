@@ -111,7 +111,9 @@ public abstract class Champion {
     public float getAttackSpeed() {
         return Math.min(max_as, base_as * (1 + (BONUS_AS *as_ratio)/100));
     }
-    public float getMaxHP() {return BASE_HP + BONUS_HP;}
+    public float getMaxHP() {
+        return BASE_HP + BONUS_HP;
+    }
     public float getMissingHP() {
         return getMaxHP()-HP;
     }
@@ -233,6 +235,21 @@ public abstract class Champion {
     }
 
     /**
+     * Called by auto attack and by items that apply onhit with certain effectiveness (0-1)
+     * toSkip is an item / rune that should be skipped. Can be null
+     */
+    public void applyOnhit(float effectiveness, String toSkip) {
+        cs.damageTrueMultiplier *= effectiveness;
+        for (Item i : allItems) {
+            if (!i.name.equals(toSkip)) i.onHit();
+        }
+        for (Rune r : runes.runeList) {
+            if (!r.name.equals(toSkip)) r.onHit();
+        }
+        cs.damageTrueMultiplier /= effectiveness;
+    }
+
+    /**
      * No ability for auto attacking, this function does just that. also calls for on-hit effects
      */
     public void autoAttack() {
@@ -241,9 +258,7 @@ public abstract class Champion {
         else autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD(), 0);
         ++autosUsed;
         autoCd = 1/getAttackSpeed();
-
-        for (Item i : allItems) i.onHit();
-        for (Rune r : runes.runeList) r.onHit();
+        applyOnhit(1, null);
     }
     public void autoReset() {
         autoCd = 0;
