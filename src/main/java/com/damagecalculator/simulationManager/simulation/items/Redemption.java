@@ -10,8 +10,9 @@ public class Redemption extends Item {
 
     public Redemption() {
         super(name, type, cost);
-        hp = 250;
+        hp = 200;
         mana_regen = 100;
+        ah = 15;
         hsp = 15;
     }
 

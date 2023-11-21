@@ -4,8 +4,11 @@ public class GlobalVariables {
     //builds displayed in build tester results
     public static int displayedBuilds = 15;
 
-    //time after the combo is done that burn will be ticked. Liandry and Demonic (for now), from 0 to 4
-    public static float extraBurnTime = 4;
+    //time after the combo is done that burn will be ticked. Liandry (for now), from 0 to 3
+    public static float extraBurnTime = 3;
+
+    //wait for extra damage for dmg amp, or do it right away
+    public static boolean waitForExtraDamage = false;
 
     //maximum 3D graphs to be displayed at once, from 1 to 6
     public static int max3DGraphs = 4;

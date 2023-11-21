@@ -9,23 +9,19 @@ public class ImperialMandate extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2300;
 
-    float dmg;
-
     public ImperialMandate() {
         super(name, type, cost);
-        ap = 55;
+        ap = 60;
         ah = 20;
-        mana_regen = 100;
-        item_cooldown = 6;
+        mana_regen = 125;
+        item_cooldown = 9;
     }
 
-    public void specialStats() {
-        dmg = 40 + 2 * Math.max(0, owner.lvl - 8);
-    }
+    //supposing it procs
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1); //supposing every ability slows or cc, not accounting for ally proc
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 0.12f * owner.getEnemy().HP, 1); //supposing every ability slows or cc, not accounting for ally proc
         }
     }
 

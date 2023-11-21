@@ -9,7 +9,7 @@ public class RapidFirecannon extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
-    int energyze;
+    int energize;
 
     public RapidFirecannon() {
         super(name, type, cost);
@@ -17,14 +17,16 @@ public class RapidFirecannon extends Item {
         as = 15;
         crit = 20;
         percent_ms = 7;
+    }
 
-        energyze = 9;
+    public void specialStats() {
+        energize = 9;
     }
 
     public void onHit() {
-        ++energyze;
-        if (energyze == 10) { //kinda arbitrary
-            energyze = 0;
+        ++energize;
+        if (energize == 10) { //kinda arbitrary
+            energize = 0;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60, 1);
         }
     }

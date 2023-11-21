@@ -43,7 +43,6 @@ public abstract class Champion {
     protected RunePage runes = null;
     List<Item> uniqueItems = new ArrayList<>(); //champion specific items that make certain tasks easier
     public List<Item> allItems;
-    public int legendary_items_carried;
 
     public String extraVariableName = null; //for stacking passives like senna, asol, syndra...
 
@@ -55,6 +54,7 @@ public abstract class Champion {
      */
     public boolean can_use_sheen;
     public float lastSheenProc;
+    public AbilityType lastAbilityUsed;
 
     public Ability passive = new Ability(PASSIVE);
     public Ability q = new Ability(AbilityType.Q);
@@ -169,9 +169,6 @@ public abstract class Champion {
             item.applyStats();
             if (item.type == ItemType.LEGENDARY) ++legendaries;
         }
-        legendary_items_carried = legendaries;
-        for (Item item : allItems)
-            if (item.type == ItemType.MYTHIC) item.applyMythicPassive();
     }
 
     void initializeRunes() {
@@ -200,9 +197,9 @@ public abstract class Champion {
         BASE_AD = base_ad + ad_growth*(lvl-1);
         BONUS_AD = 0;
 
-        legendary_items_carried = 0;
         alive = true;
         lastSheenProc = -10000;
+        lastAbilityUsed = null;
         autoDmg = 0;
         autosUsed = 0;
         autoCd = 0;
@@ -258,6 +255,8 @@ public abstract class Champion {
         else autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD(), 0);
         ++autosUsed;
         autoCd = 1/getAttackSpeed();
+        lastAbilityUsed = AUTO;
+
         applyOnhit(1, null);
     }
     public void autoReset() {
@@ -269,6 +268,8 @@ public abstract class Champion {
      */
     public void useAbility(Ability a) {
         a.onUse();
+        lastAbilityUsed = a.type;
+
         if (cs.time - lastSheenProc >= 1.5) can_use_sheen = true;
         if (a.damageType != null) {
             for (Item i : allItems) i.extraDmg();

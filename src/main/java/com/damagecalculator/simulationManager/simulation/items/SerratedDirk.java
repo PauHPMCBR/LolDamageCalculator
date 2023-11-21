@@ -6,11 +6,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SerratedDirk extends Item {
     public static final String name = "Serrated Dirk";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1100;
+    public static final int cost = 1000;
 
     public SerratedDirk() {
         super(name, type, cost);
-        ad = 30;
+        ad = 25;
         lethality = 10;
     }
 

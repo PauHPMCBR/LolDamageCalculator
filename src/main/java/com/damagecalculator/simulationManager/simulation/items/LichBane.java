@@ -7,13 +7,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LichBane extends Item {
     public static final String name = "Lich Bane";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3100;
 
     public LichBane() {
         super(name, type, cost);
-        ap = 85;
+        ap = 100;
         ah = 15;
         percent_ms = 8;
+
+        item_cooldown = 1.5f;
     }
 
     public void onHit() {
@@ -23,7 +25,7 @@ public class LichBane extends Item {
                 owner.lastSheenProc = cs.time;
                 putOnCooldown();
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                        (float) (0.75 * owner.BASE_AD + 0.5 * owner.AP), 1);
+                        (float) (owner.BASE_AD + 0.5 * owner.AP), 1);
             }
         }
     }

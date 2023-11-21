@@ -10,7 +10,7 @@ public class NeedlesslyLargeRod extends Item {
 
     public NeedlesslyLargeRod() {
         super(name, type, cost);
-        ap = 60;
+        ap = 70;
     }
 
     @Override

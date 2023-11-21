@@ -5,33 +5,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class YoumuusGhostblade extends Item {
     public static final String name = "Youmuu's Ghostblade";
-    public static final ItemType type = ItemType.MYTHIC;
-    public static final int cost = 3100;
-
-    int lethalityGained;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2700;
 
     public YoumuusGhostblade() {
         super(name, type, cost);
         ad = 60;
-        ah = 15;
         lethality = 18;
-    } //supposing already max stacked
-
-    public void specialStats() {
-        lethalityGained = Math.max(7, owner.lvl);
-        owner.LETHALITY += lethalityGained;
-    }
-    public void extraDmg() {
-        if (cs.time >= 3 && lethalityGained != 0) {
-            owner.LETHALITY -= lethalityGained;
-            lethalityGained = 0;
-        }
-    }
-    public void onHit() {
-        extraDmg();
-    }
-    public void applyMythicPassive() {
-        owner.BONUS_AD += 7 * owner.legendary_items_carried;
     }
 
     @Override

@@ -11,7 +11,7 @@ public class IonianBootsOfLucidity extends Item {
     public IonianBootsOfLucidity() {
         super(name, type, cost);
         ms = 45;
-        ah = 20;
+        ah = 15;
     }
 
     @Override

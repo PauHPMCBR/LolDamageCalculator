@@ -30,7 +30,6 @@ public class Damage {
         mr -= cs.champion.MAGIC_PEN;
         if (mr < 0) mr = 0;
         amount *= (100/(100 + mr));
-        amount *= cs.liandryPercent; //!
         return amount;
     }
 
@@ -57,16 +56,13 @@ public class Damage {
      * Examples:
      *      0 comes from auto
      *      1 comes from item/rune on-hit
-     *      2 comes from item/rune active / independent dmg <- DOESNT AFFECT LUDENS ! ! ! !
+     *      2 comes from item/rune active / independent dmg
      *      3 comes from ability passive
      *      6 comes from ability active
      */
     public float applyDamage(DamageType type, float amount, int damageInstanceType) {
         amount *= cs.damageTrueMultiplier;
-        if (cs.riftmakerItem != null) { //(riftmaker amplifies true damage as well)
-            if (cs.time >= 3) cs.riftmakerItem.damageDealt += applyDirectDamage(DamageType.trueDmg, (float) (amount*0.09));
-            else cs.riftmakerItem.damageDealt += applyDirectDamage(type, (float) (amount * 0.03* cs.time)); //in theory it's every second increase
-        }
+        //rip old riftmaker
         if (type != DamageType.trueDmg) {
             amount *= cs.damageMultiplier;
             if (cs.hasCutDown) {
@@ -83,13 +79,19 @@ public class Damage {
             //last stand can be controversial, since we don't know champion's relative hp. currently skipped
         }
         if (damageInstanceType%3 == 0 && damageInstanceType != 0) { //damage from ability
-            amount *= cs.navoriPercent; //(navori amplifies true damage as well)
-            if (damageInstanceType%2 == 0) { //active dmg (not onhit)
-                if (cs.ludensItem != null && type == DamageType.magicDmg) cs.ludensItem.echo();
-            }
+            amount *= cs.abilityDamageMultiplier; //(navori amplifies true damage as well)
+            //no more ludens xdd
         }
 
         float dmg = applyDirectDamage(type, amount);
+
+        if (cs.shadowflameItem != null && type != DamageType.physicalDmg) { //crit for true and magic dmg
+            if (cs.enemy.getRelativeMissingHP() >= 0.65) { //"crit" if enemy below 35% hp
+                float extraDmg = applyDirectDamage(type, dmg * 0.2f); //TODO is this right? description looked a bit bugged. need to check for pets?
+                dmg += extraDmg;
+                cs.shadowflameItem.damageDealt += extraDmg;
+            }
+        }
 
         if (cs.hasFirstStrike) {
             cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.07f);

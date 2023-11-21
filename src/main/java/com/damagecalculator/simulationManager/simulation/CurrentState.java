@@ -1,8 +1,7 @@
 package com.damagecalculator.simulationManager.simulation;
 
-import com.damagecalculator.simulationManager.simulation.items.LudensTempest;
 import com.damagecalculator.simulationManager.simulation.items.BlackCleaver;
-import com.damagecalculator.simulationManager.simulation.items.Riftmaker;
+import com.damagecalculator.simulationManager.simulation.items.Shadowflame;
 import com.damagecalculator.simulationManager.simulation.runes.FirstStrike;
 
 
@@ -20,12 +19,10 @@ public class CurrentState {
 
     public float damageMultiplier = 1;      //damage multipler that doesn't work with true dmg
     public float damageTrueMultiplier = 1;  //damage multipler that works with true dmg
-    public float navoriPercent = 1;
-    public float liandryPercent = 1;
+    public float abilityDamageMultiplier = 1;
 
-    public Riftmaker riftmakerItem; //pointer to the riftmaker item, so the extra damage can be given to the item
     public BlackCleaver cleaverItem;
-    public LudensTempest ludensItem;
+    public Shadowflame shadowflameItem;
     public FirstStrike firstStrikeRune;
     public boolean hasFirstStrike = false;
     public boolean hasCoupDeGrace = false;
@@ -37,12 +34,10 @@ public class CurrentState {
         damageMultiplier = 1;
         damageTrueMultiplier = 1;
 
-        navoriPercent = 1;
-        liandryPercent = 1;
+        abilityDamageMultiplier = 1;
 
-        riftmakerItem = null;
         cleaverItem = null;
-        ludensItem = null;
+        shadowflameItem = null;
 
         hasLastStand = false;
         hasCutDown = false;

@@ -13,17 +13,19 @@ public class PhantomDancer extends Item {
     public PhantomDancer() {
         super(name, type, cost);
         ad = 20;
-        as = 35;
+        as = 30;
         crit = 20;
-        percent_ms = 7;
+        percent_ms = 10;
+    }
 
+    public void specialStats() {
         autos = 0;
     }
 
     public void onHit() {
-        ++autos;
-        if (autos == 4) {
-            owner.BONUS_AS += 30;
+        if (autos < 5) {
+            ++autos;
+            owner.BONUS_AS += 7;
         }
     }
 

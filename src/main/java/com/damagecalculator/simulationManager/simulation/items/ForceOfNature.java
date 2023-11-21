@@ -11,9 +11,11 @@ public class ForceOfNature extends Item {
     public ForceOfNature() {
         super(name, type, cost);
         hp = 400;
-        mr = 60;
+        mr = 50;
         percent_ms = 5;
     }
+
+    //ignoring stacking
 
     @Override
     public Item makeCopy() {

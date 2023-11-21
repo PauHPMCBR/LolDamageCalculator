@@ -10,9 +10,9 @@ public class TheCollector extends Item {
 
     public TheCollector() {
         super(name, type, cost);
-        ad = 55;
+        ad = 60;
         crit = 20;
-        lethality = 18;
+        lethality = 16;
     }
 
     public void extraDmg() {

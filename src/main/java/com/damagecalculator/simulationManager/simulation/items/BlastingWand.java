@@ -10,7 +10,7 @@ public class BlastingWand extends Item {
 
     public BlastingWand() {
         super(name, type, cost);
-        ap = 40;
+        ap = 45;
     }
 
     @Override

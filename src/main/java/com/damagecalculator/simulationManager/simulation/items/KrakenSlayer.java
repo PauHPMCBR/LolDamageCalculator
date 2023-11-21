@@ -15,7 +15,7 @@ public class KrakenSlayer extends Item {
     public KrakenSlayer() {
         super(name, type, cost);
         ad = 40;
-        as = 30;
+        as = 35;
         crit = 20;
 
         autos = 0;

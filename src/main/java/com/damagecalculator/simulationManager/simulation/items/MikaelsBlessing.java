@@ -12,7 +12,8 @@ public class MikaelsBlessing extends Item {
         super(name, type, cost);
         hp = 250;
         mana_regen = 100;
-        hsp = 15;
+        ah = 15;
+        hsp = 12;
     }
 
     //ignoring base hp regen for base mana regen

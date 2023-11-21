@@ -6,8 +6,7 @@ import static com.damagecalculator.simulationManager.simulation.items.ItemList.*
 /**
  * This class makes sure that an inventory fulfills all rules, which are:
  *  - Max item slots (hardcoded as 6, currently)
- *  - Only one copy of an item (as of now, only legendaries, mythics and boots implemented)
- *  - Only one mythic
+ *  - Only one copy of an item (as of now, only legendaries and boots implemented)
  *  - Only one of each group of exclusive items (lifeline, sheen/spellblade, boots...)
  *      (in theory you can have more than one sheen item, but only the one with highest priority will work)
  * (Currently, runaans for melee champions is not checked)
@@ -19,25 +18,24 @@ public class Inventory {
     private int cost;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            new Item[] {bandleglassMirror, ironspikeWhip, leechingLeer, lostChapter, catalystOfAeons, rageknife}, //mythic component
+            //TODO: check this list
+            //liandry + riftmaker + component?
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
-            new Item[] {navoriQuickblades, spearOfShojin}, //cd mod
-            new Item[] {trinityForce, divineSunderer, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
+            new Item[] {trinityForce, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
             new Item[] {fimbulwinter, muramana, seraphsEmbrace, tearOfTheGoddess}, //mana charge
-            new Item[] {lordDominiksRegards, seryldasGrudge, lastWhisper, mortalReminder}, //last whisper
-            new Item[] {titanicHydra, ravenousHydra, tiamat}, //hydra
-            new Item[] {mercurialScimitar, silvermereDawn, quicksilverSash}, //qicksilver
+            new Item[] {lordDominiksRegards, seryldasGrudge, lastWhisper, mortalReminder, blackCleaver, terminus}, //armor pen
+            new Item[] {titanicHydra, ravenousHydra, profaneHydra, tiamat}, //hydra
+            new Item[] {mercurialScimitar, quicksilverSash}, //qicksilver
             new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity}, //boots
             new Item[] {mejaisSoulstealer, darkSeal}, //glory
             new Item[] {guardiansOrb, guardiansHorn, guardiansBlade, guardiansHammer}, //guardian
-            new Item[] {sunfireAegis, bamisCinder}, //immolate
-            new Item[] {shardOfTrueIce, pauldronsOfWhiterock, blackMistScythe, bulwarkOfTheMountain,
-                        frostfang, runesteelSpaulders, harrowingCrescent, targonsBuckler,
-                        spellthiefsEdge, steelShoulderguards, spectralSickle, relicShield}, //support
+            new Item[] {sunfireAegis, bamisCinder, hollowRadiance}, //immolate
+            new Item[] {worldAtlas, runicCompass, bountyOfWorlds, celestialOpposition, solsticeSleigh,
+                        bloodsong, dreamMaker, zazZaksRealmspike}, //support
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
-            new Item[] {voidStaff, blightingJewel} //void pen
+            new Item[] {voidStaff, blightingJewel, terminus, cryptbloom}, //void pen
+            new Item[] {doransBlade, doransRing, doransShield} //doran's items
     };
-    //catalyst is mythic component now?
 
     /**
      * Constructor for the ArrayList, since it's more comfortable to declare it first as an array
@@ -53,11 +51,9 @@ public class Inventory {
         }
     }
     private boolean[] exclusiveItemsUsed;
-    private boolean hasMythic;
     public boolean canAdd(Item item) {
         if (inventory.size() == maxSize) return false;
         if (item.type == ItemType.LEGENDARY && inventory.contains(item)) return false;
-        if (item.type == ItemType.MYTHIC && (hasMythic || exclusiveItemsUsed[0])) return false;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item) && exclusiveItemsUsed[i]) return false;
         return true;
@@ -73,10 +69,6 @@ public class Inventory {
         cost += item.cost;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = true;
-        if (item.type == ItemType.MYTHIC) {
-            hasMythic = true;
-            exclusiveItemsUsed[0] = true; //mythic component
-        }
         return true;
     }
 
@@ -108,10 +100,6 @@ public class Inventory {
         cost -= item.cost;
         for (int i = 0; i < exclusiveItems.length; ++i)
             if (exclusiveItems[i].contains(item)) exclusiveItemsUsed[i] = false;
-        if (item.type == ItemType.MYTHIC) {
-            hasMythic = false;
-            exclusiveItemsUsed[0] = false; //mythic component
-        }
         return true;
     }
 
@@ -119,7 +107,6 @@ public class Inventory {
         inventory.clear();
         cost = 0;
         exclusiveItemsUsed = new boolean[exclusiveItems.length];
-        hasMythic = false;
     }
 
 
@@ -156,7 +143,6 @@ public class Inventory {
         cost = 0;
         if (exclusiveItems == null) fillExclusiveItems();
         exclusiveItemsUsed = new boolean[exclusiveItems.length];
-        hasMythic = false;
     }
 
     /**
@@ -168,6 +154,5 @@ public class Inventory {
         cost = i.cost;
 
         exclusiveItemsUsed = Arrays.copyOf(i.exclusiveItemsUsed, i.exclusiveItemsUsed.length);
-        hasMythic = i.hasMythic;
     }
 }

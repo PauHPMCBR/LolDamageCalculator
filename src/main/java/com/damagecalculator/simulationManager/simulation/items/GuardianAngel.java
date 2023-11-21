@@ -10,8 +10,8 @@ public class GuardianAngel extends Item {
 
     public GuardianAngel() {
         super(name, type, cost);
-        ad = 45;
-        armor = 40;
+        ad = 55;
+        armor = 45;
     }
 
     @Override

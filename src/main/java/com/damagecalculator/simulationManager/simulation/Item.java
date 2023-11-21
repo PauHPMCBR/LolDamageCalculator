@@ -20,7 +20,7 @@ public abstract class Item {
     public int hp, armor, mr;
     public int mana = 0, crit = 0, mana_regen, hp_regen;
     public int lethality = 0, armor_pen = 0, magic_pen = 0, percent_magic_pen = 0;
-    public int lifesteal, hsp, ms, percent_ms, omnivamp; //currently unused
+    public int lifesteal, hsp, ms, percent_ms; //currently unused
 
     public boolean is_hidden = false; //if the item is hidden, it won't be displayed in results messages
 
@@ -41,7 +41,6 @@ public abstract class Item {
 
 
     public void specialStats() {}
-    public void applyMythicPassive() {}
     public void onHit() {} //will get called by autos
     public void extraDmg() {} //will get called by abilities
 

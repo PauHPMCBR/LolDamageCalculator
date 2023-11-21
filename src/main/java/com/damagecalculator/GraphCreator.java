@@ -67,13 +67,13 @@ public class GraphCreator {
         lud.add(new SorcerersShoes());
         lud.add(new StatikkShiv());
         lud.add(new NashorsTooth());
-        lud.add(new LudensTempest());
+        lud.add(new CastersCompanion());
 
         Inventory lia = new Inventory();
         lia.add(new SorcerersShoes());
         lia.add(new StatikkShiv());
         lia.add(new NashorsTooth());
-        lia.add(new LiandrysAnguish());
+        lia.add(new LiandrysTorment());
 
         Champion kaisa = new Kaisa();
         kaisa.upgradeOrder = new AbilityType[] {Q, W, E, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};

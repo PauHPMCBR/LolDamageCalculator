@@ -12,19 +12,27 @@ public class TitanicHydra extends Item {
 
     public TitanicHydra() {
         super(name, type, cost);
+        ad = 55;
+        hp = 550;
 
-        ad = 30;
-        hp = 500;
-    }
-
-    public void specialStats() {
-        owner.BONUS_AD += owner.BONUS_HP * 0.02;
+        item_cooldown = 10;
     }
 
     public void onHit() {
-        float dmg = (float) (4 + 0.015 * owner.getMaxHP());
-        if (owner.is_ranged) dmg *= 0.75;
-        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 1);
+        if (canUse()) {
+            if (owner.is_ranged)
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.0225f * owner.getMaxHP(), 1);
+            else
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.015f * owner.getMaxHP(), 1);
+            putOnCooldown();
+            return;
+        }
+        if (owner.is_ranged)
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.01125f * owner.getMaxHP(), 1);
+        else
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.0075f * owner.getMaxHP(), 1);
+
+        //TODO check melee, ranged?
     }
 
     @Override

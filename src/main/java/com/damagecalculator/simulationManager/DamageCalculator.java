@@ -2,9 +2,7 @@ package com.damagecalculator.simulationManager;
 
 import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.simulationManager.simulation.*;
-import com.damagecalculator.simulationManager.simulation.items.DemonicEmbrace;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
-import com.damagecalculator.simulationManager.simulation.items.LiandrysAnguish;
 
 import java.util.*;
 
@@ -168,7 +166,8 @@ public class DamageCalculator {
         if (GlobalVariables.extraBurnTime != 0) {
             hasBurnItem = false;
             for (Item i : cs.champion.allItems) {
-                if (i.equals(ItemList.liandrysAnguish) || i.equals(ItemList.demonicEmbrace)) {
+                if (i.equals(ItemList.liandrysTorment) || i.equals(ItemList.malignance) ||
+                    i.equals(ItemList.stormsurge)) {
                     if (!hasBurnItem) {
                         hasBurnItem = true;
                         cs.time += GlobalVariables.extraBurnTime; //extra burn time

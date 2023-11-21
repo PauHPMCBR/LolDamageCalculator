@@ -6,13 +6,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ZhonyasHourglass extends Item {
     public static final String name = "Zhonya's Hourglass";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3250;
 
     public ZhonyasHourglass() {
         super(name, type, cost);
-        ap = 80;
-        ah = 15;
-        armor = 45;
+        ap = 120;
+        armor = 50;
     }
 
     @Override

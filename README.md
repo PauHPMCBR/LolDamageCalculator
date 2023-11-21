@@ -28,6 +28,9 @@ The main screen will always look similar to this. All simulations will start run
 14. **Menu bar:** the "File" menu enables saving and the current configuration to a file (and loading a configuration from a file). The "Help" menu has options that lead to this website.
 
 ### Testing build combinations
+(The following images are "outdated" since the preseason item change)
+
+
 The second mode is "Build Combinations", and will look like this:
 ![BuildCombinations](images/BuildCombinations.png)
 The "Variable Items" button opens a different item list, where the marked items are the ones that will be used to try every combination possible.
@@ -135,10 +138,12 @@ Although this program is a very faithful recreation on what happens exactly in g
 ## Things the program assumes
 - Every ability hits.
 - Things that have a delay (like Jinx E, that explodes after 0.9 secs if enemy is in contact) will get counted towards combo damage, even tho it would take more time to finish it completely.
-- Burns (aka Liandry and Demonic) will complete their duration for combo damage calculation.
+- Burns (aka Liandry, Malignance) will complete their duration for combo damage calculation.
 - The attacking champion is alone vs the defending champion (no external buffs like Lucian vigilance).
 - The program won't wait for Sheen cooldown before using an ability or similar niche things that would increase damage slightly.
 - Projectile travel distance is always 0. The program supposes you are melee range against the enemy.
+- Things that can be stacked prior are already stacked (Heartsteel, Caster's Companion...).
+- Stormsurge will only trigger one time when the enemy champion falls below 65% (100-35) max HP (ignoring that damage has to be done in 3s).
 
 ## Champion specific details
 ### Ahri
@@ -165,6 +170,9 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - To maximise passive damage, Lucian will try to auto after each ability use (the simulation will wait until an auto is done before using any other ability)
 - If you are testing a Lucian combo, insert an auto attack between each ability, or the damage will be higher than it should (the "second" auto that passive provides is ALWAYS applied after each ability use)
 - Vigilance is not implemented, since it's a 1v1 without external buffs
+
+### Senna
+- E is not implemented
 
 ### Syndra
 - If Syndra has 40 or more splinters, first Q cast won't make the ability go on cooldown

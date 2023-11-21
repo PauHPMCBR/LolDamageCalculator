@@ -8,26 +8,12 @@ public class CosmicDrive extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3000;
 
-    int instancesOfDamage;
-
     public CosmicDrive() {
         super(name, type, cost);
-        ap = 100;
-        ah = 30;
+        ap = 80;
+        hp = 250;
+        ah = 25;
         percent_ms = 5;
-
-        instancesOfDamage = 0;
-    }
-
-    public void extraDmg() {
-        ++instancesOfDamage;
-        if (instancesOfDamage == 3) {
-            owner.AP += 40;
-        }
-    }
-
-    public void onHit() {
-        extraDmg();
     }
 
     @Override

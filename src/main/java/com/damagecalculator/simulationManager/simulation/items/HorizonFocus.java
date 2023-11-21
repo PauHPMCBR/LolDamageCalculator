@@ -6,13 +6,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class HorizonFocus extends Item {
     public static final String name = "Horizon Focus";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 2700;
+
+    //TODO check if first damage instance is increased as well
 
     public HorizonFocus() {
         super(name, type, cost);
-        ap = 100;
-        ah = 15;
-        hp = 150;
+        ap = 90;
+        ah = 20;
     }
 
     public void specialStats() { //supposing 700+ range?

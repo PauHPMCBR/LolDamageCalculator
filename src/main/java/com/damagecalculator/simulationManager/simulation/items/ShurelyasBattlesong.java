@@ -5,19 +5,15 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class ShurelyasBattlesong extends Item {
     public static final String name = "Shurelya's Battlesong";
-    public static final ItemType type = ItemType.MYTHIC;
-    public static final int cost = 2300;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2200;
 
     public ShurelyasBattlesong() {
         super(name, type, cost);
-        ap = 35;
-        ah = 20;
-        hp = 200;
-        mana_regen = 100;
-    }
-
-    public void applyMythicPassive() {
-        owner.AH += 5 * owner.legendary_items_carried;
+        ap = 55;
+        ah = 15;
+        percent_ms = 8;
+        mana_regen = 125;
     }
 
     @Override

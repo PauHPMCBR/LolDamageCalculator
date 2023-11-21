@@ -55,7 +55,7 @@ public class MainApplication extends Application {
 
         controller.menuBar.prefWidthProperty().bind(stage.widthProperty());
 
-        controller.LolPatch.setText("Lol Patch: 13.23");
+        controller.LolPatch.setText("Lol Patch: 13.24 (PBE preseason, loyal to PBE current values for item stats)");
 
         controller.evd = startupThread.evd;
         controller.extraVariables.setMaxWidth(430);

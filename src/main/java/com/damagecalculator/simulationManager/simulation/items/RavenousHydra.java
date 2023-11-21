@@ -1,30 +1,33 @@
 package com.damagecalculator.simulationManager.simulation.items;
 
+import com.damagecalculator.simulationManager.simulation.DamageType;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class RavenousHydra extends Item {
     public static final String name = "Ravenous Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3400;
+    public static final int cost = 3300;
 
-    int ravenousStacks;
-
-    public RavenousHydra(int ravenousStacks) {
+    public RavenousHydra() {
         super(name, type, cost);
-        ad = 65;
-        ah = 25;
+        ad = 70;
+        ah = 20;
         lifesteal = 10;
-        extraVariableName = "Ravenous Stacks (0-40)";
-        this.ravenousStacks = Math.min(ravenousStacks, 40);
+
+        item_cooldown = 10;
     }
 
-    public void specialStats() {
-        owner.BONUS_AD += ravenousStacks*0.5;
+    public void extraDmg() {
+        if (canUse()) {
+            //TODO in game it's 100% ad?
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
+            putOnCooldown();
+        }
     }
 
     @Override
     public Item makeCopy() {
-        return new RavenousHydra(ravenousStacks);
+        return new RavenousHydra();
     }
 }

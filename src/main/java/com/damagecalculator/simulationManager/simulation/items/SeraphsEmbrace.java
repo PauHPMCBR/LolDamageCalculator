@@ -10,14 +10,14 @@ public class SeraphsEmbrace extends Item {
 
     public SeraphsEmbrace() {
         super(name, type, cost);
-        ap = 70;
-        ah = 10;
-        hp = 200;
-        mana = 860;
+        ap = 80;
+        ah = 20;
+        mana = 1000;
     }
 
     public void specialStats() { //ignoring shield
-        owner.AP += 0.025 * owner.MANA;
+        float baseMana = owner.base_mana + owner.mana_growth * (owner.lvl - 1);
+        owner.AP += (owner.MANA - baseMana) * 0.02;
     }
 
     @Override

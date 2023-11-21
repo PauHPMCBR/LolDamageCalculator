@@ -5,8 +5,8 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class InfinityEdge extends Item {
     public static final String name = "Infinity Edge";
-    public static final ItemType type = ItemType.MYTHIC;
-    public static final int cost = 3400;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 3300;
 
     public InfinityEdge() {
         super(name, type, cost);
@@ -15,11 +15,7 @@ public class InfinityEdge extends Item {
     }
 
     public void specialStats() {
-        owner.crit_damage += 0.45f;
-    }
-
-    public void applyMythicPassive() {
-        owner.BONUS_AD += 5 * owner.legendary_items_carried;
+        owner.crit_damage += 0.40f;
     }
 
     @Override

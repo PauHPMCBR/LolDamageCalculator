@@ -7,22 +7,21 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class WitsEnd extends Item {
     public static final String name = "Wit's End";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3100;
+    public static final int cost = 2900;
 
     float dmg;
-
     public WitsEnd() {
         super(name, type, cost);
-        ad = 40;
-        as = 40;
-        mr = 40;
+        as = 50;
+        mr = 50;
     }
 
     public void specialStats() {
         dmg = 15 + Math.max(0, owner.lvl - 8) * 10;
         dmg -= Math.max(0, owner.lvl - 14) * (1.25 - 10);
-    } //supposing champ wont lvl up
+    }
 
+    //TODO is it lvl scaling or static 15?
     public void onHit() {
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1);
     }

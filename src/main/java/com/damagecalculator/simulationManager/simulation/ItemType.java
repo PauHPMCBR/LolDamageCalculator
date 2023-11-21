@@ -7,7 +7,6 @@ public enum ItemType {
     BASIC,
     EPIC,
     LEGENDARY,
-    MYTHIC,
     UNIQUE,
     RUNE
 }

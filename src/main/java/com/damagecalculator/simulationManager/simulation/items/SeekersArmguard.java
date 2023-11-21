@@ -6,24 +6,16 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SeekersArmguard extends Item {
     public static final String name = "Seeker's Armguard";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1000;
+    public static final int cost = 1600;
 
-    int stacks;
-
-    public SeekersArmguard(int stacks) {
+    public SeekersArmguard() {
         super(name, type, cost);
-        ap = 30;
-        armor = 20;
-        extraVariableName = "Seeker's Stacks (0-30)";
-        this.stacks = Math.min(stacks, 30);
-    }
-
-    public void specialStats() {
-        owner.ARMOR += 0.5f * stacks;
+        ap = 40;
+        armor = 35;
     }
 
     @Override
     public Item makeCopy() {
-        return new SeekersArmguard(stacks);
+        return new SeekersArmguard();
     }
 }

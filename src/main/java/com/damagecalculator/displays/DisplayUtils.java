@@ -87,8 +87,6 @@ public class DisplayUtils {
         if (i.magic_pen != 0) s = s.concat("" + i.magic_pen + " Magic penetration\n");
         if (i.percent_magic_pen != 0) s = s.concat("" + i.percent_magic_pen + "% Magic penetration\n");
         if (i.lifesteal != 0) s = s.concat("" + i.lifesteal + "% Lifesteal\n");
-        if (i.name.equals("Doran's Blade")) s = s.concat("2.5% Omnivamp\n");
-        else if (i.omnivamp != 0) s = s.concat("" + i.omnivamp + "% Omnivamp\n");
         if (i.hsp != 0) s = s.concat("" + i.hsp + "% Heal & shield power\n");
         if (i.ms != 0) s = s.concat("" + i.ms + " Movement speed\n");
         if (i.percent_ms != 0) s = s.concat("" + i.percent_ms + "% Movement speed\n");
@@ -126,14 +124,19 @@ public class DisplayUtils {
         s = s + "_item.png";
         return s;
     }
+    public static Image getEmptyItemImage() {
+        return new Image(String.valueOf(MainApplication.class.getResource(itemsFolder + "Empty_item.png")));
+    }
+    public static Image getNotFoundItemImage() {
+        return new Image(String.valueOf(MainApplication.class.getResource(itemsFolder + "Not_Found_item.png")));
+    }
     public static Image getItemImage(Item i) {
         if (i == null) return getEmptyItemImage();
 
         URL u = MainApplication.class.getResource(itemsFolder + getItemFileName(i));
+        if (u == null) u = MainApplication.class.getResource(itemsFolder + getItemFileName(i).replace("_item.png", ".png"));
+        if (u == null) return getNotFoundItemImage();
         return new Image(String.valueOf(u));
-    }
-    public static Image getEmptyItemImage() {
-        return new Image(String.valueOf(MainApplication.class.getResource(itemsFolder + "Empty_item.png")));
     }
 
 

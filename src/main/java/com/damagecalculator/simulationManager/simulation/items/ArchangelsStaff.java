@@ -12,10 +12,9 @@ public class ArchangelsStaff extends Item {
 
     public ArchangelsStaff(int stacks) {
         super(name, type, cost);
-        ap = 70;
-        ah = 10;
-        hp = 200;
-        mana = 500;
+        ap = 80;
+        ah = 20;
+        mana = 600;
 
         this.stacks = Math.min(stacks, 360);
     }

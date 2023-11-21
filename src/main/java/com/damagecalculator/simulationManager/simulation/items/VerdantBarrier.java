@@ -8,22 +8,14 @@ public class VerdantBarrier extends Item {
     public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1000;
 
-    int stacks;
-
-    public VerdantBarrier(int stacks) {
+    public VerdantBarrier() {
         super(name, type, cost);
-        ap = 20;
-        mr = 25;
-        extraVariableName = "Verdant Stacks (0-30)";
-        this.stacks = Math.min(stacks, 30);
-    }
-
-    public void specialStats() {
-        owner.MAGIC_RESIST += 0.3f * stacks;
+        ap = 40;
+        mr = 30;
     }
 
     @Override
     public Item makeCopy() {
-        return new VerdantBarrier(stacks);
+        return new VerdantBarrier();
     }
 }

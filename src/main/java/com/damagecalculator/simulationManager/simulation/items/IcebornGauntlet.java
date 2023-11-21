@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class IcebornGauntlet extends Item {
     public static final String name = "Iceborn Gauntlet";
-    public static final ItemType type = ItemType.MYTHIC;
-    public static final int cost = 3000;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 2700;
 
     public IcebornGauntlet() {
         super(name, type, cost);
-        ah = 20;
-        hp = 400;
+        ah = 15;
+        hp = 200;
         armor = 50;
         item_cooldown = 1.5f;
     }
@@ -25,10 +25,6 @@ public class IcebornGauntlet extends Item {
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD, 1);
             }
         }
-    }
-
-    public void applyMythicPassive() {
-        owner.BONUS_HP += 50 * owner.legendary_items_carried; //ignoring tenacity and slow resist
     }
 
     @Override

@@ -12,7 +12,7 @@ public class DoransBlade extends Item {
         super(name, type, cost);
         ad = 10;
         hp = 100;
-        omnivamp = 2; //L + ratio
+        lifesteal = 3; //L + ratio
     }
 
     @Override

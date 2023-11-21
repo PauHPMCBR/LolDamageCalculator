@@ -6,26 +6,17 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Stridebreaker extends Item {
     public static final String name = "Stridebreaker";
-    public static final ItemType type = ItemType.MYTHIC;
-    public static final int cost = 3300;
+    public static final ItemType type = ItemType.LEGENDARY;
+    public static final int cost = 3000;
 
     public Stridebreaker() {
         super(name, type, cost);
-        ad = 60;
+        ad = 50;
         as = 20;
-        ah = 20;
-        hp = 375;
-        item_cooldown = 15;
+        hp = 400;
     }
 
-    public void extraDmg() {
-        if (canUse()) {
-            lastUsed = cs.time - item_cooldown*(1 - 100/(100+owner.ITEM_HASTE + owner.AH));
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (1.75 * owner.BASE_AD), 2);
-        }
-    }
-
-    //ignoring mythic passive +2% ms
+    //ignoring ms stuff
 
     @Override
     public Item makeCopy() {

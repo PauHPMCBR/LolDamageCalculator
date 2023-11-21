@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class UmbralGlaive extends Item {
     public static final String name = "Umbral Glaive";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2300;
+    public static final int cost = 2600;
 
     public UmbralGlaive() {
         super(name, type, cost);
         ad = 50;
         ah = 15;
-        lethality = 13;
+        lethality = 15;
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class MejaisSoulstealer extends Item {
     public static final String name = "Mejai's Soulstealer";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 1600;
+    public static final int cost = 1500;
 
     int stacks;
 

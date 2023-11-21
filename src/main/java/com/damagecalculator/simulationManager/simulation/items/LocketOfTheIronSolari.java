@@ -5,7 +5,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class LocketOfTheIronSolari extends Item {
     public static final String name = "Locket of the Iron Solari";
-    public static final ItemType type = ItemType.MYTHIC;
+    public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2300;
 
     public LocketOfTheIronSolari() {
@@ -18,8 +18,6 @@ public class LocketOfTheIronSolari extends Item {
     }
 
     //ignoring shield
-
-    //ignoring mythic passive
 
     @Override
     public Item makeCopy() {
