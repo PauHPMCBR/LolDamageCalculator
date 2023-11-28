@@ -18,7 +18,7 @@ public class SunderedSky extends Item {
         item_cooldown = 6;
     }
 
-    //TODO it makes it so it DOESNT crit???
+    //TODO right now it assumes attack doesnt crit
     public void onHit() {
         if (canUse()) {
             //will crit for 150% dmg => does 50% dmg? does crit work?

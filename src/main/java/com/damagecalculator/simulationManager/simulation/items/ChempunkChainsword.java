@@ -11,7 +11,7 @@ public class ChempunkChainsword extends Item {
     public ChempunkChainsword() {
         super(name, type, cost);
         ad = 55;
-        ah = 25;
+        ah = 15;
         hp = 250;
     }
 

@@ -16,8 +16,10 @@ public class ZazZaksRealmspike extends Item {
         hp = 200;
         mana_regen = 75;
         hp_regen = 75;
+    }
 
-        item_cooldown = 3; //TODO check cd (scales with lvl?)
+    public void specialStats() {
+        item_cooldown = 9 - 3f/17 * (owner.lvl - 1);
     }
 
     public void extraDmg() {

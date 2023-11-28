@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class GuardianAngel extends Item {
     public static final String name = "Guardian Angel";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3200;
 
     public GuardianAngel() {
         super(name, type, cost);

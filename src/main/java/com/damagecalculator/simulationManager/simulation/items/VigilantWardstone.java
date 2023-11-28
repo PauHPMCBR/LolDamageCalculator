@@ -11,15 +11,9 @@ public class VigilantWardstone extends Item {
     public VigilantWardstone() {
         super(name, type, cost);
         hp = 250;
-        ap = 10;
-        mana_regen = 50;
-    }
-
-    public void specialStats() {
-        owner.BONUS_AD *= 1.2;
-        owner.AP *= 1.2;
-        owner.AH *= 1.2;
-        owner.BONUS_HP *= 1.2;
+        armor = 25;
+        mr = 30;
+        ah = 20;
     }
 
     @Override

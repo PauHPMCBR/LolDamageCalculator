@@ -23,7 +23,7 @@ public class SpearOfShojin extends Item {
     }
 
     public void extraDmg() { //check this works?
-        if (currentStacks == 3) return;
+        if (currentStacks == 4) return;
         cs.abilityDamageMultiplier /= (1 + 0.03 * currentStacks);
         ++currentStacks;
         cs.abilityDamageMultiplier *= (1 + 0.03 * currentStacks);

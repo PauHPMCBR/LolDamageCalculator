@@ -10,16 +10,10 @@ public class WatchfulWardstone extends Item {
 
     public WatchfulWardstone() {
         super(name, type, cost);
-        ap = 10;
         hp = 150;
-        mana_regen = 50;
-    }
-
-    public void specialStats() {
-        owner.BONUS_AD *= 1.08;
-        owner.AP *= 1.08;
-        owner.AH *= 1.08;
-        owner.BONUS_HP *= 1.08;
+        armor = 10;
+        mr = 15;
+        ah = 10;
     }
 
     @Override

@@ -14,7 +14,7 @@ public class RapidFirecannon extends Item {
     public RapidFirecannon() {
         super(name, type, cost);
         ad = 30;
-        as = 15;
+        as = 20;
         crit = 20;
         percent_ms = 7;
     }

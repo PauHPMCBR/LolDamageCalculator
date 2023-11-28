@@ -23,7 +23,7 @@ public class VoltaicCyclosword extends Item {
     }
 
     public void onHit() {
-        ++energize;
+        energize += 2; // for dashes?
         if (energize == 10) { //kinda arbitrary
             energize = 0;
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 100, 1);

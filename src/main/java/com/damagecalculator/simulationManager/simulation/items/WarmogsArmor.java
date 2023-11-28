@@ -10,7 +10,6 @@ public class WarmogsArmor extends Item {
 
     public WarmogsArmor() {
         super(name, type, cost);
-        ah = 10;
         hp = 750;
         hp_regen = 200;
         percent_ms = 5;

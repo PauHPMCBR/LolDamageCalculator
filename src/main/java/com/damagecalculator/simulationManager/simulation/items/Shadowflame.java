@@ -14,6 +14,7 @@ public class Shadowflame extends Item {
         magic_pen = 12;
     }
 
+    // No persistent damage or pet damage differentiation
     public void specialStats() {
         cs.shadowflameItem = this;
     }

@@ -13,7 +13,7 @@ public class JakSho extends Item {
     
     public JakSho() {
         super(name, type, cost);
-        hp = 200;
+        hp = 300;
         armor = 50;
         mr = 50;
     }
@@ -22,12 +22,12 @@ public class JakSho extends Item {
         stacked = false;
     }
 
-    public void extraDmg() { //extra variable are stacks
+    public void extraDmg() {
         if (stacked) return;
         if (cs.time >= 5) {
             stacked = true;
-            owner.ARMOR *= 1.25;
-            owner.MAGIC_RESIST *= 1.25;
+            owner.ARMOR *= 1.3;
+            owner.MAGIC_RESIST *= 1.3;
         }
     }
     public void onHit() {

@@ -30,7 +30,7 @@ public class StatikkShiv extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg + 0.15f*owner.AP, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1);
         }
     }
 

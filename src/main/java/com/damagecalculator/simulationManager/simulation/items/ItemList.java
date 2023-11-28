@@ -116,6 +116,7 @@ public class ItemList {
     public static Noonquiver noonquiver = new Noonquiver();
     public static NullMagicMantle nullMagicMantle = new NullMagicMantle();
     public static OblivionOrb oblivionOrb = new OblivionOrb();
+    public static Opportunity opportunity = new Opportunity();
     public static Phage phage = new Phage();
     public static PhantomDancer phantomDancer = new PhantomDancer();
     public static Pickaxe pickaxe = new Pickaxe();
@@ -188,7 +189,6 @@ public class ItemList {
     public static Zeal zeal = new Zeal();
     public static ZekesConvergence zekesConvergence = new ZekesConvergence();
     public static ZhonyasHourglass zhonyasHourglass = new ZhonyasHourglass();
-    public static Zoomies zoomies = new Zoomies();
 
 
     public static ArrayList<Item> allItems = new ArrayList<>() {{
@@ -302,6 +302,7 @@ public class ItemList {
         add(noonquiver);
         add(nullMagicMantle);
         add(oblivionOrb);
+        add(opportunity);
         add(phage);
         add(phantomDancer);
         add(pickaxe);
@@ -374,7 +375,6 @@ public class ItemList {
         add(zeal);
         add(zekesConvergence);
         add(zhonyasHourglass);
-        add(zoomies);
     }};
     public static HashMap<String, Item> nameToItem = new HashMap<>();
     static {

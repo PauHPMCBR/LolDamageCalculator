@@ -144,6 +144,7 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Projectile travel distance is always 0. The program supposes you are melee range against the enemy.
 - Things that can be stacked prior are already stacked (Heartsteel, Caster's Companion...).
 - Stormsurge will only trigger one time when the enemy champion falls below 65% (100-35) max HP (ignoring that damage has to be done in 3s).
+- Sundered sky supposes its attack won't crit. If it crits in the simulation, it will deal the extra crit damage (so more damage in total).
 
 ## Champion specific details
 ### Ahri

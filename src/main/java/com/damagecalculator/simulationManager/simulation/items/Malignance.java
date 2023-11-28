@@ -16,8 +16,6 @@ public class Malignance extends Item {
 
     float mrReduction;
 
-
-    //TODO check cooldowns, karma, teemo, etc?
     public Malignance() {
         super(name, type, cost);
         ap = 80;
@@ -26,11 +24,12 @@ public class Malignance extends Item {
     }
 
     public void specialStats() {
-        owner.ULTIMATE_HASTE += 15;
+        owner.ULTIMATE_HASTE += 20;
         active = false;
-        mrReduction = 6 + owner.lvl * 0.3f; //TODO level scaling!
+        mrReduction = 6 + 6f/17 * (owner.lvl - 1);
     }
 
+    //in this implementation, it "refreshes" duration, but doesn't stack
     public void extraDmg() {
         if (active) {
             float secs = cs.time - lastTick; //extra variable is time
@@ -43,9 +42,11 @@ public class Malignance extends Item {
                     (float) (secs * (60 + 0.06 * owner.AP)), 1);
             lastTick = cs.time;
         }
-        else if (owner.lastAbilityUsed == AbilityType.R) {
-            active = true;
-            owner.getEnemy().MAGIC_RESIST -= mrReduction;
+        if (owner.lastAbilityUsed == AbilityType.R) {
+            if (!active) {
+                active = true;
+                owner.getEnemy().MAGIC_RESIST -= mrReduction;
+            }
             timeActivated = cs.time;
             lastTick = cs.time;
         }

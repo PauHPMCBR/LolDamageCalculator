@@ -7,27 +7,28 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Stormsurge extends Item {
     public static final String name = "Stormsurge";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 2800;
 
     boolean activated;
     float timeActivated;
     public Stormsurge() {
         super(name, type, cost);
-        ap = 90;
-        magic_pen = 10;
+        ap = 100;
+        magic_pen = 12;
         ms = 5;
     }
 
     public void specialStats() {
         activated = false;
+        timeActivated = 0;
     }
 
-    //TODO check exact numbers
     public void extraDmg() {
+        if (!activated && timeActivated != 0) return; //already used
         if (activated) {
             if (cs.time - timeActivated >= 2) {
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                        120 + owner.lvl * 7 + 0.4f * owner.AP, 2);
+                float dmg = 120 + 130f/17 * (owner.lvl - 1) + 0.4f * owner.AP;
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg,dmg, 2);
                 activated = false;
             }
         }

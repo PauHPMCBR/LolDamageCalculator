@@ -17,8 +17,8 @@ public class LordDominiksRegards extends Item {
 
     public void specialStats() {
         float diff = owner.getEnemy().getMaxHP() - owner.getMaxHP();
-        diff = Math.min(2500, Math.max(0, diff));
-        cs.damageMultiplier *= 1 + diff/10000 * 15f/25f; //should be correct, doesn't amplify true dmg
+        diff = Math.min(2000, Math.max(0, diff));
+        cs.damageMultiplier *= 1 + diff/10000 * 15f/20f;
     }
 
     @Override

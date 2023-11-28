@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Terminus extends Item {
     public static final String name = "Terminus";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 3000;
 
     boolean wasLastLight;
     int lightStacks, darkStacks;
@@ -33,14 +33,9 @@ public class Terminus extends Item {
         }
         else if (lightStacks < 5) {
             ++lightStacks;
-            if (owner.is_ranged) {
-                owner.ARMOR += 3;
-                owner.MAGIC_RESIST += 3;
-            }
-            else {
-                owner.ARMOR += 5;
-                owner.MAGIC_RESIST += 5;
-            }
+            float resistIncrease = 3 + 2f/17 * (owner.lvl - 1);
+            owner.ARMOR += resistIncrease;
+            owner.MAGIC_RESIST += resistIncrease;
         }
         wasLastLight = !wasLastLight;
     }

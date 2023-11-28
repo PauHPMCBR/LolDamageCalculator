@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class BandleglassMirror extends Item {
     public static final String name = "Bandleglass Mirror";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 950;
+    public static final int cost = 1000;
 
     public BandleglassMirror() {
         super(name, type, cost);
         ap = 20;
         ah = 10;
-        mana_regen = 50;
+        mana_regen = 75;
     }
 
     @Override

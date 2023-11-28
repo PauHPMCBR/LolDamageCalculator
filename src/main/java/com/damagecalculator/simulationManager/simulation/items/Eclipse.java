@@ -16,7 +16,6 @@ public class Eclipse extends Item {
         item_cooldown = 6;
     }
 
-    //TODO check cause tooltip kinda bugged xd
     public void extraDmg() {
         //ignoring needs 2 hits to proc, ms and shield granted
         if (canUse()) {

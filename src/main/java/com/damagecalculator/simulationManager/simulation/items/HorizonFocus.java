@@ -8,14 +8,13 @@ public class HorizonFocus extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2700;
 
-    //TODO check if first damage instance is increased as well
-
     public HorizonFocus() {
         super(name, type, cost);
         ap = 90;
         ah = 20;
     }
 
+    //first damage instance is also amplified, supposing it's always triggered instantly
     public void specialStats() { //supposing 700+ range?
         cs.damageTrueMultiplier *= 1.1;
     }

@@ -9,7 +9,6 @@ public class TitanicHydra extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 3300;
 
-
     public TitanicHydra() {
         super(name, type, cost);
         ad = 55;
@@ -19,20 +18,16 @@ public class TitanicHydra extends Item {
     }
 
     public void onHit() {
-        if (canUse()) {
-            if (owner.is_ranged)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.0225f * owner.getMaxHP(), 1);
-            else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.015f * owner.getMaxHP(), 1);
+        if (canUse()) { //in theory the auto reset would be before the big hit, but whatever.
+            owner.autoReset();
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.1f * owner.getMaxHP(), 1);
             putOnCooldown();
             return;
         }
         if (owner.is_ranged)
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.01125f * owner.getMaxHP(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.015f * owner.getMaxHP(), 1);
         else
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.0075f * owner.getMaxHP(), 1);
-
-        //TODO check melee, ranged?
     }
 
     @Override

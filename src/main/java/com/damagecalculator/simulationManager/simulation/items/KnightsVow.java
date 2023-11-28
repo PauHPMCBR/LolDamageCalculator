@@ -11,9 +11,8 @@ public class KnightsVow extends Item {
     public KnightsVow() {
         super(name, type, cost);
         ah = 15;
-        armor = 25;
-        hp = 350;
-        hp_regen = 125;
+        armor = 45;
+        hp = 300;
     }
 
     @Override

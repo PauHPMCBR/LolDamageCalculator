@@ -11,9 +11,9 @@ public class Riftmaker extends Item {
     float currentDmgMult;
     public Riftmaker() {
         super(name, type, cost);
-        ap = 70;
+        ap = 80;
         ah = 15;
-        hp = 300;
+        hp = 350;
     }
 
     public void specialStats() {

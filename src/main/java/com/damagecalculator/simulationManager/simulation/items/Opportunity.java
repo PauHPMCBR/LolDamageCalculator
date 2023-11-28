@@ -3,14 +3,14 @@ package com.damagecalculator.simulationManager.simulation.items;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 
-public class Zoomies extends Item {
-    public static final String name = "Zoomies";
+public class Opportunity extends Item {
+    public static final String name = "Opportunity";
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2700;
 
-    int lethalityGained;
+    float lethalityGained;
 
-    public Zoomies() {
+    public Opportunity() {
         super(name, type, cost);
         ad = 55;
         lethality = 18;
@@ -18,7 +18,7 @@ public class Zoomies extends Item {
     }
 
     public void specialStats() {
-        lethalityGained = Math.max(7, owner.lvl);
+        lethalityGained = 5 + Math.max(0, owner.lvl - 7) * 0.5f;
         owner.LETHALITY += lethalityGained;
     }
     public void extraDmg() {
@@ -33,6 +33,6 @@ public class Zoomies extends Item {
 
     @Override
     public Item makeCopy() {
-        return new Zoomies();
+        return new Opportunity();
     }
 }

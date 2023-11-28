@@ -10,8 +10,8 @@ public class SeekersArmguard extends Item {
 
     public SeekersArmguard() {
         super(name, type, cost);
-        ap = 40;
-        armor = 35;
+        ap = 45;
+        armor = 25;
     }
 
     @Override

@@ -21,7 +21,6 @@ public class WitsEnd extends Item {
         dmg -= Math.max(0, owner.lvl - 14) * (1.25 - 10);
     }
 
-    //TODO is it lvl scaling or static 15?
     public void onHit() {
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1);
     }
