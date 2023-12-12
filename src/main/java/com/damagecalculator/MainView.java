@@ -387,7 +387,7 @@ public class MainView {
 
     @FXML
     protected void onNewClick() {
-        defaultConfig.applyConfig(this);
+        defaultConfig.applyConfigTo(this);
     }
 
     @FXML
@@ -400,7 +400,7 @@ public class MainView {
         if (selectedFile != null) {
             System.out.println(selectedFile.getAbsolutePath());
             Config config = Config.loadConfig(selectedFile.getAbsolutePath());
-            config.applyConfig(this);
+            config.applyConfigTo(this);
         }
     }
 

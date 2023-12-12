@@ -131,7 +131,7 @@ public class Config implements Serializable {
         return config;
     }
 
-    public void applyConfig(MainView mv) {
+    public void applyConfigTo(MainView mv) {
         for (Champion c : ChampionList.allChampions) if (c.name.equals(championName)) {
             mv.setChampion(c);
             break;
@@ -139,7 +139,14 @@ public class Config implements Serializable {
 
 
         Inventory inventory = new Inventory();
-        for (String name : itemNames) inventory.add(ItemList.nameToItem.get(name));
+        for (String name : itemNames) {
+            if (name.equals("Empty")) continue;
+            if (!ItemList.nameToItem.containsKey(name)) {
+                System.out.println("Did not find item named " + name + " in this current version!");
+                continue;
+            }
+            inventory.add(ItemList.nameToItem.get(name));
+        }
         mv.currentInventory.inventory = inventory;
         mv.currentInventory.itemListDisplay.setAvailableItems(inventory);
         mv.currentInventory.updateInventory();
@@ -149,6 +156,11 @@ public class Config implements Serializable {
         mv.currentRunes.updateSecondaryPath(rp2);
 
         for (String name : runeNames) {
+            if (name.equals("Empty")) continue;
+            if (!RuneList.nameToRune.containsKey(name)) {
+                System.out.println("Did not find rune named " + name + " in this current version!");
+                continue;
+            }
             Rune rune = RuneList.nameToRune.get(name);
             if (rune == null) continue;
             if (rune.path.equals(rp1)) {
@@ -177,7 +189,10 @@ public class Config implements Serializable {
             String name = psi.getKey();
             int val = psi.getValue();
             if (ItemList.nameToItem.containsKey(name)) mv.evd.add(ItemList.nameToItem.get(name), val);
-            else mv.evd.add(RuneList.nameToRune.get(name), val);
+            else if (RuneList.nameToRune.containsKey(name)) mv.evd.add(RuneList.nameToRune.get(name), val);
+            else {
+                System.out.println("The name " + name + " doesn't correspond to an item or rune in this current version!");
+            }
         }
 
 
@@ -219,6 +234,32 @@ public class Config implements Serializable {
                 mv.var2max.setText(Integer.toString(secondStatMax));
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Config c)) return false;
+
+        if (version != c.version || !championName.equals(((Config) o).championName) ||
+                lvl != c.lvl || championExtraVariableValue != c.championExtraVariableValue) return false;
+        if (!upgradeOrderString.equals(c.upgradeOrderString) || !comboOrPriorityString.equals(c.comboOrPriorityString)) return false;
+        if (enemyBaseHP != c.enemyBaseHP || enemyBonusHP != c.enemyBonusHP || enemyArmor != c.enemyArmor || enemyMR != c.enemyMR) return false;
+
+        if (itemNames.size() != c.itemNames.size()) return false;
+        for (int i = 0; i < itemNames.size(); ++i) if (!itemNames.get(i).equals(c.itemNames.get(i))) return false;
+
+        if (!rp1.equals(c.rp1) || !rp2.equals(c.rp2)) return false;
+        if (runeNames.size() != c.runeNames.size()) return false;
+        for (int i = 0; i < runeNames.size(); ++i) if (!runeNames.get(i).equals(c.runeNames.get(i))) return false;
+        if (shardValues[0] != c.shardValues[0] || shardValues[1] != c.shardValues[1] || shardValues[2] != c.shardValues[2]) return false;
+
+        if (extraVariables.size() != c.extraVariables.size()) return false;
+        for (int i = 0; i < extraVariables.size(); ++i) {
+            if (!extraVariables.get(i).getKey().equals(c.extraVariables.get(i).getKey())) return false;
+            if (!extraVariables.get(i).getValue().equals(c.extraVariables.get(i).getValue())) return false;
+        }
+
+        return true;
     }
 
 }

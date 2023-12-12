@@ -15,13 +15,17 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainApplication extends Application {
+    final String autosaveName = "autosave.dcc";
+    MainView controller;
+
     @Override
-    public void start(Stage stage) throws IOException, InterruptedException {
+    public void start(Stage stage) throws IOException, InterruptedException, ClassNotFoundException {
         System.out.println();
         System.out.println();
         System.out.flush();
@@ -35,7 +39,7 @@ public class MainApplication extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("main-view.fxml"));
         Parent root = fxmlLoader.load();
-        MainView controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController();
 
         int screenWidth = (int) Screen.getPrimary().getBounds().getWidth(); //1536 def
         int screenHeight = (int) Screen.getPrimary().getBounds().getHeight(); //864 def
@@ -148,6 +152,23 @@ public class MainApplication extends Application {
         controller.statsTester = new StatsTester();
 
         System.out.println("GUI started.");
+
+        // check if autosave present
+        File autosave = new File(autosaveName);
+        if (autosave.exists() && !autosave.isDirectory()) {
+            Config savedConfig = Config.loadConfig(autosaveName);
+            savedConfig.applyConfigTo(controller);
+            System.out.println("Loaded config from autosave");
+        }
+    }
+
+    @Override
+    public void stop() throws IOException {
+        Config currentConfig = new Config(controller);
+        if (!currentConfig.equals(controller.defaultConfig)) {
+            currentConfig.saveConfig(autosaveName);
+            System.out.println("Autosaved current configuration");
+        }
     }
 
     public static void main(String[] args) {
