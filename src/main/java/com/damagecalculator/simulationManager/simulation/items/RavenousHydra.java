@@ -20,7 +20,6 @@ public class RavenousHydra extends Item {
 
     public void extraDmg() {
         if (canUse()) {
-            //TODO in game it's 100% ad?
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
             putOnCooldown();
         }

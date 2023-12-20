@@ -3,7 +3,7 @@ package com.damagecalculator.simulationManager.simulation.items;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 
-public class AnathemasChains extends Item {
+public class    AnathemasChains extends Item {
     public static final String name = "Anathema's Chains";
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2500;

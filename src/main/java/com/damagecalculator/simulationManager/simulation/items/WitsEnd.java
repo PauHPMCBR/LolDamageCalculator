@@ -12,13 +12,13 @@ public class WitsEnd extends Item {
     float dmg;
     public WitsEnd() {
         super(name, type, cost);
-        as = 50;
+        as = 55;
         mr = 50;
     }
 
     public void specialStats() {
         dmg = 15 + Math.max(0, owner.lvl - 8) * 10;
-        dmg -= Math.max(0, owner.lvl - 14) * (1.25 - 10);
+        dmg -= Math.max(0, owner.lvl - 14) * (1.25f - 10);
     }
 
     public void onHit() {

@@ -19,19 +19,21 @@ public class Inventory {
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
             //TODO: check this list
-            //liandry + riftmaker + component?
+            new Item[] {infinityEdge, navoriQuickblades}, //crit modifier
+            new Item[] {seekersArmguard, zhonyasHourglass}, //stasis component
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
             new Item[] {trinityForce, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
             new Item[] {fimbulwinter, muramana, seraphsEmbrace, tearOfTheGoddess}, //mana charge
             new Item[] {lordDominiksRegards, seryldasGrudge, lastWhisper, mortalReminder, blackCleaver, terminus}, //armor pen
             new Item[] {titanicHydra, ravenousHydra, profaneHydra, tiamat}, //hydra
             new Item[] {mercurialScimitar, quicksilverSash}, //qicksilver
-            new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity}, //boots
+            new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity, platedSteelcaps, mercurysTreads,
+                            mobilityBoots, bootsOfSwiftness, boots}, //boots
             new Item[] {mejaisSoulstealer, darkSeal}, //glory
             new Item[] {guardiansOrb, guardiansHorn, guardiansBlade, guardiansHammer}, //guardian
             new Item[] {sunfireAegis, bamisCinder, hollowRadiance}, //immolate
             new Item[] {worldAtlas, runicCompass, bountyOfWorlds, celestialOpposition, solsticeSleigh,
-                        bloodsong, dreamMaker, zazZaksRealmspike}, //support
+                            bloodsong, dreamMaker, zazZaksRealmspike}, //support
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
             new Item[] {voidStaff, blightingJewel, terminus, cryptbloom}, //void pen
             new Item[] {doransBlade, doransRing, doransShield} //doran's items

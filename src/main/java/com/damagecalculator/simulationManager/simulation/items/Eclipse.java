@@ -21,9 +21,9 @@ public class Eclipse extends Item {
         if (canUse()) {
             putOnCooldown();
             if (owner.is_ranged)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (0.03 * owner.getEnemy().getMaxHP()), 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (0.04 * owner.getEnemy().getMaxHP()), 1);
             else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (0.06 * owner.getEnemy().getMaxHP()), 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (float) (0.08 * owner.getEnemy().getMaxHP()), 1);
         }
     }
 

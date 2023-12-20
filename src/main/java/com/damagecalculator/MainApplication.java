@@ -2,7 +2,6 @@ package com.damagecalculator;
 
 import com.damagecalculator.displays.*;
 import com.damagecalculator.simulationManager.StatsTester;
-import com.damagecalculator.simulationManager.simulation.AbilityType;
 import com.damagecalculator.simulationManager.simulation.Champion;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.champions.Kaisa;
@@ -19,10 +18,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
-
 public class MainApplication extends Application {
     final String autosaveName = "autosave.dcc";
-    MainView controller;
+    public static MainView controller;
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException, ClassNotFoundException {
@@ -33,9 +31,8 @@ public class MainApplication extends Application {
         DisplayUtils.preCalc();
         System.out.println("Starting GUI...");
 
-        StartupThread startupThread = new StartupThread();
-        startupThread.evd = new ExtraVariablesDisplay();
-        startupThread.start();
+        DisplayCacheThread displayCacheThread = new DisplayCacheThread();
+        displayCacheThread.start();
 
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("main-view.fxml"));
         Parent root = fxmlLoader.load();
@@ -61,14 +58,12 @@ public class MainApplication extends Application {
 
         controller.LolPatch.setText("Lol Patch: 14.1 (PBE preseason, loyal to wiki values for item stats)");
 
-        controller.evd = startupThread.evd;
+        controller.evd = displayCacheThread.evd;
         controller.extraVariables.setMaxWidth(430);
         controller.extraVariables.getChildren().clear();
         controller.extraVariables.getChildren().add(controller.evd.col1);
         controller.extraVariables.getChildren().add(DisplayUtils.createSpacer());
         controller.extraVariables.getChildren().add(controller.evd.col2);
-
-        controller.level.setText("1");
 
         controller.extraVariableLabel.setVisible(false);
         controller.extraVariableValue.setVisible(false);
@@ -116,14 +111,6 @@ public class MainApplication extends Application {
             controller.var2type.getItems().add(mi);
         }
 
-        controller.maxCostVal.setText("100000");
-        controller.maxItemsVal.setText("6");
-
-        controller.enemyBaseHP.setText("1000");
-        controller.enemyBonusHP.setText("500");
-        controller.enemyMR.setText("30");
-        controller.enemyArmor.setText("50");
-
         int graphSize = (int) (Math.min(screenWidth - controller.output.getWidth(), screenHeight) - 50);
         //System.out.println(graphSize);
         controller.graph.setPrefWidth(graphSize);
@@ -131,16 +118,15 @@ public class MainApplication extends Application {
         //System.out.println(controller.graph.getWidth());
         //System.out.println(controller.graph.getHeight());
 
-        startupThread.join();
+        displayCacheThread.join();
 
-        controller.setChampion(startupThread.currentChampion);
-        controller.variableItemList = startupThread.variableItemList;
+        controller.setChampion(displayCacheThread.currentChampion);
+        controller.variableItemList = displayCacheThread.variableItemList;
 
-        controller.currentInventory = startupThread.currentInventory;
+        controller.currentInventory = displayCacheThread.currentInventory;
         controller.inventory.getChildren().add(controller.currentInventory.getDisplay());
 
-        controller.currentRunes = startupThread.currentRunes;
-
+        controller.currentRunes = displayCacheThread.currentRunes;
         controller.runes.getChildren().add(controller.currentRunes.getDisplay());
 
         controller.graphDisplay = new GraphDisplay();
@@ -175,16 +161,15 @@ public class MainApplication extends Application {
         launch();
     }
 
-    public class StartupThread extends Thread {
-
+    public static class DisplayCacheThread extends Thread {
         InventoryDisplay currentInventory;
         RunePageDisplay currentRunes;
         ExtraVariablesDisplay evd;
-
         Champion currentChampion;
         ArrayList<Item> variableItemList;
-
         public void run() {
+            evd = new ExtraVariablesDisplay();
+
             currentChampion = new Kaisa();
             variableItemList = new ArrayList<>();
 

@@ -9,6 +9,8 @@ public class SpearOfShojin extends Item {
     public static final int cost = 3100;
 
     int currentStacks;
+    float increase;
+
     public SpearOfShojin() {
         super(name, type, cost);
         ad = 55;
@@ -20,13 +22,15 @@ public class SpearOfShojin extends Item {
         owner.AH += 15;
         owner.ULTIMATE_HASTE -= 15;
         currentStacks = 0;
+
+        increase = owner.is_ranged ? 0.02f : 0.03f;
     }
 
     public void extraDmg() { //check this works?
         if (currentStacks == 4) return;
-        cs.abilityDamageMultiplier /= (1 + 0.03 * currentStacks);
+        cs.abilityDamageMultiplier /= (1 + increase * currentStacks);
         ++currentStacks;
-        cs.abilityDamageMultiplier *= (1 + 0.03 * currentStacks);
+        cs.abilityDamageMultiplier *= (1 + increase * currentStacks);
     }
 
     @Override
