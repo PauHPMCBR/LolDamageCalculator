@@ -6,6 +6,5 @@ module com.damagecalculator {
     requires javafx.swing;
 
     opens com.damagecalculator to javafx.fxml;
-
     exports com.damagecalculator;
 }
