@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ChampionList {
     public static Ahri ahri = new Ahri();
+    public static Ezreal ezreal = new Ezreal();
     public static Jinx jinx = new Jinx();
     public static Kaisa kaisa = new Kaisa();
     public static Lucian lucian = new Lucian();
@@ -18,6 +19,7 @@ public class ChampionList {
 
     public static ArrayList<Champion> allChampions = new ArrayList<>() {{
         add(ahri);
+        add(ezreal);
         add(jinx);
         add(kaisa);
         add(lucian);

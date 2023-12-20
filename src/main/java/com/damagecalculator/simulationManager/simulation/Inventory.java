@@ -18,7 +18,6 @@ public class Inventory {
     private int cost;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            //TODO: check this list
             new Item[] {infinityEdge, navoriQuickblades}, //crit modifier
             new Item[] {seekersArmguard, zhonyasHourglass}, //stasis component
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
