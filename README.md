@@ -154,6 +154,13 @@ Although this program is a very faithful recreation on what happens exactly in g
 
 This shouldn't be much of a problem, since what you usually want to calculate with Ahri is combo damage, and not DPS.
 
+### Jhin
+- Jhin starts with only 1 E charge (and he can't stack 2 charges).
+- Some instances of bonus AD may be a bit inaccurate.
+- Q always deals base damage.
+- E always detonates after 2 seconds.
+- R casts all shots (in 4 seconds).
+
 ### Jinx
 - Passive not implemented, since she needs to kill a champion/objective to proc it
 - Q means using Rocket Launcher, and Auto means using Fishbones

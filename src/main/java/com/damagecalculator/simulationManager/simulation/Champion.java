@@ -5,7 +5,7 @@ import java.util.List;
 import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
 
 public abstract class Champion {
-    CurrentState cs;
+    protected CurrentState cs;
 
     public final String name;
 
@@ -160,14 +160,12 @@ public abstract class Champion {
      * All initializers (modifiable stats are calculated. Items, runes and abilities apply their effects and get owner)
      */
     void initializeItems() {
-        int legendaries = 0;
         for (Item item : allItems) {
             item.owner = this;
             item.cs = cs;
 
             item.damageDealt = 0;
             item.applyStats();
-            if (item.type == ItemType.LEGENDARY) ++legendaries;
         }
     }
 

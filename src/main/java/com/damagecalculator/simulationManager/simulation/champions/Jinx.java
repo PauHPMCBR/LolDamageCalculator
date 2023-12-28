@@ -52,9 +52,9 @@ public class Jinx extends Champion {
                 float extraASGiven = 0;
                 if (extraVariable != 0) extraASGiven = q.damage[lvl] * (extraVariable+1);
                 owner.BONUS_AS -= extraASGiven;
-                owner.BONUS_AS *= 0.9;
+                owner.BONUS_AS *= 0.9f;
                 currentCooldown = 1/getAttackSpeed(); //q "cd" doesn't include q bonus AS, and works with 10% less bonus AS
-                owner.BONUS_AS /= 0.9;
+                owner.BONUS_AS /= 0.9f;
                 owner.BONUS_AS += extraASGiven;
 
                 owner.applyOnhit(1, JinxOnHit.name); //onhit except q attack speed buff

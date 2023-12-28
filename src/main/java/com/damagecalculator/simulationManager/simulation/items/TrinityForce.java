@@ -11,9 +11,9 @@ public class TrinityForce extends Item {
 
     public TrinityForce() {
         super(name, type, cost);
-        ad = 50;
+        ad = 45;
         as = 33;
-        ah = 10;
+        ah = 20;
         hp = 300;
         item_cooldown = 1.5f;
     }
