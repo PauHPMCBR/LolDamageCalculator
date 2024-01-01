@@ -21,8 +21,8 @@ public class RodOfAges extends Item {
 
     public void specialStats() {
         owner.BONUS_HP += 20 * stacks;
-        owner.AP += 20 * stacks;
-        owner.MANA += 4 * stacks;
+        owner.AP += 4 * stacks;
+        owner.MANA += 20 * stacks;
     }
 
 
