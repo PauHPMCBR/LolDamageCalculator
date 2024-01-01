@@ -22,6 +22,7 @@ public class ExperimentalHexplate extends Item {
     public void specialStats() {
         owner.ULTIMATE_HASTE += 30;
         isActive = false;
+        item_cooldown = 30;
     }
 
     public void onHit() { //check expiring
@@ -32,10 +33,11 @@ public class ExperimentalHexplate extends Item {
     }
 
     public void extraDmg() {
-        if (owner.lastAbilityUsed == AbilityType.R && !isActive) { //TODO check for low cd ults
+        if (canUse() && owner.lastAbilityUsed == AbilityType.R && !isActive) {
             isActive = true;
             timeActivated = cs.time;
             owner.BONUS_AS += 35;
+            putOnCooldown();
         }
     }
 
