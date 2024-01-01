@@ -177,7 +177,7 @@ public abstract class Champion {
         }
     }
 
-    void initializeValues(CurrentState currentState) {
+    protected void initializeValues(CurrentState currentState) {
         this.cs = currentState;
 
         BASE_HP = base_hp + hp_growth*(lvl-1);

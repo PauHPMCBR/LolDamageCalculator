@@ -37,7 +37,7 @@ public class Syndra extends Champion {
         passive = new Ability(PASSIVE) { //extraVariable are splinters
             public void startingCalculations() {
                 extraVariable = splinters;
-                if (extraVariable >= 120) owner.AP *= 1.15;
+                if (extraVariable >= 120) owner.AP *= 1.15f;
 
                 ballsPresent = 0;
             }

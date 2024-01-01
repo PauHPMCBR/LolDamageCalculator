@@ -143,6 +143,14 @@ public class DamageCalculator {
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new Vector<>();
         for (AbilityType abilityType : combo) {
+
+            //first, check if any ability has expired and call "onExpiring()"
+            while(!expiringAbilities.isEmpty() && expiringAbilities.peek().time <= cs.time) {
+                Ability a = expiringAbilities.remove().ability;
+                a.onExpiring();
+                a.active = false;
+            }
+
             if (abilityType == AbilityType.AUTO) {
                 increaseTime(cs.champion.autoCd);
                 useAuto();

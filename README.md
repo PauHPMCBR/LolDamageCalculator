@@ -154,6 +154,11 @@ Although this program is a very faithful recreation on what happens exactly in g
 
 This shouldn't be much of a problem, since what you usually want to calculate with Ahri is combo damage, and not DPS.
 
+### Azir
+- First cast of W will put the ability cd at 1.25s. Subsequent casts will have normal cd.
+- E will always grant a charge of W (which is equivalent to making the behaviour described above happen again).
+- The program assumes all soldiers are in range (used for auto attacking).
+
 ### Jhin
 - Jhin starts with only 1 E charge (and he can't stack 2 charges).
 - Some instances of bonus AD may be a bit inaccurate.
@@ -174,6 +179,9 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - E cast time won't get updated (it scales with bonus attack speed and will only be calculated at the start of the simulation)
 - R is not implemented, as it's only an auto reset
 
+### Karma
+- The "special variable" called "Use R only for Q", when set to not 0, will allow R to be used/consumed by W and E as well. It is recommended to leave as 0 when testing a combo.
+
 ### Lucian
 - To maximise passive damage, Lucian will try to auto after each ability use (the simulation will wait until an auto is done before using any other ability)
 - If you are testing a Lucian combo, insert an auto attack between each ability, or the damage will be higher than it should (the "second" auto that passive provides is ALWAYS applied after each ability use)
@@ -183,7 +191,7 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - E is not implemented
 
 ### Syndra
-- If Syndra has 40 or more splinters, first Q cast won't make the ability go on cooldown
+- If Syndra has 40 or more splinters, first Q cast will have 1.25s second cd, and subsequent Qs will have normal cd.
 - Q has no delay
 - W has no delay and no cast time
 - Dark Spheres don't despawn

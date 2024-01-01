@@ -96,7 +96,7 @@ public class RunePage {
             this.secondary = i.secondary;
 
             if (i.keystone != null) this.keystone = i.keystone.makeCopy();
-            for (int j = 0; j < 3; ++j) if (i.primarySlots[j] != null) primarySlots[j] = i.primarySlots[j].makeCopy();
+            for (int j = 0; j < 4; ++j) if (i.primarySlots[j] != null) primarySlots[j] = i.primarySlots[j].makeCopy();
             for (int j = 0; j < 2; ++j) if (i.secondarySlots[j] != null) secondarySlots[j] = i.secondarySlots[j].makeCopy();
 
             if (i.shards != null) this.shards = i.shards.makeCopy();

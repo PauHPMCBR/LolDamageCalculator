@@ -11,7 +11,7 @@ public class NashorsTooth extends Item {
 
     public NashorsTooth() {
         super(name, type, cost);
-        ap = 80;
+        ap = 90;
         as = 50;
         ah = 15;
     }

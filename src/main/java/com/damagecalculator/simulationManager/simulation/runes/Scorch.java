@@ -13,10 +13,13 @@ public class Scorch extends Rune {
     public Scorch() {
         super(name, path, column, row);
         rune_cooldown = 10;
+        System.out.println("a");
     }
 
     public void extraDmg() {
+        System.out.println("b");
         if (canUse()) {
+            System.out.println("c");
             putOnCooldown();
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 20 + 20f/17*(cs.champion.lvl-1), 2);
         }
