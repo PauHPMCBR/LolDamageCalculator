@@ -15,6 +15,7 @@ public class ChampionList {
     public static Lucian lucian = new Lucian();
     public static Senna senna = new Senna(0);
     public static Syndra syndra = new Syndra(0);
+    public static Tryndamere tryndamere = new Tryndamere(0);
     public static Varus varus = new Varus();
     public static Vayne vayne = new Vayne();
     public static Zed zed = new Zed();
@@ -31,6 +32,7 @@ public class ChampionList {
         add(lucian);
         add(senna);
         add(syndra);
+        add(tryndamere);
         add(varus);
         add(vayne);
         add(zed);

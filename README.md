@@ -196,6 +196,14 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - W has no delay and no cast time
 - Dark Spheres don't despawn
 
+### Tryndamere
+- Keep in mind that crit chance is not random and follows a cycle, so unless Tryndamere has 100% crit, some calcs can be a bit inconsistent (probably more crits than normal)
+- Passive increases crit by 2% for every 5 fury (instead of 4% for every 10 fury)
+- Q is not usable
+- Q gives passive extra ad as if the champion was full hp
+- W is usable, but does nothing
+- Ult is not usable
+
 ### Varus
 - Passive not implemented, since he needs to kill a unit to proc it
 - Q charge time is always 1.25 seconds (minimum time to reach max damage increase)

@@ -29,13 +29,14 @@ public class GuinsoosRageblade extends Item {
         if (stacks == 4) {
             ++autos;
             if (autos == 3) {
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30, 1); //rageblade onhit again
+                /*damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30, 1); //rageblade onhit again
                 //can't call the onhit function cause there are TWO items that should be skipped :/
                 for (Item i : owner.allItems) {
                     if (i.name.equals("Guinsoo's Rageblade") || i.name.equals("Kraken Slayer")) continue;
                     i.onHit();
                 }
-                for (Rune r : owner.getRunes()) r.onHit();
+                for (Rune r : owner.getRunes()) r.onHit(); */
+                owner.applyOnhit(1, "Guinsoo's Rageblade");
                 autos = 0;
             }
         }

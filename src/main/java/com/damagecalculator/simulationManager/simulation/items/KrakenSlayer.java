@@ -10,13 +10,16 @@ public class KrakenSlayer extends Item {
     public static final int cost = 3000;
 
     int autos;
-
+    float dmgMult;
     public KrakenSlayer() {
         super(name, type, cost);
         ad = 40;
         as = 35;
         crit = 20;
+    }
 
+    public void startingCalculations() {
+        dmgMult = 1;
         autos = 0;
     }
 
@@ -24,8 +27,11 @@ public class KrakenSlayer extends Item {
         ++autos;
         if (autos % 3 == 0) {
             float baseDmg = 35 + 5 * Math.max(0, owner.lvl - 8);
+            //damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
+            //        (float) (baseDmg + owner.getAD() * 0.65 + owner.AP * 0.6) * (1 + owner.getEnemy().getRelativeMissingHP()), 1);
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
-                    (float) (baseDmg + owner.getAD() * 0.65 + owner.AP * 0.6) * (1 + owner.getEnemy().getRelativeMissingHP()), 1);
+                    (float) (baseDmg + owner.getAD() * 0.65 + owner.AP * 0.6) * dmgMult, 1);
+            if (dmgMult < 2) dmgMult += 0.5f;
         }
     }
 

@@ -14,7 +14,7 @@ public class Stormsurge extends Item {
     public Stormsurge() {
         super(name, type, cost);
         ap = 100;
-        magic_pen = 12;
+        magic_pen = 10;
         ms = 5;
     }
 
