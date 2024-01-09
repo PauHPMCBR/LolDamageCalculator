@@ -16,7 +16,7 @@ public class SeryldasGrudge extends Item {
     }
 
     public void specialStats() {
-        owner.increaseArmorPen(22 + 0.12f * owner.LETHALITY);
+        owner.increaseArmorPen(22 + 0.11f * owner.LETHALITY);
     }
 
     @Override

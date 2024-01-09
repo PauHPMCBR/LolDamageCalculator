@@ -20,9 +20,9 @@ public class NavoriQuickblades extends Item {
         cs.abilityDamageMultiplier = 1 + owner.CRIT_CHANCE/500; //untested
     }
     public void onHit() {
-        owner.q.currentCooldown *= (1 - 0.12);
-        owner.w.currentCooldown *= (1 - 0.12);
-        owner.e.currentCooldown *= (1 - 0.12);
+        owner.q.currentCooldown *= (1 - 0.12f);
+        owner.w.currentCooldown *= (1 - 0.12f);
+        owner.e.currentCooldown *= (1 - 0.12f);
     }
 
     @Override

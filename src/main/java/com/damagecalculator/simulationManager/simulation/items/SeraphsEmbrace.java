@@ -17,7 +17,7 @@ public class SeraphsEmbrace extends Item {
 
     public void specialStats() { //ignoring shield
         float baseMana = owner.base_mana + owner.mana_growth * (owner.lvl - 1);
-        owner.AP += (owner.MANA - baseMana) * 0.02;
+        owner.AP += (owner.MANA - baseMana) * 0.02f;
     }
 
     @Override

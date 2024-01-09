@@ -14,7 +14,7 @@ public class RabadonsDeathcap extends Item {
     }
 
     public void specialStats() {
-        owner.AP *= 1.35; //have to check if some extra ap is skipped
+        owner.AP *= 1.35f; //have to check if some extra ap is skipped
     }
 
     @Override

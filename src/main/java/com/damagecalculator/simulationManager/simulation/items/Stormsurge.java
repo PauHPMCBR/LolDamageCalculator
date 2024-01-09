@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Stormsurge extends Item {
     public static final String name = "Stormsurge";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
+    public static final int cost = 2900;
 
     boolean activated;
     float timeActivated;
@@ -23,11 +23,12 @@ public class Stormsurge extends Item {
         timeActivated = 0;
     }
 
-    public void extraDmg() {
+    public void extraDmg() { // TODO maybe not nerfed for ranged in the end?
         if (!activated && timeActivated != 0) return; //already used
         if (activated) {
             if (cs.time - timeActivated >= 2) {
-                float dmg = 120 + 130f/17 * (owner.lvl - 1) + 0.4f * owner.AP;
+                float dmg = 120 + 140f/17 * (owner.lvl - 1) + 0.4f * owner.AP;
+                if (owner.is_ranged) dmg *= 3f/4;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,dmg, 2);
                 activated = false;
             }

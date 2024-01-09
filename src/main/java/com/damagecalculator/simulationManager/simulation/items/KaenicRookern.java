@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class KaenicRookern extends Item {
     public static final String name = "Kaenic Rookern";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 2900;
 
     public KaenicRookern() {
         super(name, type, cost);
-        hp = 350;
+        hp = 400;
         mr = 80;
-        hp_regen = 100;
+        hp_regen = 150;
     }
 
     //ignoring magic shield

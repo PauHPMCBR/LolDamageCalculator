@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ZazZaksRealmspike extends Item {
     public static final String name = "Zaz'Zak's Realmspike";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 40; //upgraded from bounty of worlds
+    public static final int cost = 400; //upgraded from bounty of worlds
 
     //ignoring bubble stuff
 

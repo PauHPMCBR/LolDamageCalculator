@@ -32,8 +32,8 @@ public class Bloodsong extends Item {
                 putOnCooldown();
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD * 1.5f, 1);
                 if (!alreadyApplied) {
-                    if (owner.is_ranged) cs.damageTrueMultiplier *= 1.08;
-                    else cs.damageTrueMultiplier *= 1.12;
+                    if (owner.is_ranged) cs.damageTrueMultiplier *= 1.08f;
+                    else cs.damageTrueMultiplier *= 1.12f;
                     alreadyApplied = true;
                 }
             }

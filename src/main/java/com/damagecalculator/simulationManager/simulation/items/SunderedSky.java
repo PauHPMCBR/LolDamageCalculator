@@ -18,12 +18,11 @@ public class SunderedSky extends Item {
         item_cooldown = 6;
     }
 
-    //TODO right now it assumes attack doesnt crit
     public void onHit() {
         if (canUse()) {
-            //will crit for 150% dmg => does 50% dmg? does crit work?
+            boolean wasCrit = ((owner.autosUsed-1)%5) < owner.CRIT_CHANCE/100 * 5; //works for every 20% crit chance, wouldn't work with 15% cloak/zeal, non-random cycle of 5
             //ignoring heal part
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.5f * owner.getAD(), 1);
+            if (!wasCrit) damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.5f * owner.getAD(), 1);
             putOnCooldown();
         }
     }

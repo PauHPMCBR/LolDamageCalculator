@@ -47,6 +47,7 @@ public class Damage {
         return amount;
     }
 
+    // TODO add DOT and PET distinguishment for shadowflame
     /**
      * Main function to call from outside that will do all calculations prior to the damage appliance
      * Damage instance types:
@@ -87,7 +88,7 @@ public class Damage {
 
         if (cs.shadowflameItem != null && type != DamageType.physicalDmg) { //crit for true and magic dmg
             if (cs.enemy.getRelativeMissingHP() >= 0.65) { //"crit" if enemy below 35% hp
-                float extraDmg = applyDirectDamage(type, dmg * 0.2f); //TODO is this right? description looked a bit bugged. need to check for pets?
+                float extraDmg = applyDirectDamage(type, dmg * 0.2f); // ignoring pet and dot increase
                 dmg += extraDmg;
                 cs.shadowflameItem.damageDealt += extraDmg;
             }

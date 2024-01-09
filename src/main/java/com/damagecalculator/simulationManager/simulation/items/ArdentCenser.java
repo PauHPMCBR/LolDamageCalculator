@@ -13,6 +13,7 @@ public class ArdentCenser extends Item {
         super(name, type, cost);
         ap = 50;
         mana_regen = 125;
+        ah = 15; // TODO check ability haste
         hsp = 8;
         percent_ms = 8;
     }

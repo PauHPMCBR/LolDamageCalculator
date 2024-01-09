@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class DeadMansPlate extends Item {
     public static final String name = "Dead Man's Plate";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3100;
+    public static final int cost = 2900;
 
     float lastHitTime;
     public DeadMansPlate() {

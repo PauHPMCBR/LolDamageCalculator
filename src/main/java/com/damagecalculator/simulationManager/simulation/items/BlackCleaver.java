@@ -14,7 +14,7 @@ public class BlackCleaver extends Item {
         super(name, type, cost);
         ad = 55;
         hp = 400;
-        ah = 15;
+        ah = 20;
 
         carveStacks = 0;
     }
@@ -25,9 +25,9 @@ public class BlackCleaver extends Item {
 
     public void increaseCarveStacks() { //will get called by "Damage" class. special function
         if (carveStacks >= 6) return;
-        owner.getEnemy().ARMOR /= (1 - carveStacks*0.04);
+        owner.getEnemy().ARMOR /= (1 - carveStacks*0.04f);
         ++carveStacks;
-        owner.getEnemy().ARMOR *= (1 - carveStacks*0.04);
+        owner.getEnemy().ARMOR *= (1 - carveStacks*0.04f);
     }
 
     @Override

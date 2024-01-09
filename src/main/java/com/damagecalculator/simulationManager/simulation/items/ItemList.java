@@ -28,7 +28,6 @@ public class ItemList {
     public static BootsOfSwiftness bootsOfSwiftness = new BootsOfSwiftness();
     public static BountyOfWorlds bountyOfWorlds = new BountyOfWorlds();
     public static BrambleVest brambleVest = new BrambleVest();
-    public static CastersCompanion castersCompanion = new CastersCompanion();
     public static CatalystOfAeons catalystOfAeons = new CatalystOfAeons();
     public static CaulfieldsWarhammer caulfieldsWarhammer = new CaulfieldsWarhammer();
     public static CelestialOpposition celestialOpposition = new CelestialOpposition();
@@ -97,6 +96,7 @@ public class ItemList {
     public static LongSword longSword = new LongSword();
     public static LordDominiksRegards lordDominiksRegards = new LordDominiksRegards();
     public static LostChapter lostChapter = new LostChapter();
+    public static LudensCompanion ludensCompanion = new LudensCompanion();
     public static Malignance malignance = new Malignance();
     public static Manamune manamune = new Manamune(0);
     public static MawOfMalmortius mawOfMalmortius = new MawOfMalmortius();
@@ -214,7 +214,6 @@ public class ItemList {
         add(bootsOfSwiftness);
         add(bountyOfWorlds);
         add(brambleVest);
-        add(castersCompanion);
         add(catalystOfAeons);
         add(caulfieldsWarhammer);
         add(celestialOpposition);
@@ -283,6 +282,7 @@ public class ItemList {
         add(longSword);
         add(lordDominiksRegards);
         add(lostChapter);
+        add(ludensCompanion);
         add(malignance);
         add(manamune);
         add(mawOfMalmortius);

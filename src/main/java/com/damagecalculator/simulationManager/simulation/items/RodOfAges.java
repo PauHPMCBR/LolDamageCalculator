@@ -6,14 +6,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class RodOfAges extends Item {
     public static final String name = "Rod of Ages";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2600;
 
     int stacks;
 
     public RodOfAges(int stacks) {
         super(name, type, cost);
         ap = 50;
-        hp = 300;
+        hp = 350;
         mana = 300;
         extraVariableName = "ROA Minutes (0-10)";
         this.stacks = Math.min(stacks, 10);

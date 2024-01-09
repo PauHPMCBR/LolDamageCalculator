@@ -18,7 +18,7 @@ public class LichBane extends Item {
         item_cooldown = 1.5f;
     }
 
-    // TODO when spellblade is available? gives 30% attack speed
+    // TODO when spellblade is available? gives 50% attack speed WTF
     public void onHit() {
         if (canUse()) {
             if (owner.can_use_sheen) {

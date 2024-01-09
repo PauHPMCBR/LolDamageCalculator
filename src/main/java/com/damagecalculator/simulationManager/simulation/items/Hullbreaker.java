@@ -24,8 +24,9 @@ public class Hullbreaker extends Item {
     public void onHit() { //TODO it scales with hp as well?
         ++stacks;
         if (stacks == 5) {
-            float dmg = 1.2f * owner.BASE_AD + 0.035f * owner.getMaxHP();
-            if (owner.is_ranged) dmg = 0.6f * owner.BASE_AD + 0.035f * owner.getMaxHP();
+            float dmg = 1.4f * owner.BASE_AD;
+            if (owner.is_ranged) dmg = 0.7f * owner.BASE_AD;
+            dmg += 0.035f * owner.getMaxHP();
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 1);
             stacks = 0;
         }

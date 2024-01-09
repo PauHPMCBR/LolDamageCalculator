@@ -17,7 +17,7 @@ public class StaffOfFlowingWater extends Item {
     }
 
     public void specialStats() { //supposing it's always active, ignoring ms
-        owner.AP += 40;
+        owner.AP += 30;
     }
 
     @Override

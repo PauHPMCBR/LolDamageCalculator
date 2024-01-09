@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class WitsEnd extends Item {
     public static final String name = "Wit's End";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 2800;
 
     float dmg;
     public WitsEnd() {

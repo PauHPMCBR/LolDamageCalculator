@@ -10,7 +10,7 @@ public class CatalystOfAeons extends Item {
 
     public CatalystOfAeons() {
         super(name, type, cost);
-        hp = 300;
+        hp = 350;
         mana = 300;
     }
 

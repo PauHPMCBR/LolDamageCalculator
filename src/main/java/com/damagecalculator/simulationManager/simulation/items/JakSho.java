@@ -26,8 +26,8 @@ public class JakSho extends Item {
         if (stacked) return;
         if (cs.time >= 5) {
             stacked = true;
-            owner.ARMOR *= 1.3;
-            owner.MAGIC_RESIST *= 1.3;
+            owner.ARMOR *= 1.3f;
+            owner.MAGIC_RESIST *= 1.3f;
         }
     }
     public void onHit() {

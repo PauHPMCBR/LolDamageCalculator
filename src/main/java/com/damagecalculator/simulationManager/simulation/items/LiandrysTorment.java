@@ -8,7 +8,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LiandrysTorment extends Item {
     public static final String name = "Liandry's Torment";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 3000;
 
     float currentDmgMult;
     float lastTick;

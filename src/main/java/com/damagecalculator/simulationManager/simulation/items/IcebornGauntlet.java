@@ -7,12 +7,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class IcebornGauntlet extends Item {
     public static final String name = "Iceborn Gauntlet";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2600;
 
     public IcebornGauntlet() {
         super(name, type, cost);
         ah = 15;
-        hp = 200;
+        hp = 300;
         armor = 50;
         item_cooldown = 1.5f;
     }

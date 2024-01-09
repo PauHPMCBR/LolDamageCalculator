@@ -10,11 +10,11 @@ public class SteraksGage extends Item {
 
     public SteraksGage() {
         super(name, type, cost);
-        hp = 450;
+        hp = 400;
     }
 
     public void specialStats() {
-        owner.BONUS_AD += 0.5 * owner.BASE_AD;
+        owner.BONUS_AD += 0.5f * owner.BASE_AD;
     }
 
     @Override

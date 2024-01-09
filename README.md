@@ -130,6 +130,8 @@ Although this program is a very faithful recreation on what happens exactly in g
 - All healing and movement speed is ignored (irrelevant for damage calculations. Well, except for Hecarim...)
 - Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
+- Horizon focus counts as a permanent 10% damage increase (for everything)
+- Shadowflame does not amplify more DoT and Pet damage (all damage amplifications are 20%)
 - Abilities don't have a CC boolean. This means things that have a special effect when an ability applies CC will always/never be taken into account (Evenshroud always applies the 10% more damage, Spear of Shojin will increase ability haste equally...)
 - Autos refresh Liandry and Demonic burn as well, not just abilities
 - Champion base AD scaling is treated linearly (every lvl gains same base AD), but it's not the case in game. This will create slight damage changes in some levels. This inconvenience holds true for all stats that scale with level (mana, hp, ad...).
@@ -144,7 +146,6 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Projectile travel distance is always 0. The program supposes you are melee range against the enemy.
 - Things that can be stacked prior are already stacked (Heartsteel, Caster's Companion...).
 - Stormsurge will only trigger one time when the enemy champion falls below 65% (100-35) max HP (ignoring that damage has to be done in 3s).
-- Sundered sky supposes its attack won't crit. If it crits in the simulation, it will deal the extra crit damage (so more damage in total).
 
 ## Champion specific details
 ### Ahri

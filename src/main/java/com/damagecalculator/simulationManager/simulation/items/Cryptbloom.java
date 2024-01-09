@@ -10,8 +10,8 @@ public class Cryptbloom extends Item {
 
     public Cryptbloom() {
         super(name, type, cost);
-        ap = 70;
-        ah = 15;
+        ap = 60;
+        ah = 10;
         percent_magic_pen = 30;
     }
 

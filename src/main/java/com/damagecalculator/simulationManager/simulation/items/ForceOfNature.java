@@ -11,7 +11,7 @@ public class ForceOfNature extends Item {
     public ForceOfNature() {
         super(name, type, cost);
         hp = 400;
-        mr = 50;
+        mr = 55;
         percent_ms = 5;
     }
 

@@ -67,7 +67,7 @@ public class GraphCreator {
         lud.add(new SorcerersShoes());
         lud.add(new StatikkShiv());
         lud.add(new NashorsTooth());
-        lud.add(new CastersCompanion());
+        lud.add(new LudensCompanion());
 
         Inventory lia = new Inventory();
         lia.add(new SorcerersShoes());

@@ -16,7 +16,7 @@ public class HorizonFocus extends Item {
 
     //first damage instance is also amplified, supposing it's always triggered instantly
     public void specialStats() { //supposing 700+ range?
-        cs.damageTrueMultiplier *= 1.1;
+        cs.damageTrueMultiplier *= 1.1f;
     }
 
     @Override

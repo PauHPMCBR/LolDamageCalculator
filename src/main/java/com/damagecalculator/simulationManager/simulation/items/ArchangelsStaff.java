@@ -22,7 +22,7 @@ public class ArchangelsStaff extends Item {
     public void specialStats() {
         owner.MANA += stacks;
         float baseMana = owner.base_mana + owner.mana_growth * (owner.lvl - 1);
-        owner.AP += (owner.MANA - baseMana) * 0.01;
+        owner.AP += (owner.MANA - baseMana) * 0.01f;
     }
 
     @Override
