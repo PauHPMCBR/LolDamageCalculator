@@ -11,7 +11,7 @@ public class Heartsteel extends Item {
 
     public Heartsteel() {
         super(name, type, cost);
-        hp = 800;
+        hp = 900;
         hp_regen = 200;
         item_cooldown = 30;
     }

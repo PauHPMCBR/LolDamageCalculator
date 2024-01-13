@@ -7,13 +7,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class RavenousHydra extends Item {
     public static final String name = "Ravenous Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3450; // TODO check cost
+    public static final int cost = 3300;
 
     public RavenousHydra() {
         super(name, type, cost);
         ad = 70;
         ah = 20;
-        lifesteal = 10;
+        lifesteal = 12;
 
         item_cooldown = 10;
     }

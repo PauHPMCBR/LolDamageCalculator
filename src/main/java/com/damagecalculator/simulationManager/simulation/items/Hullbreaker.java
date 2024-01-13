@@ -21,7 +21,7 @@ public class Hullbreaker extends Item {
         stacks = 0;
     }
 
-    public void onHit() { //TODO it scales with hp as well?
+    public void onHit() {
         ++stacks;
         if (stacks == 5) {
             float dmg = 1.4f * owner.BASE_AD;

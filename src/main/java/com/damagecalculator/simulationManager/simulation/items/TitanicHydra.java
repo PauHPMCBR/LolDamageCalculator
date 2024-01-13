@@ -7,13 +7,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class TitanicHydra extends Item {
     public static final String name = "Titanic Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3350; // TODO check cost
+    public static final int cost = 3300;
 
     public TitanicHydra() {
         super(name, type, cost);
-        ad = 30;
-        hp = 450;
-        ah = 20;
+        ad = 50;
+        hp = 500;
 
         item_cooldown = 10;
     }

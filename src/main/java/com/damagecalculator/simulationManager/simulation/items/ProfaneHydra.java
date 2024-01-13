@@ -9,7 +9,7 @@ import static com.damagecalculator.GlobalVariables.waitForExtraDamage;
 public class ProfaneHydra extends Item {
     public static final String name = "Profane Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3400;
+    public static final int cost = 3300;
 
     public ProfaneHydra() {
         super(name, type, cost);
@@ -24,10 +24,10 @@ public class ProfaneHydra extends Item {
         if (canUse()) {
             if (waitForExtraDamage && owner.getEnemy().getRelativeMissingHP() < 0.7) return;
 
-            if (owner.getEnemy().getRelativeMissingHP() >= 0.7)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.2f * owner.getAD(), 2);
+            if (owner.getEnemy().getRelativeMissingHP() >= 0.5)
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.5f * owner.getAD(), 2);
             else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.8f * owner.getAD(), 2);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
 
             putOnCooldown();
         }

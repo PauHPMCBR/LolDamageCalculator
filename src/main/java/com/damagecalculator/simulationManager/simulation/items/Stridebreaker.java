@@ -11,8 +11,8 @@ public class Stridebreaker extends Item {
 
     public Stridebreaker() {
         super(name, type, cost);
-        ad = 50;
-        as = 20;
+        ad = 55;
+        as = 25;
         hp = 400;
     }
 

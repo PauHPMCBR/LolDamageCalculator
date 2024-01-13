@@ -80,7 +80,7 @@ public class Ezreal extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cast_time = 0.25f;
-        w.cooldown = new float[]{12,12,12,12,12};
+        w.cooldown = new float[]{8,8,8,8,8};
         w.damage = new float[]{80,125,190,245,300};
         w.ad_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         w.ap_scale = new float[]{0.7f,0.75f,0.8f,0.85f,0.9f};

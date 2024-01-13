@@ -12,7 +12,6 @@ public class SerpentsFang extends Item {
         super(name, type, cost);
         ad = 55;
         lethality = 15;
-        // TODO does this give ability haste?
     }
 
     @Override

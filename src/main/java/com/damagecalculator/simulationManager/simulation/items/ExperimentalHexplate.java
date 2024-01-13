@@ -26,7 +26,7 @@ public class ExperimentalHexplate extends Item {
     }
 
     public void onHit() { //check expiring
-        if (isActive && cs.time - timeActivated >= 7) {
+        if (isActive && cs.time - timeActivated >= 8) {
             isActive = false;
             owner.BONUS_AS -= 35;
         }

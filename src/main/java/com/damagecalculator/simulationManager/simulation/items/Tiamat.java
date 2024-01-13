@@ -7,18 +7,18 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Tiamat extends Item {
     public static final String name = "Tiamat";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1250; // TODO check cost
+    public static final int cost = 1200;
 
     public Tiamat() {
         super(name, type, cost);
-        ad = 25; // TODO check ad
+        ad = 20;
 
         item_cooldown = 10;
     }
 
     public void extraDmg() {
         if (canUse()) {
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.8f * owner.getAD(), 2);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.75f * owner.getAD(), 2);
             putOnCooldown();
         }
     }
