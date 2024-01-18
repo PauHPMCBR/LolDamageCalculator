@@ -136,6 +136,7 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Autos refresh Liandry and Demonic burn as well, not just abilities
 - Champion base AD scaling is treated linearly (every lvl gains same base AD), but it's not the case in game. This will create slight damage changes in some levels. This inconvenience holds true for all stats that scale with level (mana, hp, ad...).
 - In "Combo" mode, the time taken to execute the combo doesn't take into account expiring abilities / abilities with duration (even though their ending effect will be counted towards combo damage). For example, Ahri R will take 0 seconds to execute completely, even tho in game there's a static 1s cooldown between casts.
+- Auto resets will recharge ammo of Jhin and Graves weapons (recharge is implemented as a longer attack cooldown).
 
 ## Things the program assumes
 - Every ability hits.
@@ -159,6 +160,11 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - First cast of W will put the ability cd at 1.25s. Subsequent casts will have normal cd.
 - E will always grant a charge of W (which is equivalent to making the behaviour described above happen again).
 - The program assumes all soldiers are in range (used for auto attacking).
+
+### Gaves
+- Q always detonates after 2 seconds.
+- All pellets hit the enemy.
+- Reload time does not scale with attack speed, and goes from ~1.5s to ~1.1s, based on level.
 
 ### Jhin
 - Jhin starts with only 1 E charge (and he can't stack 2 charges).

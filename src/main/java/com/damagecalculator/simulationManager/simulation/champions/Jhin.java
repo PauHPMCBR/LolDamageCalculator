@@ -100,7 +100,7 @@ public class Jhin extends Champion {
         w = new Ability(W) {
             public void onUse() {
                 updatePassiveAD();
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, damage[lvl] + ad_scale[lvl] * owner.getAD(), 3);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, damage[lvl] + ad_scale[lvl] * owner.getAD(), 6);
 
                 currentCooldown = getCooldown();
             }
