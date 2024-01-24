@@ -26,10 +26,13 @@ public class Shards extends Rune {
         if (s1 == 1) owner.BONUS_AS += 10;
         if (s1 == 2) owner.AH += 8;
         if (owner.getAdaptive().equals(DamageType.physicalDmg))
-            owner.BONUS_AD += adaptives * 5.4;
+            owner.BONUS_AD += (float) (adaptives * 5.4);
         else
             owner.AP += adaptives * 9;
-        if (s3 == 0) owner.BONUS_HP += 15 + 125f / 17 * (owner.lvl - 1);
+
+        if (s2 == 2) owner.BONUS_HP += 10 + 170f / 17 * (owner.lvl - 1);
+        if (s3 == 2) owner.BONUS_HP += 10 + 170f / 17 * (owner.lvl - 1);
+        else if (s3 == 0) owner.BASE_HP += 65;
         //ignoring armor and mr runes
     }
 

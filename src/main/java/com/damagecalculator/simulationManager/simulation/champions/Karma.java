@@ -19,7 +19,7 @@ public class Karma extends Champion {
     public Karma(int useROnlyForQ) {
         super(
                 name,
-                604f,
+                630f,
                 109f,
                 374f,
                 50f,
@@ -63,7 +63,7 @@ public class Karma extends Champion {
         };
         q.damageType = DamageType.magicDmg;
         q.damage = new float[]{70,120,170,220,270};
-        q.ap_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
+        q.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
         q.cast_time = 0.25f;
         q.cooldown = new float[]{9,8,7,6,5};
 

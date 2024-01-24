@@ -68,7 +68,7 @@ public class Ahri extends Champion {
             }
         };
         e.damageType = DamageType.magicDmg;
-        e.cooldown = new float[]{14,14,14,14,14};
+        e.cooldown = new float[]{12,12,12,12,12};
         e.damage = new float[]{80,110,140,170,200};
         e.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         e.cast_time = 0.25f;

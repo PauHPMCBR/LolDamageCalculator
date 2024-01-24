@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Riftmaker extends Item {
     public static final String name = "Riftmaker";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3100;
 
     float currentDmgMult;
     public Riftmaker() {

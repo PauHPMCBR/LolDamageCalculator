@@ -15,7 +15,7 @@ public class ExperimentalHexplate extends Item {
     public ExperimentalHexplate() {
         super(name, type, cost);
         ad = 55;
-        as = 20;
+        as = 25;
         hp = 300;
     }
 
@@ -36,7 +36,7 @@ public class ExperimentalHexplate extends Item {
         if (canUse() && owner.lastAbilityUsed == AbilityType.R && !isActive) {
             isActive = true;
             timeActivated = cs.time;
-            owner.BONUS_AS += 35;
+            owner.BONUS_AS += 30;
             putOnCooldown();
         }
     }

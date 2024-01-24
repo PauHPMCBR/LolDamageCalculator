@@ -58,7 +58,7 @@ public class Ezreal extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.damage = new float[]{20,45,70,95,120};
-        q.ad_scale = new float[]{1.3f,1.3f,1.3f,1.3f,1.3f};
+        q.ad_scale = new float[]{1.35f,1.35f,1.35f,1.35f,1.35f};
         q.ap_scale = new float[]{0.15f,0.15f,0.15f,0.15f,0.15f};
         q.cast_time = 0.25f;
         q.cooldown = new float[]{5.5f,5.25f,5,4.75f,4.5f};
@@ -82,7 +82,7 @@ public class Ezreal extends Champion {
         w.cast_time = 0.25f;
         w.cooldown = new float[]{8,8,8,8,8};
         w.damage = new float[]{80,125,190,245,300};
-        w.ad_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
+        w.ad_scale = new float[]{1,1,1,1,1};
         w.ap_scale = new float[]{0.7f,0.75f,0.8f,0.85f,0.9f};
 
         e = new Ability(E) {
@@ -109,7 +109,7 @@ public class Ezreal extends Champion {
         r.damageType = DamageType.magicDmg;
         r.cooldown = new float[]{120,105,90};
         r.damage = new float[]{350,500,650};
-        r.ad_scale = new float[]{1,1,1,1,1};
+        r.ad_scale = new float[]{1.2f,1.2f,1.2f,1.2f,1.2f};
         r.ap_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
         r.cast_time = 1;
 
