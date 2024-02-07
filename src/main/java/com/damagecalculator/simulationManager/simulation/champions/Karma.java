@@ -57,7 +57,7 @@ public class Karma extends Champion {
             }
             public void onExpiring() {
                 duration = null;
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 35 + 105*r.lvl + 0.7f*owner.AP, 6);
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 40 + 90*r.lvl + 0.5f*owner.AP, 6);
                 r.currentCooldown -= 5;
             }
         };

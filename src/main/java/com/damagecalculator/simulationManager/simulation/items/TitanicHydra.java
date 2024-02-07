@@ -12,7 +12,7 @@ public class TitanicHydra extends Item {
     public TitanicHydra() {
         super(name, type, cost);
         ad = 50;
-        hp = 500;
+        hp = 550;
 
         item_cooldown = 10;
     }
@@ -21,9 +21,9 @@ public class TitanicHydra extends Item {
         if (canUse()) { //in theory the auto reset would be before the big hit, but whatever.
             owner.autoReset();
             if (!owner.is_ranged)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.06f * owner.getMaxHP(), 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.04f * owner.getMaxHP(), 1);
             else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.03f * owner.getMaxHP(), 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.02f * owner.getMaxHP(), 1);
             putOnCooldown();
             return;
         }

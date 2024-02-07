@@ -11,9 +11,9 @@ public class SunderedSky extends Item {
 
     public SunderedSky() {
         super(name, type, cost);
-        ad = 55;
+        ad = 45;
         ah = 15;
-        hp = 300;
+        hp = 450;
 
         item_cooldown = 6;
     }

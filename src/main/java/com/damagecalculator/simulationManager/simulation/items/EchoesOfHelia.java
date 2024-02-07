@@ -23,7 +23,7 @@ public class EchoesOfHelia extends Item {
 
     public void extraDmg() { //supposing all abilities are heal/shield AND deal dmg (prob overtuned)
         if (stacks < 3) ++stacks;
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 55 * stacks, 2);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 45 * stacks, 2);
         stacks = 0;
     }
 

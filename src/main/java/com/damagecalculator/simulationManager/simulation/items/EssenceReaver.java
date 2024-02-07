@@ -11,7 +11,7 @@ public class EssenceReaver extends Item {
 
     public EssenceReaver() {
         super(name, type, cost);
-        ad = 55;
+        ad = 60;
         crit = 20;
         ah = 20;
         item_cooldown = 1.5f;

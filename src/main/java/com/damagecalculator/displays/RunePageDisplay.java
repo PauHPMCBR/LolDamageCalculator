@@ -285,13 +285,13 @@ public class RunePageDisplay {
             },
             new Image[] {
                     new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Adaptive_Force.png"))),
-                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Armor.png"))),
-                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Magic_Resistance.png")))
+                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Movement_Speed.png"))),
+                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Health_Scaling.png")))
             },
             new Image[] {
                     new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Health.png"))),
-                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Armor.png"))),
-                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Magic_Resistance.png")))
+                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Tenacity_and_Slow_Resist.png"))),
+                    new Image(String.valueOf(MainApplication.class.getResource(DisplayUtils.runesFolder + "Rune_shard_Health_Scaling.png")))
             }
     };
     public void updateShards(int row, int col) {

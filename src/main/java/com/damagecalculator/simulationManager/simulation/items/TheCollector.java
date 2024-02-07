@@ -10,7 +10,7 @@ public class TheCollector extends Item {
 
     public TheCollector() {
         super(name, type, cost);
-        ad = 60;
+        ad = 55;
         crit = 20;
         lethality = 16;
     }

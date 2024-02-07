@@ -16,8 +16,8 @@ public class GuinsoosRageblade extends Item {
     public GuinsoosRageblade() {
         super(name, type, cost);
         as = 25;
-        ad = 30;
-        ap = 30;
+        ad = 35;
+        ap = 35;
     }
 
     public void specialStats() {

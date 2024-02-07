@@ -7,14 +7,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LudensCompanion extends Item {
     public static final String name = "Luden's Companion";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 2900;
 
     int currentStacks;
     float lastStackGained;
 
     public LudensCompanion() {
         super(name, type, cost);
-        ap = 90;
+        ap = 95;
         ah = 20;
         mana = 600;
     }
@@ -31,7 +31,7 @@ public class LudensCompanion extends Item {
             ++currentStacks;
         }
 
-        float dmg = 40 + 0.08f * owner.AP;
+        float dmg = 45 + 0.04f * owner.AP;
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
         for (int i = 1; i < currentStacks; ++i) { //subsequent stacks apply 1 by 1, big one occurs once
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg * 0.35f, 2); //supposing all hit single-target

@@ -25,7 +25,7 @@ public class ProfaneHydra extends Item {
             if (waitForExtraDamage && owner.getEnemy().getRelativeMissingHP() < 0.7) return;
 
             if (owner.getEnemy().getRelativeMissingHP() >= 0.5)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.5f * owner.getAD(), 2);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.3f * owner.getAD(), 2);
             else
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
 

@@ -24,7 +24,7 @@ public class Stormrazor extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 90 + owner.getAD()*0.25f, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 100, 1);
         }
     }
 

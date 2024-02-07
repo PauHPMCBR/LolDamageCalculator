@@ -7,11 +7,9 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class StatikkShiv extends Item {
     public static final String name = "Statikk Shiv";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 2700;
 
     int energize;
-
-    int dmg;
 
     public StatikkShiv() {
         super(name, type, cost);
@@ -22,15 +20,11 @@ public class StatikkShiv extends Item {
         energize = 9;
     }
 
-    public void specialStats() {
-        dmg = 100 + Math.max(0, owner.lvl-6) * 10 - Math.max(0, owner.lvl-10) * 5;
-    }
-
     public void onHit() {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 90, 1);
         }
     }
 

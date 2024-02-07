@@ -8,7 +8,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Malignance extends Item {
     public static final String name = "Malignance";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
+    public static final int cost = 2700;
 
     boolean active;
     float timeActivated;
@@ -26,7 +26,7 @@ public class Malignance extends Item {
     public void specialStats() {
         owner.ULTIMATE_HASTE += 20;
         active = false;
-        mrReduction = 6 + 6f/17 * (owner.lvl - 1);
+        mrReduction = 10;
     }
 
     //in this implementation, it "refreshes" duration, but doesn't stack
@@ -39,7 +39,7 @@ public class Malignance extends Item {
                 secs = 3 - (lastTick - timeActivated);
             }
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                    (float) (secs * (60 + 0.06 * owner.AP)), 1);
+                    (float) (secs * (60 + 0.05 * owner.AP)), 1);
             lastTick = cs.time;
         }
         if (owner.lastAbilityUsed == AbilityType.R) {

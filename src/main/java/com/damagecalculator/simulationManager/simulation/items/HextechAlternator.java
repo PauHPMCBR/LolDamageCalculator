@@ -18,7 +18,7 @@ public class HextechAlternator extends Item {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 50f + 75f / 17f * (owner.lvl -1), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 65, 1);
         }
     }
 
