@@ -15,7 +15,7 @@ public class Varus extends Champion {
                 40f,
                 27f,
                 4.6f,
-                62f,
+                60f,
                 3.4f,
                 30f,
                 1.3f,

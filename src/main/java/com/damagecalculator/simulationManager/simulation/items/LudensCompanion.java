@@ -15,7 +15,7 @@ public class LudensCompanion extends Item {
     public LudensCompanion() {
         super(name, type, cost);
         ap = 95;
-        ah = 20;
+        ah = 25;
         mana = 600;
     }
 

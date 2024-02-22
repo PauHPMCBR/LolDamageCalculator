@@ -10,9 +10,9 @@ public class BountyOfWorlds extends Item {
 
     public BountyOfWorlds() {
         super(name, type, cost);
-        hp = 100;
-        mana_regen = 50;
-        hp_regen = 50;
+        hp = 200;
+        mana_regen = 75;
+        hp_regen = 75;
     }
 
     @Override

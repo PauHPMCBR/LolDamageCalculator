@@ -9,7 +9,7 @@ public class Ahri extends Champion {
     public Ahri() {
         super (name,
                 590f,
-                96f,
+                104f,
                 418f,
                 25f,
                 21f,
@@ -41,7 +41,7 @@ public class Ahri extends Champion {
         q.damageType = DamageType.magicDmg;
         q.cooldown = new float[]{7,7,7,7,7};
         q.damage = new float[]{40,65,90,115,140};
-        q.ap_scale = new float[]{0.45f,0.45f,0.45f,0.45f,0.45f};
+        q.ap_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
         q.cast_time = 0.25f;
 
         w = new Ability(W) {

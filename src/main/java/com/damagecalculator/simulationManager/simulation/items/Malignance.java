@@ -19,7 +19,7 @@ public class Malignance extends Item {
     public Malignance() {
         super(name, type, cost);
         ap = 80;
-        ah = 20;
+        ah = 25;
         mana = 600;
     }
 

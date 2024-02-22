@@ -14,9 +14,18 @@ public class Stridebreaker extends Item {
         ad = 55;
         as = 30;
         hp = 400;
+
+        item_cooldown = 15;
     }
 
     //ignoring ms stuff
+
+    public void extraDmg() {
+        if (canUse()) {
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD() * 0.8f, 2);
+            putOnCooldown();
+        }
+    }
 
     @Override
     public Item makeCopy() {

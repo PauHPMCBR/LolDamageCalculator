@@ -26,14 +26,17 @@ public class Terminus extends Item {
 
     public void onHit() {
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30, 1);
-        if (wasLastLight && darkStacks < 5) {
-            owner.increaseArmorPen(-darkStacks * 6); //TODO check if this works fine
+        if (wasLastLight && darkStacks < 3) {
+            owner.increaseArmorPen(-darkStacks * 10); //TODO check if this works fine
             ++darkStacks;
-            owner.increaseArmorPen(darkStacks * 6);
+            owner.increaseArmorPen(darkStacks * 10);
         }
-        else if (lightStacks < 5) {
+        else if (lightStacks < 3) {
             ++lightStacks;
-            float resistIncrease = 3 + 2f/17 * (owner.lvl - 1);
+            float resistIncrease = 6;
+            if (owner.lvl >= 11) ++resistIncrease;
+            if (owner.lvl >= 14) ++resistIncrease;
+
             owner.ARMOR += resistIncrease;
             owner.MAGIC_RESIST += resistIncrease;
         }
