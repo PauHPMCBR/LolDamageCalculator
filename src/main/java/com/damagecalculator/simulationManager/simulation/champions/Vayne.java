@@ -54,7 +54,7 @@ public class Vayne extends Champion {
             }
         };
         q.damageType = DamageType.physicalDmg;
-        q.cooldown = new float[]{4,3.5f,3,2.5f,2};
+        q.cooldown = new float[]{6,5,4,3,2};
         q.ad_scale = new float[]{0.75f,0.85f,0.95f,1.05f,1.15f};
         q.ap_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
         q.cast_time = 0.4f;

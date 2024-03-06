@@ -7,11 +7,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class HextechRocketbelt extends Item {
     public static final String name = "Hextech Rocketbelt";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2500;
+    public static final int cost = 2600;
 
     public HextechRocketbelt() {
         super(name, type, cost);
-        ap = 60;
+        ap = 70;
         ah = 15;
         hp = 300;
         item_cooldown = 40;

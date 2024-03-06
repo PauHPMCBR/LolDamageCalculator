@@ -83,7 +83,7 @@ public class Senna extends Champion {
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{15,15,15,15,15};
         q.damage = new float[]{30,60,90,120,150};
-        q.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
+        q.ad_scale = new float[]{0.4f,0.4f,0.4f,0.4f,0.4f};
 
         w = new Ability(W) {
             public void onUse() {

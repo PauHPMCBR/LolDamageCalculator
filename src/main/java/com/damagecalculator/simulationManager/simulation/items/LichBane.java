@@ -26,7 +26,7 @@ public class LichBane extends Item {
                 owner.lastSheenProc = cs.time;
                 putOnCooldown();
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                        (float) (0.75f * owner.BASE_AD + 0.5 * owner.AP), 1);
+                        (float) (0.75f * owner.BASE_AD + 0.45 * owner.AP), 1);
             }
         }
     }

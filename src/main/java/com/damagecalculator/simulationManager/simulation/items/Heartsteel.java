@@ -20,7 +20,7 @@ public class Heartsteel extends Item {
     public void onHit() {
         if (canUse()) {
             putOnCooldown();
-            float dmg = 100f + 0.1f * (owner.getMaxHP() - owner.BASE_HP); // hp from items -> bonus hp
+            float dmg = 80f + 0.12f * owner.BONUS_HP; // hp from items -> bonus hp
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 1);
             owner.BONUS_HP += dmg * 0.12f;
         }

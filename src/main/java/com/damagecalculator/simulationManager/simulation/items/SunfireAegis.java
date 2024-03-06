@@ -14,7 +14,7 @@ public class SunfireAegis extends Item {
 
     public SunfireAegis() {
         super(name, type, cost);
-        hp = 450;
+        hp = 500;
         armor = 50;
     }
 
@@ -27,7 +27,7 @@ public class SunfireAegis extends Item {
         dmgMult = 1 +  0.1f * Math.min(cs.time, 5);
         float ticks = cs.time - lastTick;
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (12 + 0.0175 * owner.BONUS_HP) * dmgMult), 1);
+                (float) (ticks * (15 + 0.0175 * owner.BONUS_HP) * dmgMult), 1);
         lastTick = cs.time;
     }
 
