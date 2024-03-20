@@ -11,7 +11,7 @@ public class HextechAlternator extends Item {
 
     public HextechAlternator() {
         super(name, type, cost);
-        ap = 50;
+        ap = 45;
         item_cooldown = 40;
     }
 

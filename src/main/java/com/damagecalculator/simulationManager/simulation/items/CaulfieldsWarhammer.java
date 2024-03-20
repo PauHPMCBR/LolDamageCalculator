@@ -10,7 +10,7 @@ public class CaulfieldsWarhammer extends Item {
 
     public CaulfieldsWarhammer() {
         super(name, type, cost);
-        ad = 25;
+        ad = 20;
         ah = 10;
     }
 

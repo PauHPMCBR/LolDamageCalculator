@@ -10,8 +10,9 @@ public class SpectresCowl extends Item {
 
     public SpectresCowl() {
         super(name, type, cost);
-        hp = 250;
+        hp = 200;
         mr = 25;
+        hp_regen = 100;
     }
 
     @Override

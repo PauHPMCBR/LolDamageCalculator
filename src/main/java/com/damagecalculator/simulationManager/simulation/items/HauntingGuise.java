@@ -11,7 +11,7 @@ public class HauntingGuise extends Item {
     float currentDmgMult;
     public HauntingGuise() {
         super(name, type, cost);
-        ap = 35;
+        ap = 30;
         hp = 200;
     }
 

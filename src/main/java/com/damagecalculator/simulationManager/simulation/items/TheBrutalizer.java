@@ -12,7 +12,7 @@ public class TheBrutalizer extends Item {
         super(name, type, cost);
         ad = 25;
         ah = 10;
-        lethality = 8;
+        lethality = 5;
     }
 
     @Override

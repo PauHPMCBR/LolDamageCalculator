@@ -10,7 +10,7 @@ public class SerratedDirk extends Item {
 
     public SerratedDirk() {
         super(name, type, cost);
-        ad = 25;
+        ad = 20;
         lethality = 10;
     }
 

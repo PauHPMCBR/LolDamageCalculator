@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class VerdantBarrier extends Item {
     public static final String name = "Verdant Barrier";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1800;
+    public static final int cost = 1700;
 
     public VerdantBarrier() {
         super(name, type, cost);

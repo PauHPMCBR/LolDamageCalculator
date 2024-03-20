@@ -21,7 +21,7 @@ public class BamisCinder extends Item {
     public void extraDmg() {
         float ticks = cs.time - lastTick; //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (12 + 0.01 * owner.BONUS_HP)), 1);
+                (float) (ticks * (13 + 0.005 * owner.BONUS_HP)), 1);
         lastTick = cs.time;
     }
 

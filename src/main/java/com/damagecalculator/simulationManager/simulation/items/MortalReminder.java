@@ -12,7 +12,7 @@ public class MortalReminder extends Item {
         super(name, type, cost);
         ad = 40;
         crit = 20;
-        armor_pen = 30;
+        armor_pen = 35;
     }
 
     @Override

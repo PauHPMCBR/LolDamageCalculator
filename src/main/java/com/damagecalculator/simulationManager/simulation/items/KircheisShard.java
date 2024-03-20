@@ -22,7 +22,7 @@ public class KircheisShard extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 50, 1);
         }
     }
 

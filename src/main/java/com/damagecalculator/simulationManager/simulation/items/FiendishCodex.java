@@ -10,7 +10,7 @@ public class FiendishCodex extends Item {
 
     public FiendishCodex() {
         super(name, type, cost);
-        ap = 35;
+        ap = 25;
         ah = 10;
     }
 

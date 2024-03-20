@@ -22,7 +22,7 @@ public class Karma extends Champion {
                 630f,
                 109f,
                 374f,
-                50f,
+                40f,
                 28f,
                 5f,
                 51f,
@@ -52,13 +52,13 @@ public class Karma extends Champion {
                     duration = new float[]{1.5f,1.5f,1.5f,1.5f,1.5f};
                 }
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 6);
-                r.currentCooldown -= 5;
+                r.currentCooldown -= 4;
                 currentCooldown = getCooldown();
             }
             public void onExpiring() {
                 duration = null;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 40 + 90*r.lvl + 0.5f*owner.AP, 6);
-                r.currentCooldown -= 5;
+                r.currentCooldown -= 4;
             }
         };
         q.damageType = DamageType.magicDmg;
@@ -74,12 +74,12 @@ public class Karma extends Champion {
                     r.currentCooldown = r.getCooldown(); // reset cooldown
                 }
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, damage[lvl] + ap_scale[lvl]*owner.AP, 6);
-                r.currentCooldown -= 5;
+                r.currentCooldown -= 4;
                 currentCooldown = getCooldown();
             }
             public void onExpiring() {
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, damage[lvl] + ap_scale[lvl]*owner.AP, 6);
-                r.currentCooldown -= 5;
+                r.currentCooldown -= 4;
             }
         };
         w.damageType = DamageType.magicDmg;
@@ -117,7 +117,7 @@ public class Karma extends Champion {
             }
         };
         r.damageType = null;
-        r.cooldown = new float[]{40,37,34,31};
+        r.cooldown = new float[]{40,38,36,34};
         r.cast_time = 0;
 
 

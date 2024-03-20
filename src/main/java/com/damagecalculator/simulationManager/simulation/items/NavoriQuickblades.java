@@ -11,7 +11,7 @@ public class NavoriQuickblades extends Item {
 
     public NavoriQuickblades() {
         super(name, type, cost);
-        ad = 60;
+        ad = 65;
         crit = 20;
         ah = 15;
     }
