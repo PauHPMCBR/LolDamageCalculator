@@ -35,11 +35,11 @@ public class Tryndamere extends Champion {
         passive = new Ability(PASSIVE) {
             public void startingCalculations() {
                 extraVariable = startingFury;
-                owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + extraVariable*0.4f);
+                owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + extraVariable*0.5f);
             }
             public void onCall() {
                 if (extraVariable > 95) return; // no more fury increases
-                boolean wasCrit = ((owner.autosUsed-1)%5) < CRIT_CHANCE/100 * 5;
+                boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
                 if (wasCrit && extraVariable <= 90) {
                     extraVariable += 10;
                     owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + 4);
@@ -77,7 +77,7 @@ public class Tryndamere extends Champion {
                 currentCooldown = getCooldown();
             }
             public void onCall() { //autos
-                boolean wasCrit = ((owner.autosUsed-1)%5) < CRIT_CHANCE/100 * 5;
+                boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
                 if (wasCrit) currentCooldown -= 1.5f;
             }
         };

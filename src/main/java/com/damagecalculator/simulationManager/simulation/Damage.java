@@ -67,14 +67,13 @@ public class Damage {
         if (type != DamageType.trueDmg) {
             amount *= cs.damageMultiplier;
             if (cs.hasCutDown) {
-                if (cs.enemy.getMaxHP() > cs.champion.getMaxHP() * 1.1) {
-                    float x = (float) Math.max(0.1, Math.min(1, cs.enemy.getMaxHP() / cs.champion.getMaxHP() - 1));
-                    amount *= 1 + (x - 0.1) / 9 + 0.05;
+                if (cs.enemy.getRelativeMissingHP() < 0.4) {
+                    amount *= 1.08f;
                 }
             }
             else if (cs.hasCoupDeGrace) {
                 if (cs.enemy.getRelativeMissingHP() > 0.6) {
-                    amount *= 1.08;
+                    amount *= 1.08f;
                 }
             }
             //last stand can be controversial, since we don't know champion's relative hp. currently skipped
@@ -95,7 +94,7 @@ public class Damage {
         }
 
         if (cs.hasFirstStrike) {
-            cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.07f);
+            cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.08f);
         }
 
         if (damageInstanceType%2 == 0) { //not proc damage

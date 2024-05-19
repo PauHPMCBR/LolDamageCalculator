@@ -18,7 +18,6 @@ public class Inventory {
     private int cost;
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
-            new Item[] {infinityEdge, navoriQuickblades}, //crit modifier
             new Item[] {seekersArmguard, zhonyasHourglass}, //stasis component
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
             new Item[] {trinityForce, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
@@ -27,14 +26,14 @@ public class Inventory {
             new Item[] {titanicHydra, ravenousHydra, profaneHydra, tiamat}, //hydra
             new Item[] {mercurialScimitar, quicksilverSash}, //qicksilver
             new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity, platedSteelcaps, mercurysTreads,
-                            mobilityBoots, bootsOfSwiftness, boots}, //boots
+                            symbioticSoles, synchronizedSouls, bootsOfSwiftness, boots, zephyr}, //boots
             new Item[] {mejaisSoulstealer, darkSeal}, //glory
             new Item[] {guardiansOrb, guardiansHorn, guardiansBlade, guardiansHammer}, //guardian
             new Item[] {sunfireAegis, bamisCinder, hollowRadiance}, //immolate
             new Item[] {worldAtlas, runicCompass, bountyOfWorlds, celestialOpposition, solsticeSleigh,
                             bloodsong, dreamMaker, zazZaksRealmspike}, //support
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
-            new Item[] {voidStaff, blightingJewel, terminus, cryptbloom}, //void pen
+            new Item[] {voidStaff, blightingJewel, terminus, cryptbloom, abyssalMask}, //void pen
             new Item[] {doransBlade, doransRing, doransShield} //doran's items
     };
 

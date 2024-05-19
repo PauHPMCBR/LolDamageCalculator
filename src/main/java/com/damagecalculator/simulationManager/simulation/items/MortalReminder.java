@@ -11,7 +11,7 @@ public class MortalReminder extends Item {
     public MortalReminder() {
         super(name, type, cost);
         ad = 40;
-        crit = 20;
+        crit = 25;
         armor_pen = 35;
     }
 

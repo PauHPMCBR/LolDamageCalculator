@@ -10,15 +10,9 @@ public class LordDominiksRegards extends Item {
 
     public LordDominiksRegards() {
         super(name, type, cost);
-        ad = 40;
-        crit = 20;
-        armor_pen = 35;
-    }
-
-    public void specialStats() {
-        float diff = owner.getEnemy().getMaxHP() - owner.getMaxHP();
-        diff = Math.min(2000, Math.max(0, diff));
-        cs.damageMultiplier *= 1 + diff/10000 * 15f/20f;
+        ad = 45;
+        crit = 25;
+        armor_pen = 40;
     }
 
     @Override

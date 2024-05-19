@@ -11,12 +11,13 @@ public class Fimbulwinter extends Item {
     public Fimbulwinter() {
         super(name, type, cost);
         ah = 15;
-        hp = 400;
+        hp = 550;
         mana = 860;
     }
 
     public void specialStats() {
-        owner.BONUS_HP += 0.08 * owner.MANA;
+        float baseMana = owner.base_mana + owner.mana_growth * (owner.lvl - 1);
+        owner.BONUS_HP += (owner.MANA - baseMana) * 0.15f;
     }
 
     @Override

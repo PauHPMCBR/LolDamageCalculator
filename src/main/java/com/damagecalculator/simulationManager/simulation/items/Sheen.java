@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 
 public class Sheen extends Item {
     public static final String name = "Sheen";
-    public static final ItemType type = ItemType.BASIC;
+    public static final ItemType type = ItemType.EPIC;
     public static final int cost = 1000;
 
     public Sheen() {

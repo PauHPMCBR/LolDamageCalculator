@@ -10,6 +10,7 @@ public class HailOfBlades extends Rune {
     public static final int row = 3;
 
     int autos;
+    int bonusASGained;
     float prevMaxAs;
 
     public HailOfBlades() {
@@ -19,10 +20,15 @@ public class HailOfBlades extends Rune {
         autos = 0;
     }
 
+    public void specialStats() {
+        if (owner.is_ranged) bonusASGained = 80;
+        else bonusASGained = 110;
+    }
+
     public void onHit() { //gives as AFTER the 1st auto
         if (canUse()) {
             if (autos == 0) {
-                cs.champion.BONUS_AS += 110;
+                cs.champion.BONUS_AS += bonusASGained;
                 prevMaxAs = cs.champion.max_as;
                 cs.champion.max_as = 90;
             }
@@ -30,7 +36,7 @@ public class HailOfBlades extends Rune {
             if (autos == 3) {
                 putOnCooldown();
                 cs.champion.max_as = prevMaxAs;
-                cs.champion.BONUS_AS -= 110;
+                cs.champion.BONUS_AS -= bonusASGained;
             }
         }
     }

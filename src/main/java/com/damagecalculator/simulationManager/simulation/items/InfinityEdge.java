@@ -6,12 +6,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class InfinityEdge extends Item {
     public static final String name = "Infinity Edge";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3300;
+    public static final int cost = 3400;
 
     public InfinityEdge() {
         super(name, type, cost);
-        ad = 65;
-        crit = 20;
+        ad = 80;
+        crit = 25;
     }
 
     public void specialStats() {

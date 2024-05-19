@@ -10,13 +10,8 @@ public class Bloodthirster extends Item {
 
     public Bloodthirster() {
         super(name, type, cost);
-        ad = 55;
-        crit = 20;
+        ad = 80;
         lifesteal = 18;
-    }
-
-    public void specialStats() {
-        owner.BONUS_AD += 10 + 5 * Math.max(0,(owner.lvl - 12)); //supposing always above 70%
     }
 
     @Override

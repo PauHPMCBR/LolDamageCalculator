@@ -25,9 +25,9 @@ public class BlackCleaver extends Item {
 
     public void increaseCarveStacks() { //will get called by "Damage" class. special function
         if (carveStacks >= 5) return;
-        owner.getEnemy().ARMOR /= (1 - carveStacks*0.05f);
+        owner.getEnemy().ARMOR /= (1 - carveStacks*0.06f);
         ++carveStacks;
-        owner.getEnemy().ARMOR *= (1 - carveStacks*0.05f);
+        owner.getEnemy().ARMOR *= (1 - carveStacks*0.06f);
     }
 
     @Override

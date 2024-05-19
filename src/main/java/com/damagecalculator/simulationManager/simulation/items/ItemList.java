@@ -9,7 +9,6 @@ public class ItemList {
     public static AbyssalMask abyssalMask = new AbyssalMask();
     public static AetherWisp aetherWisp = new AetherWisp();
     public static AmplifyingTome amplifyingTome = new AmplifyingTome();
-    public static AnathemasChains anathemasChains = new AnathemasChains();
     public static ArchangelsStaff archangelsStaff = new ArchangelsStaff(0);
     public static ArdentCenser ardentCenser = new ArdentCenser();
     public static AxiomArc axiomArc = new AxiomArc();
@@ -19,6 +18,7 @@ public class ItemList {
     public static BerserkersGreaves berserkersGreaves = new BerserkersGreaves();
     public static BFSword bFSword = new BFSword();
     public static BlackCleaver blackCleaver = new BlackCleaver();
+    public static BlackfireTorch blackfireTorch = new BlackfireTorch(1);
     public static BladeOfTheRuinedKing bladeOfTheRuinedKing = new BladeOfTheRuinedKing();
     public static BlastingWand blastingWand = new BlastingWand();
     public static BlightingJewel blightingJewel = new BlightingJewel();
@@ -54,6 +54,7 @@ public class ItemList {
     public static ExecutionersCalling executionersCalling = new ExecutionersCalling();
     public static ExperimentalHexplate experimentalHexplate = new ExperimentalHexplate();
     public static FaerieCharm faerieCharm = new FaerieCharm();
+    public static FatedAshes fatedAshes = new FatedAshes();
     public static FiendishCodex fiendishCodex = new FiendishCodex();
     public static Fimbulwinter fimbulwinter = new Fimbulwinter();
     public static ForbiddenIdol forbiddenIdol = new ForbiddenIdol();
@@ -86,7 +87,6 @@ public class ItemList {
     public static JakSho jakSho = new JakSho();
     public static KaenicRookern kaenicRookern = new KaenicRookern();
     public static Kindlegem kindlegem = new Kindlegem();
-    public static KircheisShard kircheisShard = new KircheisShard();
     public static KnightsVow knightsVow = new KnightsVow();
     public static KrakenSlayer krakenSlayer = new KrakenSlayer();
     public static LastWhisper lastWhisper = new LastWhisper();
@@ -104,19 +104,19 @@ public class ItemList {
     public static MercurialScimitar mercurialScimitar = new MercurialScimitar();
     public static MercurysTreads mercurysTreads = new MercurysTreads();
     public static MikaelsBlessing mikaelsBlessing = new MikaelsBlessing();
-    public static MobilityBoots mobilityBoots = new MobilityBoots();
     public static MoonstoneRenewer moonstoneRenewer = new MoonstoneRenewer();
     public static Morellonomicon morellonomicon = new Morellonomicon();
     public static MortalReminder mortalReminder = new MortalReminder();
     public static Muramana muramana = new Muramana();
     public static NashorsTooth nashorsTooth = new NashorsTooth();
-    public static NavoriQuickblades navoriQuickblades = new NavoriQuickblades();
+    public static NavoriFlickerblade navoriQuickblades = new NavoriFlickerblade();
     public static NeedlesslyLargeRod needlesslyLargeRod = new NeedlesslyLargeRod();
     public static NegatronCloak negatronCloak = new NegatronCloak();
     public static Noonquiver noonquiver = new Noonquiver();
     public static NullMagicMantle nullMagicMantle = new NullMagicMantle();
     public static OblivionOrb oblivionOrb = new OblivionOrb();
     public static Opportunity opportunity = new Opportunity();
+    public static OverlordsBloodmail overlordsBloodmail = new OverlordsBloodmail();
     public static Phage phage = new Phage();
     public static PhantomDancer phantomDancer = new PhantomDancer();
     public static Pickaxe pickaxe = new Pickaxe();
@@ -138,6 +138,7 @@ public class ItemList {
     public static RunicCompass runicCompass = new RunicCompass();
     public static RylaisCrystalScepter rylaisCrystalScepter = new RylaisCrystalScepter();
     public static SapphireCrystal sapphireCrystal = new SapphireCrystal();
+    public static ScoutsSlingshot scoutsSlingshot = new ScoutsSlingshot();
     public static SeekersArmguard seekersArmguard = new SeekersArmguard();
     public static SeraphsEmbrace seraphsEmbrace = new SeraphsEmbrace();
     public static SerpentsFang serpentsFang = new SerpentsFang();
@@ -155,11 +156,12 @@ public class ItemList {
     public static StatikkShiv statikkShiv = new StatikkShiv();
     public static SteelSigil steelSigil = new SteelSigil();
     public static SteraksGage steraksGage = new SteraksGage();
-    public static Stormrazor stormrazor = new Stormrazor();
     public static Stormsurge stormsurge = new Stormsurge();
     public static Stridebreaker stridebreaker = new Stridebreaker();
     public static SunderedSky sunderedSky = new SunderedSky();
     public static SunfireAegis sunfireAegis = new SunfireAegis();
+    public static SymbioticSoles symbioticSoles = new SymbioticSoles();
+    public static SynchronizedSouls synchronizedSouls = new SynchronizedSouls();
     public static TearOfTheGoddess tearOfTheGoddess = new TearOfTheGoddess(0);
     public static Terminus terminus = new Terminus();
     public static TheBrutalizer theBrutalizer = new TheBrutalizer();
@@ -185,9 +187,11 @@ public class ItemList {
     public static WitsEnd witsEnd = new WitsEnd();
     public static WorldAtlas worldAtlas = new WorldAtlas();
     public static YoumuusGhostblade youmuusGhostblade = new YoumuusGhostblade();
+    public static YunTalWildarrows yunTalWildarrows = new YunTalWildarrows();
     public static ZazZaksRealmspike zazZaksRealmspike = new ZazZaksRealmspike();
     public static Zeal zeal = new Zeal();
     public static ZekesConvergence zekesConvergence = new ZekesConvergence();
+    public static Zephyr zephyr = new Zephyr();
     public static ZhonyasHourglass zhonyasHourglass = new ZhonyasHourglass();
 
 
@@ -195,7 +199,6 @@ public class ItemList {
         add(abyssalMask);
         add(aetherWisp);
         add(amplifyingTome);
-        add(anathemasChains);
         add(archangelsStaff);
         add(ardentCenser);
         add(axiomArc);
@@ -205,6 +208,7 @@ public class ItemList {
         add(berserkersGreaves);
         add(bFSword);
         add(blackCleaver);
+        add(blackfireTorch);
         add(bladeOfTheRuinedKing);
         add(blastingWand);
         add(blightingJewel);
@@ -240,6 +244,7 @@ public class ItemList {
         add(executionersCalling);
         add(experimentalHexplate);
         add(faerieCharm);
+        add(fatedAshes);
         add(fiendishCodex);
         add(fimbulwinter);
         add(forbiddenIdol);
@@ -272,7 +277,6 @@ public class ItemList {
         add(jakSho);
         add(kaenicRookern);
         add(kindlegem);
-        add(kircheisShard);
         add(knightsVow);
         add(krakenSlayer);
         add(lastWhisper);
@@ -290,7 +294,6 @@ public class ItemList {
         add(mercurialScimitar);
         add(mercurysTreads);
         add(mikaelsBlessing);
-        add(mobilityBoots);
         add(moonstoneRenewer);
         add(morellonomicon);
         add(mortalReminder);
@@ -303,6 +306,7 @@ public class ItemList {
         add(nullMagicMantle);
         add(oblivionOrb);
         add(opportunity);
+        add(overlordsBloodmail);
         add(phage);
         add(phantomDancer);
         add(pickaxe);
@@ -324,6 +328,7 @@ public class ItemList {
         add(runicCompass);
         add(rylaisCrystalScepter);
         add(sapphireCrystal);
+        add(scoutsSlingshot);
         add(seekersArmguard);
         add(seraphsEmbrace);
         add(serpentsFang);
@@ -341,11 +346,12 @@ public class ItemList {
         add(statikkShiv);
         add(steelSigil);
         add(steraksGage);
-        add(stormrazor);
         add(stormsurge);
         add(stridebreaker);
         add(sunderedSky);
         add(sunfireAegis);
+        add(symbioticSoles);
+        add(synchronizedSouls);
         add(tearOfTheGoddess);
         add(terminus);
         add(theBrutalizer);
@@ -371,9 +377,11 @@ public class ItemList {
         add(witsEnd);
         add(worldAtlas);
         add(youmuusGhostblade);
+        add(yunTalWildarrows);
         add(zazZaksRealmspike);
         add(zeal);
         add(zekesConvergence);
+        add(zephyr);
         add(zhonyasHourglass);
     }};
     public static HashMap<String, Item> nameToItem = new HashMap<>();

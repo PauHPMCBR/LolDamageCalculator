@@ -14,7 +14,8 @@ public class SunfireAegis extends Item {
 
     public SunfireAegis() {
         super(name, type, cost);
-        hp = 500;
+        hp = 350;
+        ah = 10;
         armor = 50;
     }
 

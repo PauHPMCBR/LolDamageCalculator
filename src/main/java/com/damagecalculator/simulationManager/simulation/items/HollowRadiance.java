@@ -13,7 +13,8 @@ public class HollowRadiance extends Item {
 
     public HollowRadiance() {
         super(name, type, cost);
-        hp = 600;
+        hp = 450;
+        ah = 10;
         mr = 40;
         hp_regen = 100;
     }

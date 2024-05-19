@@ -16,6 +16,8 @@ public class UnendingDespair extends Item {
         hp = 400;
         armor = 55;
         ah = 10;
+
+        item_cooldown = 5;
     }
 
     public void specialStats() {
@@ -24,8 +26,8 @@ public class UnendingDespair extends Item {
 
     //ignoring healing
     public void extraDmg() {
-        while (lastProcTime + 7 <= cs.time) {
-            lastProcTime += 7;
+        while (lastProcTime + item_cooldown <= cs.time) {
+            lastProcTime += item_cooldown;
             float dmg = 30 + 20f/17 * (owner.lvl - 1) + owner.getMaxHP() * 0.03f;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
         }

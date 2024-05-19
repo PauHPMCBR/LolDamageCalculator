@@ -248,7 +248,7 @@ public abstract class Champion {
      * No ability for auto attacking, this function does just that. also calls for on-hit effects
      */
     public void autoAttack() {
-        boolean isCrit = (autosUsed%5) < CRIT_CHANCE/100 * 5; //works for every 20% crit chance, wouldn't work with 15% cloak/zeal, non-random cycle of 5
+        boolean isCrit = (autosUsed%4) < CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 15-20% cloak/zeal/noonquiver, non-random cycle of 4
         if (isCrit) autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD() * crit_damage, 0);
         else autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, getAD(), 0);
         ++autosUsed;

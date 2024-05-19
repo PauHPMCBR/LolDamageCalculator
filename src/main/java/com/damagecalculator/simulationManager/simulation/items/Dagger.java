@@ -10,7 +10,7 @@ public class Dagger extends Item {
 
     public Dagger() {
         super(name, type, cost);
-        as = 12;
+        as = 10;
     }
 
     @Override

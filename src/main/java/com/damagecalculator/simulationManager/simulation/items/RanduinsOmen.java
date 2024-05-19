@@ -10,8 +10,8 @@ public class RanduinsOmen extends Item {
 
     public RanduinsOmen() {
         super(name, type, cost);
-        armor = 55;
-        hp = 400;
+        armor = 75;
+        hp = 350;
     }
 
     @Override

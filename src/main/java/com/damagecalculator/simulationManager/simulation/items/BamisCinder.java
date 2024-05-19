@@ -7,13 +7,14 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class BamisCinder extends Item {
     public static final String name = "Bami's Cinder";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1000;
+    public static final int cost = 900;
 
     float lastTick;
 
     public BamisCinder() {
         super(name, type, cost);
-        hp = 300;
+        hp = 200;
+        ah = 5;
 
         lastTick = 0;
     }

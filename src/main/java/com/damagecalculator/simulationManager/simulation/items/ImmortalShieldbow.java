@@ -10,9 +10,8 @@ public class ImmortalShieldbow extends Item {
 
     public ImmortalShieldbow() {
         super(name, type, cost);
-        ad = 50;
-        crit = 20;
-        lifesteal = 12;
+        ad = 55;
+        crit = 25;
         item_cooldown = 90; //although unused for now
     }
 

@@ -15,7 +15,7 @@ public class RecurveBow extends Item {
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15, 1);
+        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 15, 1);
     }
 
     @Override

@@ -22,18 +22,18 @@ public class PressTheAttack extends Rune {
 
     public void onHit() {
         if (isActive) {
-            if (cs.time >= timeActivated + 6) {
-                cs.damageMultiplier /= 1.08;
+            /*if (cs.time >= timeActivated + 6) {
+                cs.damageMultiplier /= 1.08f;
 
                 isActive = false;
-            }
+            }*/
         }
         else {
             ++autos;
             if (autos == 3) {
                 damageDealt += cs.damage.applyDamage(cs.champion.getAdaptive(),
-                        40 + ((float)(140*cs.champion.lvl-1))/17, 1);
-                cs.damageMultiplier *= 1.08;
+                        40 + ((float)(120*cs.champion.lvl-1))/17, 1);
+                cs.damageMultiplier *= 1.08f;
 
                 isActive = true;
                 timeActivated = cs.time;

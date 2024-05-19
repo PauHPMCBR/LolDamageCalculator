@@ -10,14 +10,14 @@ public class Dawncore extends Item {
 
     public Dawncore() {
         super(name, type, cost);
-        ap = 40;
-        ah = 20;
-        mana_regen = 150;
+        ap = 60;
+        hsp = 16;
+        mana_regen = 100;
     }
 
     public void specialStats() {
         //ignoring h&sp, summoner spell haste
-        owner.AP += 5 * owner.MANA_REGEN/100;
+        owner.AP += 10 * owner.MANA_REGEN/100;
     }
 
     @Override

@@ -15,10 +15,10 @@ public class ZekesConvergence extends Item {
     float lastTick;
     public ZekesConvergence() {
         super(name, type, cost);
-        ah = 20;
-        hp = 200;
-        mana = 250;
-        armor = 30;
+        ah = 10;
+        hp = 300;
+        armor = 25;
+        mr = 25;
     }
 
     public void specialStats() {

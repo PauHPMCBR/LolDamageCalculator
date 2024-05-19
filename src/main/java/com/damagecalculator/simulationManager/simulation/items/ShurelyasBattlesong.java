@@ -10,9 +10,9 @@ public class ShurelyasBattlesong extends Item {
 
     public ShurelyasBattlesong() {
         super(name, type, cost);
-        ap = 55;
+        ap = 50;
         ah = 15;
-        percent_ms = 8;
+        percent_ms = 5;
         mana_regen = 125;
     }
 

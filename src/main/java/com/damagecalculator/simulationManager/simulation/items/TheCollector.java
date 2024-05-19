@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class TheCollector extends Item {
     public static final String name = "The Collector";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3100;
+    public static final int cost = 3200;
 
     public TheCollector() {
         super(name, type, cost);
-        ad = 55;
-        crit = 20;
-        lethality = 16;
+        ad = 60;
+        crit = 25;
+        lethality = 15;
     }
 
     public void extraDmg() {

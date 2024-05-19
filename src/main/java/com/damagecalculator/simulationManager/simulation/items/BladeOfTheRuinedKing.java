@@ -11,14 +11,14 @@ public class BladeOfTheRuinedKing extends Item {
 
     public BladeOfTheRuinedKing() {
         super(name, type, cost);
-        ad = 40;
-        as = 25;
-        lifesteal = 8;
+        ad = 55;
+        as = 30;
+        lifesteal = 10;
     }
 
     public void onHit() {
-        float mult = 0.12f;
-        if (owner.is_ranged) mult = 0.09f;
+        float mult = 0.09f;
+        if (owner.is_ranged) mult = 0.06f;
         damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, Math.max(15, owner.getEnemy().HP * mult), 1);
 
     }

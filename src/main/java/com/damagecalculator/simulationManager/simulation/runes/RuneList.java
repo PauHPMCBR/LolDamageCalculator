@@ -6,18 +6,17 @@ import com.damagecalculator.simulationManager.simulation.RunePath;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class RuneList {
-    public static Rune[] precisionKeystone = new Rune[] {new PressTheAttack(), new LethalTempo(), new FleetFootwork(), new Conqueror()};
-    public static Rune[] precision1 = new Rune[] {new Overheal(), new Triumph(), new PresenceOfMind()};
-    public static Rune[] precision2 = new Rune[] {new LegendAlacrity(10), new LegendTenacity(), new LegendBloodline()};
+    public static Rune[] precisionKeystone = new Rune[] {new PressTheAttack(), new FleetFootwork(), new Conqueror()};
+    public static Rune[] precision1 = new Rune[] {new AbsorbLife(), new Triumph(), new PresenceOfMind()};
+    public static Rune[] precision2 = new Rune[] {new LegendAlacrity(10), new LegendHaste(10), new LegendBloodline()};
     public static Rune[] precision3 = new Rune[] {new CoupDeGrace(), new CutDown(), new LastStand()};
 
-    public static Rune[] dominationKeystone = new Rune[] {new Electrocute(), new Predator(), new DarkHarvest(0), new HailOfBlades()};
+    public static Rune[] dominationKeystone = new Rune[] {new Electrocute(), new DarkHarvest(0), new HailOfBlades()};
     public static Rune[] domination1 = new Rune[] {new CheapShot(), new TasteOfBlood(), new SuddenImpact()};
     public static Rune[] domination2 = new Rune[] {new ZombieWard(10), new GhostPoro(10), new EyeballCollection(10)};
-    public static Rune[] domination3 = new Rune[] {new TreasureHunter(), new IngeniousHunter(5), new RelentlessHunter(), new UltimateHunter(5)};
+    public static Rune[] domination3 = new Rune[] {new TreasureHunter(), new RelentlessHunter(), new UltimateHunter(5)};
 
     public static Rune[] sorceryKeystone = new Rune[] {new SummonAery(), new ArcaneComet(), new PhaseRush()};
     public static Rune[] sorcery1 = new Rune[] {new NullifyingOrb(), new ManaflowBand(10), new NimbusCloak()};
@@ -30,9 +29,9 @@ public class RuneList {
     public static Rune[] resolve3 = new Rune[] {new Overgrowth(15), new Revitalize(), new Unflinching()};
 
     public static Rune[] inspirationKeystone = new Rune[] {new GlacialAugment(), new UnsealedSpellbook(), new FirstStrike()};
-    public static Rune[] inspiration1 = new Rune[] {new HextechFlashtraption(), new MagicalFootwear(), new PerfectTiming()};
-    public static Rune[] inspiration2 = new Rune[] {new FuturesMarket(), new MinionDematerializer(), new BiscuitDelivery(3)};
-    public static Rune[] inspiration3 = new Rune[] {new CosmicInsight(), new ApproachVelocity(), new TimeWarpTonic()};
+    public static Rune[] inspiration1 = new Rune[] {new HextechFlashtraption(), new MagicalFootwear(), new CashBack()};
+    public static Rune[] inspiration2 = new Rune[] {new TripleTonic(), new TimeWarpTonic(), new BiscuitDelivery(3)};
+    public static Rune[] inspiration3 = new Rune[] {new CosmicInsight(), new ApproachVelocity(), new JackOfAllTrades()};
 
     public static ArrayList<Rune> allRunes = new ArrayList<>();
     public static HashMap<String, Rune> nameToRune = new HashMap<>();

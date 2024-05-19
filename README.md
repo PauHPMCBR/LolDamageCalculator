@@ -128,7 +128,7 @@ The feature of getting a 1v1 is possible to implement, just not a priority right
 Although this program is a very faithful recreation on what happens exactly in game, there are some things that can't be taken into account (or are very difficult). Most of them are very slight issues that can just be ignored, tho.
 - Mana cost is not taken into account.
 - All healing and movement speed is ignored (irrelevant for damage calculations. Well, except for Hecarim...)
-- Crit chance is programmed as a 5 auto cycle. For example, with 40%, it is {CCNNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 20%).
+- Crit chance is programmed as a 4 auto cycle. For example, with 50%, it is {CCNN} (C for crit, N for no crit). Therefore, a single crit cloak / zeal doesn't do anything right now (only works in steps of 25%).
 - Sudden impact doesn't check if an ability is a dash (will assume it always is).
 - Horizon focus counts as a permanent 10% damage increase (for everything)
 - Shadowflame does not amplify more DoT and Pet damage (all damage amplifications are 20%)
@@ -137,6 +137,8 @@ Although this program is a very faithful recreation on what happens exactly in g
 - Champion base AD scaling is treated linearly (every lvl gains same base AD), but it's not the case in game. This will create slight damage changes in some levels. This inconvenience holds true for all stats that scale with level (mana, hp, ad...).
 - In "Combo" mode, the time taken to execute the combo doesn't take into account expiring abilities / abilities with duration (even though their ending effect will be counted towards combo damage). For example, Ahri R will take 0 seconds to execute completely, even tho in game there's a static 1s cooldown between casts.
 - Auto resets will recharge ammo of Jhin and Graves weapons (recharge is implemented as a longer attack cooldown).
+- Yun Tal burn applies instantly (not over 2 seconds).
+- Overlord's Bloodmail does not have the 2nd passive (you are always full hp).
 
 ## Things the program assumes
 - Every ability hits.

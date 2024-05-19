@@ -17,7 +17,7 @@ public class AbsoluteFocus extends Rune {
     public void specialStats() {
         //supposing always above 70% hp
         if (cs.champion.getAdaptive().equals(DamageType.physicalDmg))
-            cs.champion.BONUS_AD += 1.8 + 16.2 / 17 * (cs.champion.lvl - 1);
+            cs.champion.BONUS_AD += 1.8f + 16.2f / 17 * (cs.champion.lvl - 1);
         else
             cs.champion.AP += 3 + 27f / 17 * (cs.champion.lvl - 1);
     }

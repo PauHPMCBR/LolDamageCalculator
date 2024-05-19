@@ -14,8 +14,8 @@ public class Terminus extends Item {
 
     public Terminus() {
         super(name, type, cost);
-        ad = 40;
-        as = 30;
+        ad = 35;
+        as = 35;
     }
 
     public void specialStats() {

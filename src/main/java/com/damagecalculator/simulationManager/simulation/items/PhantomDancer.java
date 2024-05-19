@@ -6,27 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class PhantomDancer extends Item {
     public static final String name = "Phantom Dancer";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
-
-    int autos;
+    public static final int cost = 2600;
 
     public PhantomDancer() {
         super(name, type, cost);
-        ad = 20;
-        as = 30;
-        crit = 20;
-        percent_ms = 10;
-    }
-
-    public void specialStats() {
-        autos = 0;
-    }
-
-    public void onHit() {
-        if (autos < 5) {
-            ++autos;
-            owner.BONUS_AS += 7;
-        }
+        as = 60;
+        crit = 25;
+        percent_ms = 12;
     }
 
     @Override
