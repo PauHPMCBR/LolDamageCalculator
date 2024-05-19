@@ -21,7 +21,7 @@ public class ImperialMandate extends Item {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 0.12f * owner.getEnemy().HP, 1); //supposing every ability slows or cc, not accounting for ally proc
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 0.1f * owner.getEnemy().HP, 1); //supposing every ability slows or cc, not accounting for ally proc
         }
     }
 

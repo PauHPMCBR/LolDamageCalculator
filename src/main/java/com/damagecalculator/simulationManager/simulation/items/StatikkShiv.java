@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class StatikkShiv extends Item {
     public static final String name = "Statikk Shiv";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2900;
 
     int energize;
 

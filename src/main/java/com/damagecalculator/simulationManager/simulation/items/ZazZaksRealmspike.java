@@ -16,18 +16,13 @@ public class ZazZaksRealmspike extends Item {
         hp = 200;
         mana_regen = 75;
         hp_regen = 75;
-    }
-
-    public void specialStats() {
-        item_cooldown = 8;
-        if (owner.lvl >= 11) item_cooldown = 7;
-        if (owner.lvl >= 16) item_cooldown = 6;
+        item_cooldown = 10;
     }
 
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 20 + 0.2f*owner.AP + 0.04f * owner.getEnemy().getMaxHP(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 10 + 0.2f*owner.AP + 0.03f * owner.getEnemy().getMaxHP(), 1);
         }
     }
 

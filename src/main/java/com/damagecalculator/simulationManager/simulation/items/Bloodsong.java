@@ -30,7 +30,7 @@ public class Bloodsong extends Item {
                 owner.can_use_sheen = false;
                 owner.lastSheenProc = cs.time;
                 putOnCooldown();
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD * 1.5f, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD, 1);
                 if (!alreadyApplied) {
                     if (owner.is_ranged) cs.damageTrueMultiplier *= 1.05f;
                     else cs.damageTrueMultiplier *= 1.1f;
