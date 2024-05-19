@@ -19,7 +19,7 @@ public class Graves extends Champion {
         int pellets = (isCrit ? 6 : 4);
 
         float pelletDamage = pelletAdRatio * getAD();
-        if (isCrit) pelletDamage *= 1 + (crit_damage - 1)/2.5f;
+        if (isCrit) pelletDamage *= (float) (1 + (crit_damage - 1)*0.45);
 
         autoDmg += cs.damage.applyDamage(DamageType.physicalDmg, pelletDamage, 0);
 
@@ -60,7 +60,7 @@ public class Graves extends Champion {
                 2.5f,
                 0f,
                 0.49f,
-                2.6f,
+                3f,
                 true
         );
 

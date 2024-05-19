@@ -39,7 +39,7 @@ public class Kaisa extends Champion {
 
                 float dmg = 5 + ((float)(owner.lvl-1)*18)/17;
                 dmg += (1+((float)(owner.lvl-1)*11)/17) * extraVariable;
-                dmg += (0.15 + 0.025*extraVariable) * owner.AP;
+                dmg += (0.15f + 0.025f*extraVariable) * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 3);
                 if (extraVariable == 4) {
                     float percentageMissing = (float) (15 + 0.06 * owner.AP);
@@ -70,7 +70,7 @@ public class Kaisa extends Champion {
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{10, 9, 8, 7, 6};
         q.damage = new float[]{40,55,70,85,100};
-        q.ad_scale = new float[]{0.5f,0.5f,0.5f,0.5f,0.5f};
+        q.ad_scale = new float[]{0.55f,0.55f,0.55f,0.55f,0.55f};
         q.ap_scale = new float[]{0.2f,0.2f,0.2f,0.2f,0.2f};
         q.cast_time = 0;
 
@@ -86,7 +86,7 @@ public class Kaisa extends Champion {
                 currentCooldown = getCooldown();
                 if (extraVariable == 1) {
                     owner.passive.onCall();
-                    currentCooldown *= 0.25; //75% cd refund
+                    currentCooldown *= 0.25f; //75% cd refund
                 }
             }
         };

@@ -88,7 +88,7 @@ public class Azir extends Champion {
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{10,9,8,7,6};
         w.duration = new float[]{10,10,10,10,10};
-        w.damage = new float[]{50,67,84,101,118};
+        w.damage = new float[]{50,65,80,95,110};
         w.ap_scale = new float[]{0.55f,0.55f,0.55f,0.55f,0.55f};
         w.cast_time = 0.25f;
 

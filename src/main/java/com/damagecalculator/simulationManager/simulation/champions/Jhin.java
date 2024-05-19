@@ -92,8 +92,8 @@ public class Jhin extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{7,6.5f,6,5.5f,5};
-        q.damage = new float[]{45,70,95,120,145};
-        q.ad_scale = new float[]{0.35f,0.425f,0.5f,0.575f,0.65f};
+        q.damage = new float[]{44,69,94,119,144};
+        q.ad_scale = new float[]{0.44f,0.515f,0.59f,0.66f,0.74f};
         q.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         q.cast_time = 0.25f;
 
