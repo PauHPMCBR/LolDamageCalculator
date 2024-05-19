@@ -15,7 +15,7 @@ public class SunderedSky extends Item {
         ah = 15;
         hp = 450;
 
-        item_cooldown = 6;
+        item_cooldown = 8;
     }
 
     public void onHit() {

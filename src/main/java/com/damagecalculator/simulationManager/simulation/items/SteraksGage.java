@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SteraksGage extends Item {
     public static final String name = "Sterak's Gage";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3200;
 
     public SteraksGage() {
         super(name, type, cost);
