@@ -15,7 +15,7 @@ public class InfinityEdge extends Item {
     }
 
     public void specialStats() {
-        owner.crit_damage += 0.50f;
+        owner.crit_damage += 0.40f;
     }
 
     @Override

@@ -10,9 +10,9 @@ public class KnightsVow extends Item {
 
     public KnightsVow() {
         super(name, type, cost);
-        ah = 15;
+        ah = 10;
         armor = 40;
-        hp = 300;
+        hp = 200;
         hp_regen = 100;
     }
 

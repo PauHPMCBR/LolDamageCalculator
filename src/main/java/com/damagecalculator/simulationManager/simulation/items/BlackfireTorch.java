@@ -32,7 +32,7 @@ public class BlackfireTorch extends Item {
     public void extraDmg() {
         float secs = Math.min(cs.time - lastTick, 3); //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (secs * (20 + 0.02 * owner.AP)), 1);
+                (float) (secs * (7.5 + 0.015 * owner.AP)), 1);
         lastTick = cs.time;
     }
 

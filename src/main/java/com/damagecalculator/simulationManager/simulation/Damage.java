@@ -67,7 +67,7 @@ public class Damage {
         if (type != DamageType.trueDmg) {
             amount *= cs.damageMultiplier;
             if (cs.hasCutDown) {
-                if (cs.enemy.getRelativeMissingHP() < 0.4) {
+                if (cs.enemy.getRelativeMissingHP() < 0.5) {
                     amount *= 1.08f;
                 }
             }

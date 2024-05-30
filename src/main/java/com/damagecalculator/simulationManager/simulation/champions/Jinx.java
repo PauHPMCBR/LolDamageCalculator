@@ -17,7 +17,7 @@ public class Jinx extends Champion {
                 26f,
                 4.7f,
                 59f,
-                3.15f,
+                2.9f,
                 30f,
                 1.3f,
                 1.75f,

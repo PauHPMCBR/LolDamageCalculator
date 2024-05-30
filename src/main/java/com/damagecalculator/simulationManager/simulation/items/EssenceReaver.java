@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class EssenceReaver extends Item {
     public static final String name = "Essence Reaver";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 3100;
 
     public EssenceReaver() {
         super(name, type, cost);

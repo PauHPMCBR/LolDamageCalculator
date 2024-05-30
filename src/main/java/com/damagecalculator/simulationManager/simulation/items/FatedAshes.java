@@ -14,7 +14,7 @@ public class FatedAshes extends Item {
 
     public FatedAshes() {
         super(name, type, cost);
-        ap = 40;
+        ap = 30;
 
         lastTick = 0;
     }
@@ -23,7 +23,7 @@ public class FatedAshes extends Item {
     public void extraDmg() {
         float secs = Math.min(cs.time - lastTick, 3); //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                secs*7, 1);
+                secs*5, 1);
         lastTick = cs.time;
     }
 
