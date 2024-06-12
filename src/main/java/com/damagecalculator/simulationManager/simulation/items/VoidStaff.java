@@ -10,7 +10,7 @@ public class VoidStaff extends Item {
 
     public VoidStaff() {
         super(name, type, cost);
-        ap = 80;
+        ap = 90;
         percent_magic_pen = 40;
     }
 

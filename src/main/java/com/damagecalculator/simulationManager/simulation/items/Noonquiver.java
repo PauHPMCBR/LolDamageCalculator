@@ -10,7 +10,7 @@ public class Noonquiver extends Item {
 
     public Noonquiver() {
         super(name, type, cost);
-        ad = 25;
+        ad = 20;
         crit = 20;
     }
 

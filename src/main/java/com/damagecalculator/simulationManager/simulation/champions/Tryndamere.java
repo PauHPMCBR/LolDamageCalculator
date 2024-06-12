@@ -58,7 +58,7 @@ public class Tryndamere extends Champion {
         };
         q.damageType = null;
         //q.cooldown = new float[]{10, 9, 8, 7, 6};
-        q.ad_scale = new float[]{10,15,20,25,30}; // = bonus ad
+        q.ad_scale = new float[]{5,10,15,20,25}; // = bonus ad
         //q.cast_time = 0;
 
         w = new Ability(W) {
@@ -83,7 +83,7 @@ public class Tryndamere extends Champion {
         };
         e.damageType = DamageType.physicalDmg;
         e.cooldown = new float[]{12,11,10,9,8};
-        e.damage = new float[]{80,110,140,170,200};
+        e.damage = new float[]{75,105,135,165,195};
         e.ad_scale = new float[]{1.3f,1.3f,1.3f,1.3f,1.3f};
         e.ap_scale = new float[]{0.8f,0.8f,0.8f,0.8f,0.8f};
         e.cast_time = 0;

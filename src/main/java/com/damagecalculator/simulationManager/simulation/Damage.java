@@ -94,7 +94,7 @@ public class Damage {
         }
 
         if (cs.hasFirstStrike) {
-            cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.08f);
+            cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.07f);
         }
 
         if (damageInstanceType%2 == 0) { //not proc damage
