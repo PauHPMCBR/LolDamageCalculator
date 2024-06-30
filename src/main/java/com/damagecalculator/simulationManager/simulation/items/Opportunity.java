@@ -19,6 +19,7 @@ public class Opportunity extends Item {
 
     public void specialStats() {
         lethalityGained = 5 + Math.max(0, owner.lvl - 7) * 0.5f;
+        if (owner.is_ranged) lethalityGained = 3 + Math.max(0, owner.lvl - 7) * 0.3f;
         owner.LETHALITY += lethalityGained;
     }
     public void extraDmg() {

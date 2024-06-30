@@ -13,7 +13,7 @@ public class DarkHarvest extends Rune {
 
     public DarkHarvest(int souls) {
         super(name, path, column, row);
-        rune_cooldown = 45;
+        rune_cooldown = 40;
         extraVariableName = "Dark Harvest Souls";
         this.souls = souls;
     }
@@ -21,7 +21,7 @@ public class DarkHarvest extends Rune {
     public void extraDmg() {
         if (canUse()) {
             if (owner.getEnemy().getRelativeMissingHP() >= 0.5) {
-                float dmg = 20 + 60f/17f*(owner.lvl -1) + 5*souls;
+                float dmg = 20 + 9*souls;
                 dmg += 0.1f * owner.BONUS_AD + 0.05f * owner.AP;
                 damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg, 2);
                 ++souls;

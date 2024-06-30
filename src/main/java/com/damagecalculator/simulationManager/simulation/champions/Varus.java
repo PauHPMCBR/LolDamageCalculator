@@ -15,7 +15,7 @@ public class Varus extends Champion {
                 40f,
                 27f,
                 4.6f,
-                60f,
+                57f,
                 3.4f,
                 30f,
                 1.3f,
@@ -24,7 +24,7 @@ public class Varus extends Champion {
                 2.5f,
                 17.544f,
                 0.658f,
-                4f,
+                3.5f,
                 true
         );
 
@@ -39,11 +39,7 @@ public class Varus extends Champion {
                 owner.w.onExpiring();
 
                 if (extraVariable == 1) {
-                    float missingHP = 0.06f;
-                    if (owner.lvl >= 4) missingHP += 0.02;
-                    if (owner.lvl >= 7) missingHP += 0.02;
-                    if (owner.lvl >= 10) missingHP += 0.02;
-                    if (owner.lvl >= 13) missingHP += 0.02;
+                    float missingHP = ap_scale[lvl];
                     owner.w.damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
                             missingHP * owner.getEnemy().getMissingHP() * 1.5f, 3);
                 }
@@ -55,6 +51,7 @@ public class Varus extends Champion {
         q.cooldown = new float[]{16,15,14,13,12};
         q.damage = new float[]{10,46.67f,83.33f,120,156.67f};
         q.ad_scale = new float[]{0.83f,0.87f,0.9f,0.93f,0.97f};
+        q.ap_scale = new float[]{0.06f,0.08f,0.1f,0.12f,0.14f}; //missing hp dmg
         q.cast_time = 1.25f; //max cast time, all damage increased by 50%
 
         w = new Ability(W) { //extraVariable = blight stacks
@@ -70,13 +67,13 @@ public class Varus extends Champion {
             public void onExpiring() { //= use stacks
                 if (lvl < 0) return;
                 float mult = 3 + 0.5f * lvl; //from 3 to 5
-                mult += 0.015 * owner.AP;
+                mult += 0.015f * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
                         mult/100 * owner.getEnemy().getMaxHP() * extraVariable, 3);
 
-                owner.q.currentCooldown -= owner.q.getCooldown()*(0.12*extraVariable);
-                owner.w.currentCooldown -= owner.w.getCooldown()*(0.12*extraVariable);
-                owner.e.currentCooldown -= owner.e.getCooldown()*(0.12*extraVariable);
+                owner.q.currentCooldown -= owner.q.getCooldown()*(0.13f*extraVariable);
+                owner.w.currentCooldown -= owner.w.getCooldown()*(0.13f*extraVariable);
+                owner.e.currentCooldown -= owner.e.getCooldown()*(0.13f*extraVariable);
 
                 extraVariable = 0;
             }
@@ -87,7 +84,7 @@ public class Varus extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{40,40,40,40,40};
-        w.damage = new float[]{7,13,19,25,31};
+        w.damage = new float[]{7,14,21,28,35};
         w.ap_scale = new float[]{0.35f,0.35f,0.35f,0.35f,0.35f};
         w.cast_time = 0;
 

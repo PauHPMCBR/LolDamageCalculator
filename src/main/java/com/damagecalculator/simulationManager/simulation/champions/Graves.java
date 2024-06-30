@@ -116,7 +116,7 @@ public class Graves extends Champion {
             }
         };
         e.damageType = null;
-        e.damage = new float[]{2,5,8,11,14}; // bonus armor per stack
+        e.damage = new float[]{4,7,10,13,16}; // bonus armor per stack
         e.cooldown = new float[]{16,15,14,13,12};
         e.cast_time = 0;
         r = new Ability(R) {
