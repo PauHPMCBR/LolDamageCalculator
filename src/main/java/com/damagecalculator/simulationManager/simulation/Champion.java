@@ -84,12 +84,20 @@ public abstract class Champion {
     //private Random rng; <- was too inconsistent with comparisons. keep in mind comparing crit with no crit to have somewhat of a multiple of 5 auto amount
 
     public void increaseArmorPen(float amount) { //armor pen scales multiplicative
-        if (amount > 1) amount /= 100;
+        if (amount > 1) amount /= 100; //! only give positive numbers, use next function to decrease armor pen
         ARMOR_PEN = 1 - (1-ARMOR_PEN)*(1-amount);
+    }
+    public void decreaseArmorPen(float amount) { //armor pen scales multiplicative
+        if (amount > 1) amount /= 100;
+        ARMOR_PEN = 1 - (1-ARMOR_PEN)/(1-amount);
     }
     public void increasePercentageMagicPen(float amount) {
         if (amount > 1) amount /= 100;
         PERCENTAGE_MAGIC_PEN = 1 - (1-PERCENTAGE_MAGIC_PEN)*(1-amount);
+    }
+    public void decreasePercentageMagicPen(float amount) {
+        if (amount > 1) amount /= 100;
+        PERCENTAGE_MAGIC_PEN = 1 - (1-PERCENTAGE_MAGIC_PEN)/(1-amount);
     }
 
     /**

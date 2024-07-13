@@ -14,6 +14,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -70,7 +72,7 @@ public class ItemListDisplay {
         total.getChildren().clear();
 
         for (int i = 0; i < tilePanes.length; ++i) {
-            if (tilePanes[i].getChildren().size() == 0) continue;
+            if (tilePanes[i].getChildren().isEmpty()) continue;
 
             VBox prov = new VBox();
             prov.getChildren().add(new Label(itemTypes.get(i).name()));
@@ -139,6 +141,18 @@ public class ItemListDisplay {
         searchBar = new TextField("");
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             updateDisplay();
+        });
+        searchBar.setOnKeyPressed( event -> {
+            if( event.getCode() == KeyCode.ENTER ) {
+                String searchText = searchBar.getText();
+                Item firstItem = null;
+                for (Pair<Item, Boolean> p : itemList) {
+                    if (!DisplayUtils.containsSubsequence(p.getKey().name.toUpperCase(), searchText.toUpperCase())) continue;
+                    if (!p.getValue()) continue; //if cant select, ignore
+                    if (firstItem == null || p.getKey().type.ordinal() < firstItem.type.ordinal()) firstItem = p.getKey();
+                }
+                if (firstItem != null) pickedItem(firstItem, true);
+            }
         });
 
         itemList = new ArrayList<>();

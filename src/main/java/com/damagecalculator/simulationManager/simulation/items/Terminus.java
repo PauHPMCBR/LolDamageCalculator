@@ -27,7 +27,7 @@ public class Terminus extends Item {
     public void onHit() {
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30, 1);
         if (wasLastLight && darkStacks < 3) {
-            owner.increaseArmorPen(-darkStacks * 10); //TODO check if this works fine
+            owner.decreaseArmorPen(darkStacks * 10);
             ++darkStacks;
             owner.increaseArmorPen(darkStacks * 10);
         }
