@@ -56,7 +56,7 @@ public class Zed extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{6,6,6,6,6};
-        q.damage = new float[]{70,105,140,175,210};
+        q.damage = new float[]{80,115,150,185,220};
         q.ad_scale = new float[]{1.1f,1.1f,1.1f,1.1f,1.1f};
         q.cast_time = 0.25f;
 
@@ -76,7 +76,7 @@ public class Zed extends Champion {
         e = new Ability(E) {
             public void onUse() {
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, damage[lvl] + ad_scale[lvl] * owner.BONUS_AD, 6);
-                owner.w.currentCooldown -= 2;
+                owner.w.currentCooldown -= 3;
                 currentCooldown = getCooldown();
             }
         };
