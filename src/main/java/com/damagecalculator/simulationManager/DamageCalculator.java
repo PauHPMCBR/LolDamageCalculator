@@ -2,6 +2,7 @@ package com.damagecalculator.simulationManager;
 
 import com.damagecalculator.GlobalVariables;
 import com.damagecalculator.simulationManager.simulation.*;
+import com.damagecalculator.simulationManager.simulation.champions.Hwei;
 import com.damagecalculator.simulationManager.simulation.items.ItemList;
 
 import java.util.*;
@@ -90,8 +91,8 @@ public class DamageCalculator {
 
             //then, check if any ability can be used and use it in order abilityPriorities, only one per "while" cycle
             boolean doneSomething = false;
-            for (AbilityType a : abilityPriorities) {
-                if (a == AbilityType.AUTO) {
+            for (int i = 0; i < abilityPriorities.length; ++i) {
+                if (abilityPriorities[i] == AbilityType.AUTO) {
                     if (cs.champion.autoCd <= 0.05) {
                         if (debug) System.out.println("Used a in time " + cs.time);
                         useAuto();
@@ -101,13 +102,23 @@ public class DamageCalculator {
                     }
                 }
                 else {
-                    if (canUse(cs.champion.getAbility(a))) {
-                        if (debug) System.out.println("Used " + a + " in time " + cs.time);
-                        useAbility(cs.champion.getAbility(a));
+                    if (canUse(cs.champion.getAbility(abilityPriorities[i]))) {
+                        if (debug) System.out.println("Used " + abilityPriorities[i] + " in time " + cs.time);
+
+                        if (cs.champion instanceof Hwei && abilityPriorities[i] != AbilityType.R) {
+                            if (i == abilityPriorities.length-1 || abilityPriorities[i+1] == AbilityType.R || abilityPriorities[i+1] == AbilityType.AUTO)
+                                continue; //cant cast single ability
+                            ((Hwei)(cs.champion)).secondAbility = abilityPriorities[i+1];
+                            useAbility(cs.champion.getAbility(abilityPriorities[i]));
+                            comboDone.add(abilityPriorities[i+1]);
+                            ++i;
+                        }
+                        else useAbility(cs.champion.getAbility(abilityPriorities[i]));
 
                         doneSomething = true;
                         break;
                     }
+                    else if (cs.champion instanceof Hwei && abilityPriorities[i] != AbilityType.R) ++i; //skip next ability cause it's "2nd ability"
                 }
             }
 
@@ -142,7 +153,7 @@ public class DamageCalculator {
         eventTimes = new PriorityQueue<>();
         expiringAbilities = new PriorityQueue<>(new AbilityEventComparator());
         comboDone = new Vector<>();
-        for (AbilityType abilityType : combo) {
+        for (int i = 0; i < combo.length; ++i) {
 
             //first, check if any ability has expired and call "onExpiring()"
             while(!expiringAbilities.isEmpty() && expiringAbilities.peek().time <= cs.time) {
@@ -151,15 +162,24 @@ public class DamageCalculator {
                 a.active = false;
             }
 
-            if (abilityType == AbilityType.AUTO) {
+            if (combo[i] == AbilityType.AUTO) {
                 increaseTime(cs.champion.autoCd);
                 useAuto();
             }
             else {
-                Ability a = cs.champion.getAbility(abilityType);
+                Ability a = cs.champion.getAbility(combo[i]);
                 if (a.isUnlocked()) {
                     increaseTime(a.currentCooldown);
-                    useAbility(a);
+
+                    if (cs.champion instanceof Hwei && combo[i] != AbilityType.R) {
+                        if (i == combo.length-1 || combo[i+1] == AbilityType.R || combo[i+1] == AbilityType.AUTO)
+                            continue; //cant cast single ability
+                        ((Hwei)(cs.champion)).secondAbility = combo[i+1];
+                        useAbility(a);
+                        comboDone.add(combo[i+1]);
+                        ++i;
+                    }
+                    else useAbility(a);
                 }
                 else System.out.println("Can't use " + a.type + " because it's not unlocked!");
             }

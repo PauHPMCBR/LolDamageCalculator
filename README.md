@@ -168,6 +168,13 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 - All pellets hit the enemy.
 - Reload time does not scale with attack speed, and goes from ~1.5s to ~1.1s, based on level.
 
+### Hwei
+- You must input pairs of basic abilities (QQ,WE,A,EQ,R). Even if defaults are displayed as "R,E,Q,W,E,Q,Q", in reality it is executed as "R,EQ,WE,QQ".
+- Passive first stack never runs out, and the detonation damage is applied instantly.
+- All Q cast times are 0.35s (small inaccuracy).
+- QE damage is applied instantly. I don't recommend testing things with this ability because it has very inconsistent damage (in summoner's rift), often resulting in less theoretical damage.
+- R damage is applied in 2 stages: the first one where ALL burn ticks are applied, and the detonation after 3 seconds.
+
 ### Jhin
 - Jhin starts with only 1 E charge (and he can't stack 2 charges).
 - Some instances of bonus AD may be a bit inaccurate.

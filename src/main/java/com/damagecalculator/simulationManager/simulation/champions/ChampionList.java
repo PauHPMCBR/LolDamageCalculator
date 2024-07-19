@@ -9,6 +9,7 @@ public class ChampionList {
     public static Azir azir = new Azir();
     public static Ezreal ezreal = new Ezreal();
     public static Graves graves = new Graves();
+    public static Hwei hwei = new Hwei();
     public static Jhin jhin = new Jhin();
     public static Jinx jinx = new Jinx();
     public static Kaisa kaisa = new Kaisa();
@@ -27,6 +28,7 @@ public class ChampionList {
         add(azir);
         add(ezreal);
         add(graves);
+        add(hwei);
         add(jhin);
         add(jinx);
         add(kaisa);
