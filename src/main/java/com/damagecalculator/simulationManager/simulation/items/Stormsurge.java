@@ -28,7 +28,7 @@ public class Stormsurge extends Item {
         if (activated) {
             if (cs.time - timeActivated >= 2) {
                 float dmg = 140 + 0.2f * owner.AP;
-                if (owner.is_ranged) dmg *= 3f/4;
+                if (owner.is_ranged) dmg *= 0.9f;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,dmg, 2);
                 activated = false;
             }

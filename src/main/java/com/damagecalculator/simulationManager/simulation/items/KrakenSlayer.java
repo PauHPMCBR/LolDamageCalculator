@@ -14,7 +14,7 @@ public class KrakenSlayer extends Item {
         super(name, type, cost);
         ad = 50;
         as = 40;
-        percent_ms = 7;
+        percent_ms = 5;
     }
 
     public void startingCalculations() {
@@ -25,6 +25,7 @@ public class KrakenSlayer extends Item {
         ++autos;
         if (autos % 3 == 0) {
             float baseDmg = 140 + 10 * Math.max(0, owner.lvl - 8);
+            if (owner.is_ranged) baseDmg *= 0.8f;
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
                     baseDmg * (1 + owner.getEnemy().getRelativeMissingHP()), 1);
             //damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, baseDmg * dmgMult, 1);

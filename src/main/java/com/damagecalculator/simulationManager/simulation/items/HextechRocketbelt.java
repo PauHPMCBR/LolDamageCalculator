@@ -13,7 +13,7 @@ public class HextechRocketbelt extends Item {
         super(name, type, cost);
         ap = 70;
         ah = 15;
-        hp = 300;
+        hp = 400;
         item_cooldown = 40;
     }
 

@@ -11,7 +11,7 @@ public class DeathsDance extends Item {
     public DeathsDance() {
         super(name, type, cost);
         ad = 60;
-        armor = 40;
+        armor = 50;
         ah = 15;
     }
 

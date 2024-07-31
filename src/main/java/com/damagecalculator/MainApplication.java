@@ -56,7 +56,7 @@ public class MainApplication extends Application {
 
         controller.menuBar.prefWidthProperty().bind(stage.widthProperty());
 
-        controller.LolPatch.setText("Lol Patch: 14.14");
+        controller.LolPatch.setText("Lol Patch: 14.15");
 
         controller.evd = displayCacheThread.evd;
         controller.extraVariables.setMaxWidth(430);
@@ -178,3 +178,24 @@ public class MainApplication extends Application {
         }
     }
 }
+
+/*
+Be able to be at certain amount of hp (bloomail..., lifesteal, sunderedsky)
+
+|Items important for receiving damage
+take hp regen into account? not for now
+tabis
+bramble + thornmail
+lifeline items
+warden's mail (+frozen heart)
+spellshield
+abyssal mask, force of nature (bonus mr)
+death's dance ignore pain
+shields in general? (+serpents implementation?, shields can be of a damageType (kaenic rookern, camille passive...))
+frozen heart reduced bonus AS
+jaksho (already done? idk)
+knights vow?
+randuins crit dmg reduction
+spirit visage?
+
+ */

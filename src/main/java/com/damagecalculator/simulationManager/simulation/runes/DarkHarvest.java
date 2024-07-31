@@ -13,7 +13,7 @@ public class DarkHarvest extends Rune {
 
     public DarkHarvest(int souls) {
         super(name, path, column, row);
-        rune_cooldown = 40;
+        rune_cooldown = 35;
         extraVariableName = "Dark Harvest Souls";
         this.souls = souls;
     }

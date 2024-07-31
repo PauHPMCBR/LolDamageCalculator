@@ -12,7 +12,7 @@ public class LordDominiksRegards extends Item {
         super(name, type, cost);
         ad = 45;
         crit = 25;
-        armor_pen = 40;
+        armor_pen = 35;
     }
 
     @Override

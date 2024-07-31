@@ -56,8 +56,8 @@ public class Zed extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{6,6,6,6,6};
-        q.damage = new float[]{80,115,150,185,220};
-        q.ad_scale = new float[]{1.1f,1.1f,1.1f,1.1f,1.1f};
+        q.damage = new float[]{80,120,160,200,240};
+        q.ad_scale = new float[]{1,1,1,1,1};
         q.cast_time = 0.25f;
 
         w = new Ability(W) { //extraVariable = is W shadow spawned (won't despawn after duration, but won't stack)
@@ -106,7 +106,7 @@ public class Zed extends Champion {
         };
         r.damageType = DamageType.physicalDmg;
         r.duration = new float[]{3,3,3};
-        r.cooldown = new float[]{120,100,80};
+        r.cooldown = new float[]{120,110,100};
         r.ad_scale = new float[]{0.65f,0.65f,0.65f};
         r.ap_scale = new float[]{0.25f,0.40f,0.55f}; //% of dmg dealt
         r.cast_time = 0.95f;
