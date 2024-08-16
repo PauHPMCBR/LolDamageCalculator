@@ -61,7 +61,7 @@ public class Lucian extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{9,8,7,6,5};
-        q.damage = new float[]{95,125,155,185,215};
+        q.damage = new float[]{85,115,145,175,205};
         q.ad_scale = new float[]{0.6f,0.75f,0.9f,1.05f,1.2f};
         //cast time in starting calculations
 

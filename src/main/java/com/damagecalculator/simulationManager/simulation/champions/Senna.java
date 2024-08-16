@@ -26,7 +26,7 @@ public class Senna extends Champion {
                 2.5f,
                 31.25f,
                 0.4f,
-                4f,
+                2f,
                 true
         );
         this.souls = souls;
@@ -36,8 +36,8 @@ public class Senna extends Champion {
 
             public void startingCalculations() { //extraVariable are soul stacks
                 extraVariable = souls;
-                owner.BONUS_AD += 0.75 * extraVariable;
-                owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + 10 * (extraVariable / 20));
+                owner.BONUS_AD += 0.75f * extraVariable;
+                owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + 8 * (extraVariable / 20));
                 //ignoring lifesteal and range
 
                 hasHitBefore = false;

@@ -97,9 +97,8 @@ public class Damage {
             cs.firstStrikeRune.damageDealt += applyDirectDamage(DamageType.trueDmg, dmg * 0.07f);
         }
 
-        if (damageInstanceType%2 == 0) { //not proc damage
-            if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
-        }
+        //since 14.16 there's 0 cd on black cleaver stacks, so onhits and similar add stacks as well
+        if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
 
         return dmg;
     }
