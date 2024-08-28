@@ -72,7 +72,7 @@ public class Graves extends Champion {
 
         q = new Ability(Q) {
             public void onUse() {
-                float[] damage1 = new float[]{45, 60, 75, 90, 105};
+                float[] damage1 = new float[]{45, 65, 85, 105, 125};
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
                         damage1[lvl] + 0.8f * owner.BONUS_AD, 6);
 
@@ -83,7 +83,7 @@ public class Graves extends Champion {
             }
         };
         q.damageType = DamageType.physicalDmg;
-        q.cooldown = new float[]{13,11.5f,10,8.5f,7};
+        q.cooldown = new float[]{13,11.25f,9.5f,7.75f,6};
         q.damage = new float[]{80,120,155,190,225}; //detonation damage
         q.ad_scale = new float[]{0.4f,0.7f,1f,1.3f,1.6f};
         q.duration = new float[]{2,2,2,2,2};

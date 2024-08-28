@@ -34,7 +34,7 @@ public class Varus extends Champion {
 
         q = new Ability(Q) { //extraVariable = is W activated
             public void onUse() {
-                float dmg = damage[lvl] + ad_scale[lvl]*owner.getAD();
+                float dmg = damage[lvl] + ad_scale[lvl]*owner.BONUS_AD;
                 damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg * 1.5f, 6);
                 owner.w.onExpiring();
 
@@ -49,8 +49,8 @@ public class Varus extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{16,15,14,13,12};
-        q.damage = new float[]{10,46.67f,83.33f,120,156.67f};
-        q.ad_scale = new float[]{0.83f,0.87f,0.9f,0.93f,0.97f};
+        q.damage = new float[]{60,106.67f,153.33f,200,246.67f};
+        q.ad_scale = new float[]{1f,1.067f,1.133f,1.2f,1.267f};
         q.ap_scale = new float[]{0.06f,0.08f,0.1f,0.12f,0.14f}; //missing hp dmg
         q.cast_time = 1.25f; //max cast time, all damage increased by 50%
 
@@ -99,7 +99,7 @@ public class Varus extends Champion {
         e.damageType = DamageType.physicalDmg;
         e.cooldown = new float[]{18,16,14,12,10};
         e.damage = new float[]{60,100,140,180,220};
-        e.ad_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
+        e.ad_scale = new float[]{1.1f,1.1f,1.1f,1.1f,1.1f};
         e.cast_time = 0.2419f;
 
         r = new Ability(R) {
