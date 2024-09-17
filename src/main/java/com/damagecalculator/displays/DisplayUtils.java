@@ -71,25 +71,25 @@ public class DisplayUtils {
 
     public static String getItemDescription(Item i) {
         String s = i.name.toUpperCase() + "  " + i.cost + "G\n";
-        if (i.ad != 0) s = s.concat("" + i.ad + " Attack damage\n");
-        if (i.ap != 0) s = s.concat("" + i.ap + " Ability power\n");
-        if (i.as != 0) s = s.concat("" + i.as + "% Attack speed\n");
-        if (i.ah != 0) s = s.concat("" + i.ah + " Ability haste\n");
-        if (i.hp != 0) s = s.concat("" + i.hp + " Health\n");
-        if (i.armor != 0) s = s.concat("" + i.armor + " Armor\n");
-        if (i.mr != 0) s = s.concat("" + i.mr + " Magic resist\n");
-        if (i.mana != 0) s = s.concat("" + i.mana + " Mana\n");
-        if (i.crit != 0) s = s.concat("" + i.crit + "% Critical strike chance\n");
-        if (i.mana_regen != 0) s = s.concat("" + i.mana_regen + "% Mana regen\n");
-        if (i.hp_regen != 0) s = s.concat("" + i.hp_regen + "% Health regen\n");
-        if (i.lethality != 0) s = s.concat("" + i.lethality + " Lethality\n");
-        if (i.armor_pen != 0) s = s.concat("" + i.armor_pen + "% Armor penetration\n");
-        if (i.magic_pen != 0) s = s.concat("" + i.magic_pen + " Magic penetration\n");
-        if (i.percent_magic_pen != 0) s = s.concat("" + i.percent_magic_pen + "% Magic penetration\n");
-        if (i.lifesteal != 0) s = s.concat("" + i.lifesteal + "% Lifesteal\n");
-        if (i.hsp != 0) s = s.concat("" + i.hsp + "% Heal & shield power\n");
-        if (i.ms != 0) s = s.concat("" + i.ms + " Movement speed\n");
-        if (i.percent_ms != 0) s = s.concat("" + i.percent_ms + "% Movement speed\n");
+        if (i.ad != 0) s = s.concat(i.ad + " Attack damage\n");
+        if (i.ap != 0) s = s.concat(i.ap + " Ability power\n");
+        if (i.as != 0) s = s.concat(i.as + "% Attack speed\n");
+        if (i.ah != 0) s = s.concat(i.ah + " Ability haste\n");
+        if (i.hp != 0) s = s.concat(i.hp + " Health\n");
+        if (i.armor != 0) s = s.concat(i.armor + " Armor\n");
+        if (i.mr != 0) s = s.concat(i.mr + " Magic resist\n");
+        if (i.mana != 0) s = s.concat(i.mana + " Mana\n");
+        if (i.crit != 0) s = s.concat(i.crit + "% Critical strike chance\n");
+        if (i.mana_regen != 0) s = s.concat(i.mana_regen + "% Mana regen\n");
+        if (i.hp_regen != 0) s = s.concat(i.hp_regen + "% Health regen\n");
+        if (i.lethality != 0) s = s.concat(i.lethality + " Lethality\n");
+        if (i.armor_pen != 0) s = s.concat(i.armor_pen + "% Armor penetration\n");
+        if (i.magic_pen != 0) s = s.concat(i.magic_pen + " Magic penetration\n");
+        if (i.percent_magic_pen != 0) s = s.concat(i.percent_magic_pen + "% Magic penetration\n");
+        if (i.lifesteal != 0) s = s.concat(i.lifesteal + "% Lifesteal\n");
+        if (i.hsp != 0) s = s.concat(i.hsp + "% Heal & shield power\n");
+        if (i.ms != 0) s = s.concat(i.ms + " Movement speed\n");
+        if (i.percent_ms != 0) s = s.concat(i.percent_ms + "% Movement speed\n");
         return s;
     }
 
@@ -151,7 +151,6 @@ public class DisplayUtils {
     }
     public static Image getRuneImage(Rune r) {
         URL u = MainApplication.class.getResource(runesFolder + getRuneFileName(r));
-        System.out.println(u);
         return new Image(String.valueOf(u), 52, 52, false, false);
     }
     public static Image getRunePathImage(RunePath rp) {
