@@ -80,7 +80,7 @@ public class Azir extends Champion {
                 --currentSoldiers;
             }
             public void onCall() { // special auto attack. Called when currentSoldiers > 0
-                float dmg = 2*Math.max(0, owner.lvl-9) + 3*Math.max(0, owner.lvl-10) + 7*Math.max(0, owner.lvl-13);
+                float dmg = 5*Math.max(0, owner.lvl-9);
                 dmg += damage[lvl] + ap_scale[lvl] * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg + 0.25f * dmg * (currentSoldiers-1), 6);
             }
@@ -89,7 +89,7 @@ public class Azir extends Champion {
         w.cooldown = new float[]{10,9,8,7,6};
         w.duration = new float[]{10,10,10,10,10};
         w.damage = new float[]{50,65,80,95,110};
-        w.ap_scale = new float[]{0.55f,0.55f,0.55f,0.55f,0.55f};
+        w.ap_scale = new float[]{0.35f,0.40f,0.45f,0.50f,0.55f};
         w.cast_time = 0.25f;
 
         e = new Ability(E) {

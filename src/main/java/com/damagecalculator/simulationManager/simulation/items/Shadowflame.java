@@ -10,8 +10,8 @@ public class Shadowflame extends Item {
 
     public Shadowflame() {
         super(name, type, cost);
-        ap = 120;
-        magic_pen = 10;
+        ap = 115;
+        magic_pen = 15;
     }
 
     // No persistent damage or pet damage differentiation

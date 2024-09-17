@@ -7,12 +7,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LudensCompanion extends Item {
     public static final String name = "Luden's Companion";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 2850;
 
     public LudensCompanion() {
         super(name, type, cost);
-        ap = 95;
-        ah = 25;
+        ap = 100;
+        ah = 20;
         mana = 600;
 
         item_cooldown = 12;

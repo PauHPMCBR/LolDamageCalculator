@@ -14,7 +14,7 @@ public class Stormsurge extends Item {
     public Stormsurge() {
         super(name, type, cost);
         ap = 95;
-        magic_pen = 10;
+        magic_pen = 15;
         ms = 5;
     }
 
@@ -28,12 +28,11 @@ public class Stormsurge extends Item {
         if (activated) {
             if (cs.time - timeActivated >= 2) {
                 float dmg = 140 + 0.2f * owner.AP;
-                if (owner.is_ranged) dmg *= 0.9f;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg,dmg, 2);
                 activated = false;
             }
         }
-        else if (owner.getEnemy().getRelativeMissingHP() >= 0.35) {
+        else if (owner.getEnemy().getRelativeMissingHP() >= 0.25) {
             activated = true;
             timeActivated = cs.time;
         }

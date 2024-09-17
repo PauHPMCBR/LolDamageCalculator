@@ -86,7 +86,7 @@ public class Damage {
         float dmg = applyDirectDamage(type, amount);
 
         if (cs.shadowflameItem != null && type != DamageType.physicalDmg) { //crit for true and magic dmg
-            if (cs.enemy.getRelativeMissingHP() >= 0.65) { //"crit" if enemy below 35% hp
+            if (cs.enemy.getRelativeMissingHP() >= 0.6) { //"crit" if enemy below 40% hp
                 float extraDmg = applyDirectDamage(type, dmg * 0.2f); // ignoring pet and dot increase
                 dmg += extraDmg;
                 cs.shadowflameItem.damageDealt += extraDmg;

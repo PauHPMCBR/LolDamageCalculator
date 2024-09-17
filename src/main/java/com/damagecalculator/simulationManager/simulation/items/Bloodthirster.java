@@ -11,7 +11,7 @@ public class Bloodthirster extends Item {
     public Bloodthirster() {
         super(name, type, cost);
         ad = 80;
-        lifesteal = 18;
+        lifesteal = 15;
     }
 
     @Override
