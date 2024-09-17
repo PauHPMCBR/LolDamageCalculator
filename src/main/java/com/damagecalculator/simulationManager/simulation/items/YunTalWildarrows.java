@@ -18,7 +18,7 @@ public class YunTalWildarrows extends Item {
     public void onHit() {
         boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
         if (wasCrit) { //apply burn damage all at once (cause it can stack)
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.35f * owner.getAD(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 70, 1);
         }
     }
 

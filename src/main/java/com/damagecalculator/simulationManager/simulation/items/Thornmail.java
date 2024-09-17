@@ -6,12 +6,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Thornmail extends Item {
     public static final String name = "Thornmail";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2450;
 
     public Thornmail() {
         super(name, type, cost);
-        hp = 350;
-        armor = 70;
+        hp = 150;
+        armor = 80;
     }
 
     @Override

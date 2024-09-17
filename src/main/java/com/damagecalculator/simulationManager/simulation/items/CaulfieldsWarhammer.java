@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class CaulfieldsWarhammer extends Item {
     public static final String name = "Caulfield's Warhammer";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1100;
+    public static final int cost = 1050;
 
     public CaulfieldsWarhammer() {
         super(name, type, cost);

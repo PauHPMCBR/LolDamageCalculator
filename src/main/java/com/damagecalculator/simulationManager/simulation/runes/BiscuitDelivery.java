@@ -18,7 +18,7 @@ public class BiscuitDelivery extends Rune {
     }
 
     public void specialStats() {
-        owner.MANA += 40 * biscuits;
+        owner.BONUS_HP += 30 * biscuits;
     }
 
     @Override

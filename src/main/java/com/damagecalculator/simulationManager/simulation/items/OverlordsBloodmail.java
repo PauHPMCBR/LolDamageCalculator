@@ -10,8 +10,8 @@ public class OverlordsBloodmail extends Item {
 
     public OverlordsBloodmail() {
         super(name, type, cost);
-        ad = 40;
-        hp = 500;
+        ad = 30;
+        hp = 550;
     }
 
     public void specialStats() {

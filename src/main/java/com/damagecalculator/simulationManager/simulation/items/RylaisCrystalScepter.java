@@ -10,7 +10,7 @@ public class RylaisCrystalScepter extends Item {
 
     public RylaisCrystalScepter() {
         super(name, type, cost);
-        ap = 75;
+        ap = 65;
         hp = 400;
     }
 

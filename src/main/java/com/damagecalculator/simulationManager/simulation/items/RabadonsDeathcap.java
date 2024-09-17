@@ -10,11 +10,11 @@ public class RabadonsDeathcap extends Item {
 
     public RabadonsDeathcap() {
         super(name, type, cost);
-        ap = 140;
+        ap = 130;
     }
 
     public void specialStats() {
-        owner.AP *= 1.35f; //have to check if some extra ap is skipped
+        owner.AP *= 1.3f; //have to check if some extra ap is skipped
     }
 
     @Override

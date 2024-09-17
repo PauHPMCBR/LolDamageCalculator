@@ -15,9 +15,9 @@ public class BlackfireTorch extends Item {
 
     public BlackfireTorch(int stacks) {
         super(name, type, cost);
-        ap = 90;
+        ap = 80;
         mana = 600;
-        ah = 25;
+        ah = 20;
 
         extraVariableName = "Blackfire stacks (1-5)";
         this.stacks = Math.max(stacks, 1);
@@ -32,7 +32,7 @@ public class BlackfireTorch extends Item {
     public void extraDmg() {
         float secs = Math.min(cs.time - lastTick, 3); //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (secs * (7.5 + 0.015 * owner.AP)), 1);
+                (float) (secs * (10 + 0.01 * owner.AP)), 1);
         lastTick = cs.time;
     }
 

@@ -10,7 +10,7 @@ public class SeraphsEmbrace extends Item {
 
     public SeraphsEmbrace() {
         super(name, type, cost);
-        ap = 80;
+        ap = 70;
         ah = 25;
         mana = 1000;
     }

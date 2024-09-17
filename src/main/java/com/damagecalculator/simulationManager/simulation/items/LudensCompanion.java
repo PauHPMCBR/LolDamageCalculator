@@ -12,7 +12,7 @@ public class LudensCompanion extends Item {
     public LudensCompanion() {
         super(name, type, cost);
         ap = 100;
-        ah = 20;
+        ah = 10;
         mana = 600;
 
         item_cooldown = 12;

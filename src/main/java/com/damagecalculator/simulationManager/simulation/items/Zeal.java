@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Zeal extends Item {
     public static final String name = "Zeal";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 1100;
+    public static final int cost = 1200;
 
     public Zeal() {
         super(name, type, cost);
         as = 15;
         crit = 15;
-        percent_ms = 5;
+        percent_ms = 4;
     }
 
     @Override

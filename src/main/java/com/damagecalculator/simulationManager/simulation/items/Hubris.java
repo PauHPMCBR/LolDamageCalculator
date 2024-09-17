@@ -13,7 +13,7 @@ public class Hubris extends Item {
         super(name, type, cost);
         ad = 60;
         lethality = 18;
-        ah = 15;
+        ah = 10;
     }
 
     @Override

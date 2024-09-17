@@ -12,7 +12,7 @@ public class BlackCleaver extends Item {
 
     public BlackCleaver() {
         super(name, type, cost);
-        ad = 55;
+        ad = 40;
         hp = 400;
         ah = 20;
 

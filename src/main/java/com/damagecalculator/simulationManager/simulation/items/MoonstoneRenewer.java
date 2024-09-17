@@ -10,9 +10,9 @@ public class MoonstoneRenewer extends Item {
 
     public MoonstoneRenewer() {
         super(name, type, cost);
-        ap = 30;
+        ap = 25;
         ah = 20;
-        hp = 250;
+        hp = 200;
         mana_regen = 125;
     }
 

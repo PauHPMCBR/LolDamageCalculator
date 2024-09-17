@@ -14,9 +14,9 @@ public class ExperimentalHexplate extends Item {
 
     public ExperimentalHexplate() {
         super(name, type, cost);
-        ad = 55;
-        as = 25;
-        hp = 300;
+        ad = 49;
+        as = 20;
+        hp = 450;
     }
 
     public void specialStats() {

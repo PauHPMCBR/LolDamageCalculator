@@ -11,10 +11,10 @@ public class TrinityForce extends Item {
 
     public TrinityForce() {
         super(name, type, cost);
-        ad = 45;
-        as = 33;
-        ah = 20;
-        hp = 300;
+        ad = 36;
+        as = 30;
+        ah = 15;
+        hp = 333;
         item_cooldown = 1.5f;
     }
     public void onHit() {

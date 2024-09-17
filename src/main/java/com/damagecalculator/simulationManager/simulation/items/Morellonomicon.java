@@ -6,12 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Morellonomicon extends Item {
     public static final String name = "Morellonomicon";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2200;
+    public static final int cost = 2950;
 
     public Morellonomicon() {
         super(name, type, cost);
-        ap = 90;
+        ap = 75;
         ah = 15;
+        hp = 350;
     }
 
     @Override

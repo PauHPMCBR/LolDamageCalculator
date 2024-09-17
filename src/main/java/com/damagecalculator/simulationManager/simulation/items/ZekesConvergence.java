@@ -32,7 +32,7 @@ public class ZekesConvergence extends Item {
                 timeDiff = 5 - (lastTick - timeDiff);
                 active = false;
             }
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 50 * timeDiff, 2);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 30 * timeDiff, 2);
         }
     }
     public void extraDmg() {

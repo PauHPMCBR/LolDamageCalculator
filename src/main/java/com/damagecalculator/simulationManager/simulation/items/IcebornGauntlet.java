@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class IcebornGauntlet extends Item {
     public static final String name = "Iceborn Gauntlet";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2600;
+    public static final int cost = 2900;
 
     public IcebornGauntlet() {
         super(name, type, cost);
@@ -22,7 +22,7 @@ public class IcebornGauntlet extends Item {
             if (owner.can_use_sheen) {
                 owner.can_use_sheen = false;
                 putOnCooldown();
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.BASE_AD, 1);
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.5f * owner.BASE_AD, 1);
             }
         }
     }

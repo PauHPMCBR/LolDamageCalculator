@@ -11,7 +11,7 @@ public class Muramana extends Item {
 
     public Muramana() {
         super(name, type, cost);
-        ad = 35;
+        ad = 30;
         ah = 15;
         mana = 860;
     }
@@ -21,14 +21,13 @@ public class Muramana extends Item {
     }
 
     public void extraDmg() {
-        float percent = 0.035f;
-        if (owner.is_ranged) percent = 0.027f;
-        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
-                (float) (owner.MANA * percent + owner.BONUS_AD * 0.06), 1);
+        float percent = 0.04f;
+        if (owner.is_ranged) percent = 0.02f;
+        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, (owner.MANA * percent), 1);
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.015f * owner.MANA, 1);
+        damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.01f * owner.MANA, 1);
     }
 
     @Override

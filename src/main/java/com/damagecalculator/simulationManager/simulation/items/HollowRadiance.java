@@ -13,7 +13,7 @@ public class HollowRadiance extends Item {
 
     public HollowRadiance() {
         super(name, type, cost);
-        hp = 450;
+        hp = 400;
         ah = 10;
         mr = 40;
         hp_regen = 100;
@@ -28,7 +28,7 @@ public class HollowRadiance extends Item {
     public void extraDmg() {
         float ticks = cs.time - lastTick;
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (10 + 0.0175 * owner.BONUS_HP)), 1);
+                (float) (ticks * (15 + 0.01 * owner.BONUS_HP)), 1);
         lastTick = cs.time;
     }
 

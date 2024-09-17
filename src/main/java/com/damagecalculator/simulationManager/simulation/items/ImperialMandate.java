@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ImperialMandate extends Item {
     public static final String name = "Imperial Mandate";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2300;
+    public static final int cost = 2250;
 
     public ImperialMandate() {
         super(name, type, cost);

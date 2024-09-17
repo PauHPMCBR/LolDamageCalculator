@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class EdgeOfNight extends Item {
     public static final String name = "Edge of Night";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
+    public static final int cost = 3000;
 
     public EdgeOfNight() {
         super(name, type, cost);

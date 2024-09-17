@@ -10,7 +10,7 @@ public class ZhonyasHourglass extends Item {
 
     public ZhonyasHourglass() {
         super(name, type, cost);
-        ap = 120;
+        ap = 105;
         armor = 50;
     }
 

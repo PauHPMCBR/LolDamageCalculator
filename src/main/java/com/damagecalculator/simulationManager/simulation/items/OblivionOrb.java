@@ -10,7 +10,7 @@ public class OblivionOrb extends Item {
 
     public OblivionOrb() {
         super(name, type, cost);
-        ap = 30;
+        ap = 25;
     }
 
     @Override

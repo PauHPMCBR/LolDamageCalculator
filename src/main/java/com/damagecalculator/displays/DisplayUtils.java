@@ -151,6 +151,7 @@ public class DisplayUtils {
     }
     public static Image getRuneImage(Rune r) {
         URL u = MainApplication.class.getResource(runesFolder + getRuneFileName(r));
+        System.out.println(u);
         return new Image(String.valueOf(u), 52, 52, false, false);
     }
     public static Image getRunePathImage(RunePath rp) {

@@ -12,7 +12,7 @@ public class ForceOfNature extends Item {
         super(name, type, cost);
         hp = 400;
         mr = 55;
-        percent_ms = 5;
+        percent_ms = 4;
     }
 
     //ignoring stacking

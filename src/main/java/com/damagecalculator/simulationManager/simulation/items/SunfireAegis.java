@@ -9,7 +9,6 @@ public class SunfireAegis extends Item {
     public static final ItemType type = ItemType.LEGENDARY;
     public static final int cost = 2700;
 
-    float dmgMult;
     float lastTick;
 
     public SunfireAegis() {
@@ -21,14 +20,11 @@ public class SunfireAegis extends Item {
 
     public void specialStats() {
         lastTick = 0;
-        dmgMult = 1;
     }
 
     public void extraDmg() {
-        dmgMult = 1 +  0.1f * Math.min(cs.time, 5);
         float ticks = cs.time - lastTick;
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (15 + 0.0175 * owner.BONUS_HP) * dmgMult), 1);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (ticks * (20 + 0.01f * owner.BONUS_HP)), 1);
         lastTick = cs.time;
     }
 

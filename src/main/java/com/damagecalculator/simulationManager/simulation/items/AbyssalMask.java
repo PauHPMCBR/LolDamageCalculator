@@ -6,17 +6,16 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class AbyssalMask extends Item {
     public static final String name = "Abyssal Mask";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2500;
+    public static final int cost = 2650;
 
     public AbyssalMask() {
         super(name, type, cost);
-        ah = 10;
+        ah = 15;
         hp = 300;
-        mr = 50;
+        mr = 45;
     }
 
     public void specialStats() {
-        owner.MAGIC_RESIST += 10; //9 per enemy, supposing 1v1
         owner.getEnemy().MAGIC_RESIST *= 0.7f; //30% magic reduction
     }
 

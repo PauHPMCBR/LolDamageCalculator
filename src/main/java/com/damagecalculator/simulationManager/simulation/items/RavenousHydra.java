@@ -11,8 +11,8 @@ public class RavenousHydra extends Item {
 
     public RavenousHydra() {
         super(name, type, cost);
-        ad = 70;
-        ah = 20;
+        ad = 65;
+        ah = 15;
         lifesteal = 12;
 
         item_cooldown = 10;
@@ -20,7 +20,7 @@ public class RavenousHydra extends Item {
 
     public void extraDmg() {
         if (canUse()) {
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.8f * owner.getAD(), 2);
             putOnCooldown();
         }
     }

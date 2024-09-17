@@ -13,9 +13,9 @@ public class JakSho extends Item {
     
     public JakSho() {
         super(name, type, cost);
-        hp = 300;
-        armor = 50;
-        mr = 50;
+        hp = 350;
+        armor = 45;
+        mr = 45;
     }
 
     public void specialStats() {

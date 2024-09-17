@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class RuneList {
-    public static Rune[] precisionKeystone = new Rune[] {new PressTheAttack(), new FleetFootwork(), new Conqueror()};
+    public static Rune[] precisionKeystone = new Rune[] {new PressTheAttack(), new LethalTempo(), new FleetFootwork(), new Conqueror()};
     public static Rune[] precision1 = new Rune[] {new AbsorbLife(), new Triumph(), new PresenceOfMind()};
     public static Rune[] precision2 = new Rune[] {new LegendAlacrity(10), new LegendHaste(10), new LegendBloodline()};
     public static Rune[] precision3 = new Rune[] {new CoupDeGrace(), new CutDown(), new LastStand()};

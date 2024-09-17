@@ -11,7 +11,7 @@ public class Riftmaker extends Item {
     float currentDmgMult;
     public Riftmaker() {
         super(name, type, cost);
-        ap = 80;
+        ap = 70;
         ah = 15;
         hp = 350;
     }
@@ -24,7 +24,7 @@ public class Riftmaker extends Item {
     //ignoring omnivamp
     public void extraDmg() {
         cs.damageTrueMultiplier /= currentDmgMult;
-        currentDmgMult = 1 + (int)(Math.min(cs.time, 5)) * 0.02f;
+        currentDmgMult = 1 + (int)(Math.min(cs.time, 4)) * 0.02f;
         cs.damageTrueMultiplier *= currentDmgMult;
     }
 

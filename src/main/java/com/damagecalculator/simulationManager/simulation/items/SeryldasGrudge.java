@@ -6,17 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SeryldasGrudge extends Item {
     public static final String name = "Serylda's Grudge";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 300;
 
     public SeryldasGrudge() {
         super(name, type, cost);
         ad = 45;
-        lethality = 15;
-        ah = 15;
-    }
-
-    public void specialStats() {
-        owner.increaseArmorPen(25 + 0.11f * owner.LETHALITY);
+        ah = 20;
+        armor_pen = 30;
     }
 
     @Override

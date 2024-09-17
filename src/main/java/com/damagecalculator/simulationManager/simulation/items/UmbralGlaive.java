@@ -11,7 +11,7 @@ public class UmbralGlaive extends Item {
     public UmbralGlaive() {
         super(name, type, cost);
         ad = 50;
-        ah = 15;
+        ah = 10;
         lethality = 15;
     }
 

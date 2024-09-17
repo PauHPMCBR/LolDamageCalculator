@@ -10,7 +10,7 @@ public class Shadowflame extends Item {
 
     public Shadowflame() {
         super(name, type, cost);
-        ap = 115;
+        ap = 110;
         magic_pen = 15;
     }
 

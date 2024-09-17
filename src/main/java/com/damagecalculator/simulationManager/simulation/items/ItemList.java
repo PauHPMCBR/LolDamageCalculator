@@ -42,6 +42,7 @@ public class ItemList {
     public static Dagger dagger = new Dagger();
     public static DarkSeal darkSeal = new DarkSeal(0);
     public static Dawncore dawncore = new Dawncore();
+    public static DeadMansPlate deadMansPlate = new DeadMansPlate();
     public static DeathsDance deathsDance = new DeathsDance();
     public static DoransBlade doransBlade = new DoransBlade();
     public static DoransRing doransRing = new DoransRing();
@@ -232,6 +233,7 @@ public class ItemList {
         add(dagger);
         add(darkSeal);
         add(dawncore);
+        add(deadMansPlate);
         add(deathsDance);
         add(doransBlade);
         add(doransRing);

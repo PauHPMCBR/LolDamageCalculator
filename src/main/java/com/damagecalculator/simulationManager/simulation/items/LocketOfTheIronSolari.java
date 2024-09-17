@@ -12,8 +12,8 @@ public class LocketOfTheIronSolari extends Item {
         super(name, type, cost);
         ah = 10;
         hp = 200;
-        armor = 30;
-        mr = 30;
+        armor = 25;
+        mr = 25;
         item_cooldown = 90;
     }
 

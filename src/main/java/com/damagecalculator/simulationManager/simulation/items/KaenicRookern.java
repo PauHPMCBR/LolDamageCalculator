@@ -12,7 +12,7 @@ public class KaenicRookern extends Item {
         super(name, type, cost);
         hp = 400;
         mr = 80;
-        hp_regen = 150;
+        hp_regen = 100;
     }
 
     //ignoring magic shield

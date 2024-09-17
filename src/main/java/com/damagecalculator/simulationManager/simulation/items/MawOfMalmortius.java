@@ -10,7 +10,7 @@ public class MawOfMalmortius extends Item {
 
     public MawOfMalmortius() {
         super(name, type, cost);
-        ad = 70;
+        ad = 60;
         mr = 40;
         ah = 15;
     }

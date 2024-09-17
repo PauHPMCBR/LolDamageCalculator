@@ -14,7 +14,7 @@ public class SteraksGage extends Item {
     }
 
     public void specialStats() {
-        owner.BONUS_AD += 0.5f * owner.BASE_AD;
+        owner.BONUS_AD += 0.45f * owner.BASE_AD;
     }
 
     @Override

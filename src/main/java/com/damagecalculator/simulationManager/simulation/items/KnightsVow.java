@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class KnightsVow extends Item {
     public static final String name = "Knight's Vow";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2200;
+    public static final int cost = 2300;
 
     public KnightsVow() {
         super(name, type, cost);

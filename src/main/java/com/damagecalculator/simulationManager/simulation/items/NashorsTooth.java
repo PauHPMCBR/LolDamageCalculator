@@ -11,13 +11,13 @@ public class NashorsTooth extends Item {
 
     public NashorsTooth() {
         super(name, type, cost);
-        ap = 90;
+        ap = 80;
         as = 50;
         ah = 15;
     }
 
     public void onHit() {
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15 + 0.2f * owner.AP, 1);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 15 + 0.15f * owner.AP, 1);
     }
 
     @Override

@@ -10,8 +10,8 @@ public class WingedMoonplate extends Item {
 
     public WingedMoonplate() {
         super(name, type, cost);
-        hp = 150;
-        percent_ms = 5;
+        hp = 200;
+        percent_ms = 4;
     }
 
     @Override

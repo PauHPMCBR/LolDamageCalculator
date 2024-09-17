@@ -10,9 +10,9 @@ public class StatikkShiv extends Item {
 
     public StatikkShiv() {
         super(name, type, cost);
-        ad = 55;
-        as = 45;
-        percent_ms = 5;
+        ad = 50;
+        as = 40;
+        percent_ms = 4;
     }
 
     @Override

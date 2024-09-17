@@ -11,7 +11,7 @@ public class VerdantBarrier extends Item {
     public VerdantBarrier() {
         super(name, type, cost);
         ap = 40;
-        mr = 30;
+        mr = 25;
     }
 
     @Override

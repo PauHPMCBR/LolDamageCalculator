@@ -10,8 +10,8 @@ public class HorizonFocus extends Item {
 
     public HorizonFocus() {
         super(name, type, cost);
-        ap = 90;
-        ah = 20;
+        ap = 75;
+        ah = 25;
     }
 
     //first damage instance is also amplified, supposing it's always triggered instantly

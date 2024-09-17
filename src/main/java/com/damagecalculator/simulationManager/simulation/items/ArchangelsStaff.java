@@ -12,7 +12,7 @@ public class ArchangelsStaff extends Item {
 
     public ArchangelsStaff(int stacks) {
         super(name, type, cost);
-        ap = 80;
+        ap = 70;
         ah = 25;
         mana = 600;
 

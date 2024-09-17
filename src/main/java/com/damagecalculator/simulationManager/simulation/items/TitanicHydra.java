@@ -11,8 +11,8 @@ public class TitanicHydra extends Item {
 
     public TitanicHydra() {
         super(name, type, cost);
-        ad = 50;
-        hp = 550;
+        ad = 40;
+        hp = 600;
 
         item_cooldown = 10;
     }
@@ -28,9 +28,9 @@ public class TitanicHydra extends Item {
             return;
         }
         if (!owner.is_ranged)
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.015f * owner.getMaxHP(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.01f * owner.getMaxHP(), 1);
         else
-            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.0075f * owner.getMaxHP(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.005f * owner.getMaxHP(), 1);
     }
 
     @Override

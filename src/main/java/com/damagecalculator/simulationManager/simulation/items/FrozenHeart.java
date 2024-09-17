@@ -10,7 +10,7 @@ public class FrozenHeart extends Item {
 
     public FrozenHeart() {
         super(name, type, cost);
-        armor = 65;
+        armor = 75;
         ah = 20;
         mana = 400;
     }

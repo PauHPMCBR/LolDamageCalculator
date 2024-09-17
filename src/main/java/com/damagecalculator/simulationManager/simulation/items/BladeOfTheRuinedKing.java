@@ -11,7 +11,7 @@ public class BladeOfTheRuinedKing extends Item {
 
     public BladeOfTheRuinedKing() {
         super(name, type, cost);
-        ad = 50;
+        ad = 40;
         as = 25;
         lifesteal = 10;
     }

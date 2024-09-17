@@ -12,7 +12,7 @@ public class AxiomArc extends Item {
         super(name, type, cost);
         ad = 55;
         lethality = 18;
-        ah = 25;
+        ah = 20;
     }
 
     @Override

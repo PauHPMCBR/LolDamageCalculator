@@ -10,7 +10,7 @@ public class SeekersArmguard extends Item {
 
     public SeekersArmguard() {
         super(name, type, cost);
-        ap = 45;
+        ap = 40;
         armor = 25;
     }
 

@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ScoutsSlingshot extends Item {
     public static final String name = "Scout's Slingshot";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 900;
+    public static final int cost = 600;
 
     public ScoutsSlingshot() {
         super(name, type, cost);

@@ -19,6 +19,7 @@ public class Inventory {
 
     private static final Item[][] exclusiveItemsArray = new Item[][] {
             new Item[] {seekersArmguard, zhonyasHourglass}, //stasis component
+            new Item[] {verdantBarrier, bansheesVeil}, //annul
             new Item[] {immortalShieldbow, steraksGage, mawOfMalmortius, seraphsEmbrace, hexdrinker}, //lifeline
             new Item[] {trinityForce, icebornGauntlet, essenceReaver, lichBane, sheen}, //spellblade
             new Item[] {fimbulwinter, muramana, seraphsEmbrace, tearOfTheGoddess}, //mana charge
@@ -34,7 +35,8 @@ public class Inventory {
                             bloodsong, dreamMaker, zazZaksRealmspike}, //support
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
             new Item[] {voidStaff, blightingJewel, terminus, cryptbloom, abyssalMask}, //void pen
-            new Item[] {doransBlade, doransRing, doransShield} //doran's items
+            new Item[] {doransBlade, doransRing, doransShield}, //doran's items
+            new Item[] {serratedDirk}, //unique
     };
 
     /**

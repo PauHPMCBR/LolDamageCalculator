@@ -11,7 +11,7 @@ public class BerserkersGreaves extends Item {
     public BerserkersGreaves() {
         super(name, type, cost);
         ms = 45;
-        as = 30;
+        as = 25;
     }
 
     @Override

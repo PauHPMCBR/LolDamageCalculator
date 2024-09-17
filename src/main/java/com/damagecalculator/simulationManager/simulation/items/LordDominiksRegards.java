@@ -10,7 +10,7 @@ public class LordDominiksRegards extends Item {
 
     public LordDominiksRegards() {
         super(name, type, cost);
-        ad = 45;
+        ad = 35;
         crit = 25;
         armor_pen = 35;
     }

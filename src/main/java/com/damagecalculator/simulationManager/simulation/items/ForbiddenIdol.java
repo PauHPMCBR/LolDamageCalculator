@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ForbiddenIdol extends Item {
     public static final String name = "Forbidden Idol";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 800;
+    public static final int cost = 600;
 
     public ForbiddenIdol() {
         super(name, type, cost);

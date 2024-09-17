@@ -11,13 +11,12 @@ public class WitsEnd extends Item {
 
     public WitsEnd() {
         super(name, type, cost);
-        as = 55;
-        mr = 50;
+        as = 50;
+        mr = 45;
     }
 
     public void onHit() {
-        float dmg = 40 + 4*Math.max(0, owner.lvl-8);
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 1);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 45, 1);
     }
 
     @Override

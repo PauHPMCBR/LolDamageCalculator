@@ -4,30 +4,24 @@ import com.damagecalculator.simulationManager.simulation.DamageType;
 import com.damagecalculator.simulationManager.simulation.Item;
 import com.damagecalculator.simulationManager.simulation.ItemType;
 
-import static com.damagecalculator.GlobalVariables.waitForExtraDamage;
 
 public class ProfaneHydra extends Item {
     public static final String name = "Profane Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3300;
+    public static final int cost = 3200;
 
     public ProfaneHydra() {
         super(name, type, cost);
         ad = 60;
         lethality = 18;
-        ah = 20;
+        ah = 10;
 
         item_cooldown = 10;
     }
 
     public void extraDmg() {
         if (canUse()) {
-            if (waitForExtraDamage && owner.getEnemy().getRelativeMissingHP() < 0.7) return;
-
-            if (owner.getEnemy().getRelativeMissingHP() >= 0.5)
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 1.3f * owner.getAD(), 2);
-            else
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, owner.getAD(), 2);
+            damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, 0.8f * owner.getAD(), 2);
 
             putOnCooldown();
         }

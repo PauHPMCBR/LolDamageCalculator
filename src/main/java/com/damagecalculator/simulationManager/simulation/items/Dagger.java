@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Dagger extends Item {
     public static final String name = "Dagger";
     public static final ItemType type = ItemType.BASIC;
-    public static final int cost = 300;
+    public static final int cost = 250;
 
     public Dagger() {
         super(name, type, cost);

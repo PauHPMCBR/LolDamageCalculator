@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class FiendishCodex extends Item {
     public static final String name = "Fiendish Codex";
     public static final ItemType type = ItemType.EPIC;
-    public static final int cost = 900;
+    public static final int cost = 850;
 
     public FiendishCodex() {
         super(name, type, cost);

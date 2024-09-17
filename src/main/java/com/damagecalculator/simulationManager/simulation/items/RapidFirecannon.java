@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class RapidFirecannon extends Item {
     public static final String name = "Rapid Firecannon";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2600;
+    public static final int cost = 2650;
 
     int energize;
 
@@ -15,7 +15,7 @@ public class RapidFirecannon extends Item {
         super(name, type, cost);
         as = 35;
         crit = 25;
-        percent_ms = 7;
+        percent_ms = 4;
     }
 
     public void specialStats() {
@@ -26,7 +26,7 @@ public class RapidFirecannon extends Item {
         ++energize;
         if (energize == 10) { //kinda arbitrary
             energize = 0;
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 60, 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 40, 1);
         }
     }
 

@@ -11,7 +11,7 @@ public class SpectresCowl extends Item {
     public SpectresCowl() {
         super(name, type, cost);
         hp = 200;
-        mr = 25;
+        mr = 35;
         hp_regen = 100;
     }
 

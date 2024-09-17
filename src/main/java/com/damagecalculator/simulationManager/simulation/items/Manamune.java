@@ -12,7 +12,7 @@ public class Manamune extends Item {
 
     public Manamune(int stacks) {
         super(name, type, cost);
-        ad = 35;
+        ad = 30;
         ah = 15;
         mana = 500;
 
@@ -21,7 +21,7 @@ public class Manamune extends Item {
 
     public void specialStats() {
         owner.MANA += stacks;
-        owner.BONUS_AD += owner.MANA * 0.025;
+        owner.BONUS_AD += owner.MANA * 0.025f;
     }
 
     @Override

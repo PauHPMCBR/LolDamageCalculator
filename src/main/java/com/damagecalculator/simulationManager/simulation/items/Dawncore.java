@@ -6,11 +6,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Dawncore extends Item {
     public static final String name = "Dawncore";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2500;
 
     public Dawncore() {
         super(name, type, cost);
-        ap = 60;
+        ap = 45;
         hsp = 16;
         mana_regen = 100;
     }

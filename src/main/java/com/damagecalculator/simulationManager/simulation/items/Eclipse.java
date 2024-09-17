@@ -7,11 +7,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Eclipse extends Item {
     public static final String name = "Eclipse";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
+    public static final int cost = 2900;
 
     public Eclipse() {
         super(name, type, cost);
-        ad = 70;
+        ad = 60;
         ah = 15;
         item_cooldown = 6;
     }

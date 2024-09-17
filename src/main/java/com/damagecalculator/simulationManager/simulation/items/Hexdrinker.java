@@ -11,7 +11,7 @@ public class Hexdrinker extends Item {
     public Hexdrinker() {
         super(name, type, cost);
         ad = 25;
-        mr = 30;
+        mr = 25;
     }
 
     @Override

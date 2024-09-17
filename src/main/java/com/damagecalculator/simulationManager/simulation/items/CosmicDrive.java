@@ -10,10 +10,10 @@ public class CosmicDrive extends Item {
 
     public CosmicDrive() {
         super(name, type, cost);
-        ap = 80;
+        ap = 70;
         hp = 350;
         ah = 25;
-        percent_ms = 5;
+        percent_ms = 4;
     }
 
     @Override

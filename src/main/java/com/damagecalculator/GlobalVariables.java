@@ -8,7 +8,7 @@ public class GlobalVariables {
     public static float extraBurnTime = 3;
 
     //wait for extra damage for dmg amp, or do it right away
-    public static boolean waitForExtraDamage = false;
+    //public static boolean waitForExtraDamage = false; no uses right now
 
     //maximum 3D graphs to be displayed at once, from 1 to 6
     public static int max3DGraphs = 4;

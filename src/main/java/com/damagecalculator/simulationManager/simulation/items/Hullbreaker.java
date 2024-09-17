@@ -12,9 +12,9 @@ public class Hullbreaker extends Item {
     int stacks;
     public Hullbreaker() {
         super(name, type, cost);
-        ad = 65;
-        hp = 350;
-        percent_ms = 5;
+        ad = 40;
+        hp = 500;
+        percent_ms = 4;
     }
 
     public void specialStats() {
@@ -24,9 +24,9 @@ public class Hullbreaker extends Item {
     public void onHit() {
         ++stacks;
         if (stacks == 5) {
-            float dmg = 1.4f * owner.BASE_AD;
+            float dmg = 1.2f * owner.BASE_AD;
+            dmg += 0.05f * owner.getMaxHP();
             if (owner.is_ranged) dmg = 0.7f * owner.BASE_AD;
-            dmg += 0.035f * owner.getMaxHP();
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 1);
             stacks = 0;
         }

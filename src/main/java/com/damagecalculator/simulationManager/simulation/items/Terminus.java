@@ -14,7 +14,7 @@ public class Terminus extends Item {
 
     public Terminus() {
         super(name, type, cost);
-        ad = 35;
+        ad = 30;
         as = 35;
     }
 

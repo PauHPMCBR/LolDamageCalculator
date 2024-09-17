@@ -13,8 +13,8 @@ public class UnendingDespair extends Item {
 
     public UnendingDespair() {
         super(name, type, cost);
-        hp = 400;
-        armor = 55;
+        hp = 350;
+        armor = 60;
         ah = 10;
 
         item_cooldown = 5;

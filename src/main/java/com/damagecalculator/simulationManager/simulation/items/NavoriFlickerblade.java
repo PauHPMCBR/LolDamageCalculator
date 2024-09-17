@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class NavoriFlickerblade extends Item {
     public static final String name = "Navori Flickerblade";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2600;
+    public static final int cost = 2650;
 
 
     public NavoriFlickerblade() {
         super(name, type, cost);
         as = 40;
-        percent_ms = 7;
+        percent_ms = 4;
         crit = 25;
     }
 

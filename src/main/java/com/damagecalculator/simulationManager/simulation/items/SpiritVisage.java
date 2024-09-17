@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class SpiritVisage extends Item {
     public static final String name = "Spirit Visage";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 2700;
 
     public SpiritVisage() {
         super(name, type, cost);
         ah = 10;
-        hp = 450;
-        mr = 60;
+        hp = 400;
+        mr = 50;
         hp_regen = 100;
     }
 

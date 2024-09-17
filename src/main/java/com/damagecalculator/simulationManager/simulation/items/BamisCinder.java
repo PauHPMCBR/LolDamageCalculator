@@ -13,7 +13,7 @@ public class BamisCinder extends Item {
 
     public BamisCinder() {
         super(name, type, cost);
-        hp = 200;
+        hp = 150;
         ah = 5;
 
         lastTick = 0;
@@ -21,8 +21,7 @@ public class BamisCinder extends Item {
 
     public void extraDmg() {
         float ticks = cs.time - lastTick; //extra variable is time
-        damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                (float) (ticks * (13 + 0.005 * owner.BONUS_HP)), 1);
+        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, (ticks * 15), 1);
         lastTick = cs.time;
     }
 

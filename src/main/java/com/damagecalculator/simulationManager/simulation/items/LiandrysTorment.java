@@ -15,7 +15,7 @@ public class LiandrysTorment extends Item {
 
     public LiandrysTorment() {
         super(name, type, cost);
-        ap = 90;
+        ap = 70;
         hp = 300;
 
         lastTick = 0;

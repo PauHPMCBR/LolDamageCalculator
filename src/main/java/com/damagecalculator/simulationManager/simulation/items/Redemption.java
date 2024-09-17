@@ -13,7 +13,7 @@ public class Redemption extends Item {
         hp = 200;
         mana_regen = 100;
         ah = 15;
-        hsp = 15;
+        hsp = 10;
     }
 
     //ignoring hp regen for mana regen
