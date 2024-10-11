@@ -11,7 +11,7 @@ public class StatikkShiv extends Item {
     public StatikkShiv() {
         super(name, type, cost);
         ad = 50;
-        as = 40;
+        as = 35;
         percent_ms = 4;
     }
 

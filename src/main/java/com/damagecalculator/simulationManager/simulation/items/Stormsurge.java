@@ -13,7 +13,7 @@ public class Stormsurge extends Item {
     float timeActivated;
     public Stormsurge() {
         super(name, type, cost);
-        ap = 95;
+        ap = 90;
         magic_pen = 15;
         ms = 4;
     }
@@ -27,7 +27,7 @@ public class Stormsurge extends Item {
         if (!activated && timeActivated != 0) return; //already used
         if (activated) {
             if (cs.time - timeActivated >= 2) {
-                float dmg = 150 + 0.15f * owner.AP;
+                float dmg = 125 + 0.1f * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
                 activated = false;
             }

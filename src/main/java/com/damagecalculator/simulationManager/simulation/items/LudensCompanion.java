@@ -22,10 +22,10 @@ public class LudensCompanion extends Item {
         if (canUse()) {
             putOnCooldown();
 
-            float dmg = 60 + 0.04f * owner.AP;
+            float dmg = 75 + 0.05f * owner.AP;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
             for (int i = 1; i < 6; ++i) { //subsequent stacks apply 1 by 1, big one occurs once
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg * 0.5f, 2); //supposing all hit single-target
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg * 0.2f, 2); //supposing all hit single-target
             }
         }
     }

@@ -21,8 +21,8 @@ public class GraspOfTheUndying extends Rune {
     }
 
     public void specialStats() {
-        if (owner.is_ranged) owner.BONUS_HP += 7 * stacks;
-        else owner.BONUS_HP += 4 * stacks;
+        if (owner.is_ranged) owner.BONUS_HP += 5 * stacks;
+        else owner.BONUS_HP += 3 * stacks;
     }
 
     public void onHit() {

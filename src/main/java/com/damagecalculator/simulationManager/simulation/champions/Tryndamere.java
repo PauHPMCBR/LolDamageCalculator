@@ -16,7 +16,7 @@ public class Tryndamere extends Champion {
                 0f,
                 0f,
                 33f,
-                4.3f,
+                4.8f,
                 66f,
                 4f,
                 32f,
@@ -25,7 +25,7 @@ public class Tryndamere extends Champion {
                 0.67f,
                 2.5f,
                 19f,
-                0.67f,
+                0.694f,
                 3.4f,
                 false
         );

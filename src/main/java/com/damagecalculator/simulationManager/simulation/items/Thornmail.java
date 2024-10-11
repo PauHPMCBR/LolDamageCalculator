@@ -11,7 +11,7 @@ public class Thornmail extends Item {
     public Thornmail() {
         super(name, type, cost);
         hp = 150;
-        armor = 80;
+        armor = 75;
     }
 
     @Override

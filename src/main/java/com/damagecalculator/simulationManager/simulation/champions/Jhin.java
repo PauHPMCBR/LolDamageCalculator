@@ -60,7 +60,7 @@ public class Jhin extends Champion {
                 24f,
                 4.7f,
                 59f,
-                4.7f,
+                4.4f,
                 30f,
                 1.3f,
                 1.75f,
@@ -147,7 +147,7 @@ public class Jhin extends Champion {
         };
         r.damageType = DamageType.physicalDmg;
         r.cooldown = new float[]{120,105,90};
-        r.damage = new float[]{64,154,244};
+        r.damage = new float[]{64,128,192};
         r.ad_scale = new float[]{0.25f,0.25f,0.25f,0.25f,0.25f};
         r.cast_time = 4;
 
