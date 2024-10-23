@@ -17,8 +17,8 @@ public class BladeOfTheRuinedKing extends Item {
     }
 
     public void onHit() {
-        float mult = 0.1f;
-        if (owner.is_ranged) mult = 0.06f;
+        float mult = 0.08f;
+        if (owner.is_ranged) mult = 0.05f;
         damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, Math.max(15, owner.getEnemy().HP * mult), 1);
 
     }

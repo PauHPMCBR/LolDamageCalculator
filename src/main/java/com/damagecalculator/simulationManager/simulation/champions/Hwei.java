@@ -50,9 +50,9 @@ public class Hwei extends Champion {
                 if (secondAbility == null || secondAbility == R) return;
                 switch (secondAbility) {
                     case Q -> {
-                        float baseDmg = 60 + 30*lvl;
+                        float baseDmg = 50 + 30*lvl;
                         float enemyMaxHP = 0.03f + 0.01f*lvl;
-                        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, baseDmg + 0.75f*owner.AP + enemyMaxHP*owner.getEnemy().getMaxHP(), 6);
+                        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, baseDmg + 0.7f*owner.AP + enemyMaxHP*owner.getEnemy().getMaxHP(), 6);
                     }
                     case W -> {
                         float baseDmg = 80 + 20*lvl;
@@ -114,7 +114,7 @@ public class Hwei extends Champion {
             }
         };
         e.damageType = DamageType.magicDmg;
-        e.cooldown = new float[]{12,11.5f,11,10.5f,10};
+        e.cooldown = new float[]{13,12.5f,12,11.5f,11};
         e.damage = new float[]{70,110,150,190,230};
         e.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         e.cast_time = 0;

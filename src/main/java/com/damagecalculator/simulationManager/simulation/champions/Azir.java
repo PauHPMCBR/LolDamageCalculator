@@ -36,7 +36,7 @@ public class Azir extends Champion {
                 40f,
                 25f,
                 5f,
-                52f,
+                56f,
                 3.5f,
                 30f,
                 1.3f,

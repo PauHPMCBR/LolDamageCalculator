@@ -27,7 +27,7 @@ public class LethalTempo extends Rune {
             damageDealt += cs.damage.applyDamage(owner.getAdaptive(), dmg * (1 + 0.01f*owner.BONUS_AS), 1);
         }
         else {
-            owner.BONUS_AS += owner.is_ranged ? 4 : 5;
+            owner.BONUS_AS += owner.is_ranged ? 4 : 6;
             ++stacks;
         }
     }

@@ -37,9 +37,9 @@ public class Kaisa extends Champion {
                 if (cs.time > lastApplied + 4) extraVariable = 0;
                 lastApplied = cs.time;
 
-                float dmg = 5 + ((float)(owner.lvl-1)*18)/17;
-                dmg += (1+((float)(owner.lvl-1)*11)/17) * extraVariable;
-                dmg += (0.15f + 0.025f*extraVariable) * owner.AP;
+                float dmg = 4 + ((float)(owner.lvl-1)*20)/17;
+                dmg += (1+((float)(owner.lvl-1)*5)/17) * extraVariable;
+                dmg += (0.12f + 0.03f*extraVariable) * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 3);
                 if (extraVariable == 4) {
                     float percentageMissing = (float) (15 + 0.06 * owner.AP);
