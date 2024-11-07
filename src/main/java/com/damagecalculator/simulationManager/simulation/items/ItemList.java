@@ -188,7 +188,7 @@ public class ItemList {
     public static WitsEnd witsEnd = new WitsEnd();
     public static WorldAtlas worldAtlas = new WorldAtlas();
     public static YoumuusGhostblade youmuusGhostblade = new YoumuusGhostblade();
-    public static YunTalWildarrows yunTalWildarrows = new YunTalWildarrows();
+    public static YunTalWildarrows yunTalWildarrows = new YunTalWildarrows(0);
     public static ZazZaksRealmspike zazZaksRealmspike = new ZazZaksRealmspike();
     public static Zeal zeal = new Zeal();
     public static ZekesConvergence zekesConvergence = new ZekesConvergence();

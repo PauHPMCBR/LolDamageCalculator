@@ -87,8 +87,8 @@ public class Syndra extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{12,11,10,9,8};
-        w.damage = new float[]{70,110,150,190,230};
-        w.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
+        w.damage = new float[]{70,105,140,175,210};
+        w.ap_scale = new float[]{0.65f,0.65f,0.65f,0.65f,0.65f};
         w.cast_time = 0;
 
         e = new Ability(E) { //ignoring e upgrade

@@ -10,8 +10,9 @@ public class YoumuusGhostblade extends Item {
 
     public YoumuusGhostblade() {
         super(name, type, cost);
-        ad = 60;
+        ad = 55;
         lethality = 18;
+        percent_ms = 4;
     }
 
     @Override

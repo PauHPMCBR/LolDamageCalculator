@@ -41,7 +41,7 @@ public class Vayne extends Champion {
                 if (owner.r.isUnlocked() && owner.r.active) {
                     if (owner.r.lvl == 0) currentCooldown *= 0.7f;
                     else if (owner.r.lvl == 1) currentCooldown *= 0.6f;
-                    else currentCooldown *= 0.5;
+                    else currentCooldown *= 0.5f;
                 }
             }
             public void onCall() {
@@ -102,7 +102,7 @@ public class Vayne extends Champion {
                 owner.BONUS_AD -= damage[lvl];
             }
         };
-        r.damage = new float[]{25,40,55}; //bonus ad
+        r.damage = new float[]{35,50,65}; //bonus ad
         r.duration = new float[]{8,10,12};
         r.cooldown = new float[]{100,85,70};
         r.damageType = null;

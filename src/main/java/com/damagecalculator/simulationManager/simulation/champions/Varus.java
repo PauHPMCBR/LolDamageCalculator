@@ -84,7 +84,7 @@ public class Varus extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{40,40,40,40,40};
-        w.damage = new float[]{5,10,15,20,25};
+        w.damage = new float[]{8,13,18,23,28};
         w.ap_scale = new float[]{0.35f,0.35f,0.35f,0.35f,0.35f};
         w.cast_time = 0;
 

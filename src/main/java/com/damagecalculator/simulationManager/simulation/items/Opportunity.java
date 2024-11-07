@@ -12,13 +12,12 @@ public class Opportunity extends Item {
 
     public Opportunity() {
         super(name, type, cost);
-        ad = 50;
+        ad = 55;
         lethality = 15;
-        percent_ms = 4;
     }
 
     public void specialStats() {
-        lethalityGained = owner.is_ranged ? 6 : 10;
+        lethalityGained = owner.is_ranged ? 7 : 11;
         owner.LETHALITY += lethalityGained;
     }
     public void extraDmg() {
