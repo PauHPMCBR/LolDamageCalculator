@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class YunTalWildarrows extends Item {
     public static final String name = "Yun Tal Wildarrows";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 2900;
 
     int bonusCrit;
     boolean active;
@@ -20,7 +20,7 @@ public class YunTalWildarrows extends Item {
         extraVariableName = "Yun Tal crit (0-25)";
         this.bonusCrit = bonusCrit;
         crit += bonusCrit;
-        item_cooldown = 40;
+        item_cooldown = 30;
     }
 
     public void startingCalculations() {
@@ -35,7 +35,7 @@ public class YunTalWildarrows extends Item {
             active = true;
             attackSpeedBonusStart = cs.time;
         }
-        if (active && cs.time - attackSpeedBonusStart >= 4) {
+        if (active && cs.time - attackSpeedBonusStart >= 6) {
             owner.BONUS_AS -= 30;
             active = false;
         }

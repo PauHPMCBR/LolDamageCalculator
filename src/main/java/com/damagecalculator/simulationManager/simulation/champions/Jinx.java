@@ -17,7 +17,7 @@ public class Jinx extends Champion {
                 26f,
                 4.7f,
                 59f,
-                2.9f,
+                3.15f,
                 30f,
                 1.3f,
                 1.75f,
@@ -78,7 +78,7 @@ public class Jinx extends Champion {
         w.damageType = DamageType.physicalDmg;
         w.cooldown = new float[]{8,7,6,5,4};
         w.damage = new float[]{10,60,110,160,210};
-        w.ad_scale = new float[]{1.6f,1.6f,1.6f,1.6f,1.6f};
+        w.ad_scale = new float[]{1.4f,1.4f,1.4f,1.4f,1.4f};
 
         e = new Ability(E) {
             public void onUse() {
