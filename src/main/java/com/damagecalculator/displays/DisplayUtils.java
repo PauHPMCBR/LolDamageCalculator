@@ -18,6 +18,12 @@ public class DisplayUtils {
     public static final String itemsFolder = "item_icons/";
     public static final String championsFolder = "champion_icons/";
     public static final String runesFolder = "rune_icons/";
+    static ColorAdjust desaturate;
+    static {
+        desaturate = new ColorAdjust();
+        desaturate.setSaturation(-0.9);
+        desaturate.setBrightness(-0.5);
+    }
 
     public static Node createSpacer() {
         final Region spacer = new Region();
@@ -37,18 +43,16 @@ public class DisplayUtils {
         }
     }
 
-    static ColorAdjust desaturate;
     public static void desaturate(ImageView iv) {
         iv.setEffect(desaturate);
     }
 
-    static final String cssDefault = """
-                -fx-border-color: black;
-                -fx-border-width: 2;
-                """;
     public static HBox addBorder(ImageView iv) {
         HBox hBox = new HBox();
-        hBox.setStyle(cssDefault);
+        hBox.setStyle("""
+                -fx-border-color: black;
+                -fx-border-width: 2;
+                """);
         hBox.getChildren().add(iv);
         return hBox;
     }
@@ -171,12 +175,5 @@ public class DisplayUtils {
             u = MainApplication.class.getResource(championsFolder + getChampionFileName(c.name + "_Original"));
         }
         return new Image(String.valueOf(u));
-    }
-
-
-    public static void preCalc() {
-        desaturate = new ColorAdjust();
-        desaturate.setSaturation(-0.9);
-        desaturate.setBrightness(-0.5);
     }
 }

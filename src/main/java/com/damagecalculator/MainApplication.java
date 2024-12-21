@@ -28,7 +28,6 @@ public class MainApplication extends Application {
         System.out.println();
         System.out.flush();
 
-        DisplayUtils.preCalc();
         System.out.println("Starting GUI...");
 
         DisplayCacheThread displayCacheThread = new DisplayCacheThread();

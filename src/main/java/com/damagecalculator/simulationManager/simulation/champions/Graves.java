@@ -84,8 +84,8 @@ public class Graves extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{13,11.25f,9.5f,7.75f,6};
-        q.damage = new float[]{80,120,155,190,225}; //detonation damage
-        q.ad_scale = new float[]{0.4f,0.7f,1f,1.3f,1.6f};
+        q.damage = new float[]{85,120,155,190,225}; //detonation damage
+        q.ad_scale = new float[]{0.4f,0.65f,0.9f,1.15f,1.4f};
         q.duration = new float[]{2,2,2,2,2};
         q.cast_time = 0.25f;
 
