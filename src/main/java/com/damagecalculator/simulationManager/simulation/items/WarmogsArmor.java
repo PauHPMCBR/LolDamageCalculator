@@ -12,7 +12,10 @@ public class WarmogsArmor extends Item {
         super(name, type, cost);
         hp = 1000;
         hp_regen = 100;
-        percent_ms = 4;
+    }
+
+    public void specialStats() {
+        owner.BONUS_HP *= 1.1f; //bonus 10% hp from "items"
     }
 
     @Override

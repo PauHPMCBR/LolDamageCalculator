@@ -51,7 +51,7 @@ public class Damage {
     /**
      * Main function to call from outside that will do all calculations prior to the damage appliance
      * Damage instance types:
-     *      odd (1,3...)            :   "proc" damage. will not count for black cleaver or ludens
+     *      odd (1,3...)            :   "proc" damage. will not count for black cleaver or ludens (OUTDATED)
      *      multiple of 3 (3,6...)  :   "ability" damage. will count for navori amplifier
      *
      * Examples:
@@ -78,12 +78,19 @@ public class Damage {
             }
             //last stand can be controversial, since we don't know champion's relative hp. currently skipped
         }
+
         if (damageInstanceType%3 == 0 && damageInstanceType != 0) { //damage from ability
             amount *= cs.abilityDamageMultiplier; //(navori amplifies true damage as well)
             //no more ludens xdd
         }
 
         float dmg = applyDirectDamage(type, amount);
+
+        if (cs.abyssalMaskItem != null && type == DamageType.magicDmg) { //12% increased dmg
+            float extraDmg = applyDirectDamage(DamageType.magicDmg, dmg * 0.12f);
+            dmg += extraDmg;
+            cs.abyssalMaskItem.damageDealt += extraDmg;
+        }
 
         if (cs.shadowflameItem != null && type != DamageType.physicalDmg) { //crit for true and magic dmg
             if (cs.enemy.getRelativeMissingHP() >= 0.6) { //"crit" if enemy below 40% hp
@@ -98,7 +105,13 @@ public class Damage {
         }
 
         //since 14.16 there's 0 cd on black cleaver stacks, so onhits and similar add stacks as well
-        if (cs.cleaverItem != null && type == DamageType.physicalDmg) cs.cleaverItem.increaseCarveStacks();
+        if (cs.cleaverItem != null && type == DamageType.physicalDmg) {
+            cs.cleaverItem.increaseCarveStacks();
+        }
+
+        if (cs.bloodlettersCurseItem != null && type == DamageType.magicDmg && damageInstanceType%3 == 0) {
+            cs.bloodlettersCurseItem.increaseDecayStacks(); //ignoring 0.3s cd
+        }
 
         return dmg;
     }

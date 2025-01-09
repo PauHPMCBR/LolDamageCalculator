@@ -1,7 +1,10 @@
 package com.damagecalculator.simulationManager.simulation;
 
+import com.damagecalculator.simulationManager.simulation.items.AbyssalMask;
 import com.damagecalculator.simulationManager.simulation.items.BlackCleaver;
+import com.damagecalculator.simulationManager.simulation.items.BloodlettersCurse;
 import com.damagecalculator.simulationManager.simulation.items.Shadowflame;
+import com.damagecalculator.simulationManager.simulation.runes.AxiomArcanist;
 import com.damagecalculator.simulationManager.simulation.runes.FirstStrike;
 
 
@@ -21,9 +24,12 @@ public class CurrentState {
     public float damageTrueMultiplier = 1;  //damage multipler that works with true dmg
     public float abilityDamageMultiplier = 1;
 
+    public AbyssalMask abyssalMaskItem;
+    public BloodlettersCurse bloodlettersCurseItem;
     public BlackCleaver cleaverItem;
     public Shadowflame shadowflameItem;
     public FirstStrike firstStrikeRune;
+    public AxiomArcanist axiomArcanistRune;
     public boolean hasFirstStrike = false;
     public boolean hasCoupDeGrace = false;
     public boolean hasCutDown = false;
@@ -36,8 +42,13 @@ public class CurrentState {
 
         abilityDamageMultiplier = 1;
 
+        abyssalMaskItem = null;
+        bloodlettersCurseItem = null;
         cleaverItem = null;
         shadowflameItem = null;
+
+        firstStrikeRune = null;
+        axiomArcanistRune = null;
 
         hasLastStand = false;
         hasCutDown = false;

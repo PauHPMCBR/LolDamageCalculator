@@ -13,11 +13,12 @@ public class UnendingDespair extends Item {
 
     public UnendingDespair() {
         super(name, type, cost);
-        hp = 350;
-        armor = 60;
+        hp = 400;
+        armor = 25;
+        mr = 25;
         ah = 10;
 
-        item_cooldown = 5;
+        item_cooldown = 4;
     }
 
     public void specialStats() {
@@ -28,7 +29,7 @@ public class UnendingDespair extends Item {
     public void extraDmg() {
         while (lastProcTime + item_cooldown <= cs.time) {
             lastProcTime += item_cooldown;
-            float dmg = 30 + 20f/17 * (owner.lvl - 1) + owner.getMaxHP() * 0.03f;
+            float dmg = 8 + 7f/17 * (owner.lvl - 1) + owner.getMaxHP() * 0.03f;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
         }
     }

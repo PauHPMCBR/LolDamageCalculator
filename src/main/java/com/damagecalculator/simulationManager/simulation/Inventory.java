@@ -27,14 +27,14 @@ public class Inventory {
             new Item[] {titanicHydra, ravenousHydra, profaneHydra, tiamat}, //hydra
             new Item[] {mercurialScimitar, quicksilverSash}, //qicksilver
             new Item[] {berserkersGreaves, sorcerersShoes, ionianBootsOfLucidity, platedSteelcaps, mercurysTreads,
-                            symbioticSoles, synchronizedSouls, bootsOfSwiftness, boots, zephyr}, //boots
+                            symbioticSoles, synchronizedSouls, bootsOfSwiftness, boots}, //boots
             new Item[] {mejaisSoulstealer, darkSeal}, //glory
             new Item[] {guardiansOrb, guardiansHorn, guardiansBlade, guardiansHammer}, //guardian
             new Item[] {sunfireAegis, bamisCinder, hollowRadiance}, //immolate
             new Item[] {worldAtlas, runicCompass, bountyOfWorlds, celestialOpposition, solsticeSleigh,
                             bloodsong, dreamMaker, zazZaksRealmspike}, //support
             new Item[] {vigilantWardstone, watchfulWardstone}, //sightstone
-            new Item[] {voidStaff, blightingJewel, terminus, cryptbloom, abyssalMask}, //void pen
+            new Item[] {voidStaff, blightingJewel, terminus, cryptbloom, bloodlettersCurse}, //void pen
             new Item[] {doransBlade, doransRing, doransShield}, //doran's items
             new Item[] {serratedDirk}, //unique
     };

@@ -13,6 +13,13 @@ public class Boots extends Item {
         ms = 25;
     }
 
+    //for T2 boots
+    public Boots(String name, int cost) {
+        super(name, type, cost);
+    }
+
+    //TODO boot upgrades
+
     @Override
     public Item makeCopy() {
         return new Boots();

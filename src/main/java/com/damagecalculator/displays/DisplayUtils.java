@@ -140,7 +140,7 @@ public class DisplayUtils {
         URL u = MainApplication.class.getResource(itemsFolder + getItemFileName(i));
         if (u == null) u = MainApplication.class.getResource(itemsFolder + getItemFileName(i).replace("_item.png", ".png"));
         if (u == null) return getNotFoundItemImage();
-        return new Image(String.valueOf(u));
+        return new Image(String.valueOf(u), 40, 40, false, false);
     }
 
 

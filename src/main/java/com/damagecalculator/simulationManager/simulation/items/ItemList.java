@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class ItemList {
     public static AbyssalMask abyssalMask = new AbyssalMask();
+    public static AegisOfTheLegion aegisOfTheLegion = new AegisOfTheLegion();
     public static AetherWisp aetherWisp = new AetherWisp();
     public static AmplifyingTome amplifyingTome = new AmplifyingTome();
     public static ArchangelsStaff archangelsStaff = new ArchangelsStaff(0);
@@ -22,6 +23,7 @@ public class ItemList {
     public static BladeOfTheRuinedKing bladeOfTheRuinedKing = new BladeOfTheRuinedKing();
     public static BlastingWand blastingWand = new BlastingWand();
     public static BlightingJewel blightingJewel = new BlightingJewel();
+    public static BloodlettersCurse bloodlettersCurse = new BloodlettersCurse();
     public static Bloodsong bloodsong = new Bloodsong();
     public static Bloodthirster bloodthirster = new Bloodthirster();
     public static Boots boots = new Boots();
@@ -192,12 +194,12 @@ public class ItemList {
     public static ZazZaksRealmspike zazZaksRealmspike = new ZazZaksRealmspike();
     public static Zeal zeal = new Zeal();
     public static ZekesConvergence zekesConvergence = new ZekesConvergence();
-    public static Zephyr zephyr = new Zephyr();
     public static ZhonyasHourglass zhonyasHourglass = new ZhonyasHourglass();
 
 
     public static ArrayList<Item> allItems = new ArrayList<>() {{
         add(abyssalMask);
+        add(aegisOfTheLegion);
         add(aetherWisp);
         add(amplifyingTome);
         add(archangelsStaff);
@@ -213,6 +215,7 @@ public class ItemList {
         add(bladeOfTheRuinedKing);
         add(blastingWand);
         add(blightingJewel);
+        add(bloodlettersCurse);
         add(bloodsong);
         add(bloodthirster);
         add(boots);
@@ -383,7 +386,6 @@ public class ItemList {
         add(zazZaksRealmspike);
         add(zeal);
         add(zekesConvergence);
-        add(zephyr);
         add(zhonyasHourglass);
     }};
     public static HashMap<String, Item> nameToItem = new HashMap<>();

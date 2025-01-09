@@ -11,12 +11,12 @@ public class AbyssalMask extends Item {
     public AbyssalMask() {
         super(name, type, cost);
         ah = 15;
-        hp = 300;
-        mr = 45;
+        hp = 350;
+        mr = 50;
     }
 
     public void specialStats() {
-        owner.getEnemy().MAGIC_RESIST *= 0.7f; //30% magic reduction
+        cs.abyssalMaskItem = this;
     }
 
     @Override

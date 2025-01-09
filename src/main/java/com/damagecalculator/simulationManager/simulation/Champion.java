@@ -273,7 +273,13 @@ public abstract class Champion {
      *  Calls the ability effects on use, updates sheen time and calls for extra damage from items (like ludens or comet)
      */
     public void useAbility(Ability a) {
-        a.onUse();
+        if (a.type == R && cs.axiomArcanistRune != null) {
+            cs.damageTrueMultiplier *= 1.14f; //TODO test if true damage works as well, TODO reduced to 9% from abilities
+            a.onUse();
+            cs.damageTrueMultiplier /= 1.14f;
+        }
+        else a.onUse();
+        
         lastAbilityUsed = a.type;
 
         if (cs.time - lastSheenProc >= 1.5) can_use_sheen = true;
