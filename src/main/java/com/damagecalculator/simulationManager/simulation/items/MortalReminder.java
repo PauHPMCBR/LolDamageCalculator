@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class MortalReminder extends Item {
     public static final String name = "Mortal Reminder";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 3300;
 
     public MortalReminder() {
         super(name, type, cost);
         ad = 35;
         crit = 25;
-        armor_pen = 30;
+        armor_pen = 35;
     }
 
     @Override

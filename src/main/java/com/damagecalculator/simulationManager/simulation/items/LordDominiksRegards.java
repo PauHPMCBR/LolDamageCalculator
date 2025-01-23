@@ -6,13 +6,13 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LordDominiksRegards extends Item {
     public static final String name = "Lord Dominik's Regards";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3000;
+    public static final int cost = 3100;
 
     public LordDominiksRegards() {
         super(name, type, cost);
         ad = 35;
         crit = 25;
-        armor_pen = 35;
+        armor_pen = 40;
     }
 
     @Override

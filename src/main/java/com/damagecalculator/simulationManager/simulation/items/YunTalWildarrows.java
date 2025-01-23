@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class YunTalWildarrows extends Item {
     public static final String name = "Yun Tal Wildarrows";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 3000;
 
     int bonusCrit;
     boolean active;
@@ -15,8 +15,8 @@ public class YunTalWildarrows extends Item {
 
     public YunTalWildarrows(int bonusCrit) {
         super(name, type, cost);
-        ad = 50;
-        as = 25;
+        ad = 55;
+        as = 35;
         extraVariableName = "Yun Tal crit (0-25)";
         this.bonusCrit = bonusCrit;
         crit += bonusCrit;
