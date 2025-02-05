@@ -15,14 +15,14 @@ public class HailOfBlades extends Rune {
 
     public HailOfBlades() {
         super(name, path, column, row);
-        rune_cooldown = 12;
+        rune_cooldown = 10;
 
         autos = 0;
     }
 
     public void specialStats() {
         if (owner.is_ranged) bonusASGained = 80;
-        else bonusASGained = 110;
+        else bonusASGained = 140;
     }
 
     public void onHit() { //gives as AFTER the 1st auto

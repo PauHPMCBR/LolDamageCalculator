@@ -57,7 +57,7 @@ public class Graves extends Champion {
                 2.05f,
                 1.75f,
                 0.475f,
-                2.5f,
+                3f,
                 0f,
                 0.49f,
                 3f,

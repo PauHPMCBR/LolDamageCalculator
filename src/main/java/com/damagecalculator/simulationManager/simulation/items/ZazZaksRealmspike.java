@@ -22,7 +22,7 @@ public class ZazZaksRealmspike extends Item {
     public void extraDmg() {
         if (canUse()) {
             putOnCooldown();
-            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 10 + 0.2f*owner.AP + 0.03f * owner.getEnemy().getMaxHP(), 1);
+            damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 10 + 0.15f*owner.AP + 0.03f * owner.getEnemy().getMaxHP(), 1);
         }
     }
 

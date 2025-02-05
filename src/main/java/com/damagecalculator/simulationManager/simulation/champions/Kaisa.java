@@ -21,7 +21,7 @@ public class Kaisa extends Champion {
                 1.3f,
                 1.75f,
                 0.664f,
-                2.5f,
+                3f,
                 16.108f,
                 0.664f,
                 1.8f,

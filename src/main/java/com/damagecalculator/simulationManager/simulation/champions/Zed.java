@@ -22,7 +22,7 @@ public class Zed extends Champion {
                 2.05f,
                 1.75f,
                 0.651f,
-                2.5f,
+                3f,
                 19.759f,
                 0.651f,
                 3.3f,

@@ -21,7 +21,7 @@ public class Vayne extends Champion {
                 1.3f,
                 1.75f,
                 0.658f,
-                2.5f,
+                3f,
                 17.554f,
                 0.658f,
                 3.3f,

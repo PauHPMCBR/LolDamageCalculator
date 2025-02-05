@@ -23,7 +23,7 @@ public class Electrocute extends Rune {
             ++hits;
             if (hits == 3) {
                 putOnCooldown();
-                damageDealt += cs.damage.applyDamage(cs.champion.getAdaptive(), (float) (50 + 140/17*(cs.champion.lvl-1)
+                damageDealt += cs.damage.applyDamage(cs.champion.getAdaptive(), (float) (70 + 170/17*(cs.champion.lvl-1)
                         + 0.1*cs.champion.BONUS_AD + 0.05*cs.champion.AP), 2);
                 hits = 0;
             }

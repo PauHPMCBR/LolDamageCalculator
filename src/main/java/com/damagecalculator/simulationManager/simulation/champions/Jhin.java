@@ -65,7 +65,7 @@ public class Jhin extends Champion {
                 1.3f,
                 1.75f,
                 0.625f,
-                2.5f,
+                3f,
                 15.625f,
                 0f,
                 0f,

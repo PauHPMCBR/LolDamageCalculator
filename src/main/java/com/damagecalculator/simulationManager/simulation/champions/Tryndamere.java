@@ -23,7 +23,7 @@ public class Tryndamere extends Champion {
                 2.05f,
                 1.75f,
                 0.67f,
-                2.5f,
+                3f,
                 19f,
                 0.694f,
                 3.4f,

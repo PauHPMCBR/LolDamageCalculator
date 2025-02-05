@@ -23,7 +23,7 @@ public class Senna extends Champion {
                 1.3f,
                 1.75f,
                 0.625f,
-                2.5f,
+                3f,
                 31.25f,
                 0.4f,
                 2f,

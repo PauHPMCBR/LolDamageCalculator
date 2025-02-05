@@ -31,7 +31,7 @@ public class Karma extends Champion {
                 1.3f,
                 1.75f,
                 0.625f,
-                2.5f,
+                3f,
                 16.146f,
                 0.625f,
                 2.3f,

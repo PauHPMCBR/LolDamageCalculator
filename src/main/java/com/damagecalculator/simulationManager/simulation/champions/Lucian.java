@@ -21,7 +21,7 @@ public class Lucian extends Champion {
                 1.3f,
                 1.75f,
                 0.638f,
-                2.5f,
+                3f,
                 15f,
                 0.638f,
                 3.3f,

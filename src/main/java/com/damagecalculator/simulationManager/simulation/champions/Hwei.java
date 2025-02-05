@@ -23,7 +23,7 @@ public class Hwei extends Champion {
                 1.3f,
                 1.75f,
                 0.69f,
-                2.5f,
+                3f,
                 18.729f,
                 0.658f,
                 2.5f,
