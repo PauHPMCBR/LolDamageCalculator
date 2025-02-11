@@ -20,8 +20,7 @@ public class CurrentState {
 
     public float time; //in secs
 
-    public float damageMultiplier = 1;      //damage multipler that doesn't work with true dmg
-    public float damageTrueMultiplier = 1;  //damage multipler that works with true dmg
+    public float damageMultiplier = 1;  //damage multipler that works with true dmg
     public float abilityDamageMultiplier = 1;
 
     public AbyssalMask abyssalMaskItem;
@@ -38,7 +37,6 @@ public class CurrentState {
     public void startSimulation() {
         time = 0;
         damageMultiplier = 1;
-        damageTrueMultiplier = 1;
 
         abilityDamageMultiplier = 1;
 

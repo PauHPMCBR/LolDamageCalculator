@@ -62,25 +62,22 @@ public class Damage {
      *      6 comes from ability active
      */
     public float applyDamage(DamageType type, float amount, int damageInstanceType) {
-        amount *= cs.damageTrueMultiplier;
+        amount *= cs.damageMultiplier;
         //rip old riftmaker
-        if (type != DamageType.trueDmg) {
-            amount *= cs.damageMultiplier;
-            if (cs.hasCutDown) {
-                if (cs.enemy.getRelativeMissingHP() < 0.4) {
-                    amount *= 1.08f;
-                }
+        if (cs.hasCutDown) {
+            if (cs.enemy.getRelativeMissingHP() < 0.4) {
+                amount *= 1.08f;
             }
-            else if (cs.hasCoupDeGrace) {
-                if (cs.enemy.getRelativeMissingHP() > 0.6) {
-                    amount *= 1.08f;
-                }
-            }
-            //last stand can be controversial, since we don't know champion's relative hp. currently skipped
         }
+        else if (cs.hasCoupDeGrace) {
+            if (cs.enemy.getRelativeMissingHP() > 0.6) {
+                amount *= 1.08f;
+            }
+        }
+        //last stand can be controversial, since we don't know champion's relative hp. currently skipped
 
         if (damageInstanceType%3 == 0 && damageInstanceType != 0) { //damage from ability
-            amount *= cs.abilityDamageMultiplier; //(navori amplifies true damage as well)
+            amount *= cs.abilityDamageMultiplier;
             //no more ludens xdd
         }
 

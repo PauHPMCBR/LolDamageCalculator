@@ -23,9 +23,9 @@ public class Riftmaker extends Item {
 
     //ignoring omnivamp
     public void extraDmg() {
-        cs.damageTrueMultiplier /= currentDmgMult;
+        cs.damageMultiplier /= currentDmgMult;
         currentDmgMult = 1 + (int)(Math.min(cs.time, 4)) * 0.02f;
-        cs.damageTrueMultiplier *= currentDmgMult;
+        cs.damageMultiplier *= currentDmgMult;
     }
 
     public void onHit() {

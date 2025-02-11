@@ -242,14 +242,14 @@ public abstract class Champion {
      * toSkip is an item / rune that should be skipped. Can be null
      */
     public void applyOnhit(float effectiveness, String toSkip) {
-        cs.damageTrueMultiplier *= effectiveness;
+        cs.damageMultiplier *= effectiveness;
         for (Item i : allItems) {
             if (!i.name.equals(toSkip)) i.onHit();
         }
         for (Rune r : runes.runeList) {
             if (!r.name.equals(toSkip)) r.onHit();
         }
-        cs.damageTrueMultiplier /= effectiveness;
+        cs.damageMultiplier /= effectiveness;
     }
 
     /**
@@ -274,9 +274,9 @@ public abstract class Champion {
      */
     public void useAbility(Ability a) {
         if (a.type == R && cs.axiomArcanistRune != null) {
-            cs.damageTrueMultiplier *= 1.14f; //TODO test if true damage works as well, TODO reduced to 9% from abilities
+            cs.damageMultiplier *= 1.14f; //TODO test if true damage works as well, TODO reduced to 9% from abilities
             a.onUse();
-            cs.damageTrueMultiplier /= 1.14f;
+            cs.damageMultiplier /= 1.14f;
         }
         else a.onUse();
         

@@ -20,9 +20,9 @@ public class HauntingGuise extends Item {
     }
 
     public void extraDmg() {
-        cs.damageTrueMultiplier /= currentDmgMult;
+        cs.damageMultiplier /= currentDmgMult;
         currentDmgMult = 1 + (int)(Math.min(cs.time, 3)) * 0.02f;
-        cs.damageTrueMultiplier *= currentDmgMult;
+        cs.damageMultiplier *= currentDmgMult;
     }
 
     public void onHit() {

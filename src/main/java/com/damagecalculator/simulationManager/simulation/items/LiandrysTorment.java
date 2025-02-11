@@ -26,9 +26,9 @@ public class LiandrysTorment extends Item {
     }
 
     public void extraDmg() {
-        cs.damageTrueMultiplier /= currentDmgMult;
+        cs.damageMultiplier /= currentDmgMult;
         currentDmgMult = 1 + (int)(Math.min(cs.time, 3)) * 0.02f;
-        cs.damageTrueMultiplier *= currentDmgMult;
+        cs.damageMultiplier *= currentDmgMult;
 
         float secs = Math.min(cs.time - lastTick, 3); //extra variable is time
         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
