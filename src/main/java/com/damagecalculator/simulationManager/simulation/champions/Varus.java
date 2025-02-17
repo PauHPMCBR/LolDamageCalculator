@@ -6,7 +6,9 @@ import static com.damagecalculator.simulationManager.simulation.AbilityType.*;
 public class Varus extends Champion {
     public static final String name = "Varus";
 
-    public Varus() {
+    boolean chargeQ;
+
+    public Varus(int chargeTime) {
         super(
                 name,
                 600f,
@@ -27,21 +29,27 @@ public class Varus extends Champion {
                 3.5f,
                 true
         );
+        this.chargeQ = chargeTime > 0;
 
         passive = new Ability(AbilityType.PASSIVE) {
             //ignoring the bonus AS
         };
 
         q = new Ability(Q) { //extraVariable = is W activated
+            public void startingCalculations() {
+                cast_time = chargeQ ? 1.25f : 0;
+            }
             public void onUse() {
                 float dmg = damage[lvl] + ad_scale[lvl]*owner.BONUS_AD;
-                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg * 1.5f, 6);
+                if (chargeQ) dmg *= 1.5f;
+
+                damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 6);
                 owner.w.onExpiring();
 
                 if (extraVariable == 1) {
                     float missingHP = ap_scale[lvl];
                     owner.w.damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                            missingHP * owner.getEnemy().getMissingHP() * 1.5f, 3);
+                            missingHP * owner.getEnemy().getMissingHP(), 3);
                 }
 
                 currentCooldown = getCooldown();
@@ -52,7 +60,6 @@ public class Varus extends Champion {
         q.damage = new float[]{60,106.67f,153.33f,200,246.67f};
         q.ad_scale = new float[]{0.866f,0.933f,1f,1.067f,1.133f};
         q.ap_scale = new float[]{0.06f,0.08f,0.1f,0.12f,0.14f}; //missing hp dmg
-        q.cast_time = 1.25f; //max cast time, all damage increased by 50%
 
         w = new Ability(W) { //extraVariable = blight stacks
             public void startingCalculations() {
@@ -66,14 +73,19 @@ public class Varus extends Champion {
             }
             public void onExpiring() { //= use stacks
                 if (lvl < 0) return;
-                float mult = 3 + 0.5f * lvl; //from 3 to 5
-                mult += 0.015f * owner.AP;
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
-                        mult/100 * owner.getEnemy().getMaxHP() * extraVariable, 3);
 
-                owner.q.currentCooldown -= owner.q.getCooldown()*(0.13f*extraVariable);
-                owner.w.currentCooldown -= owner.w.getCooldown()*(0.13f*extraVariable);
-                owner.e.currentCooldown -= owner.e.getCooldown()*(0.13f*extraVariable);
+                float effectMult = 1;
+                if (owner.lastAbilityUsed == Q && chargeQ) effectMult = 1.5f;
+
+                float hpMult = 3 + 0.5f * lvl; //from 3 to 5
+                hpMult += 0.015f * owner.AP;
+
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
+                        hpMult/100 * owner.getEnemy().getMaxHP() * extraVariable * effectMult, 3);
+
+                owner.q.currentCooldown -= owner.q.getCooldown()*(0.13f*extraVariable*effectMult);
+                owner.w.currentCooldown -= owner.w.getCooldown()*(0.13f*extraVariable*effectMult);
+                owner.e.currentCooldown -= owner.e.getCooldown()*(0.13f*extraVariable*effectMult);
 
                 extraVariable = 0;
             }
@@ -108,6 +120,7 @@ public class Varus extends Champion {
                         damage[lvl] + ap_scale[lvl] * owner.AP, 6);
                 owner.w.onCall();
                 owner.w.extraVariable = 3;
+                currentCooldown = getCooldown();
             }
         };
         r.damageType = DamageType.magicDmg;
@@ -119,13 +132,14 @@ public class Varus extends Champion {
         Item passiveOnHit = new VarusOnhit();
         addUniqueItem(passiveOnHit);
 
+        extraVariableName = "Charge Q";
         upgradeOrder = new AbilityType[] {E, Q, W, Q, Q, R, Q, W, Q, W, R, W, W, E, E, R, E, E};
         abilityPriorities = new AbilityType[] {AUTO, E, Q, R, W};
     }
 
     @Override
     public Champion makeCopy() {
-        return new Varus();
+        return new Varus(chargeQ ? 1 : 0);
     }
 
 

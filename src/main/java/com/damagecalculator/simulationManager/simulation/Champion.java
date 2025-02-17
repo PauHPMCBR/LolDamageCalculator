@@ -28,7 +28,7 @@ public abstract class Champion {
     public float attack_windup; //some abilities have to modify this
     public final float as_ratio;
     public final float bonus_as;
-    public final boolean is_ranged;
+    public boolean is_ranged;
 
     /**
      * Stats that can get modified by external factors like abilities and items
@@ -274,7 +274,7 @@ public abstract class Champion {
      */
     public void useAbility(Ability a) {
         if (a.type == R && cs.axiomArcanistRune != null) {
-            cs.damageMultiplier *= 1.14f; //TODO test if true damage works as well, TODO reduced to 9% from abilities
+            cs.damageMultiplier *= 1.14f; //TODO reduced to 9% from abilities
             a.onUse();
             cs.damageMultiplier /= 1.14f;
         }
@@ -287,6 +287,10 @@ public abstract class Champion {
             for (Item i : allItems) i.extraDmg();
             for (Rune r : runes.runeList) r.extraDmg();
         }
+    }
+
+    public boolean wasLastAutoCrit() {
+        return ((autosUsed-1)%4) < CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
     }
 
     public Champion(String name,

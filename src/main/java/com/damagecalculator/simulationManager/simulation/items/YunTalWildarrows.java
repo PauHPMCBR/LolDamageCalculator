@@ -39,10 +39,9 @@ public class YunTalWildarrows extends Item {
             owner.BONUS_AS -= 30;
             active = false;
         }
-        boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
         //40 second CD, reduced by 1s on hit; 2s for a critical strike
         lastUsed -= 1;
-        if (wasCrit) lastUsed -= 1;
+        if (owner.wasLastAutoCrit()) lastUsed -= 1;
     }
 
     @Override

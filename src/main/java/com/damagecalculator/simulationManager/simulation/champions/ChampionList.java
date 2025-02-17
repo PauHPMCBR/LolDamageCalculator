@@ -14,11 +14,12 @@ public class ChampionList {
     public static Jinx jinx = new Jinx();
     public static Kaisa kaisa = new Kaisa();
     public static Karma karma = new Karma(1);
+    public static Kayle kayle = new Kayle();
     public static Lucian lucian = new Lucian();
     public static Senna senna = new Senna(0);
     public static Syndra syndra = new Syndra(0);
     public static Tryndamere tryndamere = new Tryndamere(0);
-    public static Varus varus = new Varus();
+    public static Varus varus = new Varus(0);
     public static Vayne vayne = new Vayne();
     public static Zed zed = new Zed();
 
@@ -33,6 +34,7 @@ public class ChampionList {
         add(jinx);
         add(kaisa);
         add(karma);
+        add(kayle);
         add(lucian);
         add(senna);
         add(syndra);

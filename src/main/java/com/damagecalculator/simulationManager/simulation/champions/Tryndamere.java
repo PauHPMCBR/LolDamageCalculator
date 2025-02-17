@@ -39,8 +39,7 @@ public class Tryndamere extends Champion {
             }
             public void onCall() {
                 if (extraVariable > 95) return; // no more fury increases
-                boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
-                if (wasCrit && extraVariable <= 90) {
+                if (owner.wasLastAutoCrit() && extraVariable <= 90) {
                     extraVariable += 10;
                     owner.CRIT_CHANCE = Math.min(100, owner.CRIT_CHANCE + 4);
                 }
@@ -77,8 +76,7 @@ public class Tryndamere extends Champion {
                 currentCooldown = getCooldown();
             }
             public void onCall() { //autos
-                boolean wasCrit = ((owner.autosUsed-1)%4) < owner.CRIT_CHANCE/100 * 4; //works for every 25% crit chance, wouldn't work with 20% cloak/zeal, non-random cycle of 4
-                if (wasCrit) currentCooldown -= 1.5f;
+                if (owner.wasLastAutoCrit()) currentCooldown -= 1.5f;
             }
         };
         e.damageType = DamageType.physicalDmg;
