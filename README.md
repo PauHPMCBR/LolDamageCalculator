@@ -2,6 +2,7 @@
 Tool to make analyzing builds a lot easier. Created to compare items and runes between each other and in many situations, efficiently.
 
 **I will not be upgrading this particular damage calculator further, since I'm working on porting it to a website and I'm waiting to see how we can do that.** I will retake the updates in around 3 months.
+It will still get updated to the newest patch and keep adding champs on request, though.
 
 ## Download
 To get the program, go to the [latest release](https://github.com/PauHPMCBR/LolDamageCalculator/releases) and download the 1st zip.
