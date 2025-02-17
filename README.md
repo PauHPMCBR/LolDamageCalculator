@@ -200,6 +200,9 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 ### Karma
 - The "special variable" called "Use R only for Q", when set to not 0, will allow R to be used/consumed by W and E as well. It is recommended to leave as 0 when testing a combo.
 
+### Kayle
+- W not implemented
+
 ### Lucian
 - To maximise passive damage, Lucian will try to auto after each ability use (the simulation will wait until an auto is done before using any other ability)
 - If you are testing a Lucian combo, insert an auto attack between each ability, or the damage will be higher than it should (the "second" auto that passive provides is ALWAYS applied after each ability use)
@@ -224,7 +227,7 @@ This shouldn't be much of a problem, since what you usually want to calculate wi
 
 ### Varus
 - Passive not implemented, since he needs to kill a unit to proc it
-- Q charge time is always 1.25 seconds (minimum time to reach max damage increase)
+- Q charge time can either be 0 (input 0 as "Charge Q") or 1.25s (max time, input 1 as "Charge Q").
 - To use W, first W must be cast, and then Q, like in game
 
 ### Vayne
