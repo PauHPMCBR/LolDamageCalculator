@@ -29,7 +29,7 @@ public class UnendingDespair extends Item {
     public void extraDmg() {
         while (lastProcTime + item_cooldown <= cs.time) {
             lastProcTime += item_cooldown;
-            float dmg = 8 + 7f/17 * (owner.lvl - 1) + owner.getMaxHP() * 0.03f;
+            float dmg = owner.getMaxHP() * 0.03f;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 2);
         }
     }

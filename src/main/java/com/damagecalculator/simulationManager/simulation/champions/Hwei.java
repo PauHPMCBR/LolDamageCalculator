@@ -36,7 +36,7 @@ public class Hwei extends Champion {
             }
             public void onCall() {
                 if (extraVariable == 1) {
-                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 35 + 145/17f*(owner.lvl-1) + 0.35f*owner.AP, 3);
+                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 35 + 145/17f*(owner.lvl-1) + 0.30f*owner.AP, 3);
                     extraVariable = 0;
                     w.onCall();
                 }
@@ -55,7 +55,7 @@ public class Hwei extends Champion {
                         damageDealt += cs.damage.applyDamage(DamageType.magicDmg, baseDmg + 0.7f*owner.AP + enemyMaxHP*owner.getEnemy().getMaxHP(), 6);
                     }
                     case W -> {
-                        float baseDmg = 80 + 20*lvl;
+                        float baseDmg = 60 + 25*lvl;
                         float percentIncreasePerPercentMissing = 1 + 0.375f*lvl;
                         damageDealt += cs.damage.applyDamage(DamageType.magicDmg,
                                 (baseDmg + 0.25f*owner.AP) * (1 + owner.getEnemy().getRelativeMissingHP()*percentIncreasePerPercentMissing), 6);
@@ -98,8 +98,8 @@ public class Hwei extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{18,17.5f,17,16.5f,16};
-        w.damage = new float[]{25,35,45,55,65};
-        w.ap_scale = new float[]{0.2f,0.2f,0.2f,0.2f,0.2f};
+        w.damage = new float[]{20,30,40,50,60};
+        w.ap_scale = new float[]{0.15f,0.15f,0.15f,0.15f,0.15f};
         w.cast_time = 0;
 
         e = new Ability(E) {

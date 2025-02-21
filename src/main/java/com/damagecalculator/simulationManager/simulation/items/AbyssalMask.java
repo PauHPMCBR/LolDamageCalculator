@@ -12,7 +12,7 @@ public class AbyssalMask extends Item {
         super(name, type, cost);
         ah = 15;
         hp = 350;
-        mr = 50;
+        mr = 45;
     }
 
     public void specialStats() {

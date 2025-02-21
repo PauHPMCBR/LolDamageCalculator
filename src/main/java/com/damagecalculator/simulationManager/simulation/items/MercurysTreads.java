@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class MercurysTreads extends Item {
     public static final String name = "Mercury's Treads";
     public static final ItemType type = ItemType.BOOTS;
-    public static final int cost = 1300;
+    public static final int cost = 1250;
 
     public MercurysTreads() {
         super(name, type, cost);

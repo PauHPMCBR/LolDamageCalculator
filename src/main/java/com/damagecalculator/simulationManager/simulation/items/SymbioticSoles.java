@@ -10,7 +10,7 @@ public class SymbioticSoles extends Item {
 
     public SymbioticSoles() {
         super(name, type, cost);
-        ms = 35;
+        ms = 40;
     }
 
     @Override

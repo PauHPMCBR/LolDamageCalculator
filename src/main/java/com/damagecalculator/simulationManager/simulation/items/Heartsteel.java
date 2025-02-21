@@ -22,7 +22,7 @@ public class Heartsteel extends Item {
             putOnCooldown();
             float dmg = 70f + 0.06f * owner.getMaxHP();
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, dmg, 1);
-            owner.BONUS_HP += dmg * 0.1f;
+            owner.BONUS_HP += dmg * 0.08f;
         }
     }
 
