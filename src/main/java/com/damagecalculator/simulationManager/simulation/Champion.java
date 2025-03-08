@@ -274,9 +274,9 @@ public abstract class Champion {
      */
     public void useAbility(Ability a) {
         if (a.type == R && cs.axiomArcanistRune != null) {
-            cs.damageMultiplier *= 1.14f; //TODO reduced to 9% from abilities
+            cs.damageMultiplier *= 1.12f; //TODO reduced to 8% from AOE abilities
             a.onUse();
-            cs.damageMultiplier /= 1.14f;
+            cs.damageMultiplier /= 1.12f;
         }
         else a.onUse();
         
