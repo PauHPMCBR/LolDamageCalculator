@@ -20,7 +20,7 @@ public class Jhin extends Champion {
     void updatePassiveAD() {
         rawBonusAD += BONUS_AD - lastBonusADRegistered;
         float adPercent = 3 + lvl + Math.max(0, lvl - 9) + 2 * Math.max(0, lvl - 11) +
-                0.3f * CRIT_CHANCE + 0.25f * BONUS_AS;
+                0.35f * CRIT_CHANCE + 0.3f * BONUS_AS;
         BONUS_AD = rawBonusAD * (1 + adPercent/100) + BASE_AD * (adPercent/100);
         lastBonusADRegistered = BONUS_AD;
     }

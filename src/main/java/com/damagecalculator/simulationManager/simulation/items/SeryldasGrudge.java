@@ -11,8 +11,8 @@ public class SeryldasGrudge extends Item {
     public SeryldasGrudge() {
         super(name, type, cost);
         ad = 45;
-        ah = 20;
-        armor_pen = 30;
+        ah = 15;
+        armor_pen = 35;
     }
 
     @Override

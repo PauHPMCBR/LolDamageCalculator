@@ -62,7 +62,7 @@ public class Karma extends Champion {
             }
         };
         q.damageType = DamageType.magicDmg;
-        q.damage = new float[]{70,120,170,220,270};
+        q.damage = new float[]{60,110,160,210,260};
         q.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
         q.cast_time = 0.25f;
         q.cooldown = new float[]{9,8,7,6,5};

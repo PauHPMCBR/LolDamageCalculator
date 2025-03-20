@@ -6,7 +6,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class WarmogsArmor extends Item {
     public static final String name = "Warmog's Armor";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3300;
+    public static final int cost = 3100;
 
     public WarmogsArmor() {
         super(name, type, cost);
@@ -15,7 +15,7 @@ public class WarmogsArmor extends Item {
     }
 
     public void specialStats() {
-        owner.BONUS_HP *= 1.1f; //bonus 10% hp from "items"
+        owner.BONUS_HP *= 1.12f; //bonus 12% hp from "items"
     }
 
     @Override
