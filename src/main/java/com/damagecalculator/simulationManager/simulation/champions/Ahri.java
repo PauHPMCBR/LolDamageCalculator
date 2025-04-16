@@ -56,8 +56,8 @@ public class Ahri extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{9,8,7,6,5};
-        w.damage = new float[]{45,70,95,120,145};
-        w.ap_scale = new float[]{0.3f,0.3f,0.3f,0.3f,0.3f};
+        w.damage = new float[]{40,60,80,100,120};
+        w.ap_scale = new float[]{0.4f,0.4f,0.4f,0.4f,0.4f};
         w.cast_time = 0;
 
         e = new Ability(E) {
@@ -70,7 +70,7 @@ public class Ahri extends Champion {
         e.damageType = DamageType.magicDmg;
         e.cooldown = new float[]{12,12,12,12,12};
         e.damage = new float[]{80,120,160,200,240};
-        e.ap_scale = new float[]{0.75f,0.75f,0.75f,0.75f,0.75f};
+        e.ap_scale = new float[]{0.85f,0.85f,0.85f,0.85f,0.85f};
         e.cast_time = 0.25f;
 
         r = new Ability(R) {

@@ -100,8 +100,8 @@ public class Syndra extends Champion {
         };
         e.damageType = DamageType.magicDmg;
         e.cooldown = new float[]{17,17,17,17,17};
-        e.damage = new float[]{75,115,155,195,235};
-        e.ap_scale = new float[]{0.45f,0.45f,0.45f,0.45f,0.45f};
+        e.damage = new float[]{60,95,130,165,200};
+        e.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         e.cast_time = 0.25f;
 
         r = new Ability(R) { //extraVariable = is r upgraded
@@ -123,8 +123,8 @@ public class Syndra extends Champion {
         };
         r.damageType = DamageType.magicDmg;
         r.cooldown = new float[]{120,100,80};
-        r.damage = new float[]{100,140,180};
-        r.ap_scale = new float[]{0.17f,0.17f,0.17f,0.17f,0.17f};
+        r.damage = new float[]{90,130,170};
+        r.ap_scale = new float[]{0.2f,0.2f,0.2f};
         r.cast_time = 0.264f;
 
         extraVariableName = "Splinters";

@@ -15,7 +15,7 @@ public class OverlordsBloodmail extends Item {
     }
 
     public void specialStats() {
-        owner.BONUS_AD += owner.BONUS_HP * 0.02f;
+        owner.BONUS_AD += owner.BONUS_HP * 0.025f;
     }
 
     //ignoring %ad with missing hp

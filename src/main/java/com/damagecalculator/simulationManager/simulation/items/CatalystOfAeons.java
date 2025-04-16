@@ -11,7 +11,7 @@ public class CatalystOfAeons extends Item {
     public CatalystOfAeons() {
         super(name, type, cost);
         hp = 350;
-        mana = 300;
+        mana = 375;
     }
 
     @Override

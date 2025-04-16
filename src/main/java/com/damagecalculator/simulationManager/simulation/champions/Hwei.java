@@ -36,7 +36,7 @@ public class Hwei extends Champion {
             }
             public void onCall() {
                 if (extraVariable == 1) {
-                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 35 + 145/17f*(owner.lvl-1) + 0.30f*owner.AP, 3);
+                    damageDealt += cs.damage.applyDamage(DamageType.magicDmg, 35 + 195/17f*(owner.lvl-1) + 0.30f*owner.AP, 3);
                     extraVariable = 0;
                     w.onCall();
                 }
@@ -135,7 +135,7 @@ public class Hwei extends Champion {
         };
         r.damageType = DamageType.magicDmg;
         r.cooldown = new float[]{140,115,80};
-        r.damage = new float[]{200,300,400};
+        r.damage = new float[]{200,325,450};
         r.ap_scale = new float[]{0.8f,0.8f,0.8f};
         r.duration = new float[]{3,3,3};
         r.cast_time = 0.25f;
