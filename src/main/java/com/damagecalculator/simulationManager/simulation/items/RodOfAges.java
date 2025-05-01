@@ -12,8 +12,8 @@ public class RodOfAges extends Item {
 
     public RodOfAges(int stacks) {
         super(name, type, cost);
-        ap = 50;
-        hp = 400;
+        ap = 45;
+        hp = 350;
         mana = 400;
         extraVariableName = "ROA Minutes (0-10)";
         this.stacks = Math.min(stacks, 10);
