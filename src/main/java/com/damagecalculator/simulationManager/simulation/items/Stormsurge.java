@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Stormsurge extends Item {
     public static final String name = "Stormsurge";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2900;
+    public static final int cost = 2800;
 
     boolean activated;
     float timeActivated;
@@ -15,7 +15,7 @@ public class Stormsurge extends Item {
         super(name, type, cost);
         ap = 90;
         magic_pen = 15;
-        ms = 4;
+        percent_ms = 6;
     }
 
     public void specialStats() {

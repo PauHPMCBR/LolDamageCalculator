@@ -12,8 +12,8 @@ public class BloodlettersCurse extends Item {
 
     public BloodlettersCurse() {
         super(name, type, cost);
-        ap = 60;
-        hp = 350;
+        ap = 65;
+        hp = 400;
         ah = 15;
 
         decayStacks = 0;
@@ -24,10 +24,10 @@ public class BloodlettersCurse extends Item {
     }
 
     public void increaseDecayStacks() { //will get called by "Damage" class. special function
-        if (decayStacks >= 6) return;
-        owner.getEnemy().MAGIC_RESIST /= (1 - decayStacks*0.05f);
+        if (decayStacks >= 4) return;
+        owner.getEnemy().MAGIC_RESIST /= (1 - decayStacks*0.075f);
         ++decayStacks;
-        owner.getEnemy().MAGIC_RESIST *= (1 - decayStacks*0.05f);
+        owner.getEnemy().MAGIC_RESIST *= (1 - decayStacks*0.075f);
     }
 
     @Override

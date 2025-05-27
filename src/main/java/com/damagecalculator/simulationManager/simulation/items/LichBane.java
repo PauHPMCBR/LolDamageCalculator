@@ -7,11 +7,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LichBane extends Item {
     public static final String name = "Lich Bane";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 2900;
 
     public LichBane() {
         super(name, type, cost);
-        ap = 115;
+        ap = 100;
         ah = 10;
         percent_ms = 4;
 

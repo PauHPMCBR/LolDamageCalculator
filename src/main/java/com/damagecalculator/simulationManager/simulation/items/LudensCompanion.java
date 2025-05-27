@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class LudensCompanion extends Item {
     public static final String name = "Luden's Companion";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2850;
+    public static final int cost = 2750;
 
     public LudensCompanion() {
         super(name, type, cost);

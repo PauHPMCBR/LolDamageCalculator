@@ -6,11 +6,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class Cryptbloom extends Item {
     public static final String name = "Cryptbloom";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2850;
+    public static final int cost = 3000;
 
     public Cryptbloom() {
         super(name, type, cost);
-        ap = 60;
+        ap = 75;
         ah = 20;
         percent_magic_pen = 30;
     }

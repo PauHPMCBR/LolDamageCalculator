@@ -6,17 +6,12 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class HorizonFocus extends Item {
     public static final String name = "Horizon Focus";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2700;
+    public static final int cost = 2900;
 
     public HorizonFocus() {
         super(name, type, cost);
-        ap = 75;
+        ap = 110;
         ah = 25;
-    }
-
-    //first damage instance is also amplified, supposing it's always triggered instantly
-    public void specialStats() { //supposing 700+ range?
-        cs.damageMultiplier *= 1.1f;
     }
 
     @Override
