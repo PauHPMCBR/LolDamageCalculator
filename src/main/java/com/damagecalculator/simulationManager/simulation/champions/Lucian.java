@@ -87,7 +87,7 @@ public class Lucian extends Champion {
                 owner.passive.onCall();
             }
         };
-        e.cooldown = new float[]{16,15.5f,15,14.5f,14};
+        e.cooldown = new float[]{18,17,16,15,14};
         e.cast_time = 0;
 
         r = new Ability(R) {
