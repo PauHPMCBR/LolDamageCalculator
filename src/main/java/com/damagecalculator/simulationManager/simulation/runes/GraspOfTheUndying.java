@@ -22,7 +22,7 @@ public class GraspOfTheUndying extends Rune {
 
     public void specialStats() {
         if (owner.is_ranged) owner.BONUS_HP += 5 * stacks;
-        else owner.BONUS_HP += 3 * stacks;
+        else owner.BONUS_HP += 2 * stacks;
     }
 
     public void onHit() {
@@ -32,8 +32,8 @@ public class GraspOfTheUndying extends Rune {
             if (owner.is_ranged) mult = 0.021f;
             damageDealt += cs.damage.applyDamage(DamageType.magicDmg, owner.getMaxHP() * mult, 1);
             //ignoring heal part
-            owner.BONUS_HP += 4;
-            if (!owner.is_ranged) owner.BONUS_HP += 3;
+            owner.BONUS_HP += 5;
+            if (!owner.is_ranged) owner.BONUS_HP += 2;
         }
     }
 
