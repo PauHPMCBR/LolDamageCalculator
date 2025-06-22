@@ -48,22 +48,8 @@ public class Damage {
     }
 
     // TODO add DOT and PET distinguishment for shadowflame
-    /**
-     * Main function to call from outside that will do all calculations prior to the damage appliance
-     * Damage instance types:
-     *      odd (1,3...)            :   "proc" damage. will not count for black cleaver or ludens (OUTDATED)
-     *      multiple of 3 (3,6...)  :   "ability" damage. will count for navori amplifier
-     *
-     * Examples:
-     *      0 comes from auto
-     *      1 comes from item/rune on-hit
-     *      2 comes from item/rune active / independent dmg
-     *      3 comes from ability passive
-     *      6 comes from ability active
-     */
-    public float applyDamage(DamageType type, float amount, int damageInstanceType) {
+    public float getPostMitigationDamage(DamageType type, float amount, boolean isFromAbility) {
         amount *= cs.damageMultiplier;
-        //rip old riftmaker
         if (cs.hasCutDown) {
             if (cs.enemy.getRelativeMissingHP() < 0.4) {
                 amount *= 1.08f;
@@ -75,10 +61,39 @@ public class Damage {
             }
         }
         //last stand can be controversial, since we don't know champion's relative hp. currently skipped
-
-        if (damageInstanceType%3 == 0 && damageInstanceType != 0) { //damage from ability
+        if (isFromAbility) {
             amount *= cs.abilityDamageMultiplier;
-            //no more ludens xdd
+        }
+
+        if (cs.abyssalMaskItem != null && type == DamageType.magicDmg) { //12% increased dmg
+            amount *= 1.12f;
+        }
+
+        if (type == DamageType.physicalDmg) amount = getPostPhysicalDamage(amount);
+        else if (type == DamageType.magicDmg) amount = getPostMagicDamage(amount);
+
+        /*if (cs.shadowflameItem != null && type != DamageType.physicalDmg) { //crit for true and magic dmg
+            if (cs.enemy.getRelativeMissingHP() >= 0.6) { //"crit" if enemy below 40% hp
+                amount *= 1.2f;
+            }
+        }*/
+        return amount;
+    }
+    public float applyDamage(DamageType type, float amount, boolean isFromAbility) {
+        amount *= cs.damageMultiplier;
+        if (cs.hasCutDown) {
+            if (cs.enemy.getRelativeMissingHP() < 0.4) {
+                amount *= 1.08f;
+            }
+        }
+        else if (cs.hasCoupDeGrace) {
+            if (cs.enemy.getRelativeMissingHP() > 0.6) {
+                amount *= 1.08f;
+            }
+        }
+        //last stand can be controversial, since we don't know champion's relative hp. currently skipped
+        if (isFromAbility) {
+            amount *= cs.abilityDamageMultiplier;
         }
 
         float dmg = applyDirectDamage(type, amount);
@@ -106,11 +121,30 @@ public class Damage {
             cs.cleaverItem.increaseCarveStacks();
         }
 
-        if (cs.bloodlettersCurseItem != null && type == DamageType.magicDmg && damageInstanceType%3 == 0) {
+        if (cs.bloodlettersCurseItem != null && type == DamageType.magicDmg && isFromAbility) {
             cs.bloodlettersCurseItem.increaseDecayStacks(); //ignoring 0.3s cd
         }
 
         return dmg;
+    }
+
+    /**
+     * (not removing this beceause it would mean huge refactor)
+     *
+     * Main function to call from outside that will do all calculations prior to the damage appliance
+     * Damage instance types:
+     *      odd (1,3...)            :   "proc" damage. will not count for black cleaver or ludens (OUTDATED)
+     *      multiple of 3 (3,6...)  :   "ability" damage. will count for navori amplifier
+     *
+     * Examples:
+     *      0 comes from auto
+     *      1 comes from item/rune on-hit
+     *      2 comes from item/rune active / independent dmg
+     *      3 comes from ability passive
+     *      6 comes from ability active
+     */
+    public float applyDamage(DamageType type, float amount, int damageInstanceType) {
+        return applyDamage(type, amount, damageInstanceType == 3 || damageInstanceType == 6);
     }
 
     /**

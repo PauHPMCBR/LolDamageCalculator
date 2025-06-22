@@ -16,6 +16,7 @@ public class ChampionList {
     public static Karma karma = new Karma(1);
     public static Kayle kayle = new Kayle();
     public static Lucian lucian = new Lucian();
+    public static Mel mel = new Mel();
     public static Senna senna = new Senna(0);
     public static Syndra syndra = new Syndra(0);
     public static Tryndamere tryndamere = new Tryndamere(0);
@@ -36,6 +37,7 @@ public class ChampionList {
         add(karma);
         add(kayle);
         add(lucian);
+        add(mel);
         add(senna);
         add(syndra);
         add(tryndamere);
