@@ -7,7 +7,7 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class KrakenSlayer extends Item {
     public static final String name = "Kraken Slayer";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3100;
+    public static final int cost = 3000;
 
     int autos;
     public KrakenSlayer() {
@@ -27,7 +27,7 @@ public class KrakenSlayer extends Item {
             float baseDmg = 150 + 5 * Math.max(0, owner.lvl - 8);
             if (owner.is_ranged) baseDmg *= 0.8f;
             damageDealt += cs.damage.applyDamage(DamageType.physicalDmg,
-                    baseDmg * (1 + owner.getEnemy().getRelativeMissingHP()), 1);
+                    baseDmg * (1 + 0.75f*owner.getEnemy().getRelativeMissingHP()), 1);
             //damageDealt += cs.damage.applyDamage(DamageType.physicalDmg, baseDmg * dmgMult, 1);
         }
     }

@@ -10,9 +10,9 @@ public class PhantomDancer extends Item {
 
     public PhantomDancer() {
         super(name, type, cost);
-        as = 60;
+        as = 65;
         crit = 25;
-        percent_ms = 8;
+        percent_ms = 10;
     }
 
     @Override

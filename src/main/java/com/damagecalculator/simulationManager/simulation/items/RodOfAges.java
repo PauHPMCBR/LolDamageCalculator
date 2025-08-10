@@ -14,7 +14,7 @@ public class RodOfAges extends Item {
         super(name, type, cost);
         ap = 45;
         hp = 350;
-        mana = 400;
+        mana = 500;
         extraVariableName = "ROA Minutes (0-10)";
         this.stacks = Math.min(stacks, 10);
     }
@@ -22,7 +22,7 @@ public class RodOfAges extends Item {
     public void specialStats() {
         owner.BONUS_HP += 10 * stacks;
         owner.AP += 3 * stacks;
-        owner.MANA += 20 * stacks;
+        owner.MANA += 30 * stacks;
     }
 
 

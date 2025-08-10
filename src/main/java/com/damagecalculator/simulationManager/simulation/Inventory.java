@@ -8,7 +8,7 @@ import static com.damagecalculator.simulationManager.simulation.items.ItemList.*
  *  - Max item slots (hardcoded as 6, currently)
  *  - Only one copy of an item (as of now, only legendaries and boots implemented)
  *  - Only one of each group of exclusive items (lifeline, sheen/spellblade, boots...)
- *      (in theory you can have more than one sheen item, but only the one with highest priority will work)
+ *      (in theory you can have more than one sheen item, but only the one with the highest priority will work)
  * (Currently, runaans for melee champions is not checked)
  */
 public class Inventory {
@@ -37,6 +37,7 @@ public class Inventory {
             new Item[] {voidStaff, blightingJewel, terminus, cryptbloom, bloodlettersCurse}, //void pen
             new Item[] {doransBlade, doransRing, doransShield}, //doran's items
             new Item[] {serratedDirk}, //unique
+            new Item[] {hauntingGuise}, //unique
     };
 
     /**
