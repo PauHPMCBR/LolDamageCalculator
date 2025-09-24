@@ -8,11 +8,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class ProfaneHydra extends Item {
     public static final String name = "Profane Hydra";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 3200;
+    public static final int cost = 2850;
 
     public ProfaneHydra() {
         super(name, type, cost);
-        ad = 60;
+        ad = 55;
         lethality = 18;
         ah = 10;
 

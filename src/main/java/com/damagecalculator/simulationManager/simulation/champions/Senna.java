@@ -26,7 +26,7 @@ public class Senna extends Champion {
                 3f,
                 31.25f,
                 0.4f,
-                2f,
+                2.6f,
                 true
         );
         this.souls = souls;

@@ -6,11 +6,11 @@ import com.damagecalculator.simulationManager.simulation.ItemType;
 public class HorizonFocus extends Item {
     public static final String name = "Horizon Focus";
     public static final ItemType type = ItemType.LEGENDARY;
-    public static final int cost = 2800;
+    public static final int cost = 2750;
 
     public HorizonFocus() {
         super(name, type, cost);
-        ap = 115;
+        ap = 125;
         ah = 25;
     }
 
