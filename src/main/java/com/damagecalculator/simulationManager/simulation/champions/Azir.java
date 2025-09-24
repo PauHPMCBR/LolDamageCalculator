@@ -45,7 +45,7 @@ public class Azir extends Champion {
                 3f,
                 15.625f,
                 0.694f,
-                5.5f,
+                5f,
                 true
         );
 
@@ -89,7 +89,7 @@ public class Azir extends Champion {
         w.cooldown = new float[]{10,9,8,7,6};
         w.duration = new float[]{10,10,10,10,10};
         w.damage = new float[]{50,65,80,95,110};
-        w.ap_scale = new float[]{0.45f,0.50f,0.55f,0.60f,0.65f};
+        w.ap_scale = new float[]{0.4f,0.45f,0.50f,0.55f,0.60f};
         w.cast_time = 0.25f;
 
         e = new Ability(E) {

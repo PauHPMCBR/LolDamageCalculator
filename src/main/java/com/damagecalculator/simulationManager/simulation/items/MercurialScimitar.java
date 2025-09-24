@@ -10,8 +10,8 @@ public class MercurialScimitar extends Item {
 
     public MercurialScimitar() {
         super(name, type, cost);
-        ad = 40;
-        mr = 40;
+        ad = 50;
+        mr = 35;
         lifesteal = 10;
     }
 
