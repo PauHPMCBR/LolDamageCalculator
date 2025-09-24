@@ -28,7 +28,7 @@ public class ExperimentalHexplate extends Item {
     public void onHit() { //check expiring
         if (isActive && cs.time - timeActivated >= 8) {
             isActive = false;
-            owner.BONUS_AS -= 35;
+            owner.BONUS_AS -= 50;
         }
     }
 
@@ -36,7 +36,7 @@ public class ExperimentalHexplate extends Item {
         if (canUse() && owner.lastAbilityUsed == AbilityType.R && !isActive) {
             isActive = true;
             timeActivated = cs.time;
-            owner.BONUS_AS += 30;
+            owner.BONUS_AS += 50;
             putOnCooldown();
         }
     }

@@ -57,7 +57,7 @@ public class Varus extends Champion {
         };
         q.damageType = DamageType.physicalDmg;
         q.cooldown = new float[]{16,15,14,13,12};
-        q.damage = new float[]{60,106.67f,153.33f,200,246.67f};
+        q.damage = new float[]{53.33f,100,146.67f,193.33f,240};
         q.ad_scale = new float[]{0.866f,0.933f,1f,1.067f,1.133f};
         q.ap_scale = new float[]{0.06f,0.08f,0.1f,0.12f,0.14f}; //missing hp dmg
 
@@ -96,7 +96,7 @@ public class Varus extends Champion {
         };
         w.damageType = DamageType.magicDmg;
         w.cooldown = new float[]{40,40,40,40,40};
-        w.damage = new float[]{6,12,18,24,30};
+        w.damage = new float[]{6,14,22,30,38};
         w.ap_scale = new float[]{0.35f,0.35f,0.35f,0.35f,0.35f};
         w.cast_time = 0;
 
@@ -110,8 +110,8 @@ public class Varus extends Champion {
         };
         e.damageType = DamageType.physicalDmg;
         e.cooldown = new float[]{18,16,14,12,10};
-        e.damage = new float[]{60,100,140,180,220};
-        e.ad_scale = new float[]{1f,1f,1f,1f,1f};
+        e.damage = new float[]{60,90,120,150,180};
+        e.ad_scale = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
         e.cast_time = 0.2419f;
 
         r = new Ability(R) {
