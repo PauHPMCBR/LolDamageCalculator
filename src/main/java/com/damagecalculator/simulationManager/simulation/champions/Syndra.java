@@ -14,11 +14,11 @@ public class Syndra extends Champion {
     public Syndra(int splinters) {
         super (name,
                 563f,
-                104f,
+                100f,
                 480f,
                 40f,
                 25f,
-                4.6f,
+                4f,
                 54f,
                 2.9f,
                 30f,
@@ -66,8 +66,8 @@ public class Syndra extends Champion {
         };
         q.damageType = DamageType.magicDmg;
         q.cooldown = new float[]{7,7,7,7,7};
-        q.damage = new float[]{75,110,145,180,215};
-        q.ap_scale = new float[]{0.7f,0.7f,0.7f,0.7f,0.7f};
+        q.damage = new float[]{80,115,150,185,220};
+        q.ap_scale = new float[]{0.65f,0.65f,0.65f,0.65f,0.65f};
         q.cast_time = 0;
 
         w = new Ability(W) {//extraVariable = is w upgraded
@@ -99,7 +99,7 @@ public class Syndra extends Champion {
             }
         };
         e.damageType = DamageType.magicDmg;
-        e.cooldown = new float[]{17,17,17,17,17};
+        e.cooldown = new float[]{15,15,15,15,15};
         e.damage = new float[]{60,95,130,165,200};
         e.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         e.cast_time = 0.25f;

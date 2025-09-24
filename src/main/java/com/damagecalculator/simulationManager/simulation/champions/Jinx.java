@@ -90,7 +90,7 @@ public class Jinx extends Champion {
         };
         e.damageType = DamageType.magicDmg;
         e.cooldown = new float[]{24,20.5f,17,13.5f,10};
-        e.damage = new float[]{70,120,170,220,270};
+        e.damage = new float[]{90,140,190,240,290};
         e.ap_scale = new float[]{1,1,1,1,1};
         e.duration = new float[]{0.9f,0.9f,0.9f,0.9f,0.9f};
         e.cast_time = 0;
