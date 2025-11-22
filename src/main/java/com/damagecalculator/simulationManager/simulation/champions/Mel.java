@@ -50,7 +50,7 @@ public class Mel extends Champion {
 
             //onHit
             public void onCall() {
-                float dmg = 7 + owner.lvl + 0.01f*owner.AP;
+                float dmg = 8 + 42f/17f*(owner.lvl-1) + 0.05f*owner.AP;
                 for (int i = 0; i < searingBrillianceStacks; ++i) {
                     damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, false);
                     onUse();

@@ -61,8 +61,8 @@ public class Hwei extends Champion {
                                 (baseDmg + 0.25f*owner.AP) * (1 + owner.getEnemy().getRelativeMissingHP()*percentIncreasePerPercentMissing), 6);
                     }
                     case E -> {
-                        float baseDmg = 70*(lvl+1);
-                        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, baseDmg + 0.8f*owner.AP , 6);
+                        float baseDmg = 17.5f + 52.5f*(lvl+1);
+                        damageDealt += cs.damage.applyDamage(DamageType.magicDmg, baseDmg + 0.9f*owner.AP , 6);
                     }
                 }
                 w.onCall();

@@ -48,8 +48,8 @@ public class Ahri extends Champion {
             public void onUse() {
                 float dmg = damage[lvl] + ap_scale[lvl] * owner.AP;
                 damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg, 6);
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg*0.3f, 3);
-                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg*0.3f, 3);
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg*0.4f, 3);
+                damageDealt += cs.damage.applyDamage(DamageType.magicDmg, dmg*0.4f, 3);
 
                 currentCooldown = getCooldown();
             }
