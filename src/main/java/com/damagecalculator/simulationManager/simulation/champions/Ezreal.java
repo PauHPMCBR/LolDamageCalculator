@@ -17,7 +17,7 @@ public class Ezreal extends Champion {
                 24f,
                 4.7f,
                 60f,
-                2.75f,
+                3.25f,
                 30f,
                 1.3f,
                 1.75f,

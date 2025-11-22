@@ -53,8 +53,8 @@ public class Graves extends Champion {
                 4.6f,
                 68f,
                 4f,
-                32f,
-                2.05f,
+                30f,
+                1.3f,
                 1.75f,
                 0.475f,
                 3f,
@@ -109,6 +109,7 @@ public class Graves extends Champion {
                 if (extraVariable < 8) {
                     extraVariable += 2;
                     ARMOR += 2 * damage[lvl];
+                    MAGIC_RESIST += 1 * damage[lvl];
                 }
                 remainingBullets = Math.min(2, remainingBullets + 1);
                 autoReset();

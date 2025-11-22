@@ -12,7 +12,6 @@ public class DoransBlade extends Item {
         super(name, type, cost);
         ad = 10;
         hp = 80;
-        lifesteal = 3;
     }
 
     @Override
