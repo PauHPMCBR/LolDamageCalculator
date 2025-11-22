@@ -22,7 +22,7 @@ public class HailOfBlades extends Rune {
 
     public void specialStats() {
         if (owner.is_ranged) bonusASGained = 80;
-        else bonusASGained = 140;
+        else bonusASGained = 160;
     }
 
     public void onHit() { //gives as AFTER the 1st auto
