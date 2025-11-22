@@ -86,10 +86,10 @@ public class Azir extends Champion {
             }
         };
         w.damageType = DamageType.magicDmg;
-        w.cooldown = new float[]{10,9,8,7,6};
+        w.cooldown = new float[]{12,10.5f,9,7.5f,6};
         w.duration = new float[]{10,10,10,10,10};
         w.damage = new float[]{50,65,80,95,110};
-        w.ap_scale = new float[]{0.4f,0.45f,0.50f,0.55f,0.60f};
+        w.ap_scale = new float[]{0.325f,0.4f,0.475f,0.55f,0.625f};
         w.cast_time = 0.25f;
 
         e = new Ability(E) {
@@ -101,8 +101,8 @@ public class Azir extends Champion {
         };
         e.damageType = DamageType.magicDmg;
         e.cooldown = new float[]{22,20.5f,19,17.5f,16};
-        e.damage = new float[]{60,100,140,180,220};
-        e.ap_scale = new float[]{0.4f,0.4f,0.4f,0.4f,0.4f};
+        e.damage = new float[]{70,110,150,190,230};
+        e.ap_scale = new float[]{0.6f,0.6f,0.6f,0.6f,0.6f};
         e.cast_time = 0;
         r = new Ability(R) {
             public void onUse() {
